@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Clicar.Views.LoginView">
+    <ContentPage.Content>
+        <ScrollView
+            BackgroundColor="White">
+            <StackLayout
+                VerticalOptions="CenterAndExpand">
+
+                <!--Imagen y mensaje de bienvenida-->
+                <StackLayout 
+                    VerticalOptions="Start">
+                    <StackLayout 
+                        HorizontalOptions="CenterAndExpand">
+                        <Image    
+                                Source="clicar_bajada.png" 
+                                VerticalOptions="Center" 
+                                Margin="40,0"/>
+
+                    </StackLayout>
+                    <StackLayout
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        Margin="0,10,0,20">
+                        <Label
+                                Text="Bienvenidos,"
+                                HorizontalOptions="CenterAndExpand"
+                                FontSize="24"
+                                TextColor="{StaticResource BaseGreen}"
+                                FontFamily="{StaticResource BoldFontGotham}"/>
+
+                        <Label
+                                Text="Iniciar sesión"
+                                HorizontalOptions="CenterAndExpand"
+                                FontSize="21"
+                                TextColor="{StaticResource BaseGrey}"
+                                FontFamily="{StaticResource LightFontGotham}"/>
+
+
+
+                    </StackLayout>
+                </StackLayout>
+
+                <!--Usuario, contraseña y recordatorio-->
+                <StackLayout 
+                    Margin="32,0,32,25" 
+                    VerticalOptions="Center">
+                    <Grid
+                        HorizontalOptions="CenterAndExpand">
+
+
+
+                        <Image  
+                            HorizontalOptions="Start"
+                            WidthRequest="12"
+                            Margin="10"
+                            Grid.Column="0"
+                            Source="user_times_green.png" 
+                            VerticalOptions="Center" />
+
+                        <Entry
+                        
+                        Grid.Column="0"
+                        HeightRequest="36"
+                        BackgroundColor="Transparent" 
+                        Placeholder="Ingrese usuario" 
+                        TextColor="{StaticResource BaseGrey}" 
+                        FontSize="14" 
+                        FontFamily="{StaticResource BookFontGotham}"  />
+
+                    </Grid>
+
+                    <Grid
+                        HorizontalOptions="CenterAndExpand">
+
+
+
+                        <Image  
+                            HorizontalOptions="Start"
+                            WidthRequest="12"
+                            Margin="10"
+                            Grid.Column="0"
+                            Source="lock_solid.png" 
+                            VerticalOptions="Center" />
+                        <Entry
+                        HeightRequest="36"
+                        BackgroundColor="Transparent" 
+                        Placeholder="Ingrese Contraseña" 
+                        TextColor="{StaticResource BaseGrey}" 
+                        FontSize="14" 
+                        FontFamily="{StaticResource BookFontGotham}"  />
+                    </Grid>
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Olvidé mi contraseña"
+                        TextColor="{StaticResource BaseOrange}"
+                        TextDecorations="Underline"
+                        FontSize="12"
+                        FontFamily="{StaticResource BookFontGotham}"/>
+
+                </StackLayout>
+
+                <!--Botones-->
+                <StackLayout
+                    Margin="56.5,0"
+                    VerticalOptions="EndAndExpand">
+
+
+                    <Button
+                        BackgroundColor="{StaticResource BaseGreen}"
+                        Text="Iniciar sesión"
+                        FontSize="16"
+                        FontFamily="{StaticResource MediumFontGotham}"
+                        TextColor="White"
+                        HeightRequest="40"
+                        BorderRadius="20"/>
+
+
+                    <Button
+                        BackgroundColor="{StaticResource BaseOrange}"
+                        Text="Autenticarse con Touch ID"
+                        FontSize="16"
+                        FontFamily="{StaticResource MediumFontGotham}"
+                        TextColor="White"
+                        HeightRequest="40"
+                        BorderRadius="20"/>
+
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

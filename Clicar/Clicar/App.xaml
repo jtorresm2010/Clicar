@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Clicar.App">
+    <Application.Resources>
+
+
+        <ResourceDictionary>
+
+
+            <Color x:Key="BaseGreen">#75AB40</Color>
+            <Color x:Key="BaseGreen20">#e3eed9</Color>
+            <Color x:Key="BaseGrey">#59595C</Color>
+            <Color x:Key="DarkGrey">#26262D</Color>
+            <Color x:Key="BaseGrey44">#b6b6b7</Color>
+            <Color x:Key="BaseGrey63">#f5f5f5</Color>
+            <Color x:Key="BaseOrange">#E87B0E</Color>
+
+
+
+
+            <OnPlatform 
+                x:TypeArguments="x:String" 
+                x:Key="BoldFontGotham">
+                <On 
+                    Platform="Android" 
+                    Value="GothamBold.ttf#Gotham" />
+                <On 
+                    Platform="iOS" 
+                    Value="GothamBold" />
+            </OnPlatform>
+            <OnPlatform 
+                x:TypeArguments="x:String" 
+                x:Key="LightFontGotham">
+                <On 
+                    Platform="Android" 
+                    Value="GothamLight.ttf#Gotham" />
+                <On 
+                    Platform="iOS" 
+                    Value="GothamLight" />
+            </OnPlatform>
+            <OnPlatform 
+                x:TypeArguments="x:String" 
+                x:Key="BookFontGotham">
+                <On 
+                    Platform="Android" 
+                    Value="GothamBook.ttf#Gotham" />
+                <On 
+                    Platform="iOS" 
+                    Value="GothamBook" />
+            </OnPlatform>
+            <OnPlatform 
+                x:TypeArguments="x:String" 
+                x:Key="MediumFontGotham">
+                <On 
+                    Platform="Android" 
+                    Value="GothamMedium.ttf#Gotham" />
+                <On 
+                    Platform="iOS" 
+                    Value="GothamMedium" />
+            </OnPlatform>
+
+
+        </ResourceDictionary>
+
+
+
+
+        <!--Definiciónd e estilos-->
+        <Style 
+            TargetType="NavigationPage">
+            <Setter 
+                Property="BarBackgroundColor" 
+                Value="#FFFFFF">
+            </Setter>
+        </Style>
+
+
+    </Application.Resources>
+</Application>
