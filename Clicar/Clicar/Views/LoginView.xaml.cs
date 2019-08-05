@@ -16,5 +16,20 @@ namespace Clicar.Views
         {
             InitializeComponent();
         }
+        public void ShowPass(object sender, EventArgs args) //Intercambia el entry de contraseña entre texto visible y protegido
+        {
+            Password.IsPassword = Password.IsPassword ? false : true;
+
+
+            if (Password.IsPassword)
+            {
+                eye_icon.Source = ImageSource.FromFile("eye_regular.jpg");
+            }
+            else
+            {
+                eye_icon.Source = ImageSource.FromFile("eye_faded.jpg");
+            }
+
+        }
     }
 }
