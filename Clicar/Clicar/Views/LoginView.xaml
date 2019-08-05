@@ -52,7 +52,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 FontSize="24"
                                 TextColor="{StaticResource BaseGreen}"
-                                FontFamily="{StaticResource BoldFontGotham}"/>
+                                FontFamily="{StaticResource BoldFontOpenSans}"/>
 
                             <Grid
                                 HorizontalOptions="CenterAndExpand">
@@ -74,7 +74,7 @@
                                     Placeholder="Ingrese usuario" 
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
-                                    FontFamily="{StaticResource BookFontGotham}"  />
+                                    FontFamily="{StaticResource RegularFontOpenSans}"  />
 
                             </Grid>
 
@@ -101,7 +101,7 @@
                                     Placeholder="Ingrese Contraseña" 
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
-                                    FontFamily="{StaticResource BookFontGotham}"  />
+                                    FontFamily="{StaticResource RegularFontOpenSans}"  />
 
                                 <Image 
                                     Margin="10,0,10,8"
@@ -128,7 +128,7 @@
                                 TextColor="{StaticResource BaseOrange}"
                                 TextDecorations="Underline"
                                 FontSize="12"
-                                FontFamily="{StaticResource BookFontGotham}"/>
+                                FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                         </StackLayout>
                 
@@ -143,17 +143,18 @@
                                 BackgroundColor="{StaticResource BaseGreen}"
                                 Text="Iniciar sesión"
                                 FontSize="16"
-                                FontFamily="{StaticResource MediumFontGotham}"
+                                FontFamily="{StaticResource SemiBoldFontOpenSans}"
                                 TextColor="White"
                                 HeightRequest="40"
                                 BorderRadius="20"/>
 
 
                             <local:CustomButton
+                                Clicked="FingerprintCommand"
                                 BackgroundColor="{StaticResource BaseOrange}"
                                 Text="Autenticarse con Touch ID"
                                 FontSize="16"
-                                FontFamily="{StaticResource MediumFontGotham}"
+                                FontFamily="{StaticResource SemiBoldFontOpenSans}"
                                 TextColor="White"
                                 HeightRequest="40"
                                 BorderRadius="20"/>

@@ -21,6 +21,41 @@
             <Color x:Key="BGGrey">#f8f8f8</Color>
 
 
+            
+            <!--Fuentes-->
+
+            <OnPlatform 
+                x:TypeArguments="x:String" 
+                x:Key="BoldFontOpenSans">
+                <On 
+                    Platform="Android" 
+                    Value="OpenSansBold.ttf#OpenSans" />
+                <On 
+                    Platform="iOS" 
+                    Value="OpenSansBold" />
+            </OnPlatform>
+            <OnPlatform 
+                    x:TypeArguments="x:String" 
+                    x:Key="RegularFontOpenSans">
+                    <On 
+                    Platform="Android" 
+                    Value="OpenSansRegular.ttf#OpenSans" />
+                    <On 
+                    Platform="iOS" 
+                    Value="GothamBold" />
+            </OnPlatform>
+            <OnPlatform 
+                    x:TypeArguments="x:String" 
+                    x:Key="SemiBoldFontOpenSans">
+                        <On 
+                    Platform="Android" 
+                    Value="OpenSansSemiBold.ttf#OpenSans" />
+                        <On 
+                    Platform="iOS" 
+                    Value="OpenSansSemiBold" />
+            </OnPlatform>
+
+
 
             <OnPlatform 
                 x:TypeArguments="x:String" 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,5 +32,13 @@ namespace Clicar.Views
             }
 
         }
+
+        private async void FingerprintCommand(object sender, EventArgs e)
+        {
+            var popup = PopupNavigation.Instance;
+            await popup.PushAsync(new FingerPrintPopupView());
+        }
+
+
     }
 }

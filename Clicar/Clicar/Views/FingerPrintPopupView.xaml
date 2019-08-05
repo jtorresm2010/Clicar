@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Clicar.Customs"
+    mc:Ignorable="d"
+             x:Class="Clicar.Views.FingerPrintPopupView">
+    <Frame
+            HeightRequest="200"
+            Padding="33,16"
+            CornerRadius="20"
+            VerticalOptions="CenterAndExpand"
+            BackgroundColor="White"
+            Margin="16">
+
+        <StackLayout
+                VerticalOptions="CenterAndExpand"
+                Spacing="0">
+
+            <!--Titulo-->
+            <StackLayout>
+                <Label
+                        Text="Autenticar con huella"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="24"
+                        TextColor="{StaticResource BaseGreen}"
+                        FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+            </StackLayout>
+
+            <StackLayout>
+                
+                <Frame
+                    Margin="0,13,0,8"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="30"
+                    HeightRequest="30"
+                    CornerRadius="45"
+                    BackgroundColor="{StaticResource BaseOrange}">
+
+                    <Image    
+                            Source="fingerprint_solid.png" 
+                            VerticalOptions="Center"/>
+
+                </Frame>
+            </StackLayout>
+
+            <Label
+                        Margin="0,0,0,28"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Pon tu huella en el lector:"
+                        FontSize="14"
+                        FontFamily="{StaticResource RegularFontOpenSans}"
+                        TextColor="{StaticResource BaseGrey}"/>
+
+            <local:CustomButton
+                        Clicked="FingerprintCancel"
+                        HorizontalOptions="EndAndExpand"
+                        BackgroundColor="White"
+                        Text="Cancelar"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="{StaticResource BaseGrey}"
+                        HeightRequest="30"
+                        CornerRadius="45"
+                        WidthRequest="100"/>
+
+        </StackLayout>
+
+    </Frame>
+</pages:PopupPage>

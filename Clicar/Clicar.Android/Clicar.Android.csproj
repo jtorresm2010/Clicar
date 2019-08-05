@@ -74,6 +74,9 @@
     <AndroidAsset Include="Assets\GothamBook.ttf" />
     <AndroidAsset Include="Assets\GothamLight.ttf" />
     <AndroidAsset Include="Assets\GothamMedium.ttf" />
+    <AndroidAsset Include="Assets\OpenSansBold.ttf" />
+    <AndroidAsset Include="Assets\OpenSansRegular.ttf" />
+    <AndroidAsset Include="Assets\OpenSansSemiBold.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -140,6 +143,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\eye_faded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\fingerprint_solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\fingerprint_solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\fingerprint_solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\fingerprint_solid.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
