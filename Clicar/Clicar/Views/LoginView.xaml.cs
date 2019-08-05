@@ -48,9 +48,9 @@ namespace Clicar.Views
             await popup.PushAsync(new FingerPrintPopupView());
         }
         
-        private async void LoginCommand(object sender, EventArgs e)
+        private void LoginCommand(object sender, EventArgs e)
         {
-            Console.WriteLine("Login asdsadasdas");
+            Application.Current.MainPage = new ConfigView();
         }
     }
 }

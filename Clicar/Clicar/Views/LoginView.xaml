@@ -31,10 +31,11 @@
 
 
                 <Frame
+                    Padding="20,0"
                     Margin="16"
                     CornerRadius="20"
                     HasShadow="True"
-                    
+                    HeightRequest="330"
                     BackgroundColor="White">
                     <StackLayout
                         Spacing="0">
@@ -46,8 +47,8 @@
                             
                             
                             <Label
+                                Margin="0,20,0,0"
                                 VerticalOptions="CenterAndExpand"
-                                Margin="10"
                                 Text="Bienvenido"
                                 HorizontalOptions="CenterAndExpand"
                                 FontSize="24"

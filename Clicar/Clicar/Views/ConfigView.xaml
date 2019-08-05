@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Clicar.Customs"
+             mc:Ignorable="d"
+             x:Class="Clicar.Views.ConfigView">
+    <ContentPage.Content>
+        <ScrollView
+            BackgroundColor="{StaticResource BGGrey}">
+            <StackLayout
+                Spacing="0"
+                VerticalOptions="CenterAndExpand">
+
+                <!--Imagen-->
+                <StackLayout 
+                    VerticalOptions="Start">
+
+                    <StackLayout 
+                        HorizontalOptions="CenterAndExpand">
+                        <Image    
+                                Source="clicar_bajada.png" 
+                                VerticalOptions="Center" 
+                                Margin="45,45,45,20"/>
+
+                    </StackLayout>
+
+
+                </StackLayout>
+
+
+                <Frame
+                    Padding="20,0"
+                    Margin="16"
+                    CornerRadius="20"
+                    HasShadow="True"
+                    HeightRequest="330"
+                    BackgroundColor="White">
+                    <StackLayout
+                        Spacing="10">
+                        
+                        <!--Titulo-->
+                        
+                        <Label
+                                Margin="0,20,0,0"
+                                    Text="Bienvenido"
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="24"
+                                    TextColor="{StaticResource BaseGreen}"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"/>
+                    
+                    
+                        <!--Texto informativo-->
+
+                        <StackLayout
+                            Spacing="12">
+                            <Label
+                                HorizontalTextAlignment="Start"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Seleccione de la lista presentada la Sucursal a configurar en la APP."
+                                FontSize="14"
+                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                TextColor="{StaticResource BaseGrey}"/>
+
+
+                            
+                                
+                            <Label
+                                HorizontalTextAlignment="Start"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Actualmente, la APP se encuentra activa para la Sucursal:"
+                                FontSize="14"
+                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                TextColor="{StaticResource BaseGrey}"/>
+
+                        </StackLayout>
+                    
+                    
+                        <!--Picker-->
+
+                        <StackLayout
+                            Spacing="0">
+
+                            <Frame
+
+                            Padding="15,4"
+                            HasShadow="False"
+                            Margin="70,10,70,5"
+                            CornerRadius="10"
+                            BackgroundColor="{StaticResource BaseGreen20}">
+                                <Label
+                                HorizontalOptions="Center"
+                                   
+                                    
+                                    
+                                    
+                                Text="Clicar-Vespucio"
+                                FontSize="12"
+                                TextColor="{StaticResource DarkGreen}"
+                                FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+                            </Frame>
+
+
+
+
+                            <StackLayout
+                                Margin="0, 10">
+                                <!--<Label
+                                    HorizontalOptions="Start"
+                                    Text="Seleccionar otra sucursal:"
+                                    FontSize="10"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>-->
+                                
+                                
+                                
+                                
+                                    <local:CustomPicker
+                                        Title="Seleccionar otra Sucursal"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey44}"
+                                        FontFamily="{StaticResource SemiBoldFontOpenSans}">
+                                        <Picker.Items>
+                                            <x:String>Clicar-Movicenter</x:String>
+                                            <x:String>Clicar-Wom</x:String>
+                                            <x:String>Clicar-Claro</x:String>
+                                            <x:String>Clicar-Entel</x:String>
+                                            <x:String>Clicar-Virgin</x:String>
+                                            <x:String>Clicar-VTR</x:String>
+                                            <x:String>Clicar-Pacifico</x:String>
+                                            <x:String>Clicar-ATT</x:String>
+                                            <x:String>Clicar-Comcast</x:String>
+                                        </Picker.Items>
+                                    </local:CustomPicker>
+                               
+                            </StackLayout>
+                            
+                            
+                        </StackLayout>
+
+
+                        <!--Botón-->
+                        <StackLayout
+                                Margin="24,0">
+
+
+                            <local:CustomButton
+                            
+                                Clicked="LoginCommand"
+                                BackgroundColor="{StaticResource BaseGreen}"
+                                Text="Ingresar a la Inspección"
+                                FontSize="16"
+                                FontFamily="{StaticResource MediumFontGotham}"
+                                TextColor="White"
+                                HeightRequest="40"
+                                BorderRadius="20"/>
+
+                        </StackLayout>
+
+                    </StackLayout>
+                    
+                    
+                    
+                    
+                    
+                    
+                </Frame>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

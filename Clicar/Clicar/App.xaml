@@ -12,15 +12,17 @@
 
             
             <Color x:Key="BaseGreyLight">#A8A8A8</Color>
-            <Color x:Key="BaseGreen">#75AB40</Color>
-            <Color x:Key="BaseGreen20">#e3eed9</Color>
             <Color x:Key="BaseGrey">#59595C</Color>
             <Color x:Key="DarkGrey">#26262D</Color>
             <Color x:Key="BaseGrey44">#b6b6b7</Color>
             <Color x:Key="BaseGrey63">#f5f5f5</Color>
-            <Color x:Key="BaseOrange">#E87B0E</Color>
             <Color x:Key="BGGrey">#f8f8f8</Color>
-
+            
+            <Color x:Key="DarkGreen">#155724</Color>
+            <Color x:Key="BaseGreen">#75AB40</Color>
+            <Color x:Key="BaseGreen20">#e3eed9</Color>
+            
+            <Color x:Key="BaseOrange">#E87B0E</Color>
 
             
             <!--Fuentes-->
