@@ -5,6 +5,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Clicar.Views.AgendaView">
+
+    <NavigationPage.TitleView>
+        <StackLayout 
+            Margin="0"
+            Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
+
+            <Image 
+                HorizontalOptions="StartAndExpand"
+                HeightRequest="45"
+                Source="sign_out.png">
+            </Image>
+
+            <Image 
+                HorizontalOptions="CenterAndExpand"
+                HeightRequest="25"
+                Source="clicar.png">
+            </Image>
+
+            <Image 
+                Margin="0,0,20,0"
+                HorizontalOptions="EndAndExpand"
+                HeightRequest="45"
+                Source="Sync_alt.png">
+            </Image>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+
+
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
