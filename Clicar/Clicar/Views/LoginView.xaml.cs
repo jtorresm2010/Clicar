@@ -33,12 +33,24 @@ namespace Clicar.Views
 
         }
 
+
+        private async void PasswordRecoveryCommand(object sender, EventArgs e)
+        {
+            var popup = PopupNavigation.Instance;
+            await popup.PushAsync(new PasswordRecoveryPopup());
+        }
+
+
+
         private async void FingerprintCommand(object sender, EventArgs e)
         {
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new FingerPrintPopupView());
         }
-
-
+        
+        private async void LoginCommand(object sender, EventArgs e)
+        {
+            Console.WriteLine("Login asdsadasdas");
+        }
     }
 }

@@ -10,7 +10,8 @@
 
         <ResourceDictionary>
 
-
+            
+            <Color x:Key="BaseGreyLight">#A8A8A8</Color>
             <Color x:Key="BaseGreen">#75AB40</Color>
             <Color x:Key="BaseGreen20">#e3eed9</Color>
             <Color x:Key="BaseGrey">#59595C</Color>

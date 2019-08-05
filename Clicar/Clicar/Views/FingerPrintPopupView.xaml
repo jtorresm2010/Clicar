@@ -9,8 +9,8 @@
     mc:Ignorable="d"
              x:Class="Clicar.Views.FingerPrintPopupView">
     <Frame
-            HeightRequest="200"
-            Padding="33,16"
+            HeightRequest="240"
+            Padding="20,0"
             CornerRadius="20"
             VerticalOptions="CenterAndExpand"
             BackgroundColor="White"
@@ -30,6 +30,7 @@
                         FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
             </StackLayout>
 
+            <!--Icono-->
             <StackLayout>
                 
                 <Frame
@@ -47,14 +48,16 @@
                 </Frame>
             </StackLayout>
 
+            <!--Texto guía-->
             <Label
-                        Margin="0,0,0,28"
+                        Margin="0,5,0,10"
                         HorizontalOptions="CenterAndExpand"
                         Text="Pon tu huella en el lector:"
                         FontSize="14"
                         FontFamily="{StaticResource RegularFontOpenSans}"
-                        TextColor="{StaticResource BaseGrey}"/>
+                        TextColor="{StaticResource BaseGreyLight}"/>
 
+            <!--Botón-->
             <local:CustomButton
                         Clicked="FingerprintCancel"
                         HorizontalOptions="EndAndExpand"
@@ -62,7 +65,7 @@
                         Text="Cancelar"
                         FontSize="14"
                         FontFamily="{StaticResource BoldFontOpenSans}"
-                        TextColor="{StaticResource BaseGrey}"
+                        TextColor="{StaticResource BaseGreyLight}"
                         HeightRequest="30"
                         CornerRadius="45"
                         WidthRequest="100"/>

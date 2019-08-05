@@ -121,15 +121,19 @@
                         
                         
                             </Grid>
-                    
+
                             <Label
                                 HorizontalOptions="CenterAndExpand"
                                 Text="Olvidé mi contraseña"
                                 TextColor="{StaticResource BaseOrange}"
                                 TextDecorations="Underline"
                                 FontSize="12"
-                                FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                FontFamily="{StaticResource RegularFontOpenSans}">
 
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PasswordRecoveryCommand" NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
                         </StackLayout>
                 
 
@@ -140,6 +144,7 @@
 
 
                             <local:CustomButton
+                                Clicked="LoginCommand"
                                 BackgroundColor="{StaticResource BaseGreen}"
                                 Text="Iniciar sesión"
                                 FontSize="16"
