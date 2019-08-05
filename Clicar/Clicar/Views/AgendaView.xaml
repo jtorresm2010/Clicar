@@ -15,6 +15,9 @@
                 HorizontalOptions="StartAndExpand"
                 HeightRequest="45"
                 Source="sign_out.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="LogOutCommand" NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
             </Image>
 
             <Image 
@@ -35,10 +38,156 @@
 
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            Spacing="0">
+
+            <!--Nombre del inspector-->
+            <Frame
+                Margin="0,8"
+                HasShadow="False"
+                Padding="10,12"
+                BackgroundColor="{StaticResource BaseGrey63}">
+                <StackLayout
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        TextColor="{StaticResource BaseGrey}"
+                        FontSize="10"
+                        FontFamily="{StaticResource RegularFontOpenSans}"
+                        Text="08/06/2019 Clicar-Movicenter"/>
+                    <StackLayout
+                        Orientation="Horizontal">
+
+                        <Label
+                            TextColor="{StaticResource BaseGrey}"
+                            FontSize="13"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            Text="Inspector: "/>
+                        <Label
+                            TextColor="{StaticResource BaseGrey}"
+                            FontSize="13"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            Text="Mario Quezada Andrade"/>
+                    </StackLayout>
+                </StackLayout>
+
+            </Frame>
+
+
+
+
+            <ListView
+                ItemTapped="AgendaItemTapped"
+                HasUnevenRows="True"
+                SelectionMode="None"
+                SeparatorColor="{StaticResource DarkGrey}"
+                x:Name="AgendaListView">
+
+                <ListView.Header>
+                    <StackLayout Padding="24,24,24,10" BackgroundColor="{StaticResource BaseOrange}">
+                        <Label 
+                            TextColor="White"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            Text="Pendientes" 
+                            FontSize="20"/>
+                    </StackLayout>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+
+                            <Frame
+                                Padding="30,10">
+                                
+                                <StackLayout
+                                        VerticalOptions="CenterAndExpand">
+
+                                
+                                    
+                                    
+                                        <Label
+                                                Text="{Binding Modelo}"
+                                                HorizontalOptions="Start"
+                                                FontSize="16"
+                                                TextColor="{StaticResource DarkGrey}"
+                                                FontFamily="{StaticResource BoldFontOpenSans}"/>
+                                        <StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="0">
+
+                                            <Label
+                                                    Text="{Binding Marca}"
+                                                    HorizontalOptions="Start"
+                                                    FontSize="14"
+                                                    TextColor="{StaticResource BaseGrey}"
+                                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                            <Label
+                                                    Text=" - "
+                                                    HorizontalOptions="Start"
+                                                    FontSize="14"
+                                                    TextColor="{StaticResource BaseGrey}"
+                                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                            <Label
+                                                    Text="{Binding Color}"
+                                                    HorizontalOptions="Start"
+                                                    FontSize="14"
+                                                    TextColor="{StaticResource BaseGrey}"
+                                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+
+
+                                        </StackLayout>
+
+
+
+
+
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label
+                                                    Text="Hora de inicio: "
+                                                    HorizontalOptions="Start"
+                                                    FontSize="12"
+                                                    TextColor="{StaticResource BaseGrey}"
+                                                    FontFamily="{StaticResource BoldFontOpenSans}"/>
+
+                                            <Label
+                                                    Text="{Binding HoraInicio}"
+                                                    HorizontalOptions="Start"
+                                                    FontSize="10"
+                                                    TextColor="{StaticResource BaseGrey}"
+                                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                                        </StackLayout>
+
+
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label
+                                                    Text="Id:"
+                                                    HorizontalOptions="Start"
+                                                    FontSize="12"
+                                                    TextColor="{StaticResource BaseOrange}"
+                                                    FontFamily="{StaticResource BoldFontOpenSans}"/>
+                                            <Label
+                                                    Text="{Binding IDVehiculo}"
+                                                    HorizontalOptions="Start"
+                                                    FontSize="12"
+                                                    TextColor="{StaticResource BaseOrange}"
+                                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                        </StackLayout>
+                                
+
+
+                                
+                               
+                                </StackLayout>
+                            </Frame>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

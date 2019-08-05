@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Clicar.Customs"
+    mc:Ignorable="d"
+             x:Class="Clicar.Views.LogOutPopupView">
+    <Frame
+            HeightRequest="240"
+            Padding="0"
+            CornerRadius="20"
+            VerticalOptions="CenterAndExpand"
+            BackgroundColor="White"
+            Margin="16">
+
+        <StackLayout
+                VerticalOptions="CenterAndExpand"
+                Spacing="20">
+
+            <StackLayout>
+                <Image
+                    WidthRequest="50"
+                    Source="sign_out_alt"
+                    />
+
+
+            </StackLayout>
+            
+            
+            
+            <!--Titulo-->
+            <StackLayout
+                Spacing="0">
+                <Label
+                        Text="Cerrar sesión"
+                        Margin="10"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="20"
+                        TextColor="{StaticResource BaseGreen}"
+                        FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+
+                <!--Texto guía-->
+                <Label
+                            Margin="46,10"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="¿Está seguro de que desea salir de la sesión actual?"
+                            FontSize="14"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextColor="{StaticResource BaseGreyLight}"/>
+
+
+
+
+
+            </StackLayout>
+
+
+
+
+           
+
+
+
+            <!--Botones-->
+            <StackLayout
+                Margin="16,0"
+                HorizontalOptions="EndAndExpand"
+                Spacing="10"
+                Orientation="Horizontal">
+
+
+                <local:CustomButton
+                        HorizontalOptions="End"
+                        BackgroundColor="White"
+                        Text="Cancelar"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="{StaticResource BaseGreyLight}"
+                        HeightRequest="30"
+                        CornerRadius="15"
+                        WidthRequest="100"/>
+
+                <local:CustomButton
+                        HorizontalOptions="End"
+                        BackgroundColor="{StaticResource BaseOrange}"
+                        Text="Salir"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="White"
+                        HeightRequest="30"
+                        CornerRadius="15"
+                        WidthRequest="100"/>
+
+            </StackLayout>
+        </StackLayout>
+
+    </Frame>
+</pages:PopupPage>
