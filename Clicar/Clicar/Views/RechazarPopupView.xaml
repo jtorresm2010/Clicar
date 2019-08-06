@@ -32,6 +32,7 @@
 
                 <!--Texto guía-->
                 <Label
+                            Margin="0,10"
                             HorizontalTextAlignment="End"
                             HorizontalOptions="CenterAndExpand"
                             Text="Rechazar la Inspección para la patente:"
@@ -39,14 +40,33 @@
                             FontFamily="{StaticResource RegularFontOpenSans}"
                             TextColor="{StaticResource BaseGreyLight}"/>
 
-                <!--Picker-->
-                <StackLayout
-                                Margin="0, 10">
+                <!--Numero de patente-->
 
-                    <local:CustomPicker
+                <Frame
+                    Margin="0,18"
+                    HorizontalOptions="CenterAndExpand"
+                    Padding="15,4"
+                    HasShadow="False"
+                    CornerRadius="15"
+                    BackgroundColor="{StaticResource LightOrange}">
+                    
+                    <Label
+                        Text="JRGK85"
+                        FontSize="24"
+                        TextColor="{StaticResource BaseOrange}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                    
+                </Frame>
+
+
+
+            <!--Picker-->
+                
+                <local:CustomPicker
+                        Margin="0, 10"
                         Title="Seleccione el motivo del rechazo:"
                         FontSize="14"
-                        TextColor="{StaticResource BaseGrey44}"
+                        TextColor="{StaticResource BaseGreyLight}"
                         FontFamily="{StaticResource SemiBoldFontOpenSans}">
                         <Picker.Items>
                             <x:String>Vehículo no coincide con los datos</x:String>
@@ -56,8 +76,6 @@
                             <x:String>No existe</x:String>
                     </Picker.Items>
                     </local:CustomPicker>
-
-                </StackLayout>
 
 
 
@@ -82,9 +100,10 @@
                             WidthRequest="100"/>
 
                     <local:CustomButton
+                            Clicked="ConfirmarCommand"
                             HorizontalOptions="End"
-                            BackgroundColor="{StaticResource BaseOrange}"
-                            Text="Salir"
+                            BackgroundColor="{StaticResource MidOrange}"
+                            Text="Confirmar"
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="White"

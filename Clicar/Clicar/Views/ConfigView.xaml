@@ -91,10 +91,6 @@
                             BackgroundColor="{StaticResource BaseGreen20}">
                                 <Label
                                 HorizontalOptions="Center"
-                                   
-                                    
-                                    
-                                    
                                 Text="Clicar-Vespucio"
                                 FontSize="12"
                                 TextColor="{StaticResource DarkGreen}"

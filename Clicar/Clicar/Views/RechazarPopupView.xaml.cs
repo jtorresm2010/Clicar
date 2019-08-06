@@ -1,4 +1,5 @@
 ﻿using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,13 @@ namespace Clicar.Views
         {
             InitializeComponent();
         }
+
+        private async void ConfirmarCommand(object sender, EventArgs e)
+        {
+            var popup = PopupNavigation.Instance;
+            await Navigation.PopToRootAsync();
+            await popup.PopAsync();
+        }
+
     }
 }

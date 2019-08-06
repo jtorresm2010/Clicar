@@ -42,6 +42,7 @@ namespace Clicar.Views
 
         private void ToggleVisible(object sender, EventArgs e)
         {
+
             PendientesListView.IsVisible = PendientesListView.IsVisible ? false : true;
             CompletadosListView.IsVisible = CompletadosListView.IsVisible ? false : true;
 

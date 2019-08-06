@@ -76,14 +76,12 @@
             <input:RadioButtonGroupView 
                     Margin="16,0">
                 <input:RadioButton 
-                        CircleSize="10"
                         TextColor="{StaticResource BaseGreyLight}"
                         FontFamily="{StaticResource RegularFontOpenSans}"
                         TextFontSize="14"
                         Text="Automático" 
                         Color="{StaticResource BaseOrange}"/>
                 <input:RadioButton
-                        CircleSize="10"
                         TextColor="{StaticResource BaseGreyLight}"
                         FontFamily="{StaticResource RegularFontOpenSans}"
                         TextFontSize="14"
@@ -102,6 +100,7 @@
 
 
                 <local:CustomButton
+                    Clicked="CancelarCommand"
                             HorizontalOptions="End"
                             BackgroundColor="White"
                             Text="Cancelar"
@@ -113,9 +112,10 @@
                             WidthRequest="100"/>
 
                 <local:CustomButton
+                            Clicked="ContinuarCommand"
                             HorizontalOptions="End"
                             BackgroundColor="{StaticResource BaseOrange}"
-                            Text="Salir"
+                            Text="Ingresar"
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="White"
