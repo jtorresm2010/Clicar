@@ -36,6 +36,7 @@
                     Platform="iOS" 
                     Value="OpenSansBold" />
             </OnPlatform>
+            
             <OnPlatform 
                     x:TypeArguments="x:String" 
                     x:Key="RegularFontOpenSans">
@@ -46,6 +47,7 @@
                     Platform="iOS" 
                     Value="GothamBold" />
             </OnPlatform>
+            
             <OnPlatform 
                     x:TypeArguments="x:String" 
                     x:Key="SemiBoldFontOpenSans">

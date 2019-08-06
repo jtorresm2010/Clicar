@@ -16,9 +16,13 @@ namespace Clicar.Views
         public AgendaView()
         {
             InitializeComponent();
-            var vehiculosList = new VehiculosList();
-            AgendaListView.ItemsSource = vehiculosList.GetListaVehiculos();
-
+            var vehiculos = new VehiculosList();
+            var listaVehiculos = vehiculos.GetListaVehiculos();
+            PendientesListView.ItemsSource = listaVehiculos;
+            CompletadosListView.ItemsSource = listaVehiculos;
+            //int itemHeight = PendientesListView.RowHeight;
+            //int listCount = listaVehiculos.Count();
+            //PendientesListView.HeightRequest = itemHeight * listCount;
 
 
         }
@@ -35,5 +39,21 @@ namespace Clicar.Views
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new LogOutPopupView());
         }
+
+        private void ToggleVisible(object sender, EventArgs e)
+        {
+            PendientesListView.IsVisible = PendientesListView.IsVisible ? false : true;
+            CompletadosListView.IsVisible = CompletadosListView.IsVisible ? false : true;
+
+        }
+
+        private void ToggleVisibleComp(object sender, EventArgs e)
+        {
+            CompletadosListView.IsVisible = CompletadosListView.IsVisible ? false : true;
+            PendientesListView.IsVisible = PendientesListView.IsVisible ? false : true;
+
+        }
+
+
     }
 }

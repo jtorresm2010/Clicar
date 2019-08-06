@@ -19,6 +19,7 @@ namespace Clicar.Droid
 
             base.OnCreate(savedInstanceState);
 
+            Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
