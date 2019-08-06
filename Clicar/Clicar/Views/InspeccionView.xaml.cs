@@ -16,5 +16,20 @@ namespace Clicar.Views
         {
             InitializeComponent();
         }
+
+        private void ToogleView(object sender, EventArgs e)
+        {
+            var layout = (StackLayout)sender;
+
+            var Children = layout.Children;
+
+            if (Children[0].GetType().ToString().Equals("Xamarin.Forms.Frame"))
+            {
+                Children[1].IsVisible = Children[1].IsVisible ? false : true;
+
+            }
+
+
+        }
     }
 }
