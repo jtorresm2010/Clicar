@@ -56,13 +56,16 @@
                                 <Label 
                                     Margin="15,0"
                                     VerticalOptions="CenterAndExpand"
-                                TextColor="White"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="Manual, llaves y otros" 
-                                FontSize="16"/>
+                                    TextColor="White"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"
+                                    Text="Manual, llaves y otros" 
+                                    FontSize="16"/>
                             </StackLayout>
 
-                        </Frame>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
+                            </Frame.GestureRecognizers>
+                    </Frame>
                     <!--Contenido ..-->
                     <StackLayout>
                         <Label Text="sdhfasdfkasdf"/>
@@ -75,9 +78,6 @@
 
    
 
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                </StackLayout.GestureRecognizers>
                 
             </StackLayout>
 
@@ -110,12 +110,15 @@
                             <Label 
                                     Margin="15,0"
                                     VerticalOptions="CenterAndExpand"
-                                TextColor="White"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="Manual, llaves y otros" 
-                                FontSize="16"/>
+                                    TextColor="White"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"
+                                    Text="Manual, llaves y otros" 
+                                    FontSize="16"/>
                         </StackLayout>
 
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <!--Contenido ..-->
                     <StackLayout>
@@ -129,9 +132,6 @@
 
 
 
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                    </StackLayout.GestureRecognizers>
 
                 </StackLayout>
 
@@ -164,12 +164,15 @@
                             <Label 
                                     Margin="15,0"
                                     VerticalOptions="CenterAndExpand"
-                                TextColor="White"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="Manual, llaves y otros" 
-                                FontSize="16"/>
+                                    TextColor="White"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"
+                                    Text="Manual, llaves y otros" 
+                                    FontSize="16"/>
                         </StackLayout>
 
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <!--Contenido ..-->
                     <StackLayout>
@@ -183,12 +186,8 @@
 
 
 
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                    </StackLayout.GestureRecognizers>
 
                 </StackLayout>
-
                 <StackLayout
                 Margin="0,5,0,0">
                     <!--Titulo-->
@@ -218,12 +217,15 @@
                             <Label 
                                     Margin="15,0"
                                     VerticalOptions="CenterAndExpand"
-                                TextColor="White"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="Manual, llaves y otros" 
-                                FontSize="16"/>
+                                    TextColor="White"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"
+                                    Text="Manual, llaves y otros" 
+                                    FontSize="16"/>
                         </StackLayout>
 
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <!--Contenido ..-->
                     <StackLayout>
@@ -237,12 +239,8 @@
 
 
 
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                    </StackLayout.GestureRecognizers>
 
                 </StackLayout>
-
                 <StackLayout
                 Margin="0,5,0,0">
                     <!--Titulo-->
@@ -272,12 +270,15 @@
                             <Label 
                                     Margin="15,0"
                                     VerticalOptions="CenterAndExpand"
-                                TextColor="White"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="Manual, llaves y otros" 
-                                FontSize="16"/>
+                                    TextColor="White"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"
+                                    Text="Manual, llaves y otros" 
+                                    FontSize="16"/>
                         </StackLayout>
 
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <!--Contenido ..-->
                     <StackLayout>
@@ -291,12 +292,8 @@
 
 
 
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                    </StackLayout.GestureRecognizers>
 
                 </StackLayout>
-
                 <StackLayout
                 Margin="0,5,0,0">
                     <!--Titulo-->
@@ -326,12 +323,15 @@
                             <Label 
                                     Margin="15,0"
                                     VerticalOptions="CenterAndExpand"
-                                TextColor="White"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="Manual, llaves y otros" 
-                                FontSize="16"/>
+                                    TextColor="White"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"
+                                    Text="Manual, llaves y otros" 
+                                    FontSize="16"/>
                         </StackLayout>
 
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <!--Contenido ..-->
                     <StackLayout>
@@ -345,12 +345,8 @@
 
 
 
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                    </StackLayout.GestureRecognizers>
 
                 </StackLayout>
-
                 <StackLayout
                 Margin="0,5,0,0">
                     <!--Titulo-->
@@ -380,12 +376,15 @@
                             <Label 
                                     Margin="15,0"
                                     VerticalOptions="CenterAndExpand"
-                                TextColor="White"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="Manual, llaves y otros" 
-                                FontSize="16"/>
+                                    TextColor="White"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"
+                                    Text="Manual, llaves y otros" 
+                                    FontSize="16"/>
                         </StackLayout>
 
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <!--Contenido ..-->
                     <StackLayout>
@@ -399,12 +398,8 @@
 
 
 
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                    </StackLayout.GestureRecognizers>
 
                 </StackLayout>
-
                 <StackLayout
                 Margin="0,5,0,0">
                     <!--Titulo-->
@@ -434,12 +429,15 @@
                             <Label 
                                     Margin="15,0"
                                     VerticalOptions="CenterAndExpand"
-                                TextColor="White"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="Manual, llaves y otros" 
-                                FontSize="16"/>
+                                    TextColor="White"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"
+                                    Text="Manual, llaves y otros" 
+                                    FontSize="16"/>
                         </StackLayout>
 
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <!--Contenido ..-->
                     <StackLayout>
@@ -453,11 +451,9 @@
 
 
 
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                    </StackLayout.GestureRecognizers>
 
                 </StackLayout>
+
 
             </StackLayout>
 

@@ -19,16 +19,34 @@ namespace Clicar.Views
 
         private void ToogleView(object sender, EventArgs e)
         {
-            var layout = (StackLayout)sender;
+           
+            Frame layout = (Frame)sender;  //Frame principal
 
-            var Children = layout.Children;
 
-            if (Children[0].GetType().ToString().Equals("Xamarin.Forms.Frame"))
+            StackLayout labelParent= (StackLayout)layout.Content; //Stacklayout que contiene el numero
+            var labelParentChildren = labelParent.Children;
+            
+            var textFrame = (Frame)labelParentChildren[0]; //Frame que contiene el label con el numero
+            Label text = (Label)textFrame.Content; //Label con el numero
+
+            
+            StackLayout parent = (StackLayout)layout.Parent; //StackLayout padre del frame Tapped
+            var Children = parent.Children;  //Lista de elementos dentro del Stacklayout
+
+
+
+            Children[1].IsVisible = Children[1].IsVisible ? false : true;
+
+            if (layout.BackgroundColor.Equals(Application.Current.Resources["BaseGreen"]))
             {
-                Children[1].IsVisible = Children[1].IsVisible ? false : true;
-
+                text.TextColor= (Color)Application.Current.Resources["BaseOrange"];
+                layout.BackgroundColor = (Color)Application.Current.Resources["BaseOrange"];
             }
-
+            else
+            {
+                text.TextColor = (Color)Application.Current.Resources["BaseGreen"];
+                layout.BackgroundColor = (Color)Application.Current.Resources["BaseGreen"];
+            }
 
         }
     }
