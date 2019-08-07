@@ -19,7 +19,10 @@ namespace Clicar.Views
             var vehiculos = new VehiculosList();
             var listaVehiculos = vehiculos.GetListaVehiculos();
             PendientesListView.ItemsSource = listaVehiculos;
+            PendientesListView.HeightRequest = listaVehiculos.Count * PendientesListView.RowHeight;
+
             CompletadosListView.ItemsSource = listaVehiculos;
+            CompletadosListView.HeightRequest = listaVehiculos.Count * CompletadosListView.RowHeight;
             //int itemHeight = PendientesListView.RowHeight;
             //int listCount = listaVehiculos.Count();
             //PendientesListView.HeightRequest = itemHeight * listCount;

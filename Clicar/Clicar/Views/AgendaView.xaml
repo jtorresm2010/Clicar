@@ -38,7 +38,9 @@
 
 
     <ContentPage.Content>
-
+        <ScrollView
+            Orientation="Vertical" HorizontalScrollBarVisibility="Never">
+            
 
         <StackLayout
             Spacing="0">
@@ -92,9 +94,10 @@
             </Frame>
 
             <!--lista usando "ListView"-->
-            <ListView
+                <ListView
+                    RowHeight="110"
+                    VerticalScrollBarVisibility="Never"
                     ItemTapped="AgendaItemTapped"
-                    HasUnevenRows="True"
                     SelectionMode="None"
                     SeparatorColor="{StaticResource DarkGrey}"
                     x:Name="PendientesListView">
@@ -107,7 +110,7 @@
 
                                 <StackLayout
                                         Spacing="0"
-                                        Padding="30,15"
+                                        Padding="30,0"
                                         VerticalOptions="CenterAndExpand">
                                 
                                 
@@ -213,9 +216,10 @@
 
 
             <ListView
-                    IsVisible="False"
+                IsVisible="False"
+                    RowHeight="110"
                     ItemTapped="AgendaItemTapped"
-                    HasUnevenRows="True"
+                    VerticalScrollBarVisibility="Never"
                     SelectionMode="None"
                     SeparatorColor="{StaticResource DarkGrey}"
                     x:Name="CompletadosListView">
@@ -228,7 +232,7 @@
 
                             <StackLayout
                                     Spacing="0"
-                                    Padding="30,15"
+                                    Padding="30,0"
                                         VerticalOptions="CenterAndExpand">
                                 <Label
                                                 Text="{Binding Modelo}"
@@ -313,5 +317,6 @@
 
 
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

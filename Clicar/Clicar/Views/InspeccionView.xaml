@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:accordionview="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
              mc:Ignorable="d"
              x:Class="Clicar.Views.InspeccionView">
 
@@ -25,438 +26,54 @@
         <ScrollView>
             <StackLayout
                 Spacing="0">
-                
 
-                <StackLayout
-                Margin="0,5,0,0">
-                    <!--Titulo-->
-                    <Frame
-                            CornerRadius="0"
-                            Padding="15,15" 
-                            BackgroundColor="{StaticResource BaseGreen}">
-
-                            <StackLayout
-                                Orientation="Horizontal">
-                                
-                                <Frame
-                                    Padding="0"
-                                    CornerRadius="15"
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    BackgroundColor="White">
-                                    <Label 
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        TextColor="{StaticResource BaseGreen}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                        Text="1" 
-                                        FontSize="15"/> 
-
-                                </Frame>
-                                <Label 
-                                    Margin="15,0"
-                                    VerticalOptions="CenterAndExpand"
-                                    TextColor="White"
-                                    FontFamily="{StaticResource BoldFontOpenSans}"
-                                    Text="Manual, llaves y otros" 
-                                    FontSize="16"/>
-                            </StackLayout>
-
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                            </Frame.GestureRecognizers>
-                    </Frame>
-                    <!--Contenido ..-->
-                    <StackLayout>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-
-                    </StackLayout>
-
-   
-
-                
+                <accordionview:AccordionView 
+                        KeepOnlyOneItemOpen="True" 
+                    Margin="0,5"
+                        Spacing="5">
+                    <accordionview:AccordionView.Children>
+                        <accordionview:AccordionItemView
+                            Text="Manual, llaves y otros"
+                            TextPosition="Left"
+                            ButtonBackgroundColor="{StaticResource BaseGreen}"
+                            ButtonActiveBackgroundColor="{StaticResource BaseOrange}"
+                            TextColor="White"
+                            FontSize="16"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            ActiveTextColor="White"
+                            Border="5"
+                            BorderColor="{StaticResource BaseGreen}"
+                            ActiveBorderColor="{StaticResource BaseOrange}"
+                            ActiveLeftImage="MenuNum1"
+                            LeftImage="MenuNum1">
+                            <accordionview:AccordionItemView.ItemContent>
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Label
+                                            Text="test"/>
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Text="test"/>
+                                            <Label
+                                                Text="test"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                        <Switch IsToggled="False"></Switch>
+                                    <StackLayout>
+                                        
+                                    </StackLayout>
+                                </StackLayout>
+                            </accordionview:AccordionItemView.ItemContent>
+                        </accordionview:AccordionItemView>
+                        
+                        
+                        
+                        
+                    </accordionview:AccordionView.Children>
+                </accordionview:AccordionView>
             </StackLayout>
-
-                <StackLayout
-                Margin="0,5,0,0">
-                    <!--Titulo-->
-                    <Frame
-                            CornerRadius="0"
-                            Padding="15,15" 
-                            BackgroundColor="{StaticResource BaseGreen}">
-
-                        <StackLayout
-                                Orientation="Horizontal">
-
-                            <Frame
-                                    Padding="0"
-                                    CornerRadius="15"
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    BackgroundColor="White">
-                                <Label 
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        TextColor="{StaticResource BaseGreen}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                        Text="2" 
-                                        FontSize="15"/>
-
-                            </Frame>
-                            <Label 
-                                    Margin="15,0"
-                                    VerticalOptions="CenterAndExpand"
-                                    TextColor="White"
-                                    FontFamily="{StaticResource BoldFontOpenSans}"
-                                    Text="Manual, llaves y otros" 
-                                    FontSize="16"/>
-                        </StackLayout>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <!--Contenido ..-->
-                    <StackLayout>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-
-                    </StackLayout>
-
-
-
-
-                </StackLayout>
-
-                <StackLayout
-                Margin="0,5,0,0">
-                    <!--Titulo-->
-                    <Frame
-                            CornerRadius="0"
-                            Padding="15,15" 
-                            BackgroundColor="{StaticResource BaseGreen}">
-
-                        <StackLayout
-                                Orientation="Horizontal">
-
-                            <Frame
-                                    Padding="0"
-                                    CornerRadius="15"
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    BackgroundColor="White">
-                                <Label 
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        TextColor="{StaticResource BaseGreen}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                        Text="3" 
-                                        FontSize="15"/>
-
-                            </Frame>
-                            <Label 
-                                    Margin="15,0"
-                                    VerticalOptions="CenterAndExpand"
-                                    TextColor="White"
-                                    FontFamily="{StaticResource BoldFontOpenSans}"
-                                    Text="Manual, llaves y otros" 
-                                    FontSize="16"/>
-                        </StackLayout>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <!--Contenido ..-->
-                    <StackLayout>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-
-                    </StackLayout>
-
-
-
-
-                </StackLayout>
-                <StackLayout
-                Margin="0,5,0,0">
-                    <!--Titulo-->
-                    <Frame
-                            CornerRadius="0"
-                            Padding="15,15" 
-                            BackgroundColor="{StaticResource BaseGreen}">
-
-                        <StackLayout
-                                Orientation="Horizontal">
-
-                            <Frame
-                                    Padding="0"
-                                    CornerRadius="15"
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    BackgroundColor="White">
-                                <Label 
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        TextColor="{StaticResource BaseGreen}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                        Text="4" 
-                                        FontSize="15"/>
-
-                            </Frame>
-                            <Label 
-                                    Margin="15,0"
-                                    VerticalOptions="CenterAndExpand"
-                                    TextColor="White"
-                                    FontFamily="{StaticResource BoldFontOpenSans}"
-                                    Text="Manual, llaves y otros" 
-                                    FontSize="16"/>
-                        </StackLayout>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <!--Contenido ..-->
-                    <StackLayout>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-
-                    </StackLayout>
-
-
-
-
-                </StackLayout>
-                <StackLayout
-                Margin="0,5,0,0">
-                    <!--Titulo-->
-                    <Frame
-                            CornerRadius="0"
-                            Padding="15,15" 
-                            BackgroundColor="{StaticResource BaseGreen}">
-
-                        <StackLayout
-                                Orientation="Horizontal">
-
-                            <Frame
-                                    Padding="0"
-                                    CornerRadius="15"
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    BackgroundColor="White">
-                                <Label 
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        TextColor="{StaticResource BaseGreen}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                        Text="5" 
-                                        FontSize="15"/>
-
-                            </Frame>
-                            <Label 
-                                    Margin="15,0"
-                                    VerticalOptions="CenterAndExpand"
-                                    TextColor="White"
-                                    FontFamily="{StaticResource BoldFontOpenSans}"
-                                    Text="Manual, llaves y otros" 
-                                    FontSize="16"/>
-                        </StackLayout>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <!--Contenido ..-->
-                    <StackLayout>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-
-                    </StackLayout>
-
-
-
-
-                </StackLayout>
-                <StackLayout
-                Margin="0,5,0,0">
-                    <!--Titulo-->
-                    <Frame
-                            CornerRadius="0"
-                            Padding="15,15" 
-                            BackgroundColor="{StaticResource BaseGreen}">
-
-                        <StackLayout
-                                Orientation="Horizontal">
-
-                            <Frame
-                                    Padding="0"
-                                    CornerRadius="15"
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    BackgroundColor="White">
-                                <Label 
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        TextColor="{StaticResource BaseGreen}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                        Text="6" 
-                                        FontSize="15"/>
-
-                            </Frame>
-                            <Label 
-                                    Margin="15,0"
-                                    VerticalOptions="CenterAndExpand"
-                                    TextColor="White"
-                                    FontFamily="{StaticResource BoldFontOpenSans}"
-                                    Text="Manual, llaves y otros" 
-                                    FontSize="16"/>
-                        </StackLayout>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <!--Contenido ..-->
-                    <StackLayout>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-
-                    </StackLayout>
-
-
-
-
-                </StackLayout>
-                <StackLayout
-                Margin="0,5,0,0">
-                    <!--Titulo-->
-                    <Frame
-                            CornerRadius="0"
-                            Padding="15,15" 
-                            BackgroundColor="{StaticResource BaseGreen}">
-
-                        <StackLayout
-                                Orientation="Horizontal">
-
-                            <Frame
-                                    Padding="0"
-                                    CornerRadius="15"
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    BackgroundColor="White">
-                                <Label 
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        TextColor="{StaticResource BaseGreen}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                        Text="7" 
-                                        FontSize="15"/>
-
-                            </Frame>
-                            <Label 
-                                    Margin="15,0"
-                                    VerticalOptions="CenterAndExpand"
-                                    TextColor="White"
-                                    FontFamily="{StaticResource BoldFontOpenSans}"
-                                    Text="Manual, llaves y otros" 
-                                    FontSize="16"/>
-                        </StackLayout>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <!--Contenido ..-->
-                    <StackLayout>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-
-                    </StackLayout>
-
-
-
-
-                </StackLayout>
-                <StackLayout
-                Margin="0,5,0,0">
-                    <!--Titulo-->
-                    <Frame
-                            CornerRadius="0"
-                            Padding="15,15" 
-                            BackgroundColor="{StaticResource BaseGreen}">
-
-                        <StackLayout
-                                Orientation="Horizontal">
-
-                            <Frame
-                                    Padding="0"
-                                    CornerRadius="15"
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    BackgroundColor="White">
-                                <Label 
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        TextColor="{StaticResource BaseGreen}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                        Text="8" 
-                                        FontSize="15"/>
-
-                            </Frame>
-                            <Label 
-                                    Margin="15,0"
-                                    VerticalOptions="CenterAndExpand"
-                                    TextColor="White"
-                                    FontFamily="{StaticResource BoldFontOpenSans}"
-                                    Text="Manual, llaves y otros" 
-                                    FontSize="16"/>
-                        </StackLayout>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ToogleView" NumberOfTapsRequired="1"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <!--Contenido ..-->
-                    <StackLayout>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-                        <Label Text="sdhfasdfkasdf"/>
-
-                    </StackLayout>
-
-
-
-
-                </StackLayout>
-
-
-            </StackLayout>
-
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
