@@ -21,8 +21,9 @@
             <Color x:Key="BaseGreen">#75AB40</Color>
             <Color x:Key="BaseGreen20">#e3eed9</Color>
 
-            <Color x:Key="MidOrange">#f6ca9f</Color>
+            <Color x:Key="LighterOrange">#fdf2e6</Color>
             <Color x:Key="LightOrange">#fae5cf</Color>
+            <Color x:Key="MidOrange">#f6ca9f</Color>
             <Color x:Key="BaseOrange">#E87B0E</Color>
 
             <!--Fuentes-->
