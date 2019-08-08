@@ -25,6 +25,10 @@ namespace Clicar.Views
             baseGreyLight = (Color)Application.Current.Resources["BaseGreyLight"];
             baseOrange = (Color)Application.Current.Resources["BaseOrange"];
             baseGreen = (Color)Application.Current.Resources["BaseGreen"];
+
+            this.Content = new MenuItemTestView();
+
+
         }
 
         #region Comando cambio de color e icono 'Bloquear'
@@ -156,12 +160,14 @@ namespace Clicar.Views
 
         private void OctavoItemCommand(object sender, EventArgs e)
         {
+            OctavoItem.ButtonBackgroundColor = baseGreen;
+            OctavoItem.BorderColor = baseGreen;
+
+
             OctavoItem.ClosePanel();
             //OctavoItem.OpenPanel();
             Console.WriteLine("Termino de inspeccion");
 
-            OctavoItem.ButtonBackgroundColor = baseGreen;
-            OctavoItem.BorderColor = baseGreen;
         }
         private void OctavoItemBackCommand(object sender, EventArgs e)
         {

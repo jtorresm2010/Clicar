@@ -1851,7 +1851,9 @@
                                             </Frame>
 
                                         </StackLayout>
+                                        
                                         <StackLayout>
+                                           
                                             <Frame
                                             HasShadow="False"
                                             Padding="0"
@@ -1869,6 +1871,12 @@
                                                 Source="cam_PH"/>
 
                                             </Frame>
+
+                                            <Label
+                                                TextColor="{StaticResource DarkGrey}"
+                                                FontSize="14"
+                                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                                Text="{Binding ElemAFotografiar}"/>
 
                                         </StackLayout>
 

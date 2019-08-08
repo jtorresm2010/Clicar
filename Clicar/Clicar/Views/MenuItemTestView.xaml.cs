@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Clicar.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuItemTestView : ContentPage
+    public partial class MenuItemTestView : StackLayout
     {
         public MenuItemTestView()
         {
