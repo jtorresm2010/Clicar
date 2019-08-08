@@ -21,6 +21,8 @@ namespace Clicar.Views
             PendientesListView.ItemsSource = listaVehiculos;
             PendientesListView.HeightRequest = listaVehiculos.Count * PendientesListView.RowHeight;
 
+
+
             CompletadosListView.ItemsSource = listaVehiculos;
             CompletadosListView.HeightRequest = listaVehiculos.Count * CompletadosListView.RowHeight;
             //int itemHeight = PendientesListView.RowHeight;

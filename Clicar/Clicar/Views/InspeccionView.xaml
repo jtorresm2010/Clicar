@@ -412,446 +412,97 @@
                                     Spacing="20"
                                     Padding="0,15">
 
-                                    <!--Elemento: Aire acondicionado-->
-                                    <StackLayout
-                                        Margin="24,0,15,0"
-                                        HorizontalOptions="FillAndExpand"
-                                        Orientation="Horizontal">
+                                    <ListView
+                                        SeparatorVisibility="None"
+                                        RowHeight="80"
+                                        VerticalScrollBarVisibility="Never"
+                                        SelectionMode="None"
+                                        x:Name="SegundoItemListView">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout
+                                                        Margin="24,0,15,0"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Orientation="Horizontal">       
 
-                                        <StackLayout
-                                            Spacing="0"
-                                            HorizontalOptions="StartAndExpand">
-                                            <Label
-                                                TextColor="{StaticResource DarkGrey}"
-                                                FontSize="14"
-                                                FontFamily="{StaticResource RegularFontOpenSans}"
-                                                Text="Aire acondicionado"/>
-                                            <StackLayout
-                                                Spacing="15"
-                                                HeightRequest="30"
-                                                Orientation="Horizontal">
-                                                <StackLayout
-                                                    WidthRequest="100"
-                                                    Orientation="Horizontal">
-                                                    <Image Source="lock_solid_grey"/>
-                                                    <Label 
-                                                        VerticalOptions="CenterAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Bloquear"/>
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="SwitchStateCommand"/>
-                                                    </StackLayout.GestureRecognizers>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Spacing="0"
+                                                            HorizontalOptions="StartAndExpand">
+                                                            <Label
+                                                            TextColor="{StaticResource DarkGrey}"
+                                                            FontSize="14"
+                                                            FontFamily="{StaticResource RegularFontOpenSans}"
+                                                            Text="{Binding Titulo}"/>
+                                                            <StackLayout
+                                                                Spacing="15"
+                                                                HeightRequest="30"
+                                                                Orientation="Horizontal">
+                                                                                <StackLayout
+                                                                    WidthRequest="100"
+                                                                    Orientation="Horizontal">
+                                                                    <Image Source="lock_solid_grey"/>
+                                                                    <Label 
+                                                                        VerticalOptions="CenterAndExpand"
+                                                                        TextColor="{StaticResource BaseGreyLight}"
+                                                                        FontSize="12"
+                                                                        FontFamily="{StaticResource BoldFontOpenSans}"
+                                                                        Text="Bloquear"/>
+                                                                </StackLayout>
 
-                                                <StackLayout 
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Orientation="Horizontal">
+                                                                <StackLayout 
+                                                                    VerticalOptions="CenterAndExpand"
+                                                                    Orientation="Horizontal">
 
-                                                    <Label  
-                                                        VerticalOptions="Start"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Estado: "/>
+                                                                    <Label  
+                                                                        VerticalOptions="Start"
+                                                                        TextColor="{StaticResource BaseGreyLight}"
+                                                                        FontSize="12"
+                                                                        FontFamily="{StaticResource BoldFontOpenSans}"
+                                                                        Text="Estado: "/>       
 
-                                                    <Label  
-                                                        VerticalOptions="StartAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource RegularFontOpenSans}"
-                                                        Text="no informado"/>
-                                                </StackLayout>
+                                                                    <Label  
+                                                                        VerticalOptions="StartAndExpand"
+                                                                        TextColor="{StaticResource BaseGreyLight}"
+                                                                        FontSize="12"
+                                                                        FontFamily="{StaticResource RegularFontOpenSans}"
+                                                                        Text="no informado"/>
+                                                                </StackLayout>
 
-                                            </StackLayout>
-                                        </StackLayout>
+                                                            </StackLayout>
+                                                        </StackLayout>
 
-                                        <Frame
-                                            HasShadow="False"
-                                            Padding="0"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="CenterAndExpand"
-                                            BackgroundColor="{StaticResource LighterOrange}"
-                                            CornerRadius="45"
-                                            HeightRequest="40"
-                                            WidthRequest="40"
-                                            >
-                                            <Label  
-                                                VerticalTextAlignment="Center"
-                                                HorizontalOptions="CenterAndExpand"
-                                                VerticalOptions="CenterAndExpand"
-                                                TextColor="{StaticResource BaseOrange}"
-                                                FontSize="20"
-                                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                                Text=">"/>
+                                                        <Frame
+                                                            HasShadow="False"
+                                                            Padding="0"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            BackgroundColor="{StaticResource LighterOrange}"
+                                                            CornerRadius="45"
+                                                            HeightRequest="40"
+                                                            WidthRequest="40"
+                                                            >
+                                                            <Label  
+                                                                VerticalTextAlignment="Center"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                VerticalOptions="CenterAndExpand"
+                                                                TextColor="{StaticResource BaseOrange}"
+                                                                FontSize="20"
+                                                                FontFamily="{StaticResource BoldFontOpenSans}"
+                                                                Text=">"/>
 
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="DetalleCommand"/>
-                                            </Frame.GestureRecognizers>
+                                                        </Frame>
 
-                                        </Frame>
+                                                    </StackLayout>
 
-                                    </StackLayout>
 
-                                    <!--Elemento: Climatizador-->
-                                    <StackLayout
-                                        Margin="24,0,15,0"
-                                        HorizontalOptions="FillAndExpand"
-                                        Orientation="Horizontal">
 
-                                        <StackLayout
-                                            Spacing="0"
-                                            HorizontalOptions="StartAndExpand">
-                                            <Label
-                                                TextColor="{StaticResource DarkGrey}"
-                                                FontSize="14"
-                                                FontFamily="{StaticResource RegularFontOpenSans}"
-                                                Text="Climatizador"/>
-                                            <StackLayout
-                                                Spacing="15"
-                                                HeightRequest="30"
-                                                Orientation="Horizontal">
-                                                <StackLayout
-                                                    WidthRequest="100"
-                                                    Orientation="Horizontal">
-                                                    <Image Source="lock_solid_grey"/>
-                                                    <Label 
-                                                        VerticalOptions="CenterAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Bloquear"/>
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="SwitchStateCommand"/>
-                                                    </StackLayout.GestureRecognizers>
-                                                </StackLayout>
 
-                                                <StackLayout 
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Orientation="Horizontal">
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
 
-                                                    <Label  
-                                                        VerticalOptions="Start"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Estado: "/>
-
-                                                    <Label  
-                                                        VerticalOptions="StartAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource RegularFontOpenSans}"
-                                                        Text="no informado"/>
-                                                </StackLayout>
-
-                                            </StackLayout>
-                                        </StackLayout>
-
-                                        <Frame
-                                            HasShadow="False"
-                                            Padding="0"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="CenterAndExpand"
-                                            BackgroundColor="{StaticResource LighterOrange}"
-                                            CornerRadius="45"
-                                            HeightRequest="40"
-                                            WidthRequest="40"
-                                            >
-                                            <Label  
-                                                VerticalTextAlignment="Center"
-                                                HorizontalOptions="CenterAndExpand"
-                                                VerticalOptions="CenterAndExpand"
-                                                TextColor="{StaticResource BaseOrange}"
-                                                FontSize="20"
-                                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                                Text=">"/>
-
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="DetalleCommand"/>
-                                            </Frame.GestureRecognizers>
-
-                                        </Frame>
-
-                                    </StackLayout>
-
-                                    <!--Elemento: ABS-->
-                                    <StackLayout
-                                        Margin="24,0,15,0"
-                                        HorizontalOptions="FillAndExpand"
-                                        Orientation="Horizontal">
-
-                                        <StackLayout
-                                            Spacing="0"
-                                            HorizontalOptions="StartAndExpand">
-                                            <Label
-                                                TextColor="{StaticResource DarkGrey}"
-                                                FontSize="14"
-                                                FontFamily="{StaticResource RegularFontOpenSans}"
-                                                Text="ABS"/>
-                                            <StackLayout
-                                                Spacing="15"
-                                                HeightRequest="30"
-                                                Orientation="Horizontal">
-                                                <StackLayout
-                                                    WidthRequest="100"
-                                                    Orientation="Horizontal">
-                                                    <Image Source="lock_solid_grey"/>
-                                                    <Label 
-                                                        VerticalOptions="CenterAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Bloquear"/>
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="SwitchStateCommand"/>
-                                                    </StackLayout.GestureRecognizers>
-                                                </StackLayout>
-
-                                                <StackLayout 
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Orientation="Horizontal">
-
-                                                    <Label  
-                                                        VerticalOptions="Start"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Estado: "/>
-
-                                                    <Label  
-                                                        VerticalOptions="StartAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource RegularFontOpenSans}"
-                                                        Text="no informado"/>
-                                                </StackLayout>
-
-                                            </StackLayout>
-                                        </StackLayout>
-
-                                        <Frame
-                                            HasShadow="False"
-                                            Padding="0"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="CenterAndExpand"
-                                            BackgroundColor="{StaticResource LighterOrange}"
-                                            CornerRadius="45"
-                                            HeightRequest="40"
-                                            WidthRequest="40"
-                                            >
-                                            <Label  
-                                                VerticalTextAlignment="Center"
-                                                HorizontalOptions="CenterAndExpand"
-                                                VerticalOptions="CenterAndExpand"
-                                                TextColor="{StaticResource BaseOrange}"
-                                                FontSize="20"
-                                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                                Text=">"/>
-
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="DetalleCommand"/>
-                                            </Frame.GestureRecognizers>
-
-                                        </Frame>
-
-                                    </StackLayout>
-
-                                    <!--Elemento: Airbags laterales-->
-                                    <StackLayout
-                                        Margin="24,0,15,0"
-                                        HorizontalOptions="FillAndExpand"
-                                        Orientation="Horizontal">
-
-                                        <StackLayout
-                                            Spacing="0"
-                                            HorizontalOptions="StartAndExpand">
-                                            <Label
-                                                TextColor="{StaticResource DarkGrey}"
-                                                FontSize="14"
-                                                FontFamily="{StaticResource RegularFontOpenSans}"
-                                                Text="Airbags laterales"/>
-                                            <StackLayout
-                                                Spacing="15"
-                                                HeightRequest="30"
-                                                Orientation="Horizontal">
-                                                <StackLayout
-                                                    WidthRequest="100"
-                                                    Orientation="Horizontal">
-                                                    <Image Source="lock_solid_grey"/>
-                                                    <Label 
-                                                        VerticalOptions="CenterAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Bloquear"/>
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="SwitchStateCommand"/>
-                                                    </StackLayout.GestureRecognizers>
-                                                </StackLayout>
-
-                                                <StackLayout 
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Orientation="Horizontal">
-
-                                                    <Label  
-                                                        VerticalOptions="Start"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Estado: "/>
-
-                                                    <Label  
-                                                        VerticalOptions="StartAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource RegularFontOpenSans}"
-                                                        Text="no informado"/>
-                                                </StackLayout>
-
-                                            </StackLayout>
-                                        </StackLayout>
-
-                                        <Frame
-                                            HasShadow="False"
-                                            Padding="0"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="CenterAndExpand"
-                                            BackgroundColor="{StaticResource LighterOrange}"
-                                            CornerRadius="45"
-                                            HeightRequest="40"
-                                            WidthRequest="40"
-                                            >
-                                            <Label  
-                                                VerticalTextAlignment="Center"
-                                                HorizontalOptions="CenterAndExpand"
-                                                VerticalOptions="CenterAndExpand"
-                                                TextColor="{StaticResource BaseOrange}"
-                                                FontSize="20"
-                                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                                Text=">"/>
-
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="DetalleCommand"/>
-                                            </Frame.GestureRecognizers>
-
-                                        </Frame>
-
-                                    </StackLayout>
-
-                                    <!--Elemento: Cinturones pirotécnicos-->
-                                    <StackLayout
-                                        Margin="24,0,15,0"
-                                        HorizontalOptions="FillAndExpand"
-                                        Orientation="Horizontal">
-
-                                        <StackLayout
-                                            Spacing="0"
-                                            HorizontalOptions="StartAndExpand">
-                                            <Label
-                                                TextColor="{StaticResource DarkGrey}"
-                                                FontSize="14"
-                                                FontFamily="{StaticResource RegularFontOpenSans}"
-                                                Text="Cinturones pirotécnicos"/>
-                                            <StackLayout
-                                                Spacing="15"
-                                                HeightRequest="30"
-                                                Orientation="Horizontal">
-                                                <StackLayout
-                                                    WidthRequest="100"
-                                                    Orientation="Horizontal">
-                                                    <Image Source="lock_solid_grey"/>
-                                                    <Label 
-                                                        VerticalOptions="CenterAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Bloquear"/>
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="SwitchStateCommand"/>
-                                                    </StackLayout.GestureRecognizers>
-                                                </StackLayout>
-
-                                                <StackLayout 
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Orientation="Horizontal">
-
-                                                    <Label  
-                                                        VerticalOptions="Start"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Estado: "/>
-
-                                                    <Label  
-                                                        VerticalOptions="StartAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource RegularFontOpenSans}"
-                                                        Text="no informado"/>
-                                                </StackLayout>
-
-                                            </StackLayout>
-                                        </StackLayout>
-
-                                        <Frame
-                                            HasShadow="False"
-                                            Padding="0"
-                                            HorizontalOptions="CenterAndExpand"
-                                            VerticalOptions="CenterAndExpand"
-                                            BackgroundColor="{StaticResource LighterOrange}"
-                                            CornerRadius="45"
-                                            HeightRequest="40"
-                                            WidthRequest="40"
-                                            >
-                                            <Label  
-                                                VerticalTextAlignment="Center"
-                                                HorizontalOptions="CenterAndExpand"
-                                                VerticalOptions="CenterAndExpand"
-                                                TextColor="{StaticResource BaseOrange}"
-                                                FontSize="20"
-                                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                                Text=">"/>
-
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="DetalleCommand"/>
-                                            </Frame.GestureRecognizers>
-
-                                        </Frame>
-
-                                    </StackLayout>
-
-                                    <!--Elemento: Botones-->
-                                    <StackLayout
-                                        Spacing="20"
-                                        Orientation="Horizontal"
-                                        Margin="24,0">
-
-                                        <local:CustomButton
-                                            Clicked="SegundoItemBackCommand"
-                                            HorizontalOptions="EndAndExpand"
-                                            BackgroundColor="White"
-                                            Text="Atrás"
-                                            FontSize="14"
-                                            FontFamily="{StaticResource BoldFontOpenSans}"
-                                            TextColor="{StaticResource BaseGreyLight}"
-                                            HeightRequest="40"
-                                            WidthRequest="60"
-                                            BorderRadius="20"/>
-
-                                        <local:CustomButton
-                                            Clicked="SegundoItemCommand"
-                                            HorizontalOptions="End"
-                                            BackgroundColor="{StaticResource BaseGreen}"
-                                            Text="Continuar"
-                                            FontSize="14"
-                                            FontFamily="{StaticResource BoldFontOpenSans}"
-                                            TextColor="White"
-                                            HeightRequest="40"
-                                            WidthRequest="128"
-                                            BorderRadius="20"/>
-                                    </StackLayout>
 
                                 </StackLayout>
                             </accordionview:AccordionItemView.ItemContent>

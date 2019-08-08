@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CustomControls;
 using Xamarin.Forms;
+using Clicar.Models;
 using Xamarin.Forms.Xaml;
 using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
@@ -26,7 +27,27 @@ namespace Clicar.Views
             baseOrange = (Color)Application.Current.Resources["BaseOrange"];
             baseGreen = (Color)Application.Current.Resources["BaseGreen"];
 
-            this.Content = new MenuItemTestView();
+            var listaElem = new List<MenuElement>();
+
+            listaElem.AddRange(new[] {
+                new MenuElement
+                {
+                   Titulo= "Aire acondicionado"
+                },
+                new MenuElement
+                {
+                   Titulo= "Aire acondicionado"
+                },
+                new MenuElement
+                {
+                   Titulo= "Aire acondicionado"
+                },
+
+            });
+
+            SegundoItemListView.ItemsSource = listaElem;
+
+            //AccordionMenu.
 
 
         }
