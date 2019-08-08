@@ -1825,85 +1825,94 @@
                                     Spacing="20"
                                     Padding="0,15">
 
-                                    <!--Elemento: Volante-->
+                                    <!--Imagenes-->
                                     <StackLayout
-                                        Margin="24,0,15,0"
+                                        Margin="24,0,24,0"
                                         HorizontalOptions="FillAndExpand"
                                         Orientation="Horizontal">
 
-                                        <StackLayout
-                                            Spacing="0"
-                                            HorizontalOptions="StartAndExpand">
-                                            <Label
-                                                TextColor="{StaticResource DarkGrey}"
-                                                FontSize="14"
-                                                FontFamily="{StaticResource RegularFontOpenSans}"
-                                                Text="Volante"/>
-                                            <StackLayout
-                                                Spacing="15"
-                                                HeightRequest="30"
-                                                Orientation="Horizontal">
-                                                <StackLayout
-                                                    WidthRequest="100"
-                                                    Orientation="Horizontal">
-                                                    <Image Source="lock_solid_grey"/>
-                                                    <Label 
-                                                        VerticalOptions="CenterAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Bloquear"/>
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="SwitchStateCommand"/>
-                                                    </StackLayout.GestureRecognizers>
-                                                </StackLayout>
-
-                                                <StackLayout 
-                                                    VerticalOptions="CenterAndExpand"
-                                                    Orientation="Horizontal">
-
-                                                    <Label  
-                                                        VerticalOptions="Start"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource BoldFontOpenSans}"
-                                                        Text="Estado: "/>
-
-                                                    <Label  
-                                                        VerticalOptions="StartAndExpand"
-                                                        TextColor="{StaticResource BaseGreyLight}"
-                                                        FontSize="12"
-                                                        FontFamily="{StaticResource RegularFontOpenSans}"
-                                                        Text="no informado"/>
-                                                </StackLayout>
-
-                                            </StackLayout>
-                                        </StackLayout>
-
-                                        <Frame
+                                        <StackLayout>
+                                            <Frame
                                             HasShadow="False"
                                             Padding="0"
-                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalOptions="Start"
                                             VerticalOptions="CenterAndExpand"
-                                            BackgroundColor="{StaticResource LighterOrange}"
-                                            CornerRadius="45"
-                                            HeightRequest="40"
-                                            WidthRequest="40"
-                                            >
-                                            <Label  
-                                                VerticalTextAlignment="Center"
-                                                HorizontalOptions="CenterAndExpand"
-                                                VerticalOptions="CenterAndExpand"
-                                                TextColor="{StaticResource BaseOrange}"
-                                                FontSize="20"
-                                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                                Text=">"/>
+                                            BorderColor="{StaticResource BaseGreyLight}"
+                                            BackgroundColor="{StaticResource BGGrey}"
+                                            CornerRadius="5"
+                                            HeightRequest="80"
+                                            WidthRequest="100">
 
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="DetalleCommand"/>
-                                            </Frame.GestureRecognizers>
+                                                <Image 
+                                                
+                                                WidthRequest="10"
+                                                Source="cam_PH"/>
 
-                                        </Frame>
+                                            </Frame>
+
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Frame
+                                            HasShadow="False"
+                                            Padding="0"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="CenterAndExpand"
+                                            BorderColor="{StaticResource BaseGreyLight}"
+                                            BackgroundColor="{StaticResource BGGrey}"
+                                            CornerRadius="5"
+                                            HeightRequest="80"
+                                            WidthRequest="100">
+
+                                                <Image 
+                                                
+                                                WidthRequest="10"
+                                                Source="cam_PH"/>
+
+                                            </Frame>
+
+                                        </StackLayout>
+
+                                        <StackLayout>
+                                            <Frame
+                                            HasShadow="False"
+                                            Padding="0"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="CenterAndExpand"
+                                            BorderColor="{StaticResource BaseGreyLight}"
+                                            BackgroundColor="{StaticResource BGGrey}"
+                                            CornerRadius="5"
+                                            HeightRequest="80"
+                                            WidthRequest="100">
+
+                                                <Image 
+                                                
+                                                WidthRequest="10"
+                                                Source="cam_PH"/>
+
+                                            </Frame>
+
+                                        </StackLayout>
+
+                                        <StackLayout>
+                                            <Frame
+                                            HasShadow="False"
+                                            Padding="0"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="CenterAndExpand"
+                                            BorderColor="{StaticResource BaseGreyLight}"
+                                            BackgroundColor="{StaticResource BGGrey}"
+                                            CornerRadius="5"
+                                            HeightRequest="80"
+                                            WidthRequest="100">
+
+                                                <Image 
+                                                
+                                                WidthRequest="10"
+                                                Source="cam_PH"/>
+
+                                            </Frame>
+
+                                        </StackLayout>
 
                                     </StackLayout>
 
