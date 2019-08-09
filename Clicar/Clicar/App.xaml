@@ -3,13 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:template="clr-namespace:Clicar.Templates"
+             xmlns:infra="clr-namespace:Clicar.Infrastructure"
              mc:Ignorable="d"
              x:Class="Clicar.App">
     <Application.Resources>
 
 
+        
+        
+
         <ResourceDictionary>
 
+            <infra:InstanceLocator x:Key="Locator" />
+
+
+
+
+            <!--data templates-->
+
+
+            <!-- Main-->
+            <DataTemplate x:Key="itemInspeccionTemplate">
+                <template:ItemInspeccionTemplate/>
+            </DataTemplate>
+
+            
+            <!--Items diferentes-->
+            <DataTemplate x:Key="itemInspeccionVCTemplate">
+                <template:ItemInspeccionVCTemplate/>
+            </DataTemplate>
+
+            <DataTemplate x:Key="itemInspSwitchVCTemplate">
+                <template:ItemInspSwitchVCTemplate/>
+            </DataTemplate>
+
+            <template:ItemDataTemplateSelector 
+                    x:Key="itemDataTemplateSelector" 
+                        ItemTemplateA="{StaticResource itemInspeccionVCTemplate}"
+                        ItemTemplateB="{StaticResource itemInspSwitchVCTemplate}"
+                        ItemTemplateC="{StaticResource itemInspeccionVCTemplate}"/>
+
+
+            
+            
             <Color x:Key="BaseGreyLight">#A8A8A8</Color>
             <Color x:Key="BaseGrey">#59595C</Color>
             <Color x:Key="DarkGrey">#26262D</Color>

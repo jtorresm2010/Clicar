@@ -11,7 +11,5 @@ namespace Clicar.Models
         public string Tipo { get; set; }
         public bool RequiereFoto { get; set; }
         public bool Deshabilitable { get; set; }
-
-
     }
 }
