@@ -32,9 +32,6 @@
     <accordionview:AccordionItemView.ItemContent>
         <StackLayout
             Margin="0,20">
-
-            
-
             <ListView 
                 BindingContext="{Binding Main, Source={StaticResource Locator}}"
                 ItemsSource="{Binding ItemsInspeccion}"
@@ -48,12 +45,11 @@
 
             <StackLayout
                 BindingContext="{Binding Main, Source={StaticResource Locator}}"
-                Spacing="10"
+                Spacing="20"
                 Orientation="Horizontal"
                 Margin="24,0">
 
                 <local:CustomButton
-                    Command="{Binding ICommandBack}"
                     x:Name="BackButton"
                     HorizontalOptions="EndAndExpand"
                     BackgroundColor="White"

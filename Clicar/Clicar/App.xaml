@@ -29,7 +29,7 @@
             </DataTemplate>
 
             
-            <!--Items/ViewCells diferentes-->
+            <!--Items diferentes-->
             <DataTemplate x:Key="itemInspeccionVCTemplate">
                 <template:ItemInspeccionVCTemplate/>
             </DataTemplate>
@@ -38,16 +38,11 @@
                 <template:ItemInspSwitchVCTemplate/>
             </DataTemplate>
 
-            <DataTemplate x:Key="itemInspCamGridVCTemplate">
-                <template:ItemInspCamGridVCTemplate/>
-            </DataTemplate>
-
-
             <template:ItemDataTemplateSelector 
                     x:Key="itemDataTemplateSelector" 
                         ItemTemplateA="{StaticResource itemInspeccionVCTemplate}"
                         ItemTemplateB="{StaticResource itemInspSwitchVCTemplate}"
-                        ItemTemplateC="{StaticResource itemInspCamGridVCTemplate}"/>
+                        ItemTemplateC="{StaticResource itemInspeccionVCTemplate}"/>
 
 
             

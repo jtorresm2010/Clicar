@@ -30,13 +30,12 @@ namespace Clicar.ViewModels
         {
             instance = this;
 
-
-
+            
 
         }
 
         private static MainViewModel instance;
-        private List<ItemInspeccion> itemList;
+        private List<ItemInspeccion> list;
 
         public static MainViewModel GetInstance()
         {
@@ -47,29 +46,36 @@ namespace Clicar.ViewModels
             return instance;
         }
 
-        public void GetNewItemList() // Inicializa la lista de items y los colores
+        public void GetNewItemList()
         {
-            itemList = (List<ItemInspeccion>)new ListaItemsInspeccion().GetListaItems();
-
+            list = (List<ItemInspeccion>)new ListaItemsInspeccion().GetListaItems();
             menuIndex = 1;
-
-            baseGreyLight = (Color)Application.Current.Resources["BaseGreyLight"];
-            baseOrange = (Color)Application.Current.Resources["BaseOrange"];
-            baseGreen = (Color)Application.Current.Resources["BaseGreen"];
-
         }
-
 
 
         public void LoadItemList()
         {
+            var listIteration = new List<ItemInspeccion>();
 
+            var areasInspeccion = new ListaAreasInspeccion().GetListaAreas().Count;
+            
+            var ilistIteration = list.Select(ItemInspeccion => ItemInspeccion.Nombre);
+
+            // Filtra la lista dependiendo de cual iteracion del menu acordion principal se esta mostrando
             var filteringQuery =
-                from itemInspeccion in itemList
+                from itemInspeccion in list
                 where itemInspeccion.Area == menuIndex.ToString()
                 select itemInspeccion;
 
             this.ItemsInspeccion = new ObservableCollection<ItemInspeccion>(filteringQuery);
+
+
+
+
+
+
+
+
 
             menuIndex++;
         }
@@ -81,11 +87,7 @@ namespace Clicar.ViewModels
 
             var accordionMenu = (AccordionRepeaterView)inspeccionView.FindByName("AccordionMenu");
 
-            var itemActual = (AccordionItemView)accordionMenu.Children[int.Parse(parameter) - 1];
-            
-            itemActual.ButtonBackgroundColor = baseGreen;
-            itemActual.BorderColor = baseGreen;
-
+            var itemActual = (AccordionItemView)accordionMenu.Children[int.Parse(parameter)-1];
             itemActual.ClosePanel();
 
             try
@@ -108,45 +110,10 @@ namespace Clicar.ViewModels
         {
             get
             {
+                //return new Command<string>((parameter) => CommandNext(parameter));
                 return new RelayCommand<string>(parameter => CommandNext(parameter));
             }
         }
-
-        public void CommandBack(string parameter)
-        {
-            var inspeccionView = InspeccionView.GetInstance();
-
-            var accordionMenu = (AccordionRepeaterView)inspeccionView.FindByName("AccordionMenu");
-
-            var itemActual = (AccordionItemView)accordionMenu.Children[int.Parse(parameter) - 1];
-
-            itemActual.ClosePanel();
-
-            try
-            {
-                var itemAnterior = (AccordionItemView)accordionMenu.Children[int.Parse(parameter)-2];
-                itemAnterior.OpenPanel();
-
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e.Message);
-            }
-
-            Console.WriteLine("---------------------" + parameter);
-        }
-
-
-
-        public ICommand ICommandBack
-        {
-            get
-            {
-                return new RelayCommand<string>(parameter => CommandBack(parameter));
-            }
-        }
-
 
 
 

@@ -8042,7 +8042,7 @@ namespace Clicar.Droid
 			public const int avd_show_password_3 = 2130837842;
 			
 			// aapt resource value: 0x7f020056
-			public const int camara_menu = 2130837590;
+			public const int cam_PH = 2130837590;
 			
 			// aapt resource value: 0x7f020057
 			public const int clicar = 2130837591;
