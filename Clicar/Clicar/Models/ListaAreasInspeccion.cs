@@ -13,35 +13,35 @@ namespace Clicar.Models
             listaVehiculos.AddRange(new[] {
                 new AreaInspeccion
                 {
-                    Nombre = "Manual, llaves y otros", Orden = 1
+                    Nombre = "Manual, llaves y otros", Orden = 1, IsImage = false
                 },
                 new AreaInspeccion
                 {
-                    Nombre = "Equipamento", Orden = 2
+                    Nombre = "Equipamento", Orden = 2, IsImage = false
                 },
                 new AreaInspeccion
                 {
-                    Nombre = "Interiores", Orden = 4
+                    Nombre = "Interiores", Orden = 4, IsImage = false
                 },
                 new AreaInspeccion
                 {
-                    Nombre = "Motor y caja", Orden = 3
+                    Nombre = "Motor y caja", Orden = 3, IsImage = false
                 },
                 new AreaInspeccion
                 {
-                    Nombre = "Fotografía interior", Orden = 5
+                    Nombre = "Fotografía interior", Orden = 5, IsImage = true
                 },
                 new AreaInspeccion
                 {
-                    Nombre = "Exteriores", Orden = 6
+                    Nombre = "Exteriores", Orden = 6, IsImage = false
                 },
                 new AreaInspeccion
                 {
-                    Nombre = "Fotografía exterior", Orden = 7
+                    Nombre = "Fotografía exterior", Orden = 7, IsImage = true
                 },
                 new AreaInspeccion
                 {
-                    Nombre = "Prueba de ruta", Orden = 8
+                    Nombre = "Prueba de ruta", Orden = 8, IsImage = false
                 },
             });
 

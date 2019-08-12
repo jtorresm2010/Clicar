@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customcontrols:AccordionItemView
+            xmlns:customcontrols="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
+            xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Clicar.Customs"
+            mc:Ignorable="d"
+            x:Class="Clicar.Templates.ItemInspeccionTemplateImage"
+            xmlns:accordionview="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
+    
+            Text="{Binding Nombre}"
+                            
+            TextPosition="Left"
+            TextColor="White"
+            FontSize="16"
+            FontFamily="{StaticResource BoldFontOpenSans}"
+            ActiveTextColor="White"
+            Border="5"
+                            
+            ButtonBackgroundColor="{StaticResource BaseGreyLight}"
+            ButtonActiveBackgroundColor="{StaticResource BaseOrange}"
+            BorderColor="{StaticResource BaseGreyLight}"
+            ActiveBorderColor="{StaticResource BaseOrange}"
+                            
+            ActiveLeftImage="MenuNum1"
+            LeftImage="MenuNum1">
+
+
+
+    <accordionview:AccordionItemView.ItemContent>
+        <StackLayout
+            Margin="0,20">
+
+
+
+        </StackLayout>
+    </accordionview:AccordionItemView.ItemContent>
+</customcontrols:AccordionItemView>

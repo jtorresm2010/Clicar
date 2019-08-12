@@ -32,17 +32,10 @@
                 x:Name="AccordionMenu"
                 KeepOnlyOneItemOpen="True" 
                 Margin="0,8"
-                Spacing="5">
-                <accordionview:AccordionRepeaterView.AccordionItemTemplate>
-                    <DataTemplate>
+                Spacing="5"
+                AccordionItemTemplate="itemInspeccionTemplate"/>
+            
 
-
-                                <views:ItemInspeccionTemplate/>
-
-
-                    </DataTemplate>
-                </accordionview:AccordionRepeaterView.AccordionItemTemplate>
-            </accordionview:AccordionRepeaterView>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

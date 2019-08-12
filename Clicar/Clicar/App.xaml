@@ -24,9 +24,9 @@
 
 
             <!-- Main-->
-            <DataTemplate x:Key="itemInspeccionTemplate">
+            <!--<DataTemplate x:Key="itemInspeccionTemplate">
                 <template:ItemInspeccionTemplate/>
-            </DataTemplate>
+            </DataTemplate>-->
 
             
             <!--Items/ViewCells diferentes-->
@@ -42,7 +42,23 @@
                 <template:ItemInspCamGridVCTemplate/>
             </DataTemplate>
 
+            
+            <!--Accordion Item -->
+            <DataTemplate x:Key="itemInspeccionTemplateImage">
+                <template:ItemInspeccionTemplateImage/>
+            </DataTemplate>
 
+            <DataTemplate x:Key="itemInspeccionTemplate">
+                <template:ItemInspeccionTemplate/>
+            </DataTemplate>
+
+            <template:AccordionItemTemplateSelector 
+                    x:Key="accordionItemTemplateSelector" 
+                        ItemTemplateA="{StaticResource itemInspeccionTemplate}"
+                        ItemTemplateB="{StaticResource itemInspeccionTemplateImage}"/>
+
+
+            <!--Template selectors-->
             <template:ItemDataTemplateSelector 
                     x:Key="itemDataTemplateSelector" 
                         ItemTemplateA="{StaticResource itemInspeccionVCTemplate}"
