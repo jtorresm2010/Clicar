@@ -8,6 +8,5 @@ namespace Clicar.Models
     {
         public string Nombre { get; set; }
         public int Orden { get; set; }
-        public bool IsImage { get; set; }
     }
 }
