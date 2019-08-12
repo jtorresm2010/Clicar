@@ -50,6 +50,11 @@ namespace Clicar.ViewModels
         {
             list = (List<ItemInspeccion>)new ListaItemsInspeccion().GetListaItems();
             menuIndex = 1;
+
+            baseGreyLight = (Color)Application.Current.Resources["BaseGreyLight"];
+            baseOrange = (Color)Application.Current.Resources["BaseOrange"];
+            baseGreen = (Color)Application.Current.Resources["BaseGreen"];
+
         }
 
 
@@ -88,6 +93,11 @@ namespace Clicar.ViewModels
             var accordionMenu = (AccordionRepeaterView)inspeccionView.FindByName("AccordionMenu");
 
             var itemActual = (AccordionItemView)accordionMenu.Children[int.Parse(parameter)-1];
+
+            itemActual.ButtonBackgroundColor = baseGreen;
+            itemActual.BorderColor = baseGreen;
+
+
             itemActual.ClosePanel();
 
             try
@@ -117,8 +127,41 @@ namespace Clicar.ViewModels
 
 
 
+        public void CommandBack(string parameter)
+        {
+            var inspeccionView = InspeccionView.GetInstance();
+
+            var accordionMenu = (AccordionRepeaterView)inspeccionView.FindByName("AccordionMenu");
+
+            var itemActual = (AccordionItemView)accordionMenu.Children[int.Parse(parameter) - 1];
+
+            itemActual.ClosePanel();
+
+            try
+            {
+                var itemAnterior = (AccordionItemView)accordionMenu.Children[int.Parse(parameter) - 2];
+                itemAnterior.OpenPanel();
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+
+            Console.WriteLine("---------------------" + parameter);
+        }
 
 
+
+        public ICommand ICommandBack
+        {
+            get
+            {
+                return new RelayCommand<string>(parameter => CommandBack(parameter));
+            }
+
+        }
 
 
 

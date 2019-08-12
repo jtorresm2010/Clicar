@@ -50,6 +50,7 @@
                 Margin="24,0">
 
                 <local:CustomButton
+                    Command="{Binding ICommandBack}"
                     x:Name="BackButton"
                     HorizontalOptions="EndAndExpand"
                     BackgroundColor="White"

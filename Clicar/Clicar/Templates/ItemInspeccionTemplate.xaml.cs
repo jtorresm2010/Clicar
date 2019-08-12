@@ -40,7 +40,7 @@ namespace Clicar.Templates
             {
                 BackButton.IsVisible = false;
             }
-
+            BackButton.CommandParameter = index.ToString();
             ForwardButton.CommandParameter = index.ToString();
         }
     }
