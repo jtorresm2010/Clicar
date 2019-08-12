@@ -28,6 +28,9 @@ namespace Clicar.Templates
                 case "2":
                     template = ItemTemplateB;
                     break;
+                case "3":
+                    template = ItemTemplateB;
+                    break;
                 default:
                     break;
             }

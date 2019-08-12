@@ -37,7 +37,9 @@ namespace Clicar.Views
 
             AccordionMenu.ItemsSource = filteringQuery.ToList<AreaInspeccion>();
 
-
+            
+            var firstitem = (AccordionItemView)AccordionMenu.Children[0];
+            firstitem.OpenPanel();
 
         }
 
