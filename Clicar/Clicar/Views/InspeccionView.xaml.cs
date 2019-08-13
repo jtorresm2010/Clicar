@@ -35,7 +35,14 @@ namespace Clicar.Views
                 orderby areaInspeccion.Orden ascending
                 select areaInspeccion;
 
-            
+
+            foreach(AreaInspeccion area in filteringQuery)
+            {
+                area.Image = "MenuNum" + area.Orden;
+            }
+
+
+
 
             AccordionMenu.ItemsSource = filteringQuery.ToList<AreaInspeccion>();
             var primerItem = (AccordionItemView)AccordionMenu.Children[0];

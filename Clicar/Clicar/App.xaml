@@ -47,8 +47,8 @@
                         ItemTemplateC="{StaticResource itemInspeccionVCTemplate}"/>
 
 
-            
-            
+
+            <Color x:Key="BaseGreyE">#eeeeee</Color>
             <Color x:Key="BaseGreyLight">#A8A8A8</Color>
             <Color x:Key="BaseGrey">#59595C</Color>
             <Color x:Key="DarkGrey">#26262D</Color>

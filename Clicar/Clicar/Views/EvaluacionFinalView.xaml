@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:local="clr-namespace:Clicar.Customs"
+             mc:Ignorable="d"
+             x:Class="Clicar.Views.EvaluacionFinalView">
+
+        <NavigationPage.TitleView>
+            <StackLayout 
+            Margin="0"
+            Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
+                <Image 
+                Margin="0,0,70,0"
+                HorizontalOptions="CenterAndExpand"
+                HeightRequest="25"
+                Source="clicar.png">
+                </Image>
+
+
+            </StackLayout>
+        </NavigationPage.TitleView>
+
+
+
+        <ContentPage.Content>
+            <ScrollView>
+            <StackLayout
+                VerticalOptions="FillAndExpand"
+                Margin="0,8"
+                BackgroundColor="White">
+
+                <Frame
+                        Padding="0"
+                        CornerRadius="0"
+                        BackgroundColor="{StaticResource BaseGreen}"
+                        HeightRequest="50"> 
+                        <StackLayout
+                            Spacing="8"
+                            Margin="8,0"
+                            Orientation="Horizontal">
+                           
+                                <Label
+                                    Margin="32,0"
+                                FontSize="16"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                Text="Evaluación final"
+                                FontFamily="{StaticResource BoldFontOpenSans}"
+                                TextColor="White"/>
+
+                            </StackLayout>
+                        </Frame>
+
+                <StackLayout
+                            Padding="24,16"
+                            Spacing="20">
+
+                        <!--Editor Evaluacion-->
+                        <StackLayout
+                    Spacing="10">
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            WidthRequest="230"
+                            Text="Indique la evaluación final general del auto"
+                            FontSize="14"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextColor="{StaticResource BaseGrey}"/>
+                        <Frame
+                            HasShadow="False"
+                            CornerRadius="5"
+                            BorderColor="{StaticResource BaseGreyE}"
+                            BackgroundColor="{StaticResource BGGrey}"
+                            Padding="0">
+                            <local:CustomEditor
+                            
+                            FontSize="12"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            Visual="Default"
+                            HeightRequest="110"/>
+
+                            </Frame>
+                        </StackLayout>
+
+                    <StackLayout
+                    Spacing="15">
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Otorga una valorización general al auto"
+                            FontSize="14"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextColor="{StaticResource BaseGrey}"/>
+                        <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Text="&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;"
+                            FontSize="20"
+                            TextColor="{StaticResource BaseGrey}"/>
+                        <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Puntuación"
+                            FontSize="10"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextColor="{StaticResource BaseGreyLight}"/>
+                        <local:CustomButton
+                        HorizontalOptions="CenterAndExpand"
+                        BackgroundColor="{StaticResource BaseOrange}"
+                        Text="Agregar ítem"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="White"
+                        HeightRequest="40"
+                        WidthRequest="280"
+                        BorderRadius="20"/>
+                    </StackLayout>
+
+
+
+                    <!--Botones-->
+                    <StackLayout
+                        VerticalOptions="EndAndExpand"
+                        BindingContext="{Binding Main, Source={StaticResource Locator}}"
+                        Spacing="5"
+                        Orientation="Horizontal"
+                        Margin="8,30,8,0">
+
+                        <local:CustomButton
+                        HorizontalOptions="EndAndExpand"
+                        BackgroundColor="White"
+                        Text="Cancelar"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="{StaticResource BaseGreyLight}"
+                        HeightRequest="40"
+                        WidthRequest="90"
+                        BorderRadius="20"/>
+
+                        <local:CustomButton
+                            Clicked="FinalizarCommand"
+                            HorizontalOptions="EndAndExpand"
+                            BackgroundColor="{StaticResource BaseGreen}"
+                            Text="Finalizar"
+                            FontSize="14"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            TextColor="White"
+                            HeightRequest="40"
+                            WidthRequest="128"
+                            BorderRadius="20"/>
+                    </StackLayout>
+
+
+                    </StackLayout>
+                    
+                </StackLayout>
+            </ScrollView>
+        </ContentPage.Content>
+</ContentPage>

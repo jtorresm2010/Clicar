@@ -9,6 +9,7 @@ using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Content;
 using Android.Views;
 using Android.Widget;
 using Clicar.Customs;
@@ -23,6 +24,9 @@ namespace Clicar.Droid.Customs
     class CustomPickerAndroid : PickerRenderer
     {
 
+
+        CustomPicker element;
+
         public CustomPickerAndroid(Context context) : base(context)
         {
         }
@@ -30,22 +34,75 @@ namespace Clicar.Droid.Customs
         protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
         {
             base.OnElementChanged(e);
-            if (e.OldElement == null)
-            {
 
-                var gradientDrawable = new GradientDrawable();
-                gradientDrawable.SetColor(Android.Graphics.Color.White);
-                gradientDrawable.SetCornerRadius(20f);
-                
+            element = (CustomPicker)this.Element;
 
-                Control.SetBackground(gradientDrawable);
-
+            if (Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
+                Control.Background = AddPickerStyles(element.Image);
                 Control.Elevation = 6f;
-                Control.SetPadding(60, Control.PaddingTop, Control.PaddingRight, 30);
-                //Control.Background.SetColorFilter(Android.Graphics.Color.Argb(255, 117, 171, 64), PorterDuff.Mode.SrcAtop);
-                //Control.SetHintTextColor(Android.Graphics.Color.Argb(128, 117, 171, 64));
-            }
+                Control.SetPadding(60, 30, 60, 30);
+
         }
+
+
+        public LayerDrawable AddPickerStyles(string imagePath)
+        {
+            ShapeDrawable border = new ShapeDrawable();
+            border.Paint.Color = Android.Graphics.Color.Transparent;
+            border.SetPadding(0, 0, 50, 0);
+            
+           // border.Paint.SetStyle(Paint.Style.Stroke);
+
+            var gradientDrawable = new GradientDrawable();
+            gradientDrawable.SetColor(Android.Graphics.Color.White);
+            
+            gradientDrawable.SetCornerRadius(20f);
+
+
+
+            Drawable[] layers = { gradientDrawable, border, GetDrawable(imagePath) };
+            LayerDrawable layerDrawable = new LayerDrawable(layers);
+            layerDrawable.SetLayerInset(0, 0, 0, 0, 0);
+
+            return layerDrawable;
+        }
+
+
+        private BitmapDrawable GetDrawable(string imagePath)
+        {
+
+            //int resID = Resources.GetIdentifier(imagePath, "drawable", this.Context.PackageName);
+            //var drawable = ContextCompat.GetDrawable(this.Context, resID);
+            var drawable = Resources.GetDrawable(imagePath);
+            var bitmap = ((BitmapDrawable)drawable).Bitmap;
+
+            var result = new BitmapDrawable(Resources, Bitmap.CreateScaledBitmap(bitmap, 70, 70, true));
+            result.Gravity = Android.Views.GravityFlags.Right;
+            
+
+            return result;
+        }
+
+
+        //protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
+        //{
+        //    base.OnElementChanged(e);
+        //    if (e.OldElement == null)
+        //    {
+
+        //        var gradientDrawable = new GradientDrawable();
+        //        gradientDrawable.SetColor(Android.Graphics.Color.White);
+        //        gradientDrawable.SetCornerRadius(20f);
+
+
+        //        Control.SetBackground(gradientDrawable);
+
+        //        Control.Elevation = 6f;
+        //        Control.SetPadding(60, Control.PaddingTop, Control.PaddingRight, 30);
+        //        //Control.Background.SetColorFilter(Android.Graphics.Color.Argb(255, 117, 171, 64), PorterDuff.Mode.SrcAtop);
+        //        //Control.SetHintTextColor(Android.Graphics.Color.Argb(128, 117, 171, 64));
+        //    }
+        //}
 
 
 

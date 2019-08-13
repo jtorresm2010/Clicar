@@ -113,6 +113,7 @@
                                 
                                 
                                     <local:CustomPicker
+                                        Image="Forward"
                                         Title="Seleccionar otra Sucursal"
                                         FontSize="14"
                                         TextColor="{StaticResource BaseGrey44}"

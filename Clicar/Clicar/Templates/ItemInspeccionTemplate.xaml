@@ -24,8 +24,8 @@
             BorderColor="{StaticResource BaseGreyLight}"
             ActiveBorderColor="{StaticResource BaseOrange}"
                             
-            ActiveLeftImage="MenuNum1"
-            LeftImage="MenuNum1">
+            ActiveLeftImage="{Binding Image}"
+            LeftImage="{Binding Image}">
 
 
 

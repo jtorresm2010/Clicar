@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CustomControls;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Clicar.ViewModels
 {
@@ -60,7 +61,6 @@ namespace Clicar.ViewModels
 
         }
 
-
         public void LoadItemList()
         {
             var listIteration = new List<ItemInspeccion>();
@@ -87,7 +87,6 @@ namespace Clicar.ViewModels
 
             menuIndex++;
         }
-
 
         public void CommandNext(string parameter)
         {
@@ -118,7 +117,6 @@ namespace Clicar.ViewModels
             Console.WriteLine("---------------------" + parameter);
         }
 
-        
         public ICommand ICommandNext
         {
             get
@@ -127,8 +125,6 @@ namespace Clicar.ViewModels
                 return new RelayCommand<string>(parameter => CommandNext(parameter));
             }
         }
-
-
 
         public void CommandBack(string parameter)
         {
@@ -155,8 +151,6 @@ namespace Clicar.ViewModels
             Console.WriteLine("---------------------" + parameter);
         }
 
-
-
         public ICommand ICommandBack
         {
             get
@@ -180,7 +174,8 @@ namespace Clicar.ViewModels
             Console.WriteLine("----------------------------------" + parameter);
         }
 
-        public ICommand EditarDetalleICommand 
+
+        public ICommand EditarDetalleICommand
         {
             get
             {
@@ -189,9 +184,15 @@ namespace Clicar.ViewModels
 
         }
 
-        private void EditarDetalleCommand(string parameter)
+        private async void EditarDetalleCommand(string parameter)
         {
-            Console.WriteLine("---------------------------------- Editar detalles view");
+            Console.WriteLine("(>'.')>-----------" + parameter);
+
+
+            await Application.Current.MainPage.Navigation.PushAsync(new EditarDetalleView());
+
+            //var instance = InspeccionView.GetInstance();
+            //await instance.Navigation.PushAsync(new EditarDetalleView());
         }
     }
 }

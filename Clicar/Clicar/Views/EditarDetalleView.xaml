@@ -28,150 +28,245 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout
+            Margin="0,8"
             BackgroundColor="White">
-            <Frame/>
+
+            <Frame
+                Padding="0"
+                CornerRadius="0"
+                BackgroundColor="{StaticResource BaseGreen}"
+                HeightRequest="50">
+                    <StackLayout
+                        Spacing="8"
+                        Margin="8,0"
+                        Orientation="Horizontal">
+                        <Image
+                            HeightRequest="30"
+                            Source="MenuNum1"/>
+                        <Label
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Text="Título elemento"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            TextColor="White"/>
+                        
+                    </StackLayout>
+                </Frame>
+
             <StackLayout
-            Padding="24,16"
-            Spacing="16">
+                Padding="24,16"
+                Spacing="20">
             
-            <Label
-                Text="Item a revisar"
-                FontSize="14"
+                <!--Titulo-->
+                <Label
+                    Text="Item a revisar"
+                    FontSize="14"
                     FontFamily="{StaticResource BoldFontOpenSans}"
                     TextColor="{StaticResource BaseGreen}"/>
-            <Label
-                    Margin="0,10"
-                    HorizontalOptions="StartAndExpand"
-                    Text="Seleccione estado"
-                    FontSize="14"
-                    FontFamily="{StaticResource RegularFontOpenSans}"
-                    TextColor="{StaticResource BaseGreyLight}"/>
-            <input:RadioButtonGroupView 
-                Spacing="0"
-                Orientation="Horizontal"
-                    Margin="16,0">
-                <input:RadioButton 
-                        WidthRequest="130"
-                        TextColor="{StaticResource BaseGreyLight}"
-                        FontFamily="{StaticResource RegularFontOpenSans}"
-                        TextFontSize="14"
-                        Text="Bueno" 
-                        Color="{StaticResource BaseOrange}"/>
-                <input:RadioButton
-                        HorizontalOptions="StartAndExpand"
-                        IsChecked="{Binding Estado}"
-                        TextColor="{StaticResource BaseGreyLight}"
-                        FontFamily="{StaticResource RegularFontOpenSans}"
-                        TextFontSize="14"
-                        Text="Malo" 
-                        Color="{StaticResource BaseOrange}"/>
-            </input:RadioButtonGroupView>
 
-            <StackLayout>
+                <!--Radio buttons estado-->
+                <StackLayout>
+                    <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Seleccione estado"
+                            FontSize="14"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextColor="{StaticResource BaseGrey}"/>
+                    <input:RadioButtonGroupView 
                 
-                <Label
-                    Margin="0,10"
-                    HorizontalOptions="StartAndExpand"
-                    Text="Seleccione solución"
-                    FontSize="14"
-                    FontFamily="{StaticResource RegularFontOpenSans}"
-                    TextColor="{StaticResource BaseGreyLight}"/>
-                <input:RadioButtonGroupView 
-                    Orientation="Horizontal"
-                    Spacing="0"
-                    Margin="16,0">
+                        Spacing="0"
+                        Orientation="Horizontal">
                     <input:RadioButton 
-                        WidthRequest="130"
-                        TextColor="{StaticResource BaseGreyLight}"
+                        CircleColor="{StaticResource BaseGreyE}"
+                            WidthRequest="90"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextFontSize="12"
+                            Text="Bueno" 
+                            Color="{StaticResource BaseOrange}"/>
+                            <input:RadioButton
+                        CircleColor="{StaticResource BaseGreyE}"
+                            HorizontalOptions="StartAndExpand"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextFontSize="12"
+                            Text="Malo" 
+                            Color="{StaticResource BaseOrange}"/>
+                </input:RadioButtonGroupView>
+                </StackLayout>
+
+                <!--Radio buttons solucion-->
+                <StackLayout
+                    IsVisible="False">
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Seleccione solución"
+                        FontSize="14"
                         FontFamily="{StaticResource RegularFontOpenSans}"
-                        TextFontSize="14"
-                        Text="Reparar" 
-                        Color="{StaticResource BaseOrange}"/>
-                    <input:RadioButton
-                    HorizontalOptions="StartAndExpand"
-                        TextColor="{StaticResource BaseGreyLight}"
+                        TextColor="{StaticResource BaseGrey}"/>
+                    <input:RadioButtonGroupView 
+                        Orientation="Horizontal"
+                        Spacing="0">
+                            <input:RadioButton 
+                        CircleColor="{StaticResource BaseGreyE}"
+                            WidthRequest="90"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextFontSize="12"
+                            Text="Reparar" 
+                            Color="{StaticResource BaseOrange}"/>
+                            <input:RadioButton
+                        CircleColor="{StaticResource BaseGreyE}"
+                        HorizontalOptions="StartAndExpand"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextFontSize="12"
+                            Text="Sustituir" 
+                            Color="{StaticResource BaseOrange}"/>
+                </input:RadioButtonGroupView>
+                </StackLayout>
+
+                <!--Picker nivel de daño-->
+                <StackLayout
+                    IsVisible="False"
+                    Spacing="10">
+                    <Label
+                        Text="Indique nivel de daño"
+                        FontSize="14"
                         FontFamily="{StaticResource RegularFontOpenSans}"
-                        TextFontSize="14"
-                        Text="Sustituir" 
-                        Color="{StaticResource BaseOrange}"/>
-            </input:RadioButtonGroupView>
-            
-            </StackLayout>
-            
-                
-            
-            <local:CustomPicker
-                Title="Seleccionar otra Sucursal"
-                FontSize="14"
-                TextColor="{StaticResource BaseGrey44}"
-                FontFamily="{StaticResource SemiBoldFontOpenSans}">
-                <Picker.Items>
-                    <x:String>Leve</x:String>
-                    <x:String>Medio</x:String>
-                    <x:String>Grave</x:String>
-                </Picker.Items>
-            </local:CustomPicker>
-            
+                        TextColor="{StaticResource BaseGrey}"/>
+                    <local:CustomPicker
+                        Image="Forward"
+                        Title="Nivel de daño"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey44}"
+                        FontFamily="{StaticResource SemiBoldFontOpenSans}">
+                            <Picker.Items>
+                                <x:String>Leve</x:String>
+                                <x:String>Medio</x:String>
+                                <x:String>Grave</x:String>
+                            </Picker.Items>
+                    </local:CustomPicker>
+                </StackLayout>
 
-
-
-
-            <Label
-                Text="Describa la condición observada"
-                FontSize="14"
-                FontFamily="{StaticResource BoldFontOpenSans}"
-                TextColor="{StaticResource BaseGrey}"/>
+                <!--Editor Descripcion-->
+                <StackLayout
+                    Spacing="10">
+                    <Label
+                        Text="Describa la condición observada"
+                        FontSize="14"
+                        FontFamily="{StaticResource RegularFontOpenSans}"
+                        TextColor="{StaticResource BaseGrey}"/>
                     <Frame
                         HasShadow="False"
                         CornerRadius="5"
-                        BorderColor="{StaticResource BaseGreyLight}"
+                        BorderColor="{StaticResource BaseGreyE}"
                         BackgroundColor="{StaticResource BGGrey}"
                         Padding="0">
-                        <Editor
+                        <local:CustomEditor
+                            
+                            FontSize="12"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
                             Visual="Default"
-                            HeightRequest="220"/>
+                            HeightRequest="110"/>
                         
                     </Frame>
-            <Label
-                Text="Cargar foto"
-                FontSize="14"
-                FontFamily="{StaticResource BoldFontOpenSans}"
-                TextColor="{StaticResource BaseGrey}"/>
-            <Image
-                HeightRequest="220"
-                Source="camara_select_foto"/>
-            <StackLayout
-                BindingContext="{Binding Main, Source={StaticResource Locator}}"
-                Spacing="10"
-                Orientation="Horizontal"
-                Margin="24,0">
+                </StackLayout>
 
-                <local:CustomButton
-                    HorizontalOptions="EndAndExpand"
-                    BackgroundColor="White"
-                    Text="Cancelar"
-                    FontSize="14"
-                    FontFamily="{StaticResource BoldFontOpenSans}"
-                    TextColor="{StaticResource BaseGreyLight}"
-                    HeightRequest="40"
-                    WidthRequest="90"
-                    BorderRadius="20"/>
+                <!--Ingreso de foto-->
+                <StackLayout
+                    Spacing="10">
+                
+                    <Label
+                        Text="Cargar foto"
+                        FontSize="14"
+                        FontFamily="{StaticResource RegularFontOpenSans}"
+                        TextColor="{StaticResource BaseGrey}"/>
+                
+                    
 
-                <local:CustomButton
-                    HorizontalOptions="EndAndExpand"
-                    BackgroundColor="{StaticResource BaseGreen}"
-                    Text="Registrar"
-                    FontSize="14"
-                    FontFamily="{StaticResource BoldFontOpenSans}"
-                    TextColor="White"
-                    HeightRequest="40"
-                    WidthRequest="128"
-                    BorderRadius="20"/>
+                    <StackLayout
+                        Spacing="0">
+                        <Frame
+                            HasShadow="False"
+                            CornerRadius="0"
+                            BackgroundColor="{StaticResource BaseGrey63}">
+                            <Image
+                                HeightRequest="176"
+                                Source="camara_select_foto"/>
+                                
+                        </Frame>
+                        <StackLayout 
+                            HeightRequest="60"
+                            BackgroundColor="{StaticResource BGGrey}"
+                            Orientation="Horizontal" 
+                            Spacing="0">
+                                <StackLayout 
+                                    HorizontalOptions="CenterAndExpand"
+                                    Orientation="Horizontal" 
+                                    Spacing="10">
+                                    <Image
+                                        Source="camera_solid"/>
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        Text="Tomar foto"
+                                        FontSize="14"
+                                        FontFamily="{StaticResource BoldFontOpenSans}"
+                                        TextColor="{StaticResource BaseGrey}"/>
+                                </StackLayout>
+                                <StackLayout 
+                                    HorizontalOptions="CenterAndExpand"
+                                    Orientation="Horizontal" 
+                                    Spacing="10">
+                                    <Image
+                                        Source="image_regular"/>
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        Text="Abrir galería"
+                                        FontSize="14"
+                                        FontFamily="{StaticResource BoldFontOpenSans}"
+                                        TextColor="{StaticResource BaseGrey}"/>
+                                </StackLayout>
+                            </StackLayout>
+                    </StackLayout>
+                    
+                </StackLayout>
+
+                <!--Botones-->
+                <StackLayout
+                    BindingContext="{Binding Main, Source={StaticResource Locator}}"
+                    Spacing="5"
+                    Orientation="Horizontal"
+                    Margin="8,0">
+
+                        <local:CustomButton
+                        HorizontalOptions="EndAndExpand"
+                        BackgroundColor="White"
+                        Text="Cancelar"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="{StaticResource BaseGreyLight}"
+                        HeightRequest="40"
+                        WidthRequest="90"
+                        BorderRadius="20"/>
+
+                        <local:CustomButton
+                        HorizontalOptions="EndAndExpand"
+                        BackgroundColor="{StaticResource BaseGreen}"
+                        Text="Registrar"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="White"
+                        HeightRequest="40"
+                        WidthRequest="128"
+                        BorderRadius="20"/>
+                    </StackLayout>
+
+
+                </StackLayout>
             </StackLayout>
-
-
-        </StackLayout>
-        </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

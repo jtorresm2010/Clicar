@@ -1,12 +1,14 @@
 ﻿using Clicar.Models;
 using Clicar.ViewModels;
 using Clicar.Views;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.CustomControls;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -29,9 +31,13 @@ namespace Clicar.Templates
             SetButtons();
 
             mainInstance.LoadItemList();
-            var tipo = mainInstance.ItemsInspeccion[0].Tipo;
 
-            if (tipo.Equals("3"))
+            var filteringQuery =
+                from itemInspeccion in mainInstance.ItemsInspeccion
+                where itemInspeccion.Tipo == "3"
+                select itemInspeccion;
+
+            if(filteringQuery.Count() != 0)
             {
                 itemsInspeccionListView.IsVisible = false;
                 CreateGrid();
@@ -52,8 +58,6 @@ namespace Clicar.Templates
         {
             itemsInspeccionListView.HeightRequest = mainInstance.ItemsInspeccion.Count() * itemsInspeccionListView.RowHeight;
         }
-
-
 
         private void CreateGrid()
         {
@@ -78,7 +82,7 @@ namespace Clicar.Templates
 
                 //Accion relacionada a tomar foto y su eventual parametro
                 tapAction.SetBinding(TapGestureRecognizer.CommandProperty, "ICommandImageTap");
-                tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, "Test");
+                //tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, "?");
                 
 
                 imagen.GestureRecognizers.Add(tapAction);
@@ -121,5 +125,9 @@ namespace Clicar.Templates
             BackButton.CommandParameter = index.ToString();
             ForwardButton.CommandParameter = index.ToString();
         }
+
+
+
+
     }
 }
