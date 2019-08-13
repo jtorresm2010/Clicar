@@ -16,5 +16,11 @@ namespace Clicar.Views
         {
             InitializeComponent();
         }
+
+        private void FinishCommand(object sender, EventArgs e)
+        {
+            Navigation.PopToRootAsync();
+        }
+
     }
 }

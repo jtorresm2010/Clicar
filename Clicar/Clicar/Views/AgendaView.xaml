@@ -31,6 +31,9 @@
                 HorizontalOptions="EndAndExpand"
                 HeightRequest="45"
                 Source="Sync_alt.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="RefreshCommand" NumberOfTapsRequired="2"/>
+                </Image.GestureRecognizers>
             </Image>
         </StackLayout>
     </NavigationPage.TitleView>
@@ -78,6 +81,7 @@
 
             <!--Titulo de la lista-->
             <Frame 
+                CornerRadius="0"
                 Padding="24" 
                 BackgroundColor="{StaticResource BaseOrange}">
 
@@ -87,9 +91,9 @@
                             Text="Pendientes" 
                             FontSize="20"/>
 
-                <Frame.GestureRecognizers>
+                <!--<Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ToggleVisible" NumberOfTapsRequired="1"/>
-                </Frame.GestureRecognizers>
+                </Frame.GestureRecognizers>-->
 
             </Frame>
 
@@ -198,6 +202,7 @@
 
 
             <Frame 
+                CornerRadius="0"
                 x:Name="ListaCompletadosFrame"
                 Padding="24" 
                 BackgroundColor="{StaticResource BaseGreen}">
@@ -208,15 +213,14 @@
                             Text="Completados" 
                             FontSize="20"/>
 
-                <Frame.GestureRecognizers>
+                <!--<Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ToggleVisibleComp" NumberOfTapsRequired="1"/>
-                </Frame.GestureRecognizers>
+                </Frame.GestureRecognizers>-->
 
             </Frame>
 
 
             <ListView
-                IsVisible="False"
                     RowHeight="110"
                     ItemTapped="AgendaItemTapped"
                     VerticalScrollBarVisibility="Never"

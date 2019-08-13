@@ -96,7 +96,7 @@
                         <Label
                             HorizontalOptions="CenterAndExpand"
                             Text="&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;"
-                            FontSize="20"
+                            FontSize="25"
                             TextColor="{StaticResource BaseGrey}"/>
                         <Label
                             HorizontalOptions="CenterAndExpand"
@@ -105,15 +105,15 @@
                             FontFamily="{StaticResource RegularFontOpenSans}"
                             TextColor="{StaticResource BaseGreyLight}"/>
                         <local:CustomButton
-                        HorizontalOptions="CenterAndExpand"
-                        BackgroundColor="{StaticResource BaseOrange}"
-                        Text="Agregar ítem"
-                        FontSize="14"
-                        FontFamily="{StaticResource BoldFontOpenSans}"
-                        TextColor="White"
-                        HeightRequest="40"
-                        WidthRequest="280"
-                        BorderRadius="20"/>
+                            HorizontalOptions="CenterAndExpand"
+                            BackgroundColor="{StaticResource BaseOrange}"
+                            Text="Agregar ítem"
+                            FontSize="14"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            TextColor="White"
+                            HeightRequest="40"
+                            WidthRequest="280"
+                            BorderRadius="20"/>
                     </StackLayout>
 
 

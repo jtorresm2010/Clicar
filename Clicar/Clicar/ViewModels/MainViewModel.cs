@@ -100,7 +100,6 @@ namespace Clicar.ViewModels
             itemActual.BorderColor = baseGreen;
 
 
-            itemActual.ClosePanel();
 
             try
             {
@@ -110,11 +109,11 @@ namespace Clicar.ViewModels
             }
             catch (Exception e )
             {
-
-                Console.WriteLine(e.Message);
+                Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
+                //Console.WriteLine(e.Message);
             }
 
-            Console.WriteLine("---------------------" + parameter);
+            itemActual.ClosePanel();
         }
 
         public ICommand ICommandNext

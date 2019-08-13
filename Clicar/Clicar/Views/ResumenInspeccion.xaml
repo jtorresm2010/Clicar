@@ -3,13 +3,204 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Clicar.Customs"
              mc:Ignorable="d"
              x:Class="Clicar.Views.ResumenInspeccion">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <NavigationPage.TitleView>
+        <StackLayout 
+            Margin="0"
+            Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
+            <Image 
+                Margin="0,0,70,0"
+                HorizontalOptions="CenterAndExpand"
+                HeightRequest="25"
+                Source="clicar.png">
+            </Image>
+
+
         </StackLayout>
+    </NavigationPage.TitleView>
+
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Spacing="0"
+                VerticalOptions="FillAndExpand"
+                Margin="0,8"
+                BackgroundColor="White">
+
+                <Frame
+                CornerRadius="0"
+                Padding="39,21,39,9" 
+                BackgroundColor="{StaticResource BaseGreen}">
+
+                    <StackLayout
+                    Spacing="0">
+
+                        <Label
+                            Text="Resumen de inspección"
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        
+                        <Label
+                            Text="JRGK85 TUCSON"
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+
+                        <Label
+                                            Text="PEUGEOT - BLANCO"
+                                            HorizontalOptions="Start"
+                                            FontSize="14"
+                                            TextColor="{StaticResource BGGrey}"
+                                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                    </StackLayout>
+
+
+
+                </Frame>
+
+                <StackLayout
+                    Spacing="20"
+                    Margin="24">
+
+                    <!--Valoracion general-->
+                    <StackLayout
+                        Spacing="0">
+
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Evaluación del automóvil"
+                            FontSize="14"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            TextColor="{StaticResource BaseGrey}"/>
+                        <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Text="&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;"
+                            FontSize="25"
+                            TextColor="{StaticResource BaseGrey}"/>
+                        <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Excelente"
+                            FontSize="10"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            TextColor="{StaticResource BaseGreyLight}"/>
+                        
+                    </StackLayout>
+
+                    
+                    <!--Comentario Inspector-->
+                    <StackLayout
+                    Spacing="10">
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            WidthRequest="230"
+                            Text="Comentario del inspector"
+                            FontSize="14"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            TextColor="{StaticResource BaseGrey}"/>
+                        <Frame
+                            Margin="8,0"
+                            HasShadow="False"
+                            CornerRadius="5"
+                            BorderColor="{StaticResource BaseGreyE}"
+                            BackgroundColor="{StaticResource BGGrey}"
+                            Padding="0">
+                            <local:CustomEditor
+                            FontSize="12"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            Visual="Default"
+                            HeightRequest="60"/>
+
+                        </Frame>
+                    </StackLayout>
+
+
+                    <StackLayout
+                    Spacing="10">
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            WidthRequest="230"
+                            Text="Manual, llaves y otros"
+                            FontSize="14"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            TextColor="{StaticResource BaseGrey}"/>
+                        <Frame
+                            Margin="8,0"
+                            HasShadow="False"
+                            CornerRadius="5"
+                            BorderColor="{StaticResource BaseGreyE}"
+                            BackgroundColor="{StaticResource BGGrey}"
+                            Padding="0">
+                            <local:CustomEditor
+                            FontSize="12"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            Visual="Default"
+                            HeightRequest="60"/>
+
+                        </Frame>
+                    </StackLayout>
+
+                    <Frame
+                        HasShadow="False"
+                        CornerRadius="10"
+                        Margin="32,0"
+                        Padding="15"
+                        BackgroundColor="{StaticResource LighterOrange}">
+                        <StackLayout
+                            Spacing="0"
+                            HorizontalOptions="CenterAndExpand">
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="StartAndExpand"
+                                WidthRequest="230"
+                                Text="Inspeccción Completada por:"
+                                FontSize="14"
+                                FontFamily="{StaticResource BoldFontOpenSans}"
+                                TextColor="{StaticResource BaseOrange}"/>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="StartAndExpand"
+                                WidthRequest="230"
+                                Text="Rodrigo.banda@gac-sa.cl"
+                                FontSize="14"
+                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                TextColor="{StaticResource BaseOrange}"/>
+                            
+                        </StackLayout>
+                        
+                        
+                        
+                    </Frame>
+
+
+
+
+                    <!--Boton-->
+                    <local:CustomButton
+                            Clicked="FinishCommand"
+                            HorizontalOptions="CenterAndExpand"
+                            BackgroundColor="{StaticResource BaseGreen}"
+                            Text="Cerrar"
+                            FontSize="14"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            TextColor="White"
+                            HeightRequest="40"
+                            WidthRequest="128"
+                            BorderRadius="20"/>
+
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

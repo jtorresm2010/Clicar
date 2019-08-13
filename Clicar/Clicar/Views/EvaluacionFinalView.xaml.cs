@@ -20,7 +20,6 @@ namespace Clicar.Views
         private void FinalizarCommand(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ResumenInspeccion());
-            
         }
     }
 }

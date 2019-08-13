@@ -60,6 +60,13 @@ namespace Clicar.Views
 
         }
 
+        private void RefreshCommand(object sender, EventArgs e)
+        {
+            var image = (Image)sender;
+
+
+
+        }
 
     }
 }

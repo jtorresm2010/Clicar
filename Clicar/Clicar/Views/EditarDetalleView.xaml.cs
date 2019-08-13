@@ -16,5 +16,10 @@ namespace Clicar.Views
         {
             InitializeComponent();
         }
+
+
+
+
+
     }
 }

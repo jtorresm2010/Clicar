@@ -97,8 +97,7 @@
                 </StackLayout>
 
                 <!--Radio buttons solucion-->
-                <StackLayout
-                    IsVisible="False">
+                <StackLayout>
                     <Label
                         HorizontalOptions="StartAndExpand"
                         Text="Seleccione solución"
@@ -129,7 +128,6 @@
 
                 <!--Picker nivel de daño-->
                 <StackLayout
-                    IsVisible="False"
                     Spacing="10">
                     <Label
                         Text="Indique nivel de daño"
