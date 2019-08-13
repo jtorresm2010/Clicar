@@ -62,26 +62,14 @@
             </StackLayout>
         </StackLayout>
 
-        <Frame
-            HasShadow="False"
-            Padding="0"
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="CenterAndExpand"
-            BackgroundColor="{StaticResource LighterOrange}"
-            CornerRadius="45"
-            HeightRequest="40"
-            WidthRequest="40"
-            >
-            <Label  
-                VerticalTextAlignment="Center"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-                TextColor="{StaticResource BaseOrange}"
-                FontSize="20"
-                FontFamily="{StaticResource BoldFontOpenSans}"
-                Text=">"/>
+        <Image
+            BindingContext="{Binding Main, Source={StaticResource Locator}}"
+            Source="Forward">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding EditarDetalleICommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
 
-        </Frame>
 
 
 

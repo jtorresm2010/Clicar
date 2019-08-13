@@ -102,23 +102,39 @@ namespace Clicar.Models
                 //Area 5
                 new ItemInspeccion
                 {
-                    Nombre = "Tablero encendido", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Tablero encendido", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Cabina general", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Cabina general", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Llaves y documentos", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Llaves y documentos", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Asientos delanteros", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Asientos delanteros", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Asientos traseros", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Asientos traseros", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                },
+                new ItemInspeccion
+                {
+                    Nombre = "Maleta abierta interior pickup", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                },
+                new ItemInspeccion
+                {
+                    Nombre = "Ruedas de repuestos", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                },
+                new ItemInspeccion
+                {
+                    Nombre = "Opcional 1", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                },
+                new ItemInspeccion
+                {
+                    Nombre = "Opcional 2", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
                 //Area 6
                 new ItemInspeccion
@@ -144,28 +160,75 @@ namespace Clicar.Models
                 //Area 7
                 new ItemInspeccion
                 {
-                    Nombre = "Frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Lateral izquierdo", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Lateral izquierdo", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Lateral derecho", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Lateral derecho", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Techo", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Techo", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Capot", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Capot", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
                 },
+                new ItemInspeccion
+                {
+                    Nombre = "Tapa Maleta", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                new ItemInspeccion
+                {
+                    Nombre = "Prabrisas delantero", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                new ItemInspeccion
+                {
+                    Nombre = "Luneta trasera", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                new ItemInspeccion
+                {
+                    Nombre = "Rueda delantera izquierda", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                new ItemInspeccion
+                {
+                    Nombre = "Rueda delantera derecha", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                new ItemInspeccion
+                {
+                    Nombre = "Rueda trasera derecha", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                new ItemInspeccion
+                {
+                    Nombre = "Rueda trasera izquierda", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                new ItemInspeccion
+                {
+                    Nombre = "Debajo frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                new ItemInspeccion
+                {
+                    Nombre = "Debajo izquierdo frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                },
+
+                new ItemInspeccion
+                {
+                    Nombre = "Debajo derecho frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                new ItemInspeccion
+                {
+                    Nombre = "Debajo trasero", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    },
+                
+                
                 //Area 8
                 new ItemInspeccion
                 {
-                    Nombre = "Arranque", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Arranque", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
                 },
                 new ItemInspeccion
                 {

@@ -35,7 +35,13 @@ namespace Clicar.Views
                 orderby areaInspeccion.Orden ascending
                 select areaInspeccion;
 
+            
+
             AccordionMenu.ItemsSource = filteringQuery.ToList<AreaInspeccion>();
+            var primerItem = (AccordionItemView)AccordionMenu.Children[0];
+            primerItem.OpenPanel();
+            
+
 
 
 

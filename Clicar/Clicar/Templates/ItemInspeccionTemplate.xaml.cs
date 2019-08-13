@@ -1,5 +1,6 @@
 ﻿using Clicar.Models;
 using Clicar.ViewModels;
+using Clicar.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,21 +17,98 @@ namespace Clicar.Templates
     public partial class ItemInspeccionTemplate : AccordionItemView
     {
         private int index;
+        MainViewModel mainInstance;
         public ItemInspeccionTemplate()
         {
             InitializeComponent();
 
-            //var accordMenuItem = this.Parent;
-            // var index = accordMenuItem.Text;
-
-            var mainInstance = MainViewModel.GetInstance();
+            mainInstance = MainViewModel.GetInstance();
 
             index = mainInstance.MenuIndex;
+
             SetButtons();
 
             mainInstance.LoadItemList();
+            var tipo = mainInstance.ItemsInspeccion[0].Tipo;
 
+            if (tipo.Equals("3"))
+            {
+                itemsInspeccionListView.IsVisible = false;
+                CreateGrid();
+            }
+            else
+            {
+                ImageGrid.IsVisible = false;
+                SetList();
+
+            }
+
+
+
+        }
+
+
+        private void SetList()
+        {
             itemsInspeccionListView.HeightRequest = mainInstance.ItemsInspeccion.Count() * itemsInspeccionListView.RowHeight;
+        }
+
+
+
+        private void CreateGrid()
+        {
+
+            var gridRow = 0;
+            var gridCol = 0;
+
+            foreach (ItemInspeccion item in mainInstance.ItemsInspeccion)
+            {
+
+
+                StackLayout layout = new StackLayout();
+
+                Image imagen = new Image
+                {
+                    HeightRequest = 100,
+                    Source = "camara_menu"
+                };
+
+                var tapAction = new TapGestureRecognizer();
+
+
+                //Accion relacionada a tomar foto y su eventual parametro
+                tapAction.SetBinding(TapGestureRecognizer.CommandProperty, "ICommandImageTap");
+                tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, "Test");
+                
+
+                imagen.GestureRecognizers.Add(tapAction);
+
+                layout.Children.Add(imagen);
+
+                layout.Children.Add(new Label
+                { HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    FontSize = 10,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    FontFamily = "{StaticResource RegularFontOpenSans}",
+                    TextColor = (Color)Application.Current.Resources["BaseGrey"],
+                    Text = item.Nombre }); ;
+
+                ImageGrid.Children.Add(layout, gridCol, gridRow);
+
+                gridCol++;
+                if(gridCol > 2)
+                {
+                    gridCol = 0;
+                    gridRow++;
+                }
+
+
+
+
+            }
+
+
+
 
         }
 

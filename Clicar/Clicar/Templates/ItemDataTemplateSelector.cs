@@ -9,6 +9,7 @@ namespace Clicar.Templates
     class ItemDataTemplateSelector : DataTemplateSelector
     {
 
+
         public DataTemplate ItemTemplateA { get; set; }
 
         public DataTemplate ItemTemplateB { get; set; }

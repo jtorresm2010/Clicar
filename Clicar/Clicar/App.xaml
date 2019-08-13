@@ -38,6 +38,8 @@
                 <template:ItemInspSwitchVCTemplate/>
             </DataTemplate>
 
+
+
             <template:ItemDataTemplateSelector 
                     x:Key="itemDataTemplateSelector" 
                         ItemTemplateA="{StaticResource itemInspeccionVCTemplate}"

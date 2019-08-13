@@ -30,7 +30,10 @@ namespace Clicar.ViewModels
         {
             instance = this;
 
-            
+
+
+
+
 
         }
 
@@ -163,19 +166,32 @@ namespace Clicar.ViewModels
 
         }
 
+        public ICommand ICommandImageTap
+        {
+            get
+            {
+                return new RelayCommand<string>(parameter => CommandImageTap(parameter));
+            }
 
+        }
 
+        private void CommandImageTap(string parameter)
+        {
+            Console.WriteLine("----------------------------------" + parameter);
+        }
 
+        public ICommand EditarDetalleICommand 
+        {
+            get
+            {
+                return new RelayCommand<string>(parameter => EditarDetalleCommand(parameter));
+            }
 
+        }
 
-
-
-
-
-
-
-
-
-
+        private void EditarDetalleCommand(string parameter)
+        {
+            Console.WriteLine("---------------------------------- Editar detalles view");
+        }
     }
 }

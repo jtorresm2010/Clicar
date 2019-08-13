@@ -33,15 +33,17 @@
                 KeepOnlyOneItemOpen="True" 
                 Margin="0,8"
                 Spacing="5">
+                
                 <accordionview:AccordionRepeaterView.AccordionItemTemplate>
                     <DataTemplate>
 
-
-                                <views:ItemInspeccionTemplate/>
+                        
+                        <views:ItemInspeccionTemplate/>
 
 
                     </DataTemplate>
                 </accordionview:AccordionRepeaterView.AccordionItemTemplate>
+                
             </accordionview:AccordionRepeaterView>
         </ScrollView>
     </ContentPage.Content>

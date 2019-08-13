@@ -49,5 +49,9 @@ namespace Clicar.Templates
                 image.Source = ImageSource.FromFile("lock_solid_grey.png");
             }
         }
+
+
+
+
     }
 }

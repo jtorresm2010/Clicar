@@ -32,7 +32,19 @@
     <accordionview:AccordionItemView.ItemContent>
         <StackLayout
             Margin="0,20">
+            <Grid
+                BindingContext="{Binding Main, Source={StaticResource Locator}}"
+                x:Name="ImageGrid"
+                 Margin="25,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+
             <ListView 
+
                 BindingContext="{Binding Main, Source={StaticResource Locator}}"
                 ItemsSource="{Binding ItemsInspeccion}"
                 RowHeight="80"
@@ -45,7 +57,7 @@
 
             <StackLayout
                 BindingContext="{Binding Main, Source={StaticResource Locator}}"
-                Spacing="20"
+                Spacing="10"
                 Orientation="Horizontal"
                 Margin="24,0">
 
