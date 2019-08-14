@@ -62,7 +62,11 @@
 
 
     <ContentPage.Content>
-        <ScrollView
+       
+            
+            <ScrollView
+                x:Name="MainScrollView"
+                Grid.Row="0"
             Orientation="Vertical" HorizontalScrollBarVisibility="Never">
             
 
@@ -343,5 +347,6 @@
 
         </StackLayout>
         </ScrollView>
+      
     </ContentPage.Content>
 </ContentPage>

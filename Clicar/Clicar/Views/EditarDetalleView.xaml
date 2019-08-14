@@ -135,7 +135,7 @@
                         FontFamily="{StaticResource RegularFontOpenSans}"
                         TextColor="{StaticResource BaseGrey}"/>
                     <local:CustomPicker
-                        Image="Forward"
+                        Image="down_solid"
                         Title="Nivel de daño"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey44}"

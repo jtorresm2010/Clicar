@@ -16,19 +16,17 @@ namespace Clicar.Views
         public AgendaView()
         {
             InitializeComponent();
-            var vehiculos = new VehiculosList();
-            var listaVehiculos = vehiculos.GetListaVehiculos();
-            PendientesListView.ItemsSource = listaVehiculos;
-            PendientesListView.HeightRequest = listaVehiculos.Count * PendientesListView.RowHeight;
 
+            var listaVehiculos = new VehiculosList().GetListaVehiculos();
+
+
+
+            PendientesListView.ItemsSource = listaVehiculos;
+            PendientesListView.HeightRequest = (listaVehiculos.Count * PendientesListView.RowHeight) + Math.Round(listaVehiculos.Count * 0.3);
 
 
             CompletadosListView.ItemsSource = listaVehiculos;
-            CompletadosListView.HeightRequest = listaVehiculos.Count * CompletadosListView.RowHeight;
-            //int itemHeight = PendientesListView.RowHeight;
-            //int listCount = listaVehiculos.Count();
-            //PendientesListView.HeightRequest = itemHeight * listCount;
-
+            CompletadosListView.HeightRequest = (listaVehiculos.Count * CompletadosListView.RowHeight) + Math.Round(listaVehiculos.Count * 0.3);
 
         }
 
@@ -36,7 +34,6 @@ namespace Clicar.Views
         private void AgendaItemTapped(object sender, ItemTappedEventArgs e)
         {
             Navigation.PushAsync(new DetalleInspeccionView());
-            Console.WriteLine("Test list item tap");
         }
 
         private async void LogOutCommand(object sender, EventArgs e)

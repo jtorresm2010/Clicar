@@ -68,7 +68,7 @@
                     FontFamily="{StaticResource RegularFontOpenSans}"
                     TextColor="{StaticResource BaseGreyLight}"/>
             <local:CustomPicker
-                        Image="Forward"
+                        Image="down_solid"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey44}"
                         FontFamily="{StaticResource SemiBoldFontOpenSans}"
