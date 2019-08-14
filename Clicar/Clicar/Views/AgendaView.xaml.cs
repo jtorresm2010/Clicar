@@ -52,8 +52,11 @@ namespace Clicar.Views
 
         private void ToggleVisibleComp(object sender, EventArgs e)
         {
-            CompletadosListView.IsVisible = CompletadosListView.IsVisible ? false : true;
-            PendientesListView.IsVisible = PendientesListView.IsVisible ? false : true;
+            ListaCompletadosFrame.TranslateTo(ListaPendientesFrame.X, ListaPendientesFrame.Y, 5000);
+
+
+            //CompletadosListView.IsVisible = CompletadosListView.IsVisible ? false : true;
+            //PendientesListView.IsVisible = PendientesListView.IsVisible ? false : true;
 
         }
 
@@ -66,24 +69,77 @@ namespace Clicar.Views
             uint intervalo = 300;
 
             parent.IsEnabled = false;
+            MainScrollView.IsEnabled = false;
 
             await Task.WhenAll(
-                imageF.FadeTo(0, intervalo), 
-                imageB.FadeTo(1, intervalo),
+                MainScrollView.FadeTo(0.5, intervalo),
+                imageF.FadeTo(0, intervalo, Easing.CubicIn),
+                imageB.FadeTo(1, intervalo, Easing.CubicIn),
                 imageF.RotateTo(imageF.Rotation + 90, intervalo, Easing.CubicIn),
                 imageB.RotateTo(imageB.Rotation + 90, intervalo, Easing.CubicIn)
                 );
 
             await Task.WhenAll(
-                imageF.FadeTo(1, intervalo),
-                imageB.FadeTo(0, intervalo),
+                MainScrollView.FadeTo(1, intervalo),
+                imageF.FadeTo(1, intervalo, Easing.CubicIn),
+                imageB.FadeTo(0, intervalo, Easing.CubicIn),
                 imageF.RotateTo(imageF.Rotation + 90, intervalo, Easing.CubicOut),
                 imageB.RotateTo(imageB.Rotation + 90, intervalo, Easing.CubicOut)
                 );
-
+            
+            MainScrollView.IsEnabled = true;
             parent.IsEnabled = true;
         }
 
+        //Test deanimacion para carga continua
+        private async void RefreshAsync(object sender, EventArgs e)
+        {
+            var parent = (Grid)sender;
+            var imageF = (Image)parent.Children[0];
+            var imageB = (Image)parent.Children[1];
 
+            uint intervalo = 600;
+
+            parent.IsEnabled = false;
+            MainScrollView.IsEnabled = false;
+
+            await Task.WhenAll(
+                MainScrollView.FadeTo(0.5, intervalo/2),
+                imageF.FadeTo(0, intervalo, Easing.SinIn),
+                imageB.FadeTo(1, intervalo, Easing.SinIn),
+                imageF.RotateTo(imageF.Rotation + 180, intervalo, Easing.Linear),
+                imageB.RotateTo(imageB.Rotation + 180, intervalo, Easing.Linear)
+                );
+
+            int i = 0;
+            var loading = true;
+
+            while (loading)
+            {
+
+            await Task.WhenAll(
+                imageF.RotateTo(imageF.Rotation + 180, intervalo, Easing.Linear),
+                imageB.RotateTo(imageB.Rotation + 180, intervalo, Easing.Linear)
+                );
+
+                i++;
+
+                if(i > 5)
+                {
+                    loading = false;
+                }
+            }
+
+            await Task.WhenAll(
+                MainScrollView.FadeTo(1, intervalo),
+                imageF.FadeTo(1, intervalo),
+                imageB.FadeTo(0, intervalo),
+                imageF.RotateTo(imageF.Rotation + 180, intervalo, Easing.Linear),
+                imageB.RotateTo(imageB.Rotation + 180, intervalo, Easing.Linear)
+                );
+
+            MainScrollView.IsEnabled = true;
+            parent.IsEnabled = true;
+        }
     }
 }

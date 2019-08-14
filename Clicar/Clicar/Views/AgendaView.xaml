@@ -64,13 +64,13 @@
     <ContentPage.Content>
        
             
-            <ScrollView
-                x:Name="MainScrollView"
-                Grid.Row="0"
+        <ScrollView
+            x:Name="MainScrollView"
+            Grid.Row="0"
             Orientation="Vertical" HorizontalScrollBarVisibility="Never">
             
 
-        <StackLayout
+            <StackLayout
             Spacing="0">
 
             <!--Nombre del inspector-->
@@ -105,7 +105,8 @@
             </Frame>
 
             <!--Titulo de la lista-->
-            <Frame 
+                <Frame 
+                x:Name="ListaPendientesFrame"
                 CornerRadius="0"
                 Padding="24" 
                 BackgroundColor="{StaticResource BaseOrange}">
@@ -116,9 +117,9 @@
                             Text="Pendientes" 
                             FontSize="20"/>
 
-                <!--<Frame.GestureRecognizers>
+                <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ToggleVisible" NumberOfTapsRequired="1"/>
-                </Frame.GestureRecognizers>-->
+                </Frame.GestureRecognizers>
 
             </Frame>
 
@@ -238,14 +239,15 @@
                             Text="Completados" 
                             FontSize="20"/>
 
-                <!--<Frame.GestureRecognizers>
+                <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ToggleVisibleComp" NumberOfTapsRequired="1"/>
-                </Frame.GestureRecognizers>-->
+                </Frame.GestureRecognizers>
 
             </Frame>
 
 
             <ListView
+                IsVisible="False"
                     RowHeight="110"
                     ItemTapped="AgendaItemTapped"
                     VerticalScrollBarVisibility="Never"
