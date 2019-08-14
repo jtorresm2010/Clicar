@@ -60,13 +60,33 @@ namespace Clicar.Views
 
         }
 
-        private void RefreshCommand(object sender, EventArgs e)
+        private async void RefreshCommand(object sender, EventArgs e)
         {
-            var image = (Image)sender;
+            var parent = (Grid)sender;
+            var imageF = (Image)parent.Children[0];
+            var imageB = (Image)parent.Children[1];
 
+            uint intervalo = 300;
 
+            parent.IsEnabled = false;
 
+            await Task.WhenAll(
+                imageF.FadeTo(0, intervalo), 
+                imageB.FadeTo(1, intervalo),
+                imageF.RotateTo(imageF.Rotation + 90, intervalo, Easing.CubicIn),
+                imageB.RotateTo(imageB.Rotation + 90, intervalo, Easing.CubicIn)
+                );
+
+            await Task.WhenAll(
+                imageF.FadeTo(1, intervalo),
+                imageB.FadeTo(0, intervalo),
+                imageF.RotateTo(imageF.Rotation + 90, intervalo, Easing.CubicOut),
+                imageB.RotateTo(imageB.Rotation + 90, intervalo, Easing.CubicOut)
+                );
+
+            parent.IsEnabled = true;
         }
+
 
     }
 }

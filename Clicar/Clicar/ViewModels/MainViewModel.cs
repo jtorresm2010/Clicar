@@ -107,7 +107,7 @@ namespace Clicar.ViewModels
                 itemSiguiente.OpenPanel();
 
             }
-            catch (Exception e )
+            catch
             {
                 Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
                 //Console.WriteLine(e.Message);

@@ -26,15 +26,36 @@
                 Source="clicar.png">
             </Image>
 
-            <Image 
-                Margin="0,0,21,0"
-                HorizontalOptions="EndAndExpand"
-                HeightRequest="45"
-                Source="Sync_alt.png">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="RefreshCommand" NumberOfTapsRequired="2"/>
-                </Image.GestureRecognizers>
-            </Image>
+                <!--Margin="0,0,21,0"-->
+            <Grid
+                WidthRequest="37"
+                HorizontalOptions="EndAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+         
+                    
+                <Image 
+                    Grid.Row="0"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="StartAndExpand"
+                    Source="Sync_alt.png"/>
+
+                <Image 
+                    Opacity="0"
+                    Grid.Row="0"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="StartAndExpand"
+                    Source="sync_alt_orange.png"/>
+                
+
+
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="RefreshCommand"/>
+            </Grid.GestureRecognizers>
+            </Grid>
+            
         </StackLayout>
     </NavigationPage.TitleView>
 
