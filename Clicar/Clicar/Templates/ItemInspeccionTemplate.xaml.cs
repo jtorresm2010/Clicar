@@ -79,10 +79,13 @@ namespace Clicar.Templates
 
                 var tapAction = new TapGestureRecognizer();
 
+                var mainInstance = MainViewModel.GetInstance();
+                mainInstance.testObj = item;
 
                 //Accion relacionada a tomar foto y su eventual parametro
                 tapAction.SetBinding(TapGestureRecognizer.CommandProperty, "ICommandImageTap");
-                //tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, "?");
+                //tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, (object)item as Binding);
+                tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, "testObj");
                 
 
                 imagen.GestureRecognizers.Add(tapAction);

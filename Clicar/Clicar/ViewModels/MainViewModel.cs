@@ -22,6 +22,7 @@ namespace Clicar.ViewModels
         private Color baseGreen;
         private int menuIndex;
 
+        public object testObj { get; set; }
         public int MenuIndex { get { return this.menuIndex; } }
 
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
@@ -163,14 +164,15 @@ namespace Clicar.ViewModels
         {
             get
             {
-                return new RelayCommand<string>(parameter => CommandImageTap(parameter));
+                return new RelayCommand<object>(parameter => CommandImageTap(parameter));
             }
 
         }
 
-        private void CommandImageTap(string parameter)
+        private void CommandImageTap(object parameter)
         {
-            Console.WriteLine("----------------------------------" + parameter);
+           var item = (ItemInspeccion)parameter;
+            Console.WriteLine("~(>'.')>" + item.Nombre);
         }
 
 
