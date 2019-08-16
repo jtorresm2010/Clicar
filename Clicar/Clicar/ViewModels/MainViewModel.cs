@@ -22,8 +22,9 @@ namespace Clicar.ViewModels
         private Color baseGreen;
         private int menuIndex;
 
-        public object testObj { get; set; }
+        public object currentItem { get; set; }
         public int MenuIndex { get { return this.menuIndex; } }
+
 
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
 
@@ -77,14 +78,6 @@ namespace Clicar.ViewModels
                 select itemInspeccion;
 
             this.ItemsInspeccion = new ObservableCollection<ItemInspeccion>(filteringQuery);
-
-
-
-
-
-
-
-
 
             menuIndex++;
         }
@@ -195,5 +188,12 @@ namespace Clicar.ViewModels
             //var instance = InspeccionView.GetInstance();
             //await instance.Navigation.PushAsync(new EditarDetalleView());
         }
+
+
+
+
+
+
+
     }
 }
