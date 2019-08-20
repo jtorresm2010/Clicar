@@ -24,64 +24,44 @@ namespace Clicar.iOS.Customs
             base.OnElementChanged(e);
             if (e.OldElement == null)
             {
-                /*
-                var view = (Element as CustomEntry);
-                if (view != null)
-                {
-                    DrawBorder(view);
-                }
-
-
-
-            */
-
-
-
-
-
-
-
-
-
-
-
-
                 
-                UITextField textField = (UITextField)Control;
+                UITextField textField = Control;
                 textField.BorderStyle = UITextBorderStyle.None;
-                //textField.BackgroundColor = UIColor.Black;
+
+
+
+
+                CALayer _line = new CALayer
+                {
+                    BorderColor = UIColor.FromRGB(117, 171, 64).CGColor,
+                    BackgroundColor = UIColor.FromRGB(117, 171, 64).CGColor,
+                    Frame = new CGRect(0, Frame.Height * 0.95, Frame.Width * 1.07, 1f)
+                };
+                textField.Layer.AddSublayer(_line);
+
+
+
+
+
 
 
                 textField.LeftView = new UIView(new CGRect(0, 0, 40, 0));
                 textField.LeftViewMode = UITextFieldViewMode.Always;
 
+                Control.RightView = new UIView(new CGRect(0, 0, 40, 0));
+                Control.RightViewMode = UITextFieldViewMode.Always;
+
+
+
+
 
                 textField.AttributedPlaceholder = new NSAttributedString(
                     textField.AttributedPlaceholder.Value,
                     foregroundColor:UIColor.FromRGBA(117,171,64,128)
-
                     );
                 textField.VerticalAlignment = UIControlContentVerticalAlignment.Center;
-                // Create borders (bottom only)
-                var borderLayer = new CALayer
-                {
-                    MasksToBounds = true,
-                    Frame = new CGRect(0f, Frame.Height * 0.95, Frame.Width * 1.2, 5f),
-                    BorderColor = new CGColor(117, 171, 64), //new CGColor(117, 171, 64),
-                    BorderWidth = 1.0f
-                };
 
-
-                textField.Layer.AddSublayer(borderLayer);
-
-                textField.Layer.MasksToBounds = true;
-              
-
-
-
-                //underline effect Control.Background.SetColorFilter(Android.Graphics.Color.Argb(255, 117, 171, 64), PorterDuff.Mode.SrcAtop);
-                //Control.SetHintTextColor(Android.Graphics.Color.Argb(128, 117, 171, 64));
-                //Control.SetPadding(100, Control.PaddingTop, 115, 30);
+                
             }
         }
 
