@@ -60,13 +60,6 @@
 
 
 
-                                <Image  
-                                    HorizontalOptions="Start"
-                                    WidthRequest="15"
-                                    Margin="10,0,0,8"
-                                    Grid.Column="0"
-                                    Source="user_times_green.png" 
-                                    VerticalOptions="Center" />
 
                                 <local:CustomEntry 
                                     Grid.Column="0"
@@ -77,6 +70,13 @@
                                     FontSize="14" 
                                     FontFamily="{StaticResource RegularFontOpenSans}"  />
 
+                                <Image  
+                                    HorizontalOptions="Start"
+                                    WidthRequest="15"
+                                    Margin="10,0,0,8"
+                                    Grid.Column="0"
+                                    Source="user_times_green.png" 
+                                    VerticalOptions="Center" />
                             </Grid>
 
                             <Grid
@@ -84,13 +84,6 @@
 
 
 
-                                <Image  
-                                    Grid.Column="0"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="15"
-                                    Margin="10,0,0,8"
-                                    Source="lock_solid.png" 
-                                    VerticalOptions="Center" />
 
                                 <local:CustomEntry 
                                     VerticalOptions="Center"
@@ -103,6 +96,13 @@
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
                                     FontFamily="{StaticResource RegularFontOpenSans}"  />
+                                <Image  
+                                    Grid.Column="0"
+                                    HorizontalOptions="Start"
+                                    WidthRequest="15"
+                                    Margin="10,0,0,8"
+                                    Source="lock_solid.png" 
+                                    VerticalOptions="Center" />
 
                                 <Image 
                                     Margin="10,0,10,8"
