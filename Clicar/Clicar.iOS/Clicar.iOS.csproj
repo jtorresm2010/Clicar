@@ -100,6 +100,7 @@
     <BundleResource Include="Resources\sync_alt_solid.png" />
     <BundleResource Include="Resources\sync_alt.png" />
     <BundleResource Include="Resources\user_times_green.png" />
+    <Compile Include="Customs\CustomEntryIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
