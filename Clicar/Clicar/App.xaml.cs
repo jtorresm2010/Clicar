@@ -11,8 +11,8 @@ namespace Clicar
         {
             InitializeComponent();
 
-           //MainPage = new LoginView();
-           MainPage = new NavigationPage(new InspeccionView());
+           MainPage = new LoginView();
+           //MainPage = new NavigationPage(new InspeccionView());
         }
 
         protected override void OnStart()
