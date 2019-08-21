@@ -106,6 +106,8 @@
     <BundleResource Include="Resources\clicar.png" />
     <BundleResource Include="Resources\clicar%402x.png" />
     <BundleResource Include="Resources\clicar%403x.png" />
+    <Compile Include="Customs\CustomPickerIOS.cs" />
+    <BundleResource Include="Resources\ic_arrow_down.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

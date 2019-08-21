@@ -11,7 +11,8 @@ namespace Clicar
         {
             InitializeComponent();
 
-           MainPage = new LoginView();
+            //MainPage = new LoginView();
+            MainPage = new ConfigView();
            //MainPage = new NavigationPage(new InspeccionView());
         }
 

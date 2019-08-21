@@ -110,6 +110,7 @@
                                 
                                 
                                     <local:CustomPicker
+                                        HeightRequest="40"
                                         Image="ic_arrow_down"
                                         Title="Seleccionar otra Sucursal"
                                         FontSize="14"
