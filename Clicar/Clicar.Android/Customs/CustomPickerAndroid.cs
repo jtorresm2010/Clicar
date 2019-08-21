@@ -38,20 +38,24 @@ namespace Clicar.Droid.Customs
             element = (CustomPicker)this.Element;
 
             if (Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
-                Control.Background = AddPickerStyles(element.Image);
-                Control.Elevation = 6f;
-                Control.SetPadding(60, 30, 60, 30);
+                Control.Background = AddPickerStyles();
+                Control.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                //Control.Elevation = 6f;
+                //Control.SetPadding(60, 30, 60, 30);
 
         }
 
+        public ShapeDrawable AddPickerStyles()
+        {
+            ShapeDrawable background = new ShapeDrawable();
+            background.Paint.Color = Android.Graphics.Color.Transparent;
 
+            return background;
+        }
         public LayerDrawable AddPickerStyles(string imagePath)
         {
             ShapeDrawable border = new ShapeDrawable();
             border.Paint.Color = Android.Graphics.Color.Transparent;
-            border.SetPadding(0, 0, 50, 0);
-            
-           // border.Paint.SetStyle(Paint.Style.Stroke);
 
             var gradientDrawable = new GradientDrawable();
             gradientDrawable.SetColor(Android.Graphics.Color.White);
