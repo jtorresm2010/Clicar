@@ -69,10 +69,6 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <BundleResource Include="Resources\Fonts\GothamBold.ttf" />
-    <BundleResource Include="Resources\Fonts\GothamBook.ttf" />
-    <BundleResource Include="Resources\Fonts\GothamLight.ttf" />
-    <BundleResource Include="Resources\Fonts\GothamMedium.ttf" />
     <BundleResource Include="Resources\eye_regular.png" />
     <BundleResource Include="Resources\camara_menu.png" />
     <BundleResource Include="Resources\camara_select_foto.png" />
@@ -101,6 +97,15 @@
     <BundleResource Include="Resources\sync_alt.png" />
     <BundleResource Include="Resources\user_times_green.png" />
     <Compile Include="Customs\CustomEntryIOS.cs" />
+    <BundleResource Include="Resources\Fonts\OpenSansBold.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSansRegular.ttf" />
+    <BundleResource Include="Resources\Fonts\OpenSansSemiBold.ttf" />
+    <BundleResource Include="Resources\clicar_bajada.png" />
+    <BundleResource Include="Resources\clicar_bajada%402x.png" />
+    <BundleResource Include="Resources\clicar_bajada%403x.png" />
+    <BundleResource Include="Resources\clicar.png" />
+    <BundleResource Include="Resources\clicar%402x.png" />
+    <BundleResource Include="Resources\clicar%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -168,5 +173,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Customs\" />
+    <Folder Include="Resources\Fonts\" />
   </ItemGroup>
 </Project>

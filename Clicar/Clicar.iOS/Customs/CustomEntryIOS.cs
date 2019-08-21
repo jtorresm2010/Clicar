@@ -28,23 +28,19 @@ namespace Clicar.iOS.Customs
                 UITextField textField = Control;
                 textField.BorderStyle = UITextBorderStyle.None;
 
+                textField.BackgroundColor = UIColor.Red;
 
-
-
+                //Agrega linea inferior
                 CALayer _line = new CALayer
                 {
                     BorderColor = UIColor.FromRGB(117, 171, 64).CGColor,
                     BackgroundColor = UIColor.FromRGB(117, 171, 64).CGColor,
-                    Frame = new CGRect(0, Frame.Height * 0.95, Frame.Width * 1.07, 1f)
+                    Frame = new CGRect(0, Frame.Height * 0.95, Frame.Width, 1f)
                 };
                 textField.Layer.AddSublayer(_line);
 
 
-
-
-
-
-
+                //Agrega margenes
                 textField.LeftView = new UIView(new CGRect(0, 0, 40, 0));
                 textField.LeftViewMode = UITextFieldViewMode.Always;
 
@@ -52,9 +48,7 @@ namespace Clicar.iOS.Customs
                 Control.RightViewMode = UITextFieldViewMode.Always;
 
 
-
-
-
+                //Cambia el color del texto Hint
                 textField.AttributedPlaceholder = new NSAttributedString(
                     textField.AttributedPlaceholder.Value,
                     foregroundColor:UIColor.FromRGBA(117,171,64,128)
@@ -64,20 +58,5 @@ namespace Clicar.iOS.Customs
                 
             }
         }
-
-
-        /*
-        void DrawBorder(CustomEntry view)
-        {
-            
-        }
-
-
-    */
-
-
-
-
-
     }
 }
