@@ -24,11 +24,11 @@ namespace Clicar.Views
 
             if (Password.IsPassword)
             {
-                eye_icon.Source = ImageSource.FromFile("eye_regular.png");
+                eye_icon.Source = ImageSource.FromFile("eye_faded.png");
             }
             else
             {
-                eye_icon.Source = ImageSource.FromFile("eye_faded.png");
+                eye_icon.Source = ImageSource.FromFile("eye_regular.png");
             }
 
         }

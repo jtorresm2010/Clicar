@@ -24,6 +24,7 @@ namespace Clicar.iOS
         {
             Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
+            UINavigationBar.Appearance.TintColor = UIColor.FromRGB(168, 168, 168);
             LoadApplication(new App());
             Plugin.InputKit.Platforms.iOS.Config.Init();
             return base.FinishedLaunching(app, options);

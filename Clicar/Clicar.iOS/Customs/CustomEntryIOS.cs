@@ -28,9 +28,9 @@ namespace Clicar.iOS.Customs
                 UITextField textField = Control;
                 textField.BorderStyle = UITextBorderStyle.None;
 
-                textField.BackgroundColor = UIColor.Red;
 
                 //Agrega linea inferior
+                /*
                 CALayer _line = new CALayer
                 {
                     BorderColor = UIColor.FromRGB(117, 171, 64).CGColor,
@@ -46,7 +46,7 @@ namespace Clicar.iOS.Customs
 
                 Control.RightView = new UIView(new CGRect(0, 0, 40, 0));
                 Control.RightViewMode = UITextFieldViewMode.Always;
-
+                */
 
                 //Cambia el color del texto Hint
                 textField.AttributedPlaceholder = new NSAttributedString(
