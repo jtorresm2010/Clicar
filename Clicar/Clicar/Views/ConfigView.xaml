@@ -145,7 +145,7 @@
                                 BackgroundColor="{StaticResource BaseGreen}"
                                 Text="Ingresar a la Inspección"
                                 FontSize="16"
-                                FontFamily="{StaticResource MediumFontGotham}"
+                                FontFamily="{StaticResource SemiBoldFontOpenSans}"
                                 TextColor="White"
                                 HeightRequest="40"
                                 BorderRadius="20"/>
