@@ -21,7 +21,7 @@ namespace Clicar.iOS.Customs
 
                 Control.BorderStyle = UITextBorderStyle.None;
                 Control.BackgroundColor = UIKit.UIColor.FromRGBA(0,0,0,0);
-                Control.Frame = new CGRect(x: 0, y: 0, width: Frame.Width, height: 40);
+                Control.Frame = new CGRect(x: 0, y: 0, width: Frame.Width, height: 60);
 
 
             }
