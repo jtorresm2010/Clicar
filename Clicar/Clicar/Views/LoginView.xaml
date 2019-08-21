@@ -45,7 +45,7 @@
                             Spacing="10"
                             VerticalOptions="Center">
                             
-                            
+                            <!--Texto Bienvenida-->
                             <Label
                                 Margin="0,20,0,0"
                                 VerticalOptions="CenterAndExpand"
@@ -55,75 +55,114 @@
                                 TextColor="{StaticResource BaseGreen}"
                                 FontFamily="{StaticResource BoldFontOpenSans}"/>
 
+                            <!--Grid Usuario-->
                             <Grid
+                                ColumnSpacing="0"
                                 HorizontalOptions="CenterAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
 
-
-
-
-                                <local:CustomEntry
-                                    
+                                <Image  
+                                    Grid.Row="0"
                                     Grid.Column="0"
-                                    HeightRequest="50"
+                                    HorizontalOptions="CenterAndExpand"
+                                    WidthRequest="15"
+                                    Source="user_times_green.png" 
+                                    VerticalOptions="Center" />
+                                <local:CustomEntry 
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    VerticalOptions="Center"
+                                    HeightRequest="40"
                                     BackgroundColor="Transparent" 
                                     Placeholder="Ingrese usuario" 
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
                                     FontFamily="{StaticResource RegularFontOpenSans}"  />
 
-                                <Image  
-                                    HorizontalOptions="Start"
-                                    WidthRequest="15"
-                                    Margin="10,0,0,4"
+
+                                <Frame
+                                    Grid.Row="0"
                                     Grid.Column="0"
-                                    Source="user_times_green.png" 
-                                    VerticalOptions="Center" />
+                                    Grid.ColumnSpan="3"
+                                    HasShadow="False"
+                                    Padding="0"
+                                    VerticalOptions="EndAndExpand"
+                                    HeightRequest="1"
+                                    BackgroundColor="{StaticResource BaseGreen}"/>
+
+
                             </Grid>
 
+                            <!--Grid pass-->
                             <Grid
+                                ColumnSpacing="0"
                                 HorizontalOptions="CenterAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
 
-
-
-
+                                <Image  
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalOptions="CenterAndExpand"
+                                    WidthRequest="15"
+                                    Source="lock_solid.png" 
+                                    VerticalOptions="Center" />
                                 <local:CustomEntry 
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    x:Name="Password"
                                     VerticalOptions="Center"
                                     IsPassword="True"
-                                    x:Name="Password"
-                                    Grid.Column="0"
-                                    HeightRequest="45"
+                                    HeightRequest="40"
                                     BackgroundColor="Transparent" 
                                     Placeholder="Ingrese Contraseña" 
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
                                     FontFamily="{StaticResource RegularFontOpenSans}"  />
-                                <Image  
-                                    Grid.Column="0"
-                                    HorizontalOptions="Start"
-                                    WidthRequest="15"
-                                    Margin="10,0,0,2"
-                                    Source="lock_solid.png" 
-                                    VerticalOptions="Center" />
 
-                                <Image 
-                                    Margin="10,0,10,4"
+                                <StackLayout
+                                    Padding="0"
                                     WidthRequest="25"
-                                    x:Name="eye_icon" 
-                                    Source="eye_regular.png" 
-                                    HorizontalOptions="End" 
-                                    VerticalOptions="Center" 
-                                    Grid.Column="0" >
-                            
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ShowPass" NumberOfTapsRequired="1" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                        
-                        
-                        
-                        
+                                    HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="FillAndExpand"
+                                    Grid.Row="0"
+                                    Grid.Column="2" >
+                                    
+                                    <Image 
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        x:Name="eye_icon" 
+                                        Source="eye_faded.png" >
+                                    </Image>
+                                    
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ShowPass"/>
+                                    </StackLayout.GestureRecognizers>
+                                
+                                </StackLayout>
+                                
+                                <Frame
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    HasShadow="False"
+                                    Padding="0"
+                                    VerticalOptions="EndAndExpand"
+                                    HeightRequest="1"
+                                    BackgroundColor="{StaticResource BaseGreen}"/>
+
+
                             </Grid>
 
+                            <!--recuperar pass-->
                             <Label
                                 HorizontalOptions="CenterAndExpand"
                                 Text="Olvidé mi contraseña"
@@ -136,6 +175,7 @@
                                     <TapGestureRecognizer Tapped="PasswordRecoveryCommand" NumberOfTapsRequired="1" />
                                 </Label.GestureRecognizers>
                             </Label>
+                            
                         </StackLayout>
                 
 

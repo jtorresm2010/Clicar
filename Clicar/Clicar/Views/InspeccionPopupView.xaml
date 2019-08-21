@@ -41,7 +41,49 @@
                             TextColor="{StaticResource BaseGreyLight}"/>
 
             <!--Campo de ingreso de VIn-->
+
             <Grid
+                HorizontalOptions="Fill"
+                ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image  
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="15"
+                        Source="exclamation_solid.png" 
+                        VerticalOptions="Center" />
+                <local:CustomEntry 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        VerticalOptions="Center"
+                        HeightRequest="40"
+                        BackgroundColor="Transparent" 
+                        Placeholder="Ingrese número VIN" 
+                        TextColor="{StaticResource BaseGrey}" 
+                        FontSize="14" 
+                        FontFamily="{StaticResource RegularFontOpenSans}"  />
+
+
+                <Frame
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        HasShadow="False"
+                        Padding="0"
+                        VerticalOptions="EndAndExpand"
+                        HeightRequest="1"
+                        BackgroundColor="{StaticResource BaseGreen}"/>
+
+
+            </Grid>
+
+            <!--<Grid
                     HorizontalOptions="Fill">
 
 
@@ -63,7 +105,7 @@
                             FontSize="14" 
                             FontFamily="{StaticResource RegularFontOpenSans}"  />
 
-            </Grid>
+            </Grid>-->
 
             <!--Radio Buttons-->
             <Label

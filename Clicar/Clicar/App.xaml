@@ -86,7 +86,7 @@
                     Value="OpenSansRegular.ttf#OpenSans" />
                     <On 
                     Platform="iOS" 
-                    Value="GothamBold" />
+                    Value="OpenSansRegular" />
             </OnPlatform>
             
             <OnPlatform 
