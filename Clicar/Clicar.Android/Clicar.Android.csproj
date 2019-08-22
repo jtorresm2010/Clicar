@@ -51,6 +51,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Plugin.CurrentActivity">
+      <Version>2.1.0.4</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.1" />
@@ -62,6 +65,13 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customs\Camera2\CameraCaptureListener.cs" />
+    <Compile Include="Customs\Camera2\CameraCaptureStateListener.cs" />
+    <Compile Include="Customs\Camera2\CameraCaptureStillPictureSessionCallback.cs" />
+    <Compile Include="Customs\Camera2\CameraDroid.cs" />
+    <Compile Include="Customs\Camera2\CameraStateListener.cs" />
+    <Compile Include="Customs\Camera2\CameraViewServiceRenderer.cs" />
+    <Compile Include="Customs\Camera2\ImageAvailableListener.cs" />
     <Compile Include="Customs\CustomButtonAndroid.cs" />
     <Compile Include="Customs\CustomEditorAndroid.cs" />
     <Compile Include="Customs\CustomEntryAndroid.cs" />
@@ -393,6 +403,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_arrow_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\CameraLayout.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\front_example.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -3,13 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Clicar.Customs"
              mc:Ignorable="d"
              x:Class="Clicar.Views.CameraView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            BackgroundColor="White">
+
+            <Frame
+                HasShadow="False"
+                Margin="2"
+                Padding="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                CornerRadius="20">
+                
+                <Grid
+                x:Name="MainGrid"
+                BackgroundColor="Black"
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <controls:CameraPreview 
+                    IsEnabled="False"
+                    x:Name="CameraPreview" 
+                    Grid.ColumnSpan="2" 
+                    Camera="Front"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand" />
+
+
+                <Image
+                    Source="front_example"
+                    Opacity="0.6"
+                    Grid.ColumnSpan="2"
+                    Rotation="90"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand"/>
+
+            </Grid>
+            </Frame>
+
+            <Button
+                
+                Text="Snap"
+                x:Name="CameraButton"
+                Clicked="OnCameraClicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,5 +1,8 @@
 ﻿using Clicar.Views;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,10 +14,20 @@ namespace Clicar
         {
             InitializeComponent();
 
+
+
+
             //MainPage = new LoginView();
-            MainPage = new ConfigView();
-           //MainPage = new NavigationPage(new InspeccionView());
+            //MainPage = new ConfigView();
+           MainPage = new NavigationPage(new CameraView());
+
+
+
+
+
+
         }
+
 
         protected override void OnStart()
         {
