@@ -1,4 +1,5 @@
 ﻿using Clicar.Interface;
+using Clicar.Models;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
@@ -22,6 +23,8 @@ namespace Clicar.Views
 
         private ImageSource ImageSource;
 
+        public ItemInspeccion iteminspeccion;
+
         public CameraView()
         {
             InitializeComponent();
@@ -33,6 +36,8 @@ namespace Clicar.Views
 
             bool hasCameraPermission = await GetCameraPermission();
 
+            testLabel.Text = "Imagen: " + iteminspeccion.Nombre;
+
             if (hasCameraPermission)
             {
                 Console.WriteLine("Camara tiene permisos");
@@ -41,61 +46,15 @@ namespace Clicar.Views
 
         }
 
-        async void OnCameraClicked(object sender, EventArgs e)
-        {
-            Func<object> func = () =>
-            {
-                var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
-                return obj;
-            };
-
-            var photo = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions()
-            {
-                OverlayViewProvider = func,
-                DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Rear,
-            });
-        }
-
-
         private void OnPictureFinished()
         {
-            DisplayAlert("Confirm", "Picture Taken", "", "Ok");
+            DisplayAlert("Confirmar", "Foto guardada", "", "Ok");
         }
 
-        private async void OnCameraClicked2(object sender, EventArgs e)
+        private async void OnCameraClicked(object sender, EventArgs e)
         {
-            await CrossMedia.Current.Initialize();  //
-
-
-
-            this.file = await CrossMedia.Current.TakePhotoAsync(
-                        new StoreCameraMediaOptions
-                        {
-                            Directory = "Sample",
-                            Name = "test.jpg",
-                            PhotoSize = PhotoSize.Small,
-                        }
-                    );
-
-
-
-            if (this.file != null)
-            {
-                this.ImageSource = ImageSource.FromStream(() =>
-                {
-                    var stream = this.file.GetStream();
-
-                    //UpdateUserImage();
-                    return stream;
-                });
-            }
-
-        }
-
-        private async void OnCameraClicked1(object sender, EventArgs e)
-        {
-            //var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
-            //CameraPreview.CameraClick.Execute(this);
+            var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
+            CameraPreview.CameraClick.Execute(this);
 
         }
 

@@ -1,6 +1,11 @@
-﻿using Clicar.Models;
+﻿using Clicar.Interface;
+using Clicar.Models;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -162,10 +167,42 @@ namespace Clicar.ViewModels
 
         }
 
-        private void CommandImageTap(object parameter)
+        private async void CommandImageTap(object parameter)
         {
-           var item = (ItemInspeccion)parameter;
-            Console.WriteLine("~(>'.')>" + item.Nombre);
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                Func<object> func = () =>
+                {
+                    var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
+                    return obj;
+                };
+
+                var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
+                {
+                    Directory = "Clicar",
+                    Name = "front_example.jpg",
+                    PhotoSize = PhotoSize.Medium,
+                    OverlayViewProvider = func,
+                    DefaultCamera = CameraDevice.Rear,
+                });
+            }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                var item = (ItemInspeccion)parameter;
+                CameraView cameraView = new CameraView();
+                cameraView.iteminspeccion = item;
+
+                var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
+
+                await Application.Current.MainPage.Navigation.PushAsync(cameraView);
+            }
+
+
+
+
+
+            //Console.WriteLine("~(>'.')>" + item.Nombre);
         }
 
 

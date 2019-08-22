@@ -32,15 +32,29 @@
                 </Grid.ColumnDefinitions>
 
                 <controls:CameraPreview 
-                    IsEnabled="False"
                     x:Name="CameraPreview" 
+                    Grid.Row="0"
                     Grid.ColumnSpan="2" 
                     Camera="Front"
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand" />
 
 
-                <Image
+                <Label
+                    Margin="10,10,0,0"
+                    x:Name="testLabel"
+                    FontSize="20"
+                    TextColor="White"
+                    Text="Test Item"
+                    Opacity="0.6"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand"/>
+                
+
+                    
+                    <Image
+                    Grid.Row="0"
                     Source="front_example"
                     Opacity="0.6"
                     Grid.ColumnSpan="2"
@@ -48,7 +62,7 @@
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand"/>
 
-            </Grid>
+                </Grid>
             </Frame>
 
             <Button
