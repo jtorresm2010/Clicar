@@ -12,9 +12,9 @@ namespace Clicar.iOS.Customs
         {
         }
 
-        public object GetImageOverlay()
+        public object GetImageOverlay(string image)
         {
-            var imageView = new UIImageView(UIImage.FromBundle("yourimagename.png"));
+            var imageView = new UIImageView(UIImage.FromBundle(image));
             imageView.ContentMode = UIViewContentMode.ScaleAspectFit;
 
             var screen = UIScreen.MainScreen.Bounds;

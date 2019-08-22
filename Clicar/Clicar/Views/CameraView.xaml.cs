@@ -41,18 +41,18 @@ namespace Clicar.Views
 
         }
 
-        async void OpenCameraAsync()
+        async void OnCameraClicked(object sender, EventArgs e)
         {
             Func<object> func = () =>
             {
-                var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay();
+                var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
                 return obj;
             };
 
             var photo = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions()
             {
                 OverlayViewProvider = func,
-                DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Front,
+                DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Rear,
             });
         }
 
@@ -62,7 +62,7 @@ namespace Clicar.Views
             DisplayAlert("Confirm", "Picture Taken", "", "Ok");
         }
 
-        private async void OnCameraClicked(object sender, EventArgs e)
+        private async void OnCameraClicked2(object sender, EventArgs e)
         {
             await CrossMedia.Current.Initialize();  //
 
