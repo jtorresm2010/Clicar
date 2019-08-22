@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Clicar.Interface;
+using Clicar.iOS.Customs;
 using Foundation;
 using UIKit;
 
@@ -26,6 +27,9 @@ namespace Clicar.iOS
             global::Xamarin.Forms.Forms.Init();
             UINavigationBar.Appearance.TintColor = UIColor.FromRGB(168, 168, 168);
             LoadApplication(new App());
+
+            Xamarin.Forms.DependencyService.Register<IPhotoOverlay, PhotoOverlayIOS>();
+
             Plugin.InputKit.Platforms.iOS.Config.Init();
             return base.FinishedLaunching(app, options);
         }

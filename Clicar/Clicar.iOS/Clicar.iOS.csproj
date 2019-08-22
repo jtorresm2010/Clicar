@@ -109,6 +109,10 @@
     <Compile Include="Customs\CustomPickerIOS.cs" />
     <BundleResource Include="Resources\ic_arrow_down.png" />
     <Compile Include="Customs\CustomFrameIOS.cs" />
+    <Compile Include="Customs\CameraViewServiceRendererIOS.cs" />
+    <Compile Include="Customs\NativeCameraPreview.cs" />
+    <BundleResource Include="Resources\front_example.png" />
+    <Compile Include="Customs\PhotoOverlayIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

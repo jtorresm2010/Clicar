@@ -1,4 +1,5 @@
-﻿using Plugin.Media;
+﻿using Clicar.Interface;
+using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
@@ -40,13 +41,28 @@ namespace Clicar.Views
 
         }
 
+        async void OpenCameraAsync()
+        {
+            Func<object> func = () =>
+            {
+                var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay();
+                return obj;
+            };
+
+            var photo = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions()
+            {
+                OverlayViewProvider = func,
+                DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Front,
+            });
+        }
+
 
         private void OnPictureFinished()
         {
             DisplayAlert("Confirm", "Picture Taken", "", "Ok");
         }
 
-        private async void CamTest(object sender, EventArgs e)
+        private async void OnCameraClicked(object sender, EventArgs e)
         {
             await CrossMedia.Current.Initialize();  //
 
@@ -76,10 +92,10 @@ namespace Clicar.Views
 
         }
 
-        private async void OnCameraClicked(object sender, EventArgs e)
+        private async void OnCameraClicked1(object sender, EventArgs e)
         {
-            var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
-            CameraPreview.CameraClick.Execute(this);
+            //var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
+            //CameraPreview.CameraClick.Execute(this);
 
         }
 
