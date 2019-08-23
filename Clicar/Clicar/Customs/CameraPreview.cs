@@ -11,6 +11,12 @@ namespace Clicar.Customs
         Front
     }
 
+    public enum Orientation
+    {
+        Portrait,
+        Landscape
+    }
+
     public class CameraPreview : View
     {
 
@@ -21,6 +27,20 @@ namespace Clicar.Customs
             returnType: typeof(CameraOptions),
             declaringType: typeof(CameraPreview),
             defaultValue: CameraOptions.Rear);
+
+        public static readonly BindableProperty OrientationProperty = BindableProperty.Create(
+            propertyName: "Orientation",
+            returnType: typeof(Orientation),
+            declaringType: typeof(CameraPreview),
+            defaultValue: Orientation.Portrait);
+
+
+
+        public Orientation Orientation
+        {
+            get { return (Orientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
 
         public CameraOptions Camera
         {

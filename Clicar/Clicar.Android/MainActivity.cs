@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Plugin.Permissions;
 using Plugin.CurrentActivity;
+using Plugin.DeviceOrientation;
 
 namespace Clicar.Droid
 {
@@ -27,7 +28,7 @@ namespace Clicar.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-            RequestedOrientation = ScreenOrientation.Portrait;
+           // RequestedOrientation = ScreenOrientation.Portrait;
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -51,6 +52,14 @@ namespace Clicar.Droid
                 // Do something if there are not any pages in the `PopupStack`
             }
         }
+
+        public override void OnConfigurationChanged(global::Android.Content.Res.Configuration newConfig)
+        {
+            base.OnConfigurationChanged(newConfig);
+            DeviceOrientationImplementation.NotifyOrientationChange(newConfig.Orientation);
+        }
+
+
 
     }
 }

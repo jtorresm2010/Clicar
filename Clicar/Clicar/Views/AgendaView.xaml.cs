@@ -52,11 +52,11 @@ namespace Clicar.Views
 
         private void ToggleVisibleComp(object sender, EventArgs e)
         {
-            ListaCompletadosFrame.TranslateTo(ListaPendientesFrame.X, ListaPendientesFrame.Y, 5000);
+            //ListaCompletadosFrame.TranslateTo(ListaPendientesFrame.X, ListaPendientesFrame.Y, 5000);
 
 
-            //CompletadosListView.IsVisible = CompletadosListView.IsVisible ? false : true;
-            //PendientesListView.IsVisible = PendientesListView.IsVisible ? false : true;
+            CompletadosListView.IsVisible = CompletadosListView.IsVisible ? false : true;
+            PendientesListView.IsVisible = PendientesListView.IsVisible ? false : true;
 
         }
 

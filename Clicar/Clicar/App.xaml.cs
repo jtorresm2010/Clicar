@@ -19,7 +19,7 @@ namespace Clicar
 
             MainPage = new LoginView();
             //MainPage = new ConfigView();
-           //MainPage = new NavigationPage(new CameraView());
+            //MainPage = new NavigationPage(new InspeccionView());
 
 
 

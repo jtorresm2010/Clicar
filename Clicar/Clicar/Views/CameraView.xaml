@@ -8,15 +8,9 @@
              x:Class="Clicar.Views.CameraView">
     <ContentPage.Content>
         <StackLayout
+            Spacing="0"
             BackgroundColor="White">
 
-            <Frame
-                HasShadow="False"
-                Margin="2"
-                Padding="0"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                CornerRadius="20">
                 
                 <Grid
                 x:Name="MainGrid"
@@ -53,23 +47,53 @@
                 
 
                     
-                    <Image
+                <Image
+                    x:Name="OverlayImage"
+                    Margin="40"
                     Grid.Row="0"
                     Source="front_example"
-                    Opacity="0.6"
+                    Opacity="0.5"
                     Grid.ColumnSpan="2"
-                    Rotation="90"
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand"/>
 
                 </Grid>
-            </Frame>
 
-            <Button
-                
-                Text="Snap"
-                x:Name="CameraButton"
-                Clicked="OnCameraClicked" />
+            <StackLayout
+                x:Name="ButtonsLayout"
+                Orientation="Horizontal"
+                Spacing="20"
+                HorizontalOptions="CenterAndExpand"
+                HeightRequest="130"
+                Padding="0">
+
+                <controls:CustomButton
+                    VerticalOptions="CenterAndExpand"
+                    x:Name="GalleryButton"
+                    BackgroundColor="{StaticResource BaseOrange}"
+                    Text="Abrir Galería"
+                    FontSize="14"
+                    FontFamily="{StaticResource BoldFontOpenSans}"
+                    TextColor="White"
+                    HeightRequest="40"
+                    WidthRequest="120"
+                    BorderRadius="20"/>
+
+
+                <controls:CustomButton
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnCameraClicked"
+                    x:Name="CameraButton"
+                    BackgroundColor="{StaticResource BaseGreen}"
+                    Text="Tomar Foto"
+                    FontSize="14"
+                    FontFamily="{StaticResource BoldFontOpenSans}"
+                    TextColor="White"
+                    HeightRequest="40"
+                    WidthRequest="120"
+                    BorderRadius="20"/>
+
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

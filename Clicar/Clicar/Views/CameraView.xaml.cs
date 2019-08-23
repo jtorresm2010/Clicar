@@ -1,15 +1,18 @@
 ﻿using Clicar.Interface;
 using Clicar.Models;
+using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,21 +21,108 @@ namespace Clicar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CameraView : ContentPage
     {
-
-        private MediaFile file;
-
-        private ImageSource ImageSource;
-
+        readonly SensorSpeed speed = SensorSpeed.Default;
+        private bool ImageIsFlipping = false;
         public ItemInspeccion iteminspeccion;
 
         public CameraView()
         {
             InitializeComponent();
+
             CameraPreview.PictureFinished += OnPictureFinished;
+
+            InitializeAccelerometer();
+
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
+        }
+
+        public void ToggleAccelerometer()
+        {
+            try
+            {
+                if (Accelerometer.IsMonitoring)
+                    Accelerometer.Stop();
+                else
+                    Accelerometer.Start(speed);
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
+
+        void InitializeAccelerometer()
+        {
+            try
+            {
+                ToggleAccelerometer();
+                Accelerometer.ReadingChanged += Reading_Changed;
+            }
+            catch (FeatureNotSupportedException)
+            {
+                Debug.WriteLine("Accelerometer Unavailable");
+            }
+        }
+
+        private void Reading_Changed(object sender, AccelerometerChangedEventArgs e)
+        {
+            var xValue = Math.Abs(e.Reading.Acceleration.X);
+            var yValue = Math.Abs(e.Reading.Acceleration.Y);
+
+
+            if (xValue < yValue)
+            {
+                CameraPreview.Orientation = Customs.Orientation.Portrait;
+                FlipUIElements();
+            }
+            else
+            {
+                CameraPreview.Orientation = Customs.Orientation.Landscape;
+                FlipUIElements();
+            }
+        }
+
+        private async void FlipUIElements()
+        {
+            if (ImageIsFlipping)
+                return;
+
+            ImageIsFlipping = true;
+            uint intervalo = 300;
+
+            if(CameraPreview.Orientation == Customs.Orientation.Portrait)
+            {
+
+                await Task.WhenAll(
+                    OverlayImage.RotateTo(0, intervalo, Easing.CubicIn),
+                    GalleryButton.RotateTo(0, intervalo, Easing.CubicIn),
+                    CameraButton.RotateTo(0, intervalo, Easing.CubicIn)
+                    );
+
+
+            }
+            else
+            {
+                await Task.WhenAll(
+                    OverlayImage.RotateTo(90, intervalo, Easing.CubicIn),
+                    GalleryButton.RotateTo(90, intervalo, Easing.CubicIn),
+                    CameraButton.RotateTo(90, intervalo, Easing.CubicIn)
+                    );
+            }
+
+            ImageIsFlipping = false;
         }
 
         protected async override void OnAppearing()
-        {
+            {
+
+            NavigationPage.SetHasNavigationBar(this, false);
+        
+            
 
             bool hasCameraPermission = await GetCameraPermission();
 
@@ -52,8 +142,11 @@ namespace Clicar.Views
         }
 
         private async void OnCameraClicked(object sender, EventArgs e)
+
+
         {
             var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
+            
             CameraPreview.CameraClick.Execute(this);
 
         }
@@ -97,6 +190,13 @@ namespace Clicar.Views
             }
 
             return true;
+        }
+
+        protected override void OnDisappearing()
+        {
+            ToggleAccelerometer();
+            base.OnDisappearing();
+
         }
 
     }

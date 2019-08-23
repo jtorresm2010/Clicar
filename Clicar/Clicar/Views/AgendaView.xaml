@@ -76,6 +76,7 @@
 
             <!--Nombre del inspector-->
             <Frame
+                CornerRadius="0"
                 Margin="0,8"
                 HasShadow="False"
                 Padding="10,12"
@@ -107,6 +108,7 @@
 
             <!--Titulo de la lista-->
                 <Frame 
+                    HasShadow="False"
                 x:Name="ListaPendientesFrame"
                 CornerRadius="0"
                 Padding="24" 
@@ -229,6 +231,7 @@
 
 
             <Frame 
+                HasShadow="False"
                 CornerRadius="0"
                 x:Name="ListaCompletadosFrame"
                 Padding="24" 

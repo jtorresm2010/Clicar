@@ -10,6 +10,9 @@ using Xamarin.Forms.Platform.Android;
 using System;
 using Android.Runtime;
 using Android.Views;
+using Android.Graphics;
+using Java.IO;
+using Plugin.Media;
 
 [assembly: ExportRenderer(typeof(CameraPreview), typeof(CameraViewServiceRenderer))]
 namespace Clicar.Droid.Customs.Camera2
@@ -52,19 +55,42 @@ namespace Clicar.Droid.Customs.Camera2
 
         private void OnPhoto(object sender, byte[] imgSource)
         {
-
-            
             var path = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures);
 
+
+            Bitmap bmp = BitmapFactory.DecodeByteArray(imgSource, 0, imgSource.Length);
+
+            if(this.Element.Orientation == Orientation.Portrait)
+            {
+                bmp = RotateImage(90, bmp);
+            }
+
+            byte[] bitmapData;
+            using (var stream = new MemoryStream())
+            {
+                bmp.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                bitmapData = stream.ToArray();
+            }
+
             
 
-            File.WriteAllBytes(path + "/Clicar/test002.Jpeg", imgSource);
+
+            System.IO.File.WriteAllBytes(path + "/Clicar/test002_" + this.Element.Orientation.ToString() + ".Jpeg", bitmapData);
 
 
             Device.BeginInvokeOnMainThread(() =>
             {
                 _currentElement?.PictureTaken();
             });
+        }
+
+
+        private Bitmap RotateImage(int angle, Bitmap bitmapSrc)
+        {
+            Matrix matrix = new Matrix();
+            matrix.PostRotate(angle);
+            return Bitmap.CreateBitmap(bitmapSrc, 0, 0,
+                bitmapSrc.Width, bitmapSrc.Height, matrix, true);
         }
 
 

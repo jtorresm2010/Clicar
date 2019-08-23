@@ -2,6 +2,7 @@
 using Clicar.Models;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
+using Plugin.DeviceOrientation;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
@@ -16,6 +17,7 @@ using System.Windows.Input;
 using Xamarin.CustomControls;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 
 namespace Clicar.ViewModels
 {
@@ -193,9 +195,18 @@ namespace Clicar.ViewModels
                 CameraView cameraView = new CameraView();
                 cameraView.iteminspeccion = item;
 
+
+                var test = CrossDeviceOrientation.Current;
+                Console.WriteLine(test.CurrentOrientation.ToString());
+
                 var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
 
                 await Application.Current.MainPage.Navigation.PushAsync(cameraView);
+
+
+
+
+
             }
 
 

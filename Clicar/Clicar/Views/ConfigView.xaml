@@ -150,7 +150,7 @@
 
                         <!--Botón-->
                         <StackLayout
-                                Margin="24,0">
+                                Margin="20,0">
 
 
                             <local:CustomButton

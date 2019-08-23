@@ -72,6 +72,7 @@
                                     WidthRequest="15"
                                     Source="user_times_green.png" 
                                     VerticalOptions="Center" />
+
                                 <local:CustomEntry 
                                     Grid.Row="0"
                                     Grid.Column="1"
@@ -83,8 +84,6 @@
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
                                     FontFamily="{StaticResource RegularFontOpenSans}"  />
-
-
                                 <Frame
                                     Grid.Row="0"
                                     Grid.Column="0"

@@ -33,10 +33,11 @@
                 BackgroundColor="White">
 
                 <Frame
-                        Padding="0"
-                        CornerRadius="0"
-                        BackgroundColor="{StaticResource BaseGreen}"
-                        HeightRequest="50"> 
+                      HasShadow="False"
+                      Padding="0"
+                      CornerRadius="0"
+                      BackgroundColor="{StaticResource BaseGreen}"
+                      HeightRequest="50"> 
                         <StackLayout
                             Spacing="8"
                             Margin="8,0"
