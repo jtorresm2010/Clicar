@@ -68,14 +68,14 @@
             <!--Fuentes-->
 
             <OnPlatform 
-                x:TypeArguments="x:String" 
-                x:Key="BoldFontOpenSans">
+                    x:TypeArguments="x:String" 
+                    x:Key="BoldFontOpenSans">
                 <On 
                     Platform="Android" 
                     Value="OpenSansBold.ttf#OpenSans" />
                 <On 
                     Platform="iOS" 
-                    Value="OpenSansBold" />
+                    Value="OpenSans-Bold" />
             </OnPlatform>
             
             <OnPlatform 
@@ -86,7 +86,7 @@
                     Value="OpenSansRegular.ttf#OpenSans" />
                     <On 
                     Platform="iOS" 
-                    Value="OpenSansRegular" />
+                    Value="OpenSans" />
             </OnPlatform>
             
             <OnPlatform 
@@ -97,7 +97,7 @@
                     Value="OpenSansSemiBold.ttf#OpenSans" />
                         <On 
                     Platform="iOS" 
-                    Value="OpenSansSemiBold" />
+                    Value="OpenSans-SemiBold" />
             </OnPlatform>
 
 

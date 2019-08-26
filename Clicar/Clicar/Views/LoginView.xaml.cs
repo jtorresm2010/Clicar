@@ -1,6 +1,8 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using Plugin.Fingerprint;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +36,15 @@ namespace Clicar.Views
         }
 
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
         private async void PasswordRecoveryCommand(object sender, EventArgs e)
         {
+            UsuarioEntry.FontFamily = "OpenSans-Bold";
+            Console.WriteLine("Fuente actual: " + UsuarioEntry.FontFamily.ToString());
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new PasswordRecoveryPopup());
         }
@@ -44,8 +53,13 @@ namespace Clicar.Views
 
         private async void FingerprintCommand(object sender, EventArgs e)
         {
+
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new FingerPrintPopupView());
+
+
+
+
         }
         
         private void LoginCommand(object sender, EventArgs e)

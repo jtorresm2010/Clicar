@@ -13,20 +13,27 @@ namespace Clicar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AgendaView : ContentPage
     {
+
+
+        List<Vehiculo> listaVehiculos;
+        private double CompletadosHeight;
+        private double PendientesHeight;
         public AgendaView()
         {
             InitializeComponent();
 
-            var listaVehiculos = new VehiculosList().GetListaVehiculos();
+            listaVehiculos = new VehiculosList().GetListaVehiculos();
 
 
 
             PendientesListView.ItemsSource = listaVehiculos;
-            PendientesListView.HeightRequest = (listaVehiculos.Count * PendientesListView.RowHeight) + Math.Round(listaVehiculos.Count * 0.3);
+            PendientesHeight = listaVehiculos.Count * PendientesListView.RowHeight;
+            PendientesListView.HeightRequest = PendientesHeight;
 
 
             CompletadosListView.ItemsSource = listaVehiculos;
-            CompletadosListView.HeightRequest = (listaVehiculos.Count * CompletadosListView.RowHeight) + Math.Round(listaVehiculos.Count * 0.3);
+            CompletadosHeight = listaVehiculos.Count * CompletadosListView.RowHeight;
+            CompletadosListView.HeightRequest = CompletadosHeight;
 
         }
 
@@ -44,23 +51,58 @@ namespace Clicar.Views
 
         private void ToggleVisible(object sender, EventArgs e)
         {
-
-            PendientesListView.IsVisible = PendientesListView.IsVisible ? false : true;
-            CompletadosListView.IsVisible = CompletadosListView.IsVisible ? false : true;
-
+            CloseOpenAnimation(PendientesListView, PendientesHeight, PendientesListView.IsVisible);
         }
 
         private void ToggleVisibleComp(object sender, EventArgs e)
         {
-            //ListaCompletadosFrame.TranslateTo(ListaPendientesFrame.X, ListaPendientesFrame.Y, 5000);
-
-
-            CompletadosListView.IsVisible = CompletadosListView.IsVisible ? false : true;
-            PendientesListView.IsVisible = PendientesListView.IsVisible ? false : true;
-
+            CloseOpenAnimation(CompletadosListView, CompletadosHeight, CompletadosListView.IsVisible);
         }
 
-        private async void RefreshCommand(object sender, EventArgs e)
+        private void CloseOpenAnimation(ListView listView, double listHeight, bool IsVisible)
+        {
+
+            Action<double> callback = input => 
+                {
+                    if (!listView.IsVisible)
+                    {
+                        listView.IsVisible = true;
+                    }
+
+                    listView.HeightRequest = input;
+                };
+            Action<double, bool> endAction = (x, y) => { listView.IsVisible = IsVisible; };
+            uint rate = 16;
+            uint length = 600;
+            double startingHeight = 0;
+            double endingHeight = 0;
+            Easing easing = Easing.Linear;
+
+
+            if (IsVisible)
+            {
+                startingHeight = listHeight;
+                endingHeight = 0;
+                IsVisible = false;
+
+            }
+           else
+            {
+                startingHeight = 0;
+                endingHeight = listHeight;
+                IsVisible = true;
+            }
+
+            
+            
+            listView.Animate("ListSize", callback, startingHeight, endingHeight, rate, length, easing, endAction);
+            //listView.IsVisible = Visible;
+        }
+
+
+
+
+        private async void RefreshCommand1(object sender, EventArgs e)
         {
             var parent = (Grid)sender;
             var imageF = (Image)parent.Children[0];
@@ -91,8 +133,8 @@ namespace Clicar.Views
             parent.IsEnabled = true;
         }
 
-        //Test deanimacion para carga continua
-        private async void RefreshAsync(object sender, EventArgs e)
+        //Test de animacion para carga continua
+        private async void RefreshCommand(object sender, EventArgs e)
         {
             var parent = (Grid)sender;
             var imageF = (Image)parent.Children[0];
@@ -103,6 +145,8 @@ namespace Clicar.Views
             parent.IsEnabled = false;
             MainScrollView.IsEnabled = false;
 
+
+            //comienza a girar
             await Task.WhenAll(
                 MainScrollView.FadeTo(0.5, intervalo/2),
                 imageF.FadeTo(0, intervalo, Easing.SinIn),
@@ -111,25 +155,17 @@ namespace Clicar.Views
                 imageB.RotateTo(imageB.Rotation + 180, intervalo, Easing.Linear)
                 );
 
-            int i = 0;
-            var loading = true;
-
-            while (loading)
+            //sigue girando por los ciclos necesarios
+            for (int i = 0; i < 5; i++)
             {
 
-            await Task.WhenAll(
-                imageF.RotateTo(imageF.Rotation + 180, intervalo, Easing.Linear),
-                imageB.RotateTo(imageB.Rotation + 180, intervalo, Easing.Linear)
-                );
-
-                i++;
-
-                if(i > 5)
-                {
-                    loading = false;
-                }
+                await Task.WhenAll(
+                    imageF.RotateTo(imageF.Rotation + 180, intervalo, Easing.Linear),
+                    imageB.RotateTo(imageB.Rotation + 180, intervalo, Easing.Linear)
+                    );
             }
 
+            //termina el giro
             await Task.WhenAll(
                 MainScrollView.FadeTo(1, intervalo),
                 imageF.FadeTo(1, intervalo),

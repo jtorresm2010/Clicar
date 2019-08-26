@@ -23,12 +23,14 @@ namespace Clicar.iOS.Customs
                 // Border
                 this.Layer.CornerRadius = (float)elem.CornerRadius;
 
-                // Shadow
-                this.Layer.ShadowColor = UIColor.DarkGray.CGColor;
-                this.Layer.ShadowOpacity = 0.6f;
-                this.Layer.ShadowRadius = 2.0f;
-                this.Layer.ShadowOffset = new SizeF(0, 0);
-                //this.Layer.MasksToBounds = true;
+                if (elem.HasShadow)
+                {
+                    this.Layer.ShadowColor = UIColor.DarkGray.CGColor;
+                    this.Layer.ShadowOpacity = 0.6f;
+                    this.Layer.ShadowRadius = 2.0f;
+                    this.Layer.ShadowOffset = new SizeF(0, 0);
+                    
+                }
 
             }
         }

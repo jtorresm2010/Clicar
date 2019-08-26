@@ -9,6 +9,7 @@ using Android.OS;
 using Plugin.Permissions;
 using Plugin.CurrentActivity;
 using Plugin.DeviceOrientation;
+using Plugin.Fingerprint;
 
 namespace Clicar.Droid
 {
@@ -27,8 +28,8 @@ namespace Clicar.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
-
-           // RequestedOrientation = ScreenOrientation.Portrait;
+            CrossFingerprint.SetCurrentActivityResolver(() => CrossCurrentActivity.Current.Activity);
+            // RequestedOrientation = ScreenOrientation.Portrait;
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

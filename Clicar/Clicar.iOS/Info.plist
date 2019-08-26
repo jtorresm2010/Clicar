@@ -31,8 +31,6 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>Clicar</string>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Se requiere acceso a la Cámara</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -41,5 +39,20 @@
 	<string>Se requiere acceso al Micrófono</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Se requiere acceso a la Galería</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Tipo de documento 1</string>
+		</dict>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>OpenSans-SemiBold.ttf</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>9.0</string>
 </dict>
 </plist>

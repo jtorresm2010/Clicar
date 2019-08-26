@@ -67,7 +67,9 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
-    <None Include="Info.plist" />
+    <Content Include="Info.plist">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Resources\eye_regular.png" />
     <BundleResource Include="Resources\camara_menu.png" />
@@ -97,9 +99,6 @@
     <BundleResource Include="Resources\sync_alt.png" />
     <BundleResource Include="Resources\user_times_green.png" />
     <Compile Include="Customs\CustomEntryIOS.cs" />
-    <BundleResource Include="Resources\Fonts\OpenSansBold.ttf" />
-    <BundleResource Include="Resources\Fonts\OpenSansRegular.ttf" />
-    <BundleResource Include="Resources\Fonts\OpenSansSemiBold.ttf" />
     <BundleResource Include="Resources\clicar_bajada.png" />
     <BundleResource Include="Resources\clicar_bajada%402x.png" />
     <BundleResource Include="Resources\clicar_bajada%403x.png" />
@@ -113,6 +112,15 @@
     <Compile Include="Customs\NativeCameraPreview.cs" />
     <BundleResource Include="Resources\front_example.png" />
     <Compile Include="Customs\PhotoOverlayIOS.cs" />
+    <BundleResource Include="Resources\OpenSans-Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\OpenSans-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\OpenSans-SemiBold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

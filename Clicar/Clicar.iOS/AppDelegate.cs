@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Clicar.Interface;
 using Clicar.iOS.Customs;
 using Foundation;
@@ -29,6 +30,24 @@ namespace Clicar.iOS
             LoadApplication(new App());
 
             Xamarin.Forms.DependencyService.Register<IPhotoOverlay, PhotoOverlayIOS>();
+
+
+            var fontList = new StringBuilder();
+            var familyNames = UIFont.FamilyNames;
+            foreach (var familyName in familyNames)
+            {
+                fontList.Append(String.Format("Family: {0}\n", familyName));
+                Console.WriteLine("Family: {0}\n", familyName);
+                var fontNames = UIFont.FontNamesForFamilyName(familyName);
+                foreach (var fontName in fontNames)
+                {
+                    Console.WriteLine("\tFont: {0}\n", fontName);
+                    fontList.Append(String.Format("\tFont: {0}\n", fontName));
+                }
+            };
+
+
+
 
             Plugin.InputKit.Platforms.iOS.Config.Init();
             return base.FinishedLaunching(app, options);

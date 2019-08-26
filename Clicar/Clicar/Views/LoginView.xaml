@@ -74,6 +74,7 @@
                                     VerticalOptions="Center" />
 
                                 <local:CustomEntry 
+                                    x:Name="UsuarioEntry"
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
@@ -168,7 +169,7 @@
                                 TextColor="{StaticResource BaseOrange}"
                                 TextDecorations="Underline"
                                 FontSize="12"
-                                FontFamily="{StaticResource RegularFontOpenSans}">
+                                FontFamily="{StaticResource BoldFontOpenSans}">
 
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PasswordRecoveryCommand" NumberOfTapsRequired="1" />
