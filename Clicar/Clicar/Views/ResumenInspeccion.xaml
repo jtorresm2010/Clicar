@@ -35,6 +35,7 @@
                 HasShadow="False"
                 CornerRadius="0"
                 Padding="39,21,39,9" 
+                  
                 BackgroundColor="{StaticResource BaseGreen}">
 
                     <StackLayout

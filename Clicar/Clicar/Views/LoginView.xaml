@@ -169,7 +169,7 @@
                                 TextColor="{StaticResource BaseOrange}"
                                 TextDecorations="Underline"
                                 FontSize="12"
-                                FontFamily="{StaticResource BoldFontOpenSans}">
+                                FontFamily="{StaticResource RegularFontOpenSans}">
 
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PasswordRecoveryCommand" NumberOfTapsRequired="1" />

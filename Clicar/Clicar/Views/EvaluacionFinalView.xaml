@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              xmlns:local="clr-namespace:Clicar.Customs"
              mc:Ignorable="d"
              x:Class="Clicar.Views.EvaluacionFinalView">
@@ -61,7 +60,7 @@
 
                         <!--Editor Evaluacion-->
                         <StackLayout
-                    Spacing="10">
+                            Spacing="10">
                         <Label
                             HorizontalOptions="StartAndExpand"
                             WidthRequest="230"
@@ -75,7 +74,7 @@
                             BorderColor="{StaticResource BaseGreyE}"
                             BackgroundColor="{StaticResource BGGrey}"
                             Padding="0">
-                            <local:CustomEditor
+                        <local:CustomEditor
                             
                             FontSize="12"
                             TextColor="{StaticResource BaseGrey}"

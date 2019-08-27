@@ -16,5 +16,10 @@ namespace Clicar.Views
         {
             InitializeComponent();
         }
+
+        private void VerResumenCommand(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ResumenInspeccion());
+        }
     }
 }

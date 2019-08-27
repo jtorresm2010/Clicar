@@ -3,13 +3,287 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Clicar.Customs"
              mc:Ignorable="d"
              x:Class="Clicar.Views.ReportePreliminarView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+    <NavigationPage.TitleView>
+        <StackLayout 
+            Margin="0"
+            Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
+            <Image 
+                Margin="0,0,70,0"
+                HorizontalOptions="CenterAndExpand"
+                HeightRequest="25"
+                Source="clicar.png">
+            </Image>
         </StackLayout>
+    </NavigationPage.TitleView>
+
+
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Margin="0,8"
+                Spacing="0"
+                BackgroundColor="{StaticResource BGGrey}">
+            <Frame
+                CornerRadius="0"
+                Padding="39,21,39,9" 
+                BackgroundColor="{StaticResource BaseOrange}">
+
+                <StackLayout
+                    Spacing="0">
+
+                    <Label
+                        Text="Reporte preliminar"
+                        HorizontalOptions="Start"
+                        FontSize="16"
+                        TextColor="{StaticResource BGGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+
+                    <Label
+                        Text="JRGK85 TUCSON"
+                        HorizontalOptions="Start"
+                        FontSize="14"
+                        TextColor="{StaticResource BGGrey}"
+                        FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+
+                    <Label
+                        Text="PEUGEOT - BLANCO"
+                        HorizontalOptions="Start"
+                        FontSize="12"
+                        TextColor="{StaticResource BGGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                 
+
+                </StackLayout>
+
+
+
+            </Frame>
+
+            <Frame
+                Padding="0"
+                BackgroundColor="White"
+                HasShadow="True">
+                <StackLayout
+                    Spacing="15">
+
+                    <StackLayout
+                        Spacing="0"
+                        Padding="40,15,40,0">
+
+
+                        <Grid
+                            RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Hora Inicio-->
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Hora Inicio"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="00:25"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            <!--Hora Término-->
+
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Hora Término"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="03:12"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            <!--Tiempo Inspección-->
+
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Tiempo Inspección"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="02h56m"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            <!--Tiempo Esperado-->
+
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Tiempo Esperado"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="00h20m"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            <!--Record Actual-->
+
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="4"
+                                        Grid.Column="0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Record Actual"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="4"
+                                        Grid.Column="1"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="00h19m"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            <!--Tu media actual-->
+
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="5"
+                                        Grid.Column="0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="Tu media actual"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                            <Label
+                                        Margin="0,5"
+                                        Grid.Row="5"
+                                        Grid.Column="1"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="00h13m"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey}"
+                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            
+                            
+                        </Grid>
+
+                    </StackLayout>
+                    
+                    <!--Entry comentarios-->
+                    <StackLayout
+                        Margin="32,0">
+                        <Frame
+                            HasShadow="False"
+                            CornerRadius="5"
+                            BorderColor="{StaticResource BaseGreyE}"
+                            BackgroundColor="{StaticResource BGGrey}"
+                            Padding="0">
+                            
+                            <local:CustomEditor
+                            
+                            FontSize="12"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"
+                            Visual="Default"
+                            HeightRequest="110"/>
+
+                        </Frame>
+                    </StackLayout>
+
+                    <!--Boton-->
+                    <StackLayout
+                        Margin="40,16"
+                        Spacing="16"
+                        HorizontalOptions="FillAndExpand">
+
+                        <Button
+                            Clicked="VerResumenCommand"
+                            BackgroundColor="{StaticResource BaseGreen}"
+                            Text="Ver resumen de inspección"
+                            FontSize="14"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            TextColor="White"
+                            HeightRequest="40"
+                            BorderRadius="20"/>
+                    </StackLayout>
+                    
+                    <!--Firmas-->
+                    <StackLayout
+                        Spacing="16"
+                        Margin="48,0,48,50">
+                        <!--firmar con Contraseña-->
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Firmar y cerrar con contraseña"
+                            TextColor="{StaticResource BaseOrange}"
+                            TextDecorations="Underline"
+                            FontSize="14"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+                            
+                            <!--firmar con Touch ID-->
+                            <Label
+                                HorizontalOptions="StartAndExpand"
+                                Text="Firmar y Cerrar usando Touch ID"
+                                TextColor="{StaticResource BaseOrange}"
+                                TextDecorations="Underline"
+                                FontSize="14"
+                                FontFamily="{StaticResource RegularFontOpenSans}"/>
+                    </StackLayout>
+                    
+                    
+                    
+                </StackLayout>
+
+            </Frame>
+
+        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
