@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             VerticalOptions="CenterAndExpand"
+             HorizontalOptions="CenterAndExpand"
+             x:Class="Clicar.Templates.StarTemplate"
+             Orientation="Horizontal">
+
+    <Grid
+        HeightRequest="40"
+        ColumnSpacing="5">
+
+
+        <Image
+            x:Name="Star1"
+            Margin="0"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HeightRequest="40"
+            WidthRequest="40"
+            Source="star_border.png"/>
+        <Image
+            x:Name="Star2"
+            Margin="0"
+            Grid.Row="0"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            HeightRequest="40"
+            WidthRequest="40"
+            Source="star_border.png"/>
+        <Image
+            x:Name="Star3"
+            Margin="0"
+            Grid.Row="0"
+            Grid.Column="4"
+            Grid.ColumnSpan="2"
+            HeightRequest="40"
+            WidthRequest="40"
+            Source="star_border.png"/>
+        <Image
+            x:Name="Star4"
+            Margin="0"
+            Grid.Row="0"
+            Grid.Column="6"
+            Grid.ColumnSpan="2"
+            HeightRequest="40"
+            WidthRequest="40"
+            Source="star_border.png"/>
+        <Image
+            x:Name="Star5"
+            Margin="0"
+            Grid.Row="0"
+            Grid.Column="8"
+            Grid.ColumnSpan="2"
+            HeightRequest="40"
+            WidthRequest="40"
+            Source="star_border.png"/>
+        
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="0">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            HeightRequest="40"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="1">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="2">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            HeightRequest="40"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="3">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="4">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            HeightRequest="40"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="5">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="6">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            HeightRequest="40"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="7">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="8">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        <Frame
+            BackgroundColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False"
+            Margin="0"
+            HeightRequest="40"
+            WidthRequest="20"
+            Padding="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="1"
+            Grid.Column="9">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SetStar"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+    </Grid>
+    
+    
+    
+    
+    
+</StackLayout>

@@ -31,6 +31,7 @@
         
         <StackLayout
             Spacing="0"
+            Margin="0,8"
             BackgroundColor="{StaticResource BGGrey}">
             <Frame
                 CornerRadius="0"

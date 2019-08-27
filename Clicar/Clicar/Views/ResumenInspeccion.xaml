@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Clicar.Customs"
+             xmlns:views="clr-namespace:Clicar.Templates"
              mc:Ignorable="d"
              x:Class="Clicar.Views.ResumenInspeccion">
     <NavigationPage.TitleView>
@@ -56,11 +57,11 @@
                             FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
 
                         <Label
-                                            Text="PEUGEOT - BLANCO"
-                                            HorizontalOptions="Start"
-                                            FontSize="14"
-                                            TextColor="{StaticResource BGGrey}"
-                                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+                            Text="PEUGEOT - BLANCO"
+                            HorizontalOptions="Start"
+                            FontSize="14"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     </StackLayout>
 
@@ -74,7 +75,7 @@
 
                     <!--Valoracion general-->
                     <StackLayout
-                        Spacing="0">
+                        Spacing="10">
 
                         <Label
                             HorizontalOptions="StartAndExpand"
@@ -82,11 +83,9 @@
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="{StaticResource BaseGrey}"/>
-                        <Label
-                            HorizontalOptions="CenterAndExpand"
-                            Text="&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;"
-                            FontSize="25"
-                            TextColor="{StaticResource BaseGrey}"/>
+                        <views:StarTemplate
+                             HorizontalOptions="CenterAndExpand"
+                             Orientation="Horizontal"/>
                         <Label
                             HorizontalOptions="CenterAndExpand"
                             Text="Excelente"
