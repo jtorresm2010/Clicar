@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Clicar.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EvaluacionFinalView : ContentPage
+    public partial class ReportePreliminarView : ContentPage
     {
-        public EvaluacionFinalView()
+        public ReportePreliminarView()
         {
             InitializeComponent();
-        }
-
-        private void FinalizarCommand(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new ReportePreliminarView());
         }
     }
 }

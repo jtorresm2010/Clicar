@@ -105,16 +105,6 @@
                             FontSize="10"
                             FontFamily="{StaticResource RegularFontOpenSans}"
                             TextColor="{StaticResource BaseGreyLight}"/>
-                        <local:CustomButton
-                            HorizontalOptions="CenterAndExpand"
-                            BackgroundColor="{StaticResource BaseOrange}"
-                            Text="Agregar ítem"
-                            FontSize="14"
-                            FontFamily="{StaticResource BoldFontOpenSans}"
-                            TextColor="White"
-                            HeightRequest="40"
-                            WidthRequest="280"
-                            BorderRadius="20"/>
                     </StackLayout>
 
 
@@ -127,7 +117,7 @@
                         Orientation="Horizontal"
                         Margin="8,30,8,0">
 
-                        <local:CustomButton
+                        <Button
                         HorizontalOptions="EndAndExpand"
                         BackgroundColor="White"
                         Text="Cancelar"
@@ -138,7 +128,7 @@
                         WidthRequest="90"
                         BorderRadius="20"/>
 
-                        <local:CustomButton
+                        <Button
                             Clicked="FinalizarCommand"
                             HorizontalOptions="EndAndExpand"
                             BackgroundColor="{StaticResource BaseGreen}"

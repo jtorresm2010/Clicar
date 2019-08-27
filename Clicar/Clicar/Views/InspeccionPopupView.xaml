@@ -141,7 +141,7 @@
                     Orientation="Horizontal">
 
 
-                <local:CustomButton
+                <Button
                     Clicked="CancelarCommand"
                             HorizontalOptions="End"
                             BackgroundColor="White"
@@ -153,7 +153,7 @@
                             CornerRadius="15"
                             WidthRequest="100"/>
 
-                <local:CustomButton
+                <Button
                             Clicked="ContinuarCommand"
                             HorizontalOptions="End"
                             BackgroundColor="{StaticResource BaseOrange}"

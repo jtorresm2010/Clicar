@@ -153,7 +153,7 @@
                                 Margin="20,0">
 
 
-                            <local:CustomButton
+                            <Button
                             
                                 Clicked="LoginCommand"
                                 BackgroundColor="{StaticResource BaseGreen}"

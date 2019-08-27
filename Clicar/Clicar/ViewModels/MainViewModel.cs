@@ -172,48 +172,57 @@ namespace Clicar.ViewModels
         private async void CommandImageTap(object parameter)
         {
 
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                Func<object> func = () =>
-                {
-                    var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
-                    return obj;
-                };
+            //if (Device.RuntimePlatform == Device.iOS)
+            //{
+            //    Func<object> func = () =>
+            //    {
+            //        var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
+            //        return obj;
+            //    };
 
-                var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
-                {
-                    Directory = "Clicar",
-                    Name = "front_example.jpg",
-                    PhotoSize = PhotoSize.Medium,
-                    OverlayViewProvider = func,
-                    DefaultCamera = CameraDevice.Rear,
-                });
-            }
-            else if (Device.RuntimePlatform == Device.Android)
-            {
-                var item = (ItemInspeccion)parameter;
-                CameraView cameraView = new CameraView();
-                cameraView.iteminspeccion = item;
-
-
-                var test = CrossDeviceOrientation.Current;
-                Console.WriteLine(test.CurrentOrientation.ToString());
-
-                var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
-
-                await Application.Current.MainPage.Navigation.PushAsync(cameraView);
+            //    var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
+            //    {
+            //        Directory = "Clicar",
+            //        Name = "front_example.jpg",
+            //        PhotoSize = PhotoSize.Medium,
+            //        OverlayViewProvider = func,
+            //        DefaultCamera = CameraDevice.Rear,
+            //    });
+            //}
+            //else if (Device.RuntimePlatform == Device.Android)
+            //{
+            //    var item = (ItemInspeccion)parameter;
+            //    CameraView cameraView = new CameraView();
+            //    cameraView.iteminspeccion = item;
 
 
+            //    var test = CrossDeviceOrientation.Current;
+            //    Console.WriteLine(test.CurrentOrientation.ToString());
 
+            //    var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
 
-
-            }
+            //    await Application.Current.MainPage.Navigation.PushAsync(cameraView);
 
 
 
 
 
-            //Console.WriteLine("~(>'.')>" + item.Nombre);
+            //}
+
+
+            var item = (ItemInspeccion)parameter;
+            CameraView cameraView = new CameraView();
+            cameraView.iteminspeccion = item;
+
+
+            var test = CrossDeviceOrientation.Current;
+            Console.WriteLine(test.CurrentOrientation.ToString());
+
+            var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
+
+            await Application.Current.MainPage.Navigation.PushAsync(cameraView);
+
+
         }
 
 

@@ -67,7 +67,7 @@
                 HeightRequest="130"
                 Padding="0">
 
-                <controls:CustomButton
+                <Button
                     VerticalOptions="CenterAndExpand"
                     x:Name="GalleryButton"
                     BackgroundColor="{StaticResource BaseOrange}"
@@ -80,7 +80,7 @@
                     BorderRadius="20"/>
 
 
-                <controls:CustomButton
+                <Button
                     VerticalOptions="CenterAndExpand"
                     Clicked="OnCameraClicked"
                     x:Name="CameraButton"

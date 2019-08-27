@@ -186,7 +186,7 @@
 
 
                     <!--Boton-->
-                    <local:CustomButton
+                    <Button
                             Clicked="FinishCommand"
                             HorizontalOptions="CenterAndExpand"
                             BackgroundColor="{StaticResource BaseGreen}"

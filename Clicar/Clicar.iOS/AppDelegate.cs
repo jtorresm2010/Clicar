@@ -5,6 +5,7 @@ using System.Text;
 using Clicar.Interface;
 using Clicar.iOS.Customs;
 using Foundation;
+using Plugin.DeviceOrientation;
 using UIKit;
 
 namespace Clicar.iOS
@@ -31,26 +32,16 @@ namespace Clicar.iOS
 
             Xamarin.Forms.DependencyService.Register<IPhotoOverlay, PhotoOverlayIOS>();
 
-
-            var fontList = new StringBuilder();
-            var familyNames = UIFont.FamilyNames;
-            foreach (var familyName in familyNames)
-            {
-                fontList.Append(String.Format("Family: {0}\n", familyName));
-                Console.WriteLine("Family: {0}\n", familyName);
-                var fontNames = UIFont.FontNamesForFamilyName(familyName);
-                foreach (var fontName in fontNames)
-                {
-                    Console.WriteLine("\tFont: {0}\n", fontName);
-                    fontList.Append(String.Format("\tFont: {0}\n", fontName));
-                }
-            };
-
-
-
-
             Plugin.InputKit.Platforms.iOS.Config.Init();
             return base.FinishedLaunching(app, options);
         }
+
+        [Export("application:supportedInterfaceOrientationsForWindow:")]
+        public UIInterfaceOrientationMask GetSupportedInterfaceOrientations(UIApplication application, IntPtr forWindow)
+        {
+            return DeviceOrientationImplementation.SupportedInterfaceOrientations;
+        }
+
+
     }
 }

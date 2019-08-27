@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using ClicarApp.Droid.Customs;
 
-[assembly: ExportRenderer(typeof(CustomButton), typeof(CustomButtonAndroid))]
+[assembly: ExportRenderer(typeof(Button), typeof(CustomButtonAndroid))]
 
 namespace ClicarApp.Droid.Customs
 {

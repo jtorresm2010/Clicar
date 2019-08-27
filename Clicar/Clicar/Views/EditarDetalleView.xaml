@@ -239,7 +239,7 @@
                     Orientation="Horizontal"
                     Margin="8,0">
 
-                        <local:CustomButton
+                        <Button
                         HorizontalOptions="EndAndExpand"
                         BackgroundColor="White"
                         Text="Cancelar"
@@ -250,7 +250,7 @@
                         WidthRequest="90"
                         BorderRadius="20"/>
 
-                        <local:CustomButton
+                        <Button
                         HorizontalOptions="EndAndExpand"
                         BackgroundColor="{StaticResource BaseGreen}"
                         Text="Registrar"

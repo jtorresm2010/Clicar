@@ -185,7 +185,7 @@
                             VerticalOptions="EndAndExpand">
 
 
-                            <local:CustomButton
+                            <Button
                                 Clicked="LoginCommand"
                                 BackgroundColor="{StaticResource BaseGreen}"
                                 Text="Iniciar sesión"
@@ -196,7 +196,7 @@
                                 BorderRadius="20"/>
 
 
-                            <local:CustomButton
+                            <Button
                                 Clicked="FingerprintCommand"
                                 BackgroundColor="{StaticResource BaseOrange}"
                                 Text="Autenticarse con Touch ID"

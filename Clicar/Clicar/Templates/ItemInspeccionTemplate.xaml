@@ -61,7 +61,7 @@
                 Orientation="Horizontal"
                 Margin="24,0">
 
-                <local:CustomButton
+                <Button
                     Command="{Binding ICommandBack}"
                     x:Name="BackButton"
                     HorizontalOptions="EndAndExpand"
@@ -74,7 +74,7 @@
                     WidthRequest="60"
                     BorderRadius="20"/>
 
-                <local:CustomButton
+                <Button
                     Command="{Binding ICommandNext}"
                     x:Name="ForwardButton"
                     HorizontalOptions="EndAndExpand"

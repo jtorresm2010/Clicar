@@ -58,7 +58,7 @@
                         TextColor="{StaticResource BaseGreyLight}"/>
 
             <!--Botón-->
-            <local:CustomButton
+            <Button
                         Clicked="FingerprintCancel"
                         HorizontalOptions="EndAndExpand"
                         BackgroundColor="White"
