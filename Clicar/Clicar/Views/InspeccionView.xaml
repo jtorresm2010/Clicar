@@ -28,7 +28,7 @@
     <ContentPage.Content>
         <ScrollView
             BackgroundColor="White">
-            <accordionview:AccordionRepeaterView
+            <local:AccordionRepeaterView
                 x:Name="AccordionMenu"
                 KeepOnlyOneItemOpen="True" 
                 Margin="0,8"
@@ -38,7 +38,7 @@
                         <views:ItemInspeccionTemplate/>
                     </DataTemplate>
                 </accordionview:AccordionRepeaterView.AccordionItemTemplate>
-            </accordionview:AccordionRepeaterView>
+            </local:AccordionRepeaterView>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
