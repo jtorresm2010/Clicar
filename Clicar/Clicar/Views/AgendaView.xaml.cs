@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Clicar.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Clicar.Templates;
 
 namespace Clicar.Views
 {

@@ -30,25 +30,35 @@ namespace Clicar.Views
 
             var areasInspeccion = new ListaAreasInspeccion().GetListaAreas();
 
-            var filteringQuery =
+            //Ordenar areas segun el valor en Orden
+            var areasOrdenadas =
                 from areaInspeccion in areasInspeccion
                 orderby areaInspeccion.Orden ascending
                 select areaInspeccion;
 
 
-            foreach(AreaInspeccion area in filteringQuery)
+
+
+
+
+
+            //Setea el nombre de las imagenes
+            foreach(AreaInspeccion area in areasOrdenadas)
             {
                 area.Image = "MenuNum" + area.Orden;
             }
 
+            //Setea el dataset delacordion
+            AccordionMenu.ItemsSource = areasOrdenadas.ToList<AreaInspeccion>();
 
 
-
-            AccordionMenu.ItemsSource = filteringQuery.ToList<AreaInspeccion>();
+            //Abre  el primer panel
             var primerItem = (AccordionItemView)AccordionMenu.Children[0];
             primerItem.OpenPanel();
             
 
+            //Aqui se implementaria Skias...
+            //primerItem.ActiveLeftImage = 
 
 
 

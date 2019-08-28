@@ -8,6 +8,7 @@
              x:Class="Clicar.Views.AgendaView">
 
     <NavigationPage.TitleView>
+        
         <StackLayout 
             Margin="0"
             Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
@@ -27,7 +28,6 @@
                 Source="clicar.png">
             </Image>
 
-                <!--Margin="0,0,21,0"-->
             <Grid
                 WidthRequest="37"
                 HorizontalOptions="EndAndExpand">
@@ -59,6 +59,8 @@
             </Grid>
             
         </StackLayout>
+
+
     </NavigationPage.TitleView>
 
 
