@@ -10,8 +10,6 @@ using Xamarin.Forms.Xaml;
 using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using Clicar.ViewModels;
-using SkiaSharp;
-using System.IO;
 
 namespace Clicar.Views
 {
@@ -55,55 +53,16 @@ namespace Clicar.Views
 
 
             //Abre  el primer panel
-            IList<View> ItemsAcordion = AccordionMenu.Children;
-
-            ImageSource image = CreateImage(0);
-            image.Id.ToString();
-
-            foreach (View item in ItemsAcordion)
-            {
-                ((AccordionItemView)item).ActiveLeftImage = new FileImageSource {File = image.Id.ToString()} ;
-            }
-
-
-
-
             var primerItem = (AccordionItemView)AccordionMenu.Children[0];
-
             primerItem.OpenPanel();
             
 
+            //Aqui se implementaria Skias...
+            //primerItem.ActiveLeftImage = 
+
 
 
         }
-
-        private ImageSource CreateImage(int numero)
-        {
-            SKSurface surface;
-            SKImage image;
-
-
-            var info = new SKImageInfo(40, 40);
-            using (surface = SKSurface.Create(info))
-            {
-                SKCanvas canvas = surface.Canvas;
-
-                SKPaint paint = new SKPaint
-                {
-                    Style = SKPaintStyle.Fill,
-                    Color = SKColors.White
-                };
-                canvas.DrawCircle(info.Width / 2, info.Height / 2, 100, paint);
-
-                image = surface.Snapshot();
-            }
-            SKData encoded = image.Encode();
-            Stream stream = encoded.AsStream();
-
-
-            return ImageSource.FromStream(() => stream);
-        }
-
 
 
         private static InspeccionView instance;

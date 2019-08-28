@@ -23,7 +23,7 @@
             ButtonActiveBackgroundColor="{StaticResource BaseOrange}"
             BorderColor="{StaticResource BaseGreyLight}"
             ActiveBorderColor="{StaticResource BaseOrange}"
-            
+                            
             ActiveLeftImage="{Binding Image}"
             LeftImage="{Binding Image}">
 
