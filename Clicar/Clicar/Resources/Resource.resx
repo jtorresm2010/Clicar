@@ -130,4 +130,16 @@
   <data name="Send" xml:space="preserve">
     <value>Submit</value>
   </data>
+  <data name="ConfigInfoText" xml:space="preserve">
+    <value>Select from the list presented the Branch to be configured in the APP.</value>
+  </data>
+  <data name="ConfigCurrentBranch" xml:space="preserve">
+    <value>Currently, the APP is active for the Branch:</value>
+  </data>
+  <data name="InspectionAccessButton" xml:space="preserve">
+    <value>Enter the Inspection</value>
+  </data>
+  <data name="ConfigPicker" xml:space="preserve">
+    <value>Select another Branch</value>
+  </data>
 </root>

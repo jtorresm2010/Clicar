@@ -45,6 +45,37 @@ namespace Clicar.Helpers
         {
             get { return Resource.TouchIDButton; }
         }
-
+        public static string PasswordRecoveryInfo
+        {
+            get { return Resource.PasswordRecoveryInfo; }
+        }
+        public static string EmailPlaceholder
+        {
+            get { return Resource.EmailPlaceholder; }
+        }
+        public static string Cancel
+        {
+            get { return Resource.Cancel; }
+        }
+        public static string Send
+        {
+            get { return Resource.Send; }
+        }
+        public static string ConfigInfoText
+        {
+            get { return Resource.ConfigInfoText; }
+        }
+        public static string ConfigCurrentBranch
+        {
+            get { return Resource.ConfigCurrentBranch; }
+        }
+        public static string InspectionAccessButton
+        {
+            get { return Resource.InspectionAccessButton; }
+        }
+        public static string ConfigPicker
+        {
+            get { return Resource.ConfigPicker; }
+        }
     }
 }

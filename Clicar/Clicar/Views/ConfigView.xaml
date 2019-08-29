@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Clicar.Customs"
+             xmlns:i18n="clr-namespace:Clicar.Helpers"
              mc:Ignorable="d"
              x:Class="Clicar.Views.ConfigView">
     <ContentPage.Content>
@@ -44,7 +45,7 @@
                         
                         <Label
                                 Margin="0,20,0,0"
-                                    Text="Bienvenido"
+                                    Text="{i18n:Translate Welcome}"
                                     HorizontalOptions="CenterAndExpand"
                                     FontSize="24"
                                     TextColor="{StaticResource BaseGreen}"
@@ -58,7 +59,7 @@
                             <Label
                                 HorizontalTextAlignment="Start"
                                 HorizontalOptions="CenterAndExpand"
-                                Text="Seleccione de la lista presentada la Sucursal a configurar en la APP."
+                                Text="{i18n:Translate ConfigInfoText}"
                                 FontSize="14"
                                 FontFamily="{StaticResource RegularFontOpenSans}"
                                 TextColor="{StaticResource BaseGrey}"/>
@@ -69,7 +70,7 @@
                             <Label
                                 HorizontalTextAlignment="Start"
                                 HorizontalOptions="CenterAndExpand"
-                                Text="Actualmente, la APP se encuentra activa para la Sucursal:"
+                                Text="{i18n:Translate ConfigCurrentBranch}"
                                 FontSize="14"
                                 FontFamily="{StaticResource RegularFontOpenSans}"
                                 TextColor="{StaticResource BaseGrey}"/>
@@ -123,7 +124,7 @@
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
                                         Image="ic_arrow_down"
-                                        Title="Seleccionar otra Sucursal"
+                                        Title="{i18n:Translate ConfigPicker}"
                                         FontSize="14"
                                         TextColor="{StaticResource BaseGrey44}"
                                         FontFamily="{StaticResource SemiBoldFontOpenSans}">
@@ -157,7 +158,7 @@
                             
                                 Clicked="LoginCommand"
                                 BackgroundColor="{StaticResource BaseGreen}"
-                                Text="Ingresar a la Inspección"
+                                Text="{i18n:Translate InspectionAccessButton}"
                                 FontSize="16"
                                 FontFamily="{StaticResource SemiBoldFontOpenSans}"
                                 TextColor="White"

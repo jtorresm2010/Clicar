@@ -70,6 +70,33 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Currently, the APP is active for the Branch:.
+        /// </summary>
+        internal static string ConfigCurrentBranch {
+            get {
+                return ResourceManager.GetString("ConfigCurrentBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select from the list presented the Branch to be configured in the APP..
+        /// </summary>
+        internal static string ConfigInfoText {
+            get {
+                return ResourceManager.GetString("ConfigInfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Select another Branch.
+        /// </summary>
+        internal static string ConfigPicker {
+            get {
+                return ResourceManager.GetString("ConfigPicker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Your email here.
         /// </summary>
         internal static string EmailPlaceholder {
@@ -84,6 +111,15 @@ namespace Clicar.Resources {
         internal static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter the Inspection.
+        /// </summary>
+        internal static string InspectionAccessButton {
+            get {
+                return ResourceManager.GetString("InspectionAccessButton", resourceCulture);
             }
         }
         

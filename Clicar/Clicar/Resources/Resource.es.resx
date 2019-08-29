@@ -150,4 +150,16 @@
   <data name="Send" xml:space="preserve">
     <value>Enviar</value>
   </data>
+  <data name="InspectionAccessButton" xml:space="preserve">
+    <value>Ingresar a la Inspección</value>
+  </data>
+  <data name="ConfigCurrentBranch" xml:space="preserve">
+    <value>Actualmente, la APP se encuentra activa para la Sucursal:</value>
+  </data>
+  <data name="ConfigInfoText" xml:space="preserve">
+    <value>Seleccione de la lista presentada la Sucursal a configurar en la APP.</value>
+  </data>
+  <data name="ConfigPicker" xml:space="preserve">
+    <value>Seleccionar otra Sucursal</value>
+  </data>
 </root>
