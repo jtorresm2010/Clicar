@@ -11,11 +11,14 @@
         
         <StackLayout 
             Margin="0"
-            Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal" 
+            VerticalOptions="Center" 
+            Spacing="0">
 
             <Image 
                 HorizontalOptions="StartAndExpand"
-                HeightRequest="45"
+                WidthRequest="25"
                 Source="sign_out.png">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="LogOutCommand" NumberOfTapsRequired="1"/>
@@ -23,39 +26,32 @@
             </Image>
 
             <Image 
-                HorizontalOptions="CenterAndExpand"
-                HeightRequest="25"
+                WidthRequest="100"
+                x:Name="TitleImage"
+                HorizontalOptions="End"
                 Source="clicar.png">
             </Image>
 
             <Grid
-                WidthRequest="37"
-                HorizontalOptions="EndAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-         
-                    
+                x:Name="RefreshImages"
+                HeightRequest="25"
+                WidthRequest="50"
+                HorizontalOptions="End">
                 <Image
                     Opacity="1"
                     Grid.Row="0"
                     VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand"
                     Source="sync_alt.png"/>
-                
                 <Image 
                     Opacity="0"
                     Grid.Row="0"
                     VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand"
                     Source="sync_alt_orange.png"/>
-                
-
-
-
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer Tapped="RefreshCommand"/>
-            </Grid.GestureRecognizers>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="RefreshCommand"/>
+                </Grid.GestureRecognizers>
             </Grid>
             
         </StackLayout>

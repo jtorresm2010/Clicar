@@ -14,24 +14,21 @@ namespace Clicar.Templates
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AgendaViewCellTemplate : ViewCell
     {
-        AgendaView mainInstance;
+        AgendaView agendaInstance;
+        public AgendaViewCellTemplate()
+        {
+            agendaInstance = AgendaView.GetInstance();
+            InitializeComponent();
+        }
         protected override void OnAppearing()
         {
-            if (mainInstance.IsLast)
+            if (agendaInstance.IsLast)
             {
                 SeparatorFrame.IsVisible = false;
-                mainInstance.IsLast = false;
+                agendaInstance.IsLast = false;
             }
 
             base.OnAppearing();
-        }
-
-
-        
-        public AgendaViewCellTemplate()
-        {
-            mainInstance = AgendaView.GetInstance();
-            InitializeComponent();
         }
     }
 }

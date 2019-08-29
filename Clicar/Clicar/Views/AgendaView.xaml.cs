@@ -9,6 +9,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Clicar.Templates;
 using System.Diagnostics;
+using Xamarin.Essentials;
+using Clicar.Utils;
 
 namespace Clicar.Views
 {
@@ -18,11 +20,15 @@ namespace Clicar.Views
 
 
         List<Vehiculo> listaVehiculos;
+
         private double CompletadosHeight;
         private double PendientesHeight;
         public AgendaView()
         {
             InitializeComponent();
+
+            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage, TitleImage.WidthRequest, RefreshImages.WidthRequest);
+
 
             instance = this;
         }
@@ -43,7 +49,24 @@ namespace Clicar.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            InicializarLista();
 
+
+
+        }
+
+        private void SetTitleMargin(View view)
+        {
+            var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+            var screenwidth = mainDisplayInfo.Width / mainDisplayInfo.Density;
+
+            var margin = (screenwidth / 2) - 100;
+
+            view.Margin = new Thickness(0, 0, margin, 0);
+        }
+
+        private void InicializarLista()
+        {
             listaVehiculos = new VehiculosList().GetListaVehiculos();
 
             lastItem = listaVehiculos.Count;
@@ -64,7 +87,7 @@ namespace Clicar.Views
         private void PendientesListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
         {
             var list = (ListView)sender;
-            if ((e.ItemIndex) == (lastItem-2))
+            if (e.ItemIndex == (lastItem-2))
             {
                 IsLast = true;
                 list.ItemAppearing -= PendientesListView_ItemAppearing;
@@ -80,9 +103,6 @@ namespace Clicar.Views
 
             Navigation.PushAsync(new DetalleInspeccionView());
         }
-
-
-
 
         private async void LogOutCommand(object sender, EventArgs e)
         {

@@ -1,11 +1,12 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using Clicar.Utils;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,7 +19,18 @@ namespace Clicar.Views
         {
             InitializeComponent();
 
+            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage, TitleImage.WidthRequest);
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+
+
+        }
+
+
 
         private async void RechazarCommand(object sender, EventArgs e)
         {

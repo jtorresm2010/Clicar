@@ -13,15 +13,15 @@
     <NavigationPage.TitleView>
         <StackLayout 
             Margin="0"
-            Orientation="Horizontal" VerticalOptions="Center" Spacing="10">
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal" 
+            VerticalOptions="Center" 
+            Spacing="0">
             <Image 
-                Margin="0,0,70,0"
-                HorizontalOptions="CenterAndExpand"
-                HeightRequest="25"
-                Source="clicar.png">
-            </Image>
-
-
+                WidthRequest="100"
+                x:Name="TitleImage"
+                HorizontalOptions="EndAndExpand"
+                Source="clicar.png"/>
         </StackLayout>
     </NavigationPage.TitleView>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clicar.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Clicar.Views
         public ReportePreliminarView()
         {
             InitializeComponent();
+            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage, TitleImage.WidthRequest);
         }
 
         private void VerResumenCommand(object sender, EventArgs e)

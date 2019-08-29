@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using Clicar.ViewModels;
+using Clicar.Utils;
 
 namespace Clicar.Views
 {
@@ -21,6 +22,8 @@ namespace Clicar.Views
         public InspeccionView()
         {
             InitializeComponent();
+
+            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage, TitleImage.WidthRequest);
 
             instance = this;
 
