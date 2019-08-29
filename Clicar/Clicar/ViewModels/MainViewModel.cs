@@ -29,6 +29,8 @@ namespace Clicar.ViewModels
         private Color baseGreen;
         private int menuIndex;
 
+        public int isLastItem { get; set; }
+
         public object currentItem { get; set; }
         public int MenuIndex { get { return this.menuIndex; } }
 
@@ -48,6 +50,8 @@ namespace Clicar.ViewModels
         }
 
         private static MainViewModel instance;
+
+
         private List<ItemInspeccion> list;
 
         public static MainViewModel GetInstance()

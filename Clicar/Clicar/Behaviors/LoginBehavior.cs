@@ -5,27 +5,27 @@ using Xamarin.Forms;
 
 namespace Clicar.Behaviors
 {
-    public class LoginBehavior : Behavior<View>
+    public class LoginBehavior : Behavior<Entry>
     {
 
 
         public static readonly BindableProperty ControlViewProperty =
-            BindableProperty.Create(nameof(ControlView), typeof(Button), typeof(LoginBehavior), null);
+            BindableProperty.Create(nameof(ControlView), typeof(View), typeof(LoginBehavior), null);
 
-        public Button ControlView
+        public View ControlView
         {
             get { return (Button)GetValue(ControlViewProperty); }
             set { SetValue(ControlViewProperty, value); }
         }
 
 
-        protected override void OnAttachedTo(View entry)
+        protected override void OnAttachedTo(Entry entry)
         {
             base.OnAttachedTo(entry);
 
-            ((Entry)entry).TextChanged += Entry_TextChanged;
+            entry.TextChanged += Entry_TextChanged;
             ControlView.IsEnabled = false;
-            ((Entry)entry).TextColor = Color.Red;
+            entry.TextColor = Color.Red;
             // Perform setup
         }
 
@@ -36,14 +36,12 @@ namespace Clicar.Behaviors
 
             ((Entry)sender).TextColor = isEnabled ? Color.Default : Color.Red;
             ControlView.IsEnabled = isEnabled ? true : false;
-
-            //((Editor)sender).FontSize = ((Editor)sender).Text.Length;
         }
 
-        protected override void OnDetachingFrom(View entry)
+        protected override void OnDetachingFrom(Entry entry)
         {
             base.OnDetachingFrom(entry);
-            ((Entry)entry).TextChanged -= Entry_TextChanged;
+            entry.TextChanged -= Entry_TextChanged;
             // Perform clean up
         }
 

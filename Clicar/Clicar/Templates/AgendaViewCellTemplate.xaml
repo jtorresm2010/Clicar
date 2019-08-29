@@ -83,6 +83,8 @@
         </StackLayout>
 
         <Frame
+            IsVisible="True"
+            x:Name="SeparatorFrame"
             HasShadow="False"
             Padding="0"
             Margin="15,0"

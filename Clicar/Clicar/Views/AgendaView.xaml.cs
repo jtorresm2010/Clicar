@@ -8,6 +8,7 @@ using Clicar.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Clicar.Templates;
+using System.Diagnostics;
 
 namespace Clicar.Views
 {
@@ -23,26 +24,65 @@ namespace Clicar.Views
         {
             InitializeComponent();
 
+            instance = this;
+        }
+        private static AgendaView instance;
+        public static AgendaView GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new AgendaView();
+            }
+            return instance;
+        }
+
+
+
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
             listaVehiculos = new VehiculosList().GetListaVehiculos();
 
-
-
+            lastItem = listaVehiculos.Count;
             PendientesListView.ItemsSource = listaVehiculos;
             PendientesHeight = listaVehiculos.Count * PendientesListView.RowHeight;
             PendientesListView.HeightRequest = PendientesHeight;
+            PendientesListView.ItemAppearing += PendientesListView_ItemAppearing;
 
-
+            lastItem = listaVehiculos.Count; //esta deberia ser la segunda lista, pero en este momento ambos lv usan la misma lista
             CompletadosListView.ItemsSource = listaVehiculos;
             CompletadosHeight = listaVehiculos.Count * CompletadosListView.RowHeight;
             CompletadosListView.HeightRequest = CompletadosHeight;
-
+            CompletadosListView.ItemAppearing += PendientesListView_ItemAppearing;
         }
 
-        
+        public int lastItem { get; set; }
+        public bool IsLast { get; set; }
+        private void PendientesListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var list = (ListView)sender;
+            if ((e.ItemIndex) == (lastItem-2))
+            {
+                IsLast = true;
+                list.ItemAppearing -= PendientesListView_ItemAppearing;
+            }
+            else
+            {
+                IsLast = false;
+            }
+        }
+
         private void AgendaItemTapped(object sender, ItemTappedEventArgs e)
         {
+
             Navigation.PushAsync(new DetalleInspeccionView());
         }
+
+
+
 
         private async void LogOutCommand(object sender, EventArgs e)
         {
@@ -101,7 +141,7 @@ namespace Clicar.Views
         }
 
 
-
+        
 
         private async void RefreshCommand1(object sender, EventArgs e)
         {
