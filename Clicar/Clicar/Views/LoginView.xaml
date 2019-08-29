@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Clicar.Customs"
+             xmlns:behavior="clr-namespace:Clicar.Behaviors"
              mc:Ignorable="d"
              x:Class="Clicar.Views.LoginView">
     <ContentPage.Content>
@@ -84,7 +85,12 @@
                                     Placeholder="Ingrese usuario" 
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
-                                    FontFamily="{StaticResource RegularFontOpenSans}"  />
+                                    FontFamily="{StaticResource RegularFontOpenSans}"  >
+                                    <local:CustomEntry.Behaviors>
+                                        <behavior:LoginBehavior
+                                            ControlView="{x:Reference Name=LoginButton}"/>
+                                    </local:CustomEntry.Behaviors>
+                                </local:CustomEntry>
                                 <Frame
                                     Grid.Row="0"
                                     Grid.Column="0"
@@ -186,6 +192,7 @@
 
 
                             <Button
+                                x:Name="LoginButton"
                                 Clicked="LoginCommand"
                                 BackgroundColor="{StaticResource BaseGreen}"
                                 Text="Iniciar sesión"

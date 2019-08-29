@@ -82,13 +82,9 @@
                             TextColor="{StaticResource BaseGrey}"
                             FontFamily="{StaticResource RegularFontOpenSans}"
                             Visual="Default"
-                            HeightRequest="110">
-                                <local:CustomEditor.Behaviors>
-                                    <behaviors:RatingsBehavior/>
-                                </local:CustomEditor.Behaviors>
-                            </local:CustomEditor>
+                            HeightRequest="110"/>
 
-                            </Frame>
+                        </Frame>
                         </StackLayout>
 
                     <StackLayout
