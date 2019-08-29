@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Clicar.Customs"
+             xmlns:i18n="clr-namespace:Clicar.Helpers"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
              mc:Ignorable="d"
              x:Class="Clicar.Views.LoginView">
@@ -50,7 +51,7 @@
                             <Label
                                 Margin="0,20,0,0"
                                 VerticalOptions="CenterAndExpand"
-                                Text="Bienvenido"
+                                Text="{i18n:Translate Welcome}"
                                 HorizontalOptions="CenterAndExpand"
                                 FontSize="24"
                                 TextColor="{StaticResource BaseGreen}"
@@ -82,7 +83,7 @@
                                     VerticalOptions="Center"
                                     HeightRequest="40"
                                     BackgroundColor="Transparent" 
-                                    Placeholder="Ingrese usuario" 
+                                    Placeholder="{i18n:Translate UsernamePlaceholder}" 
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
                                     FontFamily="{StaticResource RegularFontOpenSans}"  >
@@ -129,7 +130,7 @@
                                     IsPassword="True"
                                     HeightRequest="40"
                                     BackgroundColor="Transparent" 
-                                    Placeholder="Ingrese Contraseña" 
+                                    Placeholder="{i18n:Translate PasswordPlaceholder}" 
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
                                     FontFamily="{StaticResource RegularFontOpenSans}"  />
@@ -171,7 +172,7 @@
                             <!--recuperar pass-->
                             <Label
                                 HorizontalOptions="CenterAndExpand"
-                                Text="Olvidé mi contraseña"
+                                Text="{i18n:Translate PasswordRecovery}"
                                 TextColor="{StaticResource BaseOrange}"
                                 TextDecorations="Underline"
                                 FontSize="12"
@@ -195,7 +196,7 @@
                                 x:Name="LoginButton"
                                 Clicked="LoginCommand"
                                 BackgroundColor="{StaticResource BaseGreen}"
-                                Text="Iniciar sesión"
+                                Text="{i18n:Translate LoginButton}"
                                 FontSize="16"
                                 FontFamily="{StaticResource SemiBoldFontOpenSans}"
                                 TextColor="White"
@@ -206,7 +207,7 @@
                             <Button
                                 Clicked="FingerprintCommand"
                                 BackgroundColor="{StaticResource BaseOrange}"
-                                Text="Autenticarse con Touch ID"
+                                Text="{i18n:Translate TouchIDButton}"
                                 FontSize="16"
                                 FontFamily="{StaticResource SemiBoldFontOpenSans}"
                                 TextColor="White"

@@ -27,7 +27,7 @@ namespace Clicar.Views
         {
             InitializeComponent();
 
-            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage, TitleImage.WidthRequest, RefreshImages.WidthRequest);
+            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage.WidthRequest, RefreshImages.WidthRequest);
 
 
             instance = this;

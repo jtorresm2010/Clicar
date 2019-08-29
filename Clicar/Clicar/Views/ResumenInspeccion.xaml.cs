@@ -16,7 +16,7 @@ namespace Clicar.Views
         public ResumenInspeccion()
         {
             InitializeComponent();
-            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage, TitleImage.WidthRequest);
+            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage.WidthRequest);
         }
 
         private void FinishCommand(object sender, EventArgs e)

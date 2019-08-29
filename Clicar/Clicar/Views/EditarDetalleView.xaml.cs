@@ -16,7 +16,7 @@ namespace Clicar.Views
         public EditarDetalleView()
         {
             InitializeComponent();
-            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage, TitleImage.WidthRequest);
+            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage.WidthRequest);
         }
 
 

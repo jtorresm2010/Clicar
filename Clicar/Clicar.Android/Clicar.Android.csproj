@@ -79,6 +79,7 @@
     <Compile Include="Customs\CustomEditorAndroid.cs" />
     <Compile Include="Customs\CustomEntryAndroid.cs" />
     <Compile Include="Customs\CustomPickerAndroid.cs" />
+    <Compile Include="Implementations\Localize.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -54,5 +54,11 @@
 	</array>
 	<key>MinimumOSVersion</key>
 	<string>9.0</string>
+	<key>CFBundleLocalizations</key>
+    <array>
+        <string>es</string>
+    </array>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
 </dict>
 </plist>
