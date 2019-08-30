@@ -1,15 +1,9 @@
 ﻿using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Clicar.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Clicar.Templates;
-using System.Diagnostics;
-using Xamarin.Essentials;
 using Clicar.Utils;
 
 namespace Clicar.Views
@@ -86,11 +80,14 @@ namespace Clicar.Views
         }
         private void ToggleVisible(object sender, EventArgs e)
         {
-            CloseOpenAnimation(PendientesListView, PendientesHeight, PendientesListView.IsVisible);
-        }
-        private void ToggleVisibleComp(object sender, EventArgs e)
-        {
-            CloseOpenAnimation(CompletadosListView, CompletadosHeight, CompletadosListView.IsVisible);
+            if((Frame)sender == ListaPendientesFrame)
+            {
+                CloseOpenAnimation(PendientesListView, PendientesHeight, PendientesListView.IsVisible);
+            }
+            else
+            {
+                CloseOpenAnimation(CompletadosListView, CompletadosHeight, CompletadosListView.IsVisible);
+            }
         }
         private void CloseOpenAnimation(ListView listView, double listHeight, bool IsVisible)
         {
@@ -126,10 +123,7 @@ namespace Clicar.Views
                 IsVisible = true;
             }
 
-            
-            
             listView.Animate("ListSize", callback, startingHeight, endingHeight, rate, length, easing, endAction);
-            //listView.IsVisible = Visible;
         }
     }
 }

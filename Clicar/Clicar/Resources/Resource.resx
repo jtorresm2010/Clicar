@@ -134,12 +134,33 @@
     <value>Select from the list presented the Branch to be configured in the APP.</value>
   </data>
   <data name="ConfigCurrentBranch" xml:space="preserve">
-    <value>Currently, the APP is active for the Branch:</value>
+    <value>Currently, the APP is active for the following Branch:</value>
   </data>
   <data name="InspectionAccessButton" xml:space="preserve">
     <value>Enter the Inspection</value>
   </data>
   <data name="ConfigPicker" xml:space="preserve">
-    <value>Select another Branch</value>
+    <value>Select a different Branch</value>
+  </data>
+  <data name="Inspector" xml:space="preserve">
+    <value>Inspector: </value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Start time: </value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
+  <data name="LogoutConfirmText" xml:space="preserve">
+    <value>Are you sure you want to exit the current session?</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
   </data>
 </root>

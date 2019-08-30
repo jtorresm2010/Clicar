@@ -18,7 +18,7 @@ namespace Clicar.Views
         public DetalleInspeccionView()
         {
             InitializeComponent();
-
+            instance = this;
             TitleImage.Margin = Funciones.SetTitleMargin(TitleImage.WidthRequest);
         }
 
@@ -42,9 +42,16 @@ namespace Clicar.Views
         {
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new InspeccionPopupView());
-            
         }
 
-
+        private static DetalleInspeccionView instance;
+        public static DetalleInspeccionView GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new DetalleInspeccionView();
+            }
+            return instance;
+        }
     }
 }

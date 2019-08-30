@@ -5,11 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:Clicar.Templates"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
+             xmlns:i18n="clr-namespace:Clicar.Helpers"
              mc:Ignorable="d"
              x:Class="Clicar.Views.AgendaView">
 
     <NavigationPage.TitleView>
-        
         <StackLayout 
             Margin="0"
             HorizontalOptions="FillAndExpand"
@@ -32,7 +32,6 @@
                 HorizontalOptions="End"
                 Source="clicar.png">
             </Image>
-            
             
             <!--Iconos de carga y comportamiento-->
             <Grid
@@ -57,10 +56,8 @@
                          ControlView="{x:Reference Name=MainScrollView}"/>
                 </Grid.Behaviors>
             </Grid>
-            
+
         </StackLayout>
-
-
     </NavigationPage.TitleView>
 
 
@@ -76,7 +73,7 @@
 
             <StackLayout
                 HorizontalOptions="FillAndExpand"
-            Spacing="0">
+                Spacing="0">
 
                 <!--Nombre del inspector-->
                 <Frame
@@ -99,7 +96,7 @@
                             TextColor="{StaticResource BaseGrey}"
                             FontSize="13"
                             FontFamily="{StaticResource BoldFontOpenSans}"
-                            Text="Inspector: "/>
+                            Text="{i18n:Translate Inspector} "/>
                             <Label
                             TextColor="{StaticResource BaseGrey}"
                             FontSize="13"
@@ -113,19 +110,19 @@
                 <!--Lista de Pendientes-->
                 <Frame 
                     HasShadow="False"
-                x:Name="ListaPendientesFrame"
-                CornerRadius="0"
-                Padding="24" 
-                BackgroundColor="{StaticResource BaseOrange}">
+                    x:Name="ListaPendientesFrame"
+                    CornerRadius="0"
+                    Padding="24" 
+                    BackgroundColor="{StaticResource BaseOrange}">
 
                     <Label 
                             TextColor="White"
                             FontFamily="{StaticResource BoldFontOpenSans}"
-                            Text="Pendientes" 
+                            Text="{i18n:Translate Pending}" 
                             FontSize="20"/>
 
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToggleVisible" NumberOfTapsRequired="1"/>
+                        <TapGestureRecognizer Tapped="ToggleVisible"/>
                     </Frame.GestureRecognizers>
 
                 </Frame>
@@ -154,11 +151,11 @@
                     <Label 
                                 TextColor="White"
                                 FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="Completados" 
+                                Text="{i18n:Translate Completed}" 
                                 FontSize="20"/>
 
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToggleVisibleComp" NumberOfTapsRequired="1"/>
+                        <TapGestureRecognizer Tapped="ToggleVisible"/>
                     </Frame.GestureRecognizers>
 
                 </Frame>

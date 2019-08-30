@@ -77,5 +77,33 @@ namespace Clicar.Helpers
         {
             get { return Resource.ConfigPicker; }
         }
+        public static string Inspector
+        {
+            get { return Resource.Inspector; }
+        }
+        public static string Pending
+        {
+            get { return Resource.Pending; }
+        }
+        public static string Completed
+        {
+            get { return Resource.Completed; }
+        }
+        public static string StartTime
+        {
+            get { return Resource.StartTime; }
+        }
+        public static string Logout
+        {
+            get { return Resource.Logout; }
+        }
+        public static string LogoutConfirmText
+        {
+            get { return Resource.LogoutConfirmText; }
+        }
+        public static string Exit
+        {
+            get { return Resource.Exit; }
+        }
     }
 }

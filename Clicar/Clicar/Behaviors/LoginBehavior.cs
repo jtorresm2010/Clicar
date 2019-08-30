@@ -9,8 +9,7 @@ namespace Clicar.Behaviors
     {
 
 
-        public static readonly BindableProperty ControlViewProperty =
-            BindableProperty.Create(nameof(ControlView), typeof(View), typeof(LoginBehavior), null);
+        public static readonly BindableProperty ControlViewProperty = BindableProperty.Create(nameof(ControlView), typeof(View), typeof(LoginBehavior), null);
 
         public View ControlView
         {
@@ -18,13 +17,11 @@ namespace Clicar.Behaviors
             set { SetValue(ControlViewProperty, value); }
         }
 
-
         protected override void OnAttachedTo(Entry entry)
         {
             base.OnAttachedTo(entry);
-
             entry.TextChanged += Entry_TextChanged;
-            ((Button)ControlView).IsEnabled = false;
+            //((Button)ControlView).IsEnabled = false; //no usado por ahora
             entry.TextColor = Color.Red;
         }
 

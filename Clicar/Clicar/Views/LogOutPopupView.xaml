@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
-    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:Clicar.Customs"
-    mc:Ignorable="d"
-             x:Class="Clicar.Views.LogOutPopupView">
+        xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i18n="clr-namespace:Clicar.Helpers"
+        mc:Ignorable="d"
+        x:Class="Clicar.Views.LogOutPopupView">
     <Frame
             HeightRequest="240"
             Padding="0"
@@ -34,7 +34,7 @@
             <StackLayout
                 Spacing="0">
                 <Label
-                        Text="Cerrar sesión"
+                        Text="{i18n:Translate Logout}"
                         Margin="10"
                         HorizontalOptions="CenterAndExpand"
                         FontSize="20"
@@ -46,7 +46,7 @@
                             Margin="46,10"
                             HorizontalTextAlignment="Center"
                             HorizontalOptions="CenterAndExpand"
-                            Text="¿Está seguro de que desea salir de la sesión actual?"
+                            Text="{i18n:Translate LogoutConfirmText}"
                             FontSize="14"
                             FontFamily="{StaticResource RegularFontOpenSans}"
                             TextColor="{StaticResource BaseGreyLight}"/>
@@ -75,7 +75,7 @@
                 <Button
                         HorizontalOptions="End"
                         BackgroundColor="White"
-                        Text="Cancelar"
+                        Text="{i18n:Translate Cancel}"
                         FontSize="14"
                         FontFamily="{StaticResource BoldFontOpenSans}"
                         TextColor="{StaticResource BaseGreyLight}"
@@ -86,7 +86,7 @@
                 <Button
                         HorizontalOptions="End"
                         BackgroundColor="{StaticResource BaseOrange}"
-                        Text="Salir"
+                        Text="{i18n:Translate Exit}"
                         FontSize="14"
                         FontFamily="{StaticResource BoldFontOpenSans}"
                         TextColor="White"
