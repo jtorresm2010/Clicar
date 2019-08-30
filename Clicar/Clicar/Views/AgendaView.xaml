@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:Clicar.Templates"
+             xmlns:behavior="clr-namespace:Clicar.Behaviors"
              mc:Ignorable="d"
              x:Class="Clicar.Views.AgendaView">
 
@@ -31,7 +32,9 @@
                 HorizontalOptions="End"
                 Source="clicar.png">
             </Image>
-
+            
+            
+            <!--Iconos de carga y comportamiento-->
             <Grid
                 x:Name="RefreshImages"
                 HeightRequest="25"
@@ -49,9 +52,10 @@
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     Source="sync_alt_orange.png"/>
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="RefreshCommand"/>
-                </Grid.GestureRecognizers>
+                <Grid.Behaviors>
+                    <behavior:LoadingBehavior
+                         ControlView="{x:Reference Name=MainScrollView}"/>
+                </Grid.Behaviors>
             </Grid>
             
         </StackLayout>

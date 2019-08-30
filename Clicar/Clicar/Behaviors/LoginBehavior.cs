@@ -14,7 +14,7 @@ namespace Clicar.Behaviors
 
         public View ControlView
         {
-            get { return (Button)GetValue(ControlViewProperty); }
+            get { return (View)GetValue(ControlViewProperty); }
             set { SetValue(ControlViewProperty, value); }
         }
 
@@ -24,25 +24,22 @@ namespace Clicar.Behaviors
             base.OnAttachedTo(entry);
 
             entry.TextChanged += Entry_TextChanged;
-            ControlView.IsEnabled = false;
+            ((Button)ControlView).IsEnabled = false;
             entry.TextColor = Color.Red;
-            // Perform setup
         }
 
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            bool isEnabled = ((Entry)sender).Text.Length > 0;
-
+            bool isEnabled = ((Entry)sender).Text.Length >= 0; //condicion de activacio del boton, actualmente esta siempre activo
 
             ((Entry)sender).TextColor = isEnabled ? Color.Default : Color.Red;
-            ControlView.IsEnabled = isEnabled ? true : false;
+            ((Button)ControlView).IsEnabled = isEnabled ? true : false;
         }
 
         protected override void OnDetachingFrom(Entry entry)
         {
             base.OnDetachingFrom(entry);
             entry.TextChanged -= Entry_TextChanged;
-            // Perform clean up
         }
 
 
