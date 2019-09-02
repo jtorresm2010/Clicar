@@ -53,7 +53,7 @@ namespace Clicar.ViewModels
             Application.Current.MainPage = new ConfigView();
         }
 
-        private async void LoginCommand1()
+        private async void LoginCommand0()
         {
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
@@ -78,11 +78,6 @@ namespace Clicar.ViewModels
             try
             {
                 var resp = (LoginResponse)response.Result;
-
-                //if(resp == null)
-                //{
-                //    Debug.WriteLine("~(>'.')> Respuesta nula");
-                //}
 
                 if (resp.Resultado)
                 {

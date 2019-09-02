@@ -1,4 +1,5 @@
-﻿using Clicar.Models;
+﻿using Clicar.Helpers;
+using Clicar.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,6 @@ namespace Clicar.Services
             {
                 try
                 {
-                    ;
                     this.client = new HttpClient();
                     this.client.DefaultRequestHeaders.Accept.Clear();
                     this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -46,7 +46,7 @@ namespace Clicar.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Encienda el Wifi",
+                    Message = Languages.ConnectError,
                 };
             }
 
@@ -81,7 +81,6 @@ namespace Clicar.Services
                 }
 
                 var loginResponse = JsonConvert.DeserializeObject<T>(answer);
-                //var loginResponse = JsonConvert.DeserializeObject(answer);
 
                 return new Response
                 {

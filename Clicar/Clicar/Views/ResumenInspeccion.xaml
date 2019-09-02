@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Clicar.Customs"
              xmlns:views="clr-namespace:Clicar.Templates"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
+             xmlns:i18n="clr-namespace:Clicar.Helpers"
              mc:Ignorable="d"
              x:Class="Clicar.Views.ResumenInspeccion">
 
@@ -85,7 +86,7 @@
 
                         <Label
                             HorizontalOptions="StartAndExpand"
-                            Text="Evaluación del automóvil"
+                            Text="{i18n:Translate CarRating}"
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="{StaticResource BaseGrey}"/>
@@ -108,7 +109,7 @@
                         <Label
                             HorizontalOptions="StartAndExpand"
                             WidthRequest="230"
-                            Text="Comentario del inspector"
+                            Text="{i18n:Translate InspectorComment}"
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="{StaticResource BaseGrey}"/>
@@ -169,7 +170,7 @@
                                 HorizontalTextAlignment="Center"
                                 HorizontalOptions="StartAndExpand"
                                 WidthRequest="230"
-                                Text="Inspeccción Completada por:"
+                                Text="{i18n:Translate CompletedBy}"
                                 FontSize="14"
                                 FontFamily="{StaticResource BoldFontOpenSans}"
                                 TextColor="{StaticResource BaseOrange}"/>
@@ -196,7 +197,7 @@
                             Clicked="FinishCommand"
                             HorizontalOptions="CenterAndExpand"
                             BackgroundColor="{StaticResource BaseGreen}"
-                            Text="Cerrar"
+                            Text="{i18n:Translate Close}"
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="White"

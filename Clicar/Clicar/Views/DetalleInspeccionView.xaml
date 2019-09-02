@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:Clicar.Customs"
+             xmlns:i18n="clr-namespace:Clicar.Helpers"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
              mc:Ignorable="d"
              x:Class="Clicar.Views.DetalleInspeccionView">
@@ -44,36 +44,36 @@
                     Spacing="0">
                     
                     <Label
-                                                Text="JRGK85 TUCSON"
-                                                HorizontalOptions="Start"
-                                                FontSize="16"
-                                                TextColor="{StaticResource BGGrey}"
-                                                FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Text="JRGK85 TUCSON"
+                        HorizontalOptions="Start"
+                        FontSize="16"
+                        TextColor="{StaticResource BGGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
 
                     <Label
-                                            Text="PEUGEOT - BLANCO"
-                                            HorizontalOptions="Start"
-                                            FontSize="14"
-                                            TextColor="{StaticResource BGGrey}"
-                                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Text="PEUGEOT - BLANCO"
+                        HorizontalOptions="Start"
+                        FontSize="14"
+                        TextColor="{StaticResource BGGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <StackLayout 
                         Orientation="Horizontal" 
                         Spacing="0">
                         
                         <Label
-                                                Text="Hora de inicio: "
-                                                HorizontalOptions="Start"
-                                                FontSize="12"
-                                                TextColor="{StaticResource BGGrey}"
-                                                FontFamily="{StaticResource BoldFontOpenSans}"/>
+                            Text="{i18n:Translate StartTime}"
+                            HorizontalOptions="Start"
+                            FontSize="12"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
 
                         <Label
-                                                Text="10:00"
-                                                HorizontalOptions="Start"
-                                                FontSize="12"
-                                                TextColor="{StaticResource BGGrey}"
-                                                FontFamily="{StaticResource RegularFontOpenSans}"/>
+                            Text="10:00"
+                            HorizontalOptions="Start"
+                            FontSize="12"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     </StackLayout>
 
@@ -103,212 +103,212 @@
                     </Grid.ColumnDefinitions>
                     <!--N° de Inspección-->
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="N° de Inspección"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate InspectionNo}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="W-20190706-1-303"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="W-20190706-1-303"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <!--Marca-->
 
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Marca"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate CarBrand}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="PEUGEOT"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="PEUGEOT"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <!--Modelo-->
 
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="2"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Modelo"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate CarModel}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="2"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="208"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="208"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <!--Color-->
 
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="3"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Color"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate CarColor}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="3"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Blanco"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Blanco"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <!--Año-->
 
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="4"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Año"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate CarYear}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="4"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="2017"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="2017"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <!--Versión-->
 
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="5"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Versión"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate CarVersion}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="5"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="208 ACTIVE PAC..."
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="208 ACTIVE PAC..."
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <!--Kilometraje-->
 
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="6"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Kilometraje"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate CarMileage}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="6"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Kilometraje"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Kilometraje"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <!--Tipo-->
 
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="7"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Tipo"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate CarType}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="7"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="CITI_CAR"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="CITI_CAR"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <!--Nombre Cliente-->
 
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="8"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Nombre Cliente"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate ClientName}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="8"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Patricio Alarcon"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Patricio Alarcon"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                     <!--Rut Cliente-->
 
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="9"
-                                        Grid.Column="0"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="Rut Cliente"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{i18n:Translate ClientID}"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
                     <Label
-                                        Margin="0,5"
-                                        Grid.Row="9"
-                                        Grid.Column="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="12.968.185-5"
-                                        FontSize="14"
-                                        TextColor="{StaticResource BaseGrey}"
-                                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        Margin="0,5"
+                        Grid.Row="9"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="12.968.185-5"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                 </Grid>
 
@@ -322,7 +322,7 @@
                         <Button
                             Clicked="RechazarCommand"
                             BackgroundColor="{StaticResource BaseOrange}"
-                            Text="Rechazar"
+                            Text="{i18n:Translate Reject}"
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="White"
@@ -333,7 +333,7 @@
                         <Button
                             Clicked="InspeccionarCommand"
                             BackgroundColor="{StaticResource BaseGreen}"
-                            Text="Iniciar inspección"
+                            Text="{i18n:Translate StartInspection}"
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="White"

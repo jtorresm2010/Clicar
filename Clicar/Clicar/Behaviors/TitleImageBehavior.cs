@@ -29,12 +29,10 @@ namespace Clicar.Behaviors
             else
                 ControlView.SizeChanged += ControlViewSizeChanged;
         }
-
         private void ControlViewSizeChanged(object sender, EventArgs e)
         {
             currentImage.Margin = SetTitleMargin(currentImage.WidthRequest, ControlView.WidthRequest);
         }
-
         private Thickness SetTitleMargin(double anchoImagen, double anchoIconoDerecha = 0)
         {
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
@@ -43,7 +41,6 @@ namespace Clicar.Behaviors
             Thickness thickness = new Thickness(0, 0, margin, 0);
             return thickness;
         }
-
         protected override void OnDetachingFrom(Image image)
         {
             try

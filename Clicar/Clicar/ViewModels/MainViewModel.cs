@@ -100,8 +100,6 @@ namespace Clicar.ViewModels
             itemActual.ButtonBackgroundColor = baseGreen;
             itemActual.BorderColor = baseGreen;
 
-
-
             try
             {
                 var itemSiguiente = (AccordionItemView)accordionMenu.Children[int.Parse(parameter)];

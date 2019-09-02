@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
-    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:Clicar.Customs"
-    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-    mc:Ignorable="d"
-             x:Class="Clicar.Views.InspeccionPopupView">
+        xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clicar.Customs"
+        xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+        xmlns:i18n="clr-namespace:Clicar.Helpers"
+        mc:Ignorable="d"
+        x:Class="Clicar.Views.InspeccionPopupView">
     
     <Frame
         HeightRequest="260"
@@ -24,21 +26,21 @@
 
             <!--Titulo-->
             <Label
-                        Text="Autenticación"
-                        HorizontalOptions="CenterAndExpand"
-                        FontSize="20"
-                        TextColor="{StaticResource BaseGreen}"
-                        FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+                Text="{i18n:Translate Authentication}"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="20"
+                TextColor="{StaticResource BaseGreen}"
+                FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
 
             <!--Texto guía-->
             <Label
-                            Margin="20,10"
-                            HorizontalTextAlignment="Center"
-                            HorizontalOptions="CenterAndExpand"
-                            Text="Debe ingresar el número VIN del automóvil para continuar"
-                            FontSize="14"
-                            FontFamily="{StaticResource RegularFontOpenSans}"
-                            TextColor="{StaticResource BaseGreyLight}"/>
+                Margin="20,10"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand"
+                Text="{i18n:Translate ConfirmInfoText}"
+                FontSize="14"
+                FontFamily="{StaticResource RegularFontOpenSans}"
+                TextColor="{StaticResource BaseGreyLight}"/>
 
             <!--Campo de ingreso de VIn-->
 
@@ -51,67 +53,43 @@
                 </Grid.ColumnDefinitions>
 
                 <Image  
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        HorizontalOptions="CenterAndExpand"
-                        WidthRequest="15"
-                        Source="exclamation_solid.png" 
-                        VerticalOptions="Center" />
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="15"
+                    Source="exclamation_solid.png" 
+                    VerticalOptions="Center" />
                 <local:CustomEntry 
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
-                        VerticalOptions="Center"
-                        HeightRequest="40"
-                        BackgroundColor="Transparent" 
-                        Placeholder="Ingrese número VIN" 
-                        TextColor="{StaticResource BaseGrey}" 
-                        FontSize="14" 
-                        FontFamily="{StaticResource RegularFontOpenSans}"  />
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    VerticalOptions="Center"
+                    HeightRequest="40"
+                    BackgroundColor="Transparent" 
+                    Placeholder="{i18n:Translate VinEntryPlaceholder}" 
+                    TextColor="{StaticResource BaseGrey}" 
+                    FontSize="14" 
+                    FontFamily="{StaticResource RegularFontOpenSans}"  />
 
 
                 <Frame
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="3"
-                        HasShadow="False"
-                        Padding="0"
-                        VerticalOptions="EndAndExpand"
-                        HeightRequest="1"
-                        BackgroundColor="{StaticResource BaseGreen}"/>
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    HasShadow="False"
+                    Padding="0"
+                    VerticalOptions="EndAndExpand"
+                    HeightRequest="1"
+                    BackgroundColor="{StaticResource BaseGreen}"/>
 
 
             </Grid>
-
-            <!--<Grid
-                    HorizontalOptions="Fill">
-
-
-
-                <Image  
-                            HorizontalOptions="Start"
-                            WidthRequest="15"
-                            Margin="10,0,0,5"
-                            Grid.Column="0"
-                            Source="exclamation_solid.png" 
-                            VerticalOptions="Center" />
-
-                <local:CustomEntry 
-                            Grid.Column="0"
-                            HeightRequest="45"
-                            BackgroundColor="Transparent" 
-                            Placeholder="Ingrese número VIN" 
-                            TextColor="{StaticResource BaseGrey}" 
-                            FontSize="14" 
-                            FontFamily="{StaticResource RegularFontOpenSans}"  />
-
-            </Grid>-->
 
             <!--Radio Buttons-->
             <Label
                     Margin="0,10"
                     HorizontalOptions="StartAndExpand"
-                    Text="Transmisión:"
+                    Text="{i18n:Translate Transmission}"
                     FontSize="14"
                     FontFamily="{StaticResource RegularFontOpenSans}"
                     TextColor="{StaticResource BaseGreyLight}"/>
@@ -121,49 +99,47 @@
                         TextColor="{StaticResource BaseGreyLight}"
                         FontFamily="{StaticResource RegularFontOpenSans}"
                         TextFontSize="14"
-                        Text="Automático" 
+                        Text="{i18n:Translate Automatic}" 
                         Color="{StaticResource BaseOrange}"/>
                 <input:RadioButton
                         TextColor="{StaticResource BaseGreyLight}"
                         FontFamily="{StaticResource RegularFontOpenSans}"
                         TextFontSize="14"
-                        Text="Mecánico" 
+                        Text="{i18n:Translate Mechanic}" 
                         Color="{StaticResource BaseOrange}"/>
             </input:RadioButtonGroupView>
 
-
-
             <!--Botones-->
             <StackLayout
-                    Margin="16,10,0,0"
-                    HorizontalOptions="EndAndExpand"
-                    Spacing="10"
-                    Orientation="Horizontal">
+                Margin="16,10,0,0"
+                HorizontalOptions="EndAndExpand"
+                Spacing="10"
+                Orientation="Horizontal">
 
 
                 <Button
                     Clicked="CancelarCommand"
-                            HorizontalOptions="End"
-                            BackgroundColor="White"
-                            Text="Cancelar"
-                            FontSize="14"
-                            FontFamily="{StaticResource BoldFontOpenSans}"
-                            TextColor="{StaticResource BaseGreyLight}"
-                            HeightRequest="30"
-                            CornerRadius="15"
-                            WidthRequest="100"/>
+                    HorizontalOptions="End"
+                    BackgroundColor="White"
+                    Text="{i18n:Translate Cancel}"
+                    FontSize="14"
+                    FontFamily="{StaticResource BoldFontOpenSans}"
+                    TextColor="{StaticResource BaseGreyLight}"
+                    HeightRequest="30"
+                    CornerRadius="15"
+                    WidthRequest="100"/>
 
                 <Button
-                            Clicked="ContinuarCommand"
-                            HorizontalOptions="End"
-                            BackgroundColor="{StaticResource BaseOrange}"
-                            Text="Ingresar"
-                            FontSize="14"
-                            FontFamily="{StaticResource BoldFontOpenSans}"
-                            TextColor="White"
-                            HeightRequest="30"
-                            CornerRadius="15"
-                            WidthRequest="100"/>
+                    Clicked="ContinuarCommand"
+                    HorizontalOptions="End"
+                    BackgroundColor="{StaticResource BaseOrange}"
+                    Text="{i18n:Translate Access}"
+                    FontSize="14"
+                    FontFamily="{StaticResource BoldFontOpenSans}"
+                    TextColor="White"
+                    HeightRequest="30"
+                    CornerRadius="15"
+                    WidthRequest="100"/>
 
             </StackLayout>
 

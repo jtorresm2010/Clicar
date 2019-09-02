@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="Clicar.Templates.ItemInspeccionVCTemplate">
+<ViewCell 
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i18n="clr-namespace:Clicar.Helpers"
+    xmlns:local="clr-namespace:Clicar.Templates"
+    mc:Ignorable="d"
+        x:Class="Clicar.Templates.ItemInspeccionVCTemplate">
     
     
     <StackLayout
@@ -24,21 +27,9 @@
                 Spacing="15"
                 HeightRequest="30"
                 Orientation="Horizontal">
-                <StackLayout
-                    WidthRequest="100"
-                    Orientation="Horizontal">
-                    <Image Source="lock_solid_grey"/>
-                    <Label 
-                        VerticalOptions="CenterAndExpand"
-                        TextColor="{StaticResource BaseGreyLight}"
-                        FontSize="12"
-                        FontFamily="{StaticResource BoldFontOpenSans}"
-                        Text="Bloquear"/>
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="SwitchStateCommand"/>
-                    </StackLayout.GestureRecognizers>
-
-                </StackLayout>
+                
+                <local:LockTemplate
+                    Lockable="{Binding Deshabilitable}"/>
 
                 <StackLayout 
                     VerticalOptions="CenterAndExpand"
@@ -49,7 +40,7 @@
                         TextColor="{StaticResource BaseGreyLight}"
                         FontSize="12"
                         FontFamily="{StaticResource BoldFontOpenSans}"
-                        Text="Estado: "/>
+                        Text="{i18n:Translate State}"/>
 
                     <Label  
                         VerticalOptions="StartAndExpand"

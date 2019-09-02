@@ -20,7 +20,7 @@ namespace Clicar
 
             MainPage = new LoginView();
             //MainPage = new ConfigView();
-            //MainPage = new NavigationPage(new AgendaView());
+            //MainPage = new NavigationPage(new InspeccionView());
 
 
 

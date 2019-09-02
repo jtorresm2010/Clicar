@@ -186,4 +186,145 @@
   <data name="Accept" xml:space="preserve">
     <value>Aceptar</value>
   </data>
+  <data name="ConnectError" xml:space="preserve">
+    <value>Por favor active su conexión a Internet</value>
+  </data>
+  <data name="InspectionNo" xml:space="preserve">
+    <value>N° de Inspección</value>
+  </data>
+  <data name="CarBrand" xml:space="preserve">
+    <value>Marca</value>
+  </data>
+  <data name="CarModel" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="CarColor" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="CarYear" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="CarVersion" xml:space="preserve">
+    <value>Versión</value>
+  </data>
+  <data name="CarMileage" xml:space="preserve">
+    <value>Kilometraje</value>
+  </data>
+  <data name="CarType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="ClientName" xml:space="preserve">
+    <value>Nombre Cliente</value>
+  </data>
+  <data name="ClientID" xml:space="preserve">
+    <value>Rut Cliente</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Rechazar</value>
+  </data>
+  <data name="StartInspection" xml:space="preserve">
+    <value>Iniciar inspección</value>
+  </data>
+  <data name="RejectInfoText" xml:space="preserve">
+    <value>Rechazar la Inspección para la patente:</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="Authentication" xml:space="preserve">
+    <value>Autenticación</value>
+  </data>
+  <data name="VinEntryPlaceholder" xml:space="preserve">
+    <value>Ingrese número VIN</value>
+  </data>
+  <data name="ConfirmInfoText" xml:space="preserve">
+    <value>Debe ingresar el número VIN del automóvil para continuar</value>
+  </data>
+  <data name="Transmission" xml:space="preserve">
+    <value>Transmisión:</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automático</value>
+  </data>
+  <data name="Mechanic" xml:space="preserve">
+    <value>Mecánico</value>
+  </data>
+  <data name="Access" xml:space="preserve">
+    <value>Ingresar</value>
+  </data>
+  <data name="LockedText" xml:space="preserve">
+    <value>Bloqueado</value>
+  </data>
+  <data name="LockText" xml:space="preserve">
+    <value>Bloquear</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Estado: </value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Atrás</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="FinalAppraisal" xml:space="preserve">
+    <value>Evaluación final</value>
+  </data>
+  <data name="FinalAppraisalInfoText" xml:space="preserve">
+    <value>Indique la evaluación final general del auto</value>
+  </data>
+  <data name="StarRatingInfoText" xml:space="preserve">
+    <value>Otorga una valorización general al auto</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Puntuación</value>
+  </data>
+  <data name="Conclude" xml:space="preserve">
+    <value>Finalizar</value>
+  </data>
+  <data name="PrelimReport" xml:space="preserve">
+    <value>Reporte preliminar</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>Hora Término</value>
+  </data>
+  <data name="InspectionTime" xml:space="preserve">
+    <value>Tiempo Inspección</value>
+  </data>
+  <data name="ExpectedTime" xml:space="preserve">
+    <value>Tiempo Esperado</value>
+  </data>
+  <data name="CurrentRecord" xml:space="preserve">
+    <value>Record Actual</value>
+  </data>
+  <data name="CurrentMedian" xml:space="preserve">
+    <value>Tu media actual</value>
+  </data>
+  <data name="InspectionSummaryBtn" xml:space="preserve">
+    <value>Ver resumen de inspección</value>
+  </data>
+  <data name="PasswordSign" xml:space="preserve">
+    <value>Firmar y cerrar con contraseña</value>
+  </data>
+  <data name="TouchIDSign" xml:space="preserve">
+    <value>Firmar y Cerrar usando Touch ID</value>
+  </data>
+  <data name="InspectionSummaryTitle" xml:space="preserve">
+    <value>Resumen de inspección</value>
+  </data>
+  <data name="CarRating" xml:space="preserve">
+    <value>Evaluación del automóvil</value>
+  </data>
+  <data name="InspectorComment" xml:space="preserve">
+    <value>Comentario del inspector</value>
+  </data>
+  <data name="CompletedBy" xml:space="preserve">
+    <value>Inspeccción Completada por:</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
 </root>

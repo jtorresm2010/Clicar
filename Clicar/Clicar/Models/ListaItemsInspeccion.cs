@@ -39,7 +39,7 @@ namespace Clicar.Models
                 //Area 2
                 new ItemInspeccion
                 {
-                    Nombre = "Aire acondicionado", Area="2", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Aire acondicionado", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1"
                 },
                 new ItemInspeccion
                 {
@@ -47,15 +47,15 @@ namespace Clicar.Models
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "ABS", Area="2", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "ABS", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Airbags laterales", Area="2", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Airbags laterales", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1"
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Cinturones pirotécnicos", Area="2", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Cinturones pirotécnicos", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1"
                 },
                 //Area 3
                 new ItemInspeccion

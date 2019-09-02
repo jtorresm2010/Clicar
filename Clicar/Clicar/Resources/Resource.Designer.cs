@@ -70,6 +70,42 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Access.
+        /// </summary>
+        internal static string Access {
+            get {
+                return ResourceManager.GetString("Access", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Authentication.
+        /// </summary>
+        internal static string Authentication {
+            get {
+                return ResourceManager.GetString("Authentication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Automatic.
+        /// </summary>
+        internal static string Automatic {
+            get {
+                return ResourceManager.GetString("Automatic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Back.
+        /// </summary>
+        internal static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancel.
         /// </summary>
         internal static string Cancel {
@@ -79,11 +115,128 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Brand.
+        /// </summary>
+        internal static string CarBrand {
+            get {
+                return ResourceManager.GetString("CarBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Color.
+        /// </summary>
+        internal static string CarColor {
+            get {
+                return ResourceManager.GetString("CarColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Mileage.
+        /// </summary>
+        internal static string CarMileage {
+            get {
+                return ResourceManager.GetString("CarMileage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Model.
+        /// </summary>
+        internal static string CarModel {
+            get {
+                return ResourceManager.GetString("CarModel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Car evaluation.
+        /// </summary>
+        internal static string CarRating {
+            get {
+                return ResourceManager.GetString("CarRating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Type.
+        /// </summary>
+        internal static string CarType {
+            get {
+                return ResourceManager.GetString("CarType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Version.
+        /// </summary>
+        internal static string CarVersion {
+            get {
+                return ResourceManager.GetString("CarVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Year.
+        /// </summary>
+        internal static string CarYear {
+            get {
+                return ResourceManager.GetString("CarYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Customer Rut.
+        /// </summary>
+        internal static string ClientID {
+            get {
+                return ResourceManager.GetString("ClientID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Client Name.
+        /// </summary>
+        internal static string ClientName {
+            get {
+                return ResourceManager.GetString("ClientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Close.
+        /// </summary>
+        internal static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Completed.
         /// </summary>
         internal static string Completed {
             get {
                 return ResourceManager.GetString("Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Inspection Completed by:.
+        /// </summary>
+        internal static string CompletedBy {
+            get {
+                return ResourceManager.GetString("CompletedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Conclude.
+        /// </summary>
+        internal static string Conclude {
+            get {
+                return ResourceManager.GetString("Conclude", resourceCulture);
             }
         }
         
@@ -115,11 +268,83 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Confirm.
+        /// </summary>
+        internal static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You must enter the car&amp;#39;s VIN number to continue.
+        /// </summary>
+        internal static string ConfirmInfoText {
+            get {
+                return ResourceManager.GetString("ConfirmInfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Please turn on your internet connection.
+        /// </summary>
+        internal static string ConnectError {
+            get {
+                return ResourceManager.GetString("ConnectError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Continue.
+        /// </summary>
+        internal static string Continue {
+            get {
+                return ResourceManager.GetString("Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Current average.
+        /// </summary>
+        internal static string CurrentMedian {
+            get {
+                return ResourceManager.GetString("CurrentMedian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Current Record.
+        /// </summary>
+        internal static string CurrentRecord {
+            get {
+                return ResourceManager.GetString("CurrentRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edit.
+        /// </summary>
+        internal static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Your email here.
         /// </summary>
         internal static string EmailPlaceholder {
             get {
                 return ResourceManager.GetString("EmailPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a End Time.
+        /// </summary>
+        internal static string EndTime {
+            get {
+                return ResourceManager.GetString("EndTime", resourceCulture);
             }
         }
         
@@ -142,6 +367,33 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Expected time.
+        /// </summary>
+        internal static string ExpectedTime {
+            get {
+                return ResourceManager.GetString("ExpectedTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Final Appraisal.
+        /// </summary>
+        internal static string FinalAppraisal {
+            get {
+                return ResourceManager.GetString("FinalAppraisal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Indicate the overall final evaluation of the car.
+        /// </summary>
+        internal static string FinalAppraisalInfoText {
+            get {
+                return ResourceManager.GetString("FinalAppraisalInfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Enter the Inspection.
         /// </summary>
         internal static string InspectionAccessButton {
@@ -151,11 +403,74 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a inspection.
+        /// </summary>
+        internal static string InspectionNo {
+            get {
+                return ResourceManager.GetString("InspectionNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a See inspection summary.
+        /// </summary>
+        internal static string InspectionSummaryBtn {
+            get {
+                return ResourceManager.GetString("InspectionSummaryBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Inspection Summary.
+        /// </summary>
+        internal static string InspectionSummaryTitle {
+            get {
+                return ResourceManager.GetString("InspectionSummaryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Inspection Time.
+        /// </summary>
+        internal static string InspectionTime {
+            get {
+                return ResourceManager.GetString("InspectionTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Inspector: .
         /// </summary>
         internal static string Inspector {
             get {
                 return ResourceManager.GetString("Inspector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Inspector&apos;s Comment.
+        /// </summary>
+        internal static string InspectorComment {
+            get {
+                return ResourceManager.GetString("InspectorComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Locked.
+        /// </summary>
+        internal static string LockedText {
+            get {
+                return ResourceManager.GetString("LockedText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lock.
+        /// </summary>
+        internal static string LockText {
+            get {
+                return ResourceManager.GetString("LockText", resourceCulture);
             }
         }
         
@@ -187,6 +502,15 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Mechanic.
+        /// </summary>
+        internal static string Mechanic {
+            get {
+                return ResourceManager.GetString("Mechanic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Password.
         /// </summary>
         internal static string PasswordPlaceholder {
@@ -214,11 +538,56 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Sign and close using Password.
+        /// </summary>
+        internal static string PasswordSign {
+            get {
+                return ResourceManager.GetString("PasswordSign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Pending.
         /// </summary>
         internal static string Pending {
             get {
                 return ResourceManager.GetString("Pending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Preliminary report.
+        /// </summary>
+        internal static string PrelimReport {
+            get {
+                return ResourceManager.GetString("PrelimReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Reject.
+        /// </summary>
+        internal static string Reject {
+            get {
+                return ResourceManager.GetString("Reject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Reject inspection for:.
+        /// </summary>
+        internal static string RejectInfoText {
+            get {
+                return ResourceManager.GetString("RejectInfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Score.
+        /// </summary>
+        internal static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
             }
         }
         
@@ -232,11 +601,38 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Grant a general valuation to the car.
+        /// </summary>
+        internal static string StarRatingInfoText {
+            get {
+                return ResourceManager.GetString("StarRatingInfoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Start inspection.
+        /// </summary>
+        internal static string StartInspection {
+            get {
+                return ResourceManager.GetString("StartInspection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Start time: .
         /// </summary>
         internal static string StartTime {
             get {
                 return ResourceManager.GetString("StartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a State: .
+        /// </summary>
+        internal static string State {
+            get {
+                return ResourceManager.GetString("State", resourceCulture);
             }
         }
         
@@ -250,11 +646,38 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Sign and close using Touch ID.
+        /// </summary>
+        internal static string TouchIDSign {
+            get {
+                return ResourceManager.GetString("TouchIDSign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Transmission.
+        /// </summary>
+        internal static string Transmission {
+            get {
+                return ResourceManager.GetString("Transmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a User Name.
         /// </summary>
         internal static string UsernamePlaceholder {
             get {
                 return ResourceManager.GetString("UsernamePlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter VIN number.
+        /// </summary>
+        internal static string VinEntryPlaceholder {
+            get {
+                return ResourceManager.GetString("VinEntryPlaceholder", resourceCulture);
             }
         }
         

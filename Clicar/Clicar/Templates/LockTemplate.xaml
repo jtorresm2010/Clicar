@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:Clicar.Helpers"
+             mc:Ignorable="d"
+             x:Class="Clicar.Templates.LockTemplate"
+             WidthRequest="100"
+             Orientation="Horizontal">
+    <Image 
+        x:Name="LockIcon"
+        Source="lock_solid_grey"/>
+    <Label
+        x:Name="LockText"
+        VerticalOptions="CenterAndExpand"
+        TextColor="{StaticResource BaseGreyLight}"
+        FontSize="12"
+        FontFamily="{StaticResource BoldFontOpenSans}"
+        Text="{i18n:Translate LockText}"/>
+    <StackLayout.GestureRecognizers>
+        <TapGestureRecognizer Tapped="SwitchStateCommand"/>
+    </StackLayout.GestureRecognizers>
+</StackLayout>

@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:Clicar.Customs"
-             xmlns:behaviors="clr-namespace:Clicar.Behaviors"
-             xmlns:views="clr-namespace:Clicar.Templates"
-             mc:Ignorable="d"
-             x:Class="Clicar.Views.EvaluacionFinalView">
+<ContentPage 
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clicar.Customs"
+        xmlns:behaviors="clr-namespace:Clicar.Behaviors"
+        xmlns:views="clr-namespace:Clicar.Templates"
+        xmlns:i18n="clr-namespace:Clicar.Helpers"
+        mc:Ignorable="d"
+        x:Class="Clicar.Views.EvaluacionFinalView">
     
     <NavigationPage.TitleView>
         <StackLayout 
@@ -50,12 +52,12 @@
                            
                                 <Label
                                     Margin="32,0"
-                                FontSize="16"
-                                HorizontalOptions="StartAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                Text="Evaluación final"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                TextColor="White"/>
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    Text="{i18n:Translate FinalAppraisal}"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"
+                                    TextColor="White"/>
 
                             </StackLayout>
                         </Frame>
@@ -70,7 +72,7 @@
                         <Label
                             HorizontalOptions="StartAndExpand"
                             WidthRequest="230"
-                            Text="Indique la evaluación final general del auto"
+                            Text="{i18n:Translate FinalAppraisalInfoText}"
                             FontSize="14"
                             FontFamily="{StaticResource RegularFontOpenSans}"
                             TextColor="{StaticResource BaseGrey}"/>
@@ -95,7 +97,7 @@
                     Spacing="15">
                         <Label
                             HorizontalOptions="StartAndExpand"
-                            Text="Otorga una valorización general al auto"
+                            Text="{i18n:Translate StarRatingInfoText}"
                             FontSize="14"
                             FontFamily="{StaticResource RegularFontOpenSans}"
                             TextColor="{StaticResource BaseGrey}"/>
@@ -106,7 +108,7 @@
  
                         <Label
                             HorizontalOptions="CenterAndExpand"
-                            Text="Puntuación"
+                            Text="{i18n:Translate Score}"
                             FontSize="10"
                             FontFamily="{StaticResource RegularFontOpenSans}"
                             TextColor="{StaticResource BaseGreyLight}"/>
@@ -123,21 +125,20 @@
                         Margin="8,30,8,0">
 
                         <Button
-                        HorizontalOptions="EndAndExpand"
-                        BackgroundColor="White"
-                        Text="Cancelar"
-                        FontSize="14"
-                        FontFamily="{StaticResource BoldFontOpenSans}"
-                        TextColor="{StaticResource BaseGreyLight}"
-                        HeightRequest="40"
-                        WidthRequest="90"
-                        BorderRadius="20"/>
-
+                            HorizontalOptions="EndAndExpand"
+                            BackgroundColor="White"
+                            Text="{i18n:Translate Cancel}"
+                            FontSize="14"
+                            FontFamily="{StaticResource BoldFontOpenSans}"
+                            TextColor="{StaticResource BaseGreyLight}"
+                            HeightRequest="40"
+                            WidthRequest="90"
+                            BorderRadius="20"/>
                         <Button
                             Clicked="FinalizarCommand"
                             HorizontalOptions="EndAndExpand"
                             BackgroundColor="{StaticResource BaseGreen}"
-                            Text="Finalizar"
+                            Text="{i18n:Translate Conclude}"
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="White"

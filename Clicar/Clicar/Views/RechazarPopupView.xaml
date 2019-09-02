@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
-            xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+            xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:Clicar.Customs"
-    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-    mc:Ignorable="d"
-             x:Class="Clicar.Views.RechazarPopupView">
+            xmlns:i18n="clr-namespace:Clicar.Helpers"
+            mc:Ignorable="d"
+            x:Class="Clicar.Views.RechazarPopupView">
     
     <Frame
         HeightRequest="260"
@@ -24,21 +25,21 @@
                 
                 <!--Titulo-->
                 <Label
-                        Text="Rechazar"
-                        HorizontalOptions="CenterAndExpand"
-                        FontSize="20"
-                        TextColor="{StaticResource BaseGreen}"
-                        FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+                    Text="{i18n:Translate Reject}"
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="20"
+                    TextColor="{StaticResource BaseGreen}"
+                    FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
 
                 <!--Texto guía-->
                 <Label
-                            Margin="0,10"
-                            HorizontalTextAlignment="End"
-                            HorizontalOptions="CenterAndExpand"
-                            Text="Rechazar la Inspección para la patente:"
-                            FontSize="14"
-                            FontFamily="{StaticResource RegularFontOpenSans}"
-                            TextColor="{StaticResource BaseGreyLight}"/>
+                    Margin="0,10"
+                    HorizontalTextAlignment="End"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{i18n:Translate RejectInfoText}"
+                    FontSize="14"
+                    FontFamily="{StaticResource RegularFontOpenSans}"
+                    TextColor="{StaticResource BaseGreyLight}"/>
 
                 <!--Numero de patente-->
 
@@ -61,27 +62,45 @@
 
 
             <!--Picker-->
-            <Label
-                    HorizontalOptions="StartAndExpand"
-                    Text="Seleccione el motivo del rechazo:"
-                    FontSize="14"
-                    FontFamily="{StaticResource RegularFontOpenSans}"
-                    TextColor="{StaticResource BaseGreyLight}"/>
-            <local:CustomPicker
-                        Image="ic_arrow_down"
-                        FontSize="14"
-                        TextColor="{StaticResource BaseGrey44}"
-                        FontFamily="{StaticResource SemiBoldFontOpenSans}"
-                        Margin="0, 0,0,10"
-                        Title="Motivo del rechazo:">
+            <Frame
+                BackgroundColor="White"
+                CornerRadius="10"
+                HasShadow="True"
+                Margin="0,0,0,10"
+                Padding="15,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                                    
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Source="ic_arrow_down.png"/>
+                    <local:CustomPicker
+                                        HeightRequest="40"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        Image="ic_arrow_down"
+                                        Title="Motivo del rechazo:"
+                                        FontSize="14"
+                                        TextColor="{StaticResource BaseGrey44}"
+                                        FontFamily="{StaticResource SemiBoldFontOpenSans}">
                         <Picker.Items>
                             <x:String>Vehículo no coincide con los datos</x:String>
                             <x:String>No cumple requerimientos</x:String>
                             <x:String>Demasiado dañado</x:String>
                             <x:String>No corresponde</x:String>
                             <x:String>No existe</x:String>
-                    </Picker.Items>
+                        </Picker.Items>
                     </local:CustomPicker>
+                </Grid>
+
+            </Frame>
+
 
 
 
@@ -95,27 +114,27 @@
 
 
                     <Button
-                            HorizontalOptions="End"
-                            BackgroundColor="White"
-                            Text="Cancelar"
-                            FontSize="14"
-                            FontFamily="{StaticResource BoldFontOpenSans}"
-                            TextColor="{StaticResource BaseGreyLight}"
-                            HeightRequest="30"
-                            CornerRadius="15"
-                            WidthRequest="100"/>
+                        HorizontalOptions="End"
+                        BackgroundColor="White"
+                        Text="{i18n:Translate Cancel}"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="{StaticResource BaseGreyLight}"
+                        HeightRequest="30"
+                        CornerRadius="15"
+                        WidthRequest="100"/>
 
                     <Button
-                            Clicked="ConfirmarCommand"
-                            HorizontalOptions="End"
-                            BackgroundColor="{StaticResource MidOrange}"
-                            Text="Confirmar"
-                            FontSize="14"
-                            FontFamily="{StaticResource BoldFontOpenSans}"
-                            TextColor="White"
-                            HeightRequest="30"
-                            CornerRadius="15"
-                            WidthRequest="100"/>
+                        Clicked="ConfirmarCommand"
+                        HorizontalOptions="End"
+                        BackgroundColor="{StaticResource MidOrange}"
+                        Text="{i18n:Translate Confirm}"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="White"
+                        HeightRequest="30"
+                        CornerRadius="15"
+                        WidthRequest="100"/>
 
                 </StackLayout>
             

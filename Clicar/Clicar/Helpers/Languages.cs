@@ -17,97 +17,75 @@ namespace Clicar.Helpers
         }
 
 
-        public static string Error
-        {
-            get { return Resource.Error; }
-        }
-        public static string Welcome
-        {
-            get { return Resource.Welcome; }
-        }
-        public static string UsernamePlaceholder
-        {
-            get { return Resource.UsernamePlaceholder; }
-        }
-        public static string PasswordPlaceholder
-        {
-            get { return Resource.PasswordPlaceholder; }
-        }
-        public static string PasswordRecovery
-        {
-            get { return Resource.PasswordRecovery; }
-        }
-        public static string LoginButton
-        {
-            get { return Resource.LoginButton; }
-        }
-        public static string TouchIDButton
-        {
-            get { return Resource.TouchIDButton; }
-        }
-        public static string PasswordRecoveryInfo
-        {
-            get { return Resource.PasswordRecoveryInfo; }
-        }
-        public static string EmailPlaceholder
-        {
-            get { return Resource.EmailPlaceholder; }
-        }
-        public static string Cancel
-        {
-            get { return Resource.Cancel; }
-        }
-        public static string Send
-        {
-            get { return Resource.Send; }
-        }
-        public static string ConfigInfoText
-        {
-            get { return Resource.ConfigInfoText; }
-        }
-        public static string ConfigCurrentBranch
-        {
-            get { return Resource.ConfigCurrentBranch; }
-        }
-        public static string InspectionAccessButton
-        {
-            get { return Resource.InspectionAccessButton; }
-        }
-        public static string ConfigPicker
-        {
-            get { return Resource.ConfigPicker; }
-        }
-        public static string Inspector
-        {
-            get { return Resource.Inspector; }
-        }
-        public static string Pending
-        {
-            get { return Resource.Pending; }
-        }
-        public static string Completed
-        {
-            get { return Resource.Completed; }
-        }
-        public static string StartTime
-        {
-            get { return Resource.StartTime; }
-        }
-        public static string Logout
-        {
-            get { return Resource.Logout; }
-        }
-        public static string LogoutConfirmText
-        {
-            get { return Resource.LogoutConfirmText; }
-        }
-        public static string Exit
-        {
-            get { return Resource.Exit; }
-        }
-        public static string Accept
-        {
-            get { return Resource.Accept; }
-        }
+        public static string Error => Resource.Error;
+        public static string Welcome => Resource.Welcome;
+        public static string UsernamePlaceholder => Resource.UsernamePlaceholder;
+        public static string PasswordPlaceholder => Resource.PasswordPlaceholder;
+        public static string PasswordRecovery => Resource.PasswordRecovery;
+        public static string LoginButton => Resource.LoginButton;
+        public static string TouchIDButton => Resource.TouchIDButton;
+        public static string PasswordRecoveryInfo => Resource.PasswordRecoveryInfo;
+        public static string EmailPlaceholder => Resource.EmailPlaceholder;
+        public static string Cancel => Resource.Cancel;
+        public static string Send => Resource.Send;
+        public static string ConfigInfoText => Resource.ConfigInfoText;
+        public static string ConfigCurrentBranch => Resource.ConfigCurrentBranch;
+        public static string InspectionAccessButton => Resource.InspectionAccessButton;
+        public static string ConfigPicker => Resource.ConfigPicker;
+        public static string Inspector => Resource.Inspector;
+        public static string Pending => Resource.Pending;
+        public static string Completed => Resource.Completed;
+        public static string StartTime => Resource.StartTime;
+        public static string Logout => Resource.Logout;
+        public static string LogoutConfirmText => Resource.LogoutConfirmText;
+        public static string Exit => Resource.Exit;
+        public static string Accept => Resource.Accept;
+        public static string ConnectError => Resource.ConnectError;
+        public static string InspectionNo => Resource.InspectionNo;
+        public static string CarBrand => Resource.CarBrand;
+        public static string CarModel => Resource.CarModel;
+        public static string CarColor => Resource.CarColor;
+        public static string CarYear => Resource.CarYear;
+        public static string CarVersion => Resource.CarVersion;
+        public static string CarMileage => Resource.CarMileage;
+        public static string CarType => Resource.CarType;
+        public static string ClientName => Resource.ClientName;
+        public static string ClientID => Resource.ClientID;
+        public static string Reject => Resource.Reject;
+        public static string StartInspection => Resource.StartInspection;
+        public static string RejectInfoText => Resource.RejectInfoText;
+        public static string Confirm => Resource.Confirm;
+        public static string Authentication => Resource.Authentication;
+        public static string ConfirmInfoText => Resource.ConfirmInfoText;
+        public static string VinEntryPlaceholder => Resource.VinEntryPlaceholder;
+        public static string Transmission => Resource.Transmission;
+        public static string Automatic => Resource.Automatic;
+        public static string Mechanic => Resource.Mechanic;
+        public static string Access => Resource.Access;
+        public static string LockText => Resource.LockText;
+        public static string LockedText => Resource.LockedText;
+        public static string State => Resource.State;
+        public static string Edit => Resource.Edit;
+        public static string Back => Resource.Back;
+        public static string Continue => Resource.Continue;
+        public static string FinalAppraisal => Resource.FinalAppraisal;
+        public static string FinalAppraisalInfoText => Resource.FinalAppraisalInfoText;
+        public static string StarRatingInfoText => Resource.StarRatingInfoText;
+        public static string Score => Resource.Score;
+        public static string Conclude => Resource.Conclude;
+        public static string PrelimReport => Resource.PrelimReport;
+        public static string EndTime => Resource.EndTime;
+        public static string InspectionTime => Resource.InspectionTime;
+        public static string ExpectedTime => Resource.ExpectedTime;
+        public static string CurrentRecord => Resource.CurrentRecord;
+        public static string CurrentMedian => Resource.CurrentMedian;
+        public static string InspectionSummary => Resource.InspectionSummaryBtn;
+        public static string PasswordSign => Resource.PasswordSign;
+        public static string TouchIDSign => Resource.TouchIDSign;
+        public static string InspectionSummaryTitle => Resource.InspectionSummaryTitle;
+        public static string CarRating => Resource.CarRating;
+        public static string InspectorComment => Resource.InspectorComment;
+        public static string CompletedBy => Resource.CompletedBy;
+        public static string Close => Resource.Close;
     }
 }
