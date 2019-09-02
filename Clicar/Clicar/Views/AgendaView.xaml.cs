@@ -18,9 +18,6 @@ namespace Clicar.Views
         {
             InitializeComponent();
 
-            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage.WidthRequest, RefreshImages.WidthRequest);
-
-
             instance = this;
         }
         private static AgendaView instance;

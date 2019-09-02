@@ -16,7 +16,6 @@ namespace Clicar.Views
         public EvaluacionFinalView()
         {
             InitializeComponent();
-            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage.WidthRequest);
         }
 
         private void FinalizarCommand(object sender, EventArgs e)

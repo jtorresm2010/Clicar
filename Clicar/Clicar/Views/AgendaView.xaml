@@ -31,6 +31,10 @@
                 x:Name="TitleImage"
                 HorizontalOptions="End"
                 Source="clicar.png">
+                <Image.Behaviors>
+                    <behavior:TitleImageBehavior
+                        ControlView="{x:Reference Name=RefreshImages}"/>
+                </Image.Behaviors>
             </Image>
             
             <!--Iconos de carga y comportamiento-->

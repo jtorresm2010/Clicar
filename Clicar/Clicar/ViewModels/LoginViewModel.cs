@@ -47,13 +47,15 @@ namespace Clicar.ViewModels
                 return new RelayCommand(LoginCommand);
             }
         }
-        private async void LoginCommand()
+
+        private void LoginCommand()
+        {
+            Application.Current.MainPage = new ConfigView();
+        }
+
+        private async void LoginCommand1()
         {
             var connection = restService.CheckConnection();
-
-            Debug.WriteLine("~(>'.')> " + Usuario);
-            Debug.WriteLine("~(>'.')> " + Clave);
-
             if (!connection.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);

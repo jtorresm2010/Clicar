@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              xmlns:local="clr-namespace:Clicar.Customs"
+             xmlns:behavior="clr-namespace:Clicar.Behaviors"
              mc:Ignorable="d"
              x:Class="Clicar.Views.EditarDetalleView">
 
@@ -19,7 +20,11 @@
                 WidthRequest="100"
                 x:Name="TitleImage"
                 HorizontalOptions="EndAndExpand"
-                Source="clicar.png"/>
+                Source="clicar.png">
+                <Image.Behaviors>
+                    <behavior:TitleImageBehavior/>
+                </Image.Behaviors>
+            </Image>
         </StackLayout>
     </NavigationPage.TitleView>
 

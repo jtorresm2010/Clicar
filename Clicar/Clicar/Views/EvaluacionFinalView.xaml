@@ -20,7 +20,11 @@
                 WidthRequest="100"
                 x:Name="TitleImage"
                 HorizontalOptions="EndAndExpand"
-                Source="clicar.png"/>
+                Source="clicar.png">
+                <Image.Behaviors>
+                    <behaviors:TitleImageBehavior/>
+                </Image.Behaviors>
+            </Image>
         </StackLayout>
     </NavigationPage.TitleView>
 

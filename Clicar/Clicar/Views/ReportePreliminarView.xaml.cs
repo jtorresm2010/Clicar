@@ -16,7 +16,6 @@ namespace Clicar.Views
         public ReportePreliminarView()
         {
             InitializeComponent();
-            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage.WidthRequest);
         }
 
         private void VerResumenCommand(object sender, EventArgs e)

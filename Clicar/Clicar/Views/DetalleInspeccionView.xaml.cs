@@ -19,7 +19,7 @@ namespace Clicar.Views
         {
             InitializeComponent();
             instance = this;
-            TitleImage.Margin = Funciones.SetTitleMargin(TitleImage.WidthRequest);
+            
         }
 
         protected override void OnAppearing()

@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Clicar.Customs"
+             xmlns:behavior="clr-namespace:Clicar.Behaviors"
              mc:Ignorable="d"
              x:Class="Clicar.Views.DetalleInspeccionView">
 
@@ -18,7 +19,11 @@
                 WidthRequest="100"
                 x:Name="TitleImage"
                 HorizontalOptions="EndAndExpand"
-                Source="clicar.png"/>
+                Source="clicar.png">
+                <Image.Behaviors>
+                    <behavior:TitleImageBehavior/>
+                </Image.Behaviors>
+            </Image>
         </StackLayout>
     </NavigationPage.TitleView>
 

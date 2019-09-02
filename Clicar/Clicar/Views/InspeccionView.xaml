@@ -7,6 +7,7 @@
              xmlns:accordionview="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
              xmlns:local="clr-namespace:Clicar.Customs"
              xmlns:views="clr-namespace:Clicar.Templates"
+             xmlns:behavior="clr-namespace:Clicar.Behaviors"
              mc:Ignorable="d"
              x:Class="Clicar.Views.InspeccionView">
 
@@ -21,7 +22,11 @@
                 WidthRequest="100"
                 x:Name="TitleImage"
                 HorizontalOptions="EndAndExpand"
-                Source="clicar.png"/>
+                Source="clicar.png">
+                <Image.Behaviors>
+                    <behavior:TitleImageBehavior/>
+                </Image.Behaviors>
+            </Image>
         </StackLayout>
     </NavigationPage.TitleView>
 
