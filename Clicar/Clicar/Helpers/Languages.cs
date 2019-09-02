@@ -105,5 +105,9 @@ namespace Clicar.Helpers
         {
             get { return Resource.Exit; }
         }
+        public static string Accept
+        {
+            get { return Resource.Accept; }
+        }
     }
 }

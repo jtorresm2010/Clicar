@@ -6,10 +6,12 @@
              xmlns:local="clr-namespace:Clicar.Customs"
              xmlns:i18n="clr-namespace:Clicar.Helpers"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
              mc:Ignorable="d"
              x:Class="Clicar.Views.LoginView">
     <ContentPage.Content>
         <ScrollView
+            BindingContext="{Binding Login}"
             BackgroundColor="{StaticResource BGGrey}">
             <StackLayout
                 Spacing="0"
@@ -77,6 +79,7 @@
 
                                 <local:CustomEntry 
                                     x:Name="UsuarioEntry"
+                                    Text="{Binding Usuario}"
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
@@ -126,6 +129,7 @@
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     x:Name="Password"
+                                    Text="{Binding Clave}"
                                     VerticalOptions="Center"
                                     IsPassword="True"
                                     HeightRequest="40"
@@ -194,7 +198,7 @@
 
                             <Button
                                 x:Name="LoginButton"
-                                Clicked="LoginCommand"
+                                Command="{Binding LoginICommand}"
                                 BackgroundColor="{StaticResource BaseGreen}"
                                 Text="{i18n:Translate LoginButton}"
                                 FontSize="16"

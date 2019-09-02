@@ -64,7 +64,8 @@ namespace Clicar.Views
         
         private void LoginCommand(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new ConfigView();
+            Debug.WriteLine("Accion login codebehind <('_'<)");
+            //Application.Current.MainPage = new ConfigView();
         }
     }
 }

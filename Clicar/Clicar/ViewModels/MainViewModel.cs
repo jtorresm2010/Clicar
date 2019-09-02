@@ -38,6 +38,7 @@ namespace Clicar.ViewModels
 
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
 
+        public LoginViewModel Login { get; set; }
 
         public MainViewModel()
         {

@@ -61,6 +61,15 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Accept.
+        /// </summary>
+        internal static string Accept {
+            get {
+                return ResourceManager.GetString("Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancel.
         /// </summary>
         internal static string Cancel {

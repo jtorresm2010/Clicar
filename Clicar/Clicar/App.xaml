@@ -29,16 +29,13 @@
             </DataTemplate>
 
             
-            <!--Items diferentes-->
+            <!--Templates de Items diferentes-->
             <DataTemplate x:Key="itemInspeccionVCTemplate">
                 <template:ItemInspeccionVCTemplate/>
             </DataTemplate>
-
             <DataTemplate x:Key="itemInspSwitchVCTemplate">
                 <template:ItemInspSwitchVCTemplate/>
             </DataTemplate>
-
-
 
             <template:ItemDataTemplateSelector 
                     x:Key="itemDataTemplateSelector" 
@@ -66,7 +63,6 @@
             <Color x:Key="BaseOrange">#E87B0E</Color>
 
             <!--Fuentes-->
-
             <OnPlatform 
                     x:TypeArguments="x:String" 
                     x:Key="BoldFontOpenSans">
@@ -77,18 +73,16 @@
                     Platform="iOS" 
                     Value="OpenSans-Bold" />
             </OnPlatform>
-            
             <OnPlatform 
                     x:TypeArguments="x:String" 
                     x:Key="RegularFontOpenSans">
-                    <On 
+                <On 
                     Platform="Android" 
                     Value="OpenSansRegular.ttf#OpenSans" />
-                    <On 
+                <On 
                     Platform="iOS" 
                     Value="OpenSans" />
             </OnPlatform>
-            
             <OnPlatform 
                     x:TypeArguments="x:String" 
                     x:Key="SemiBoldFontOpenSans">
@@ -100,7 +94,13 @@
                     Value="OpenSans-SemiBold" />
             </OnPlatform>
 
-
+            
+            <!--URL princilap-->
+            <x:String x:Key="UrlAPI">http://10.40.190.85:395</x:String>
+            <!-- Carpeta-->
+            <x:String x:Key="UrlPrefix">/api/login</x:String>
+            <!--Comando-->
+            <x:String x:Key="UrlLoginController">/authenticate</x:String>
 
 
 

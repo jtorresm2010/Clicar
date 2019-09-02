@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Plugin.DeviceOrientation" Version="1.0.7" />
     <PackageReference Include="Plugin.Fingerprint" Version="1.4.9" />
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />

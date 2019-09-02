@@ -1,4 +1,5 @@
-﻿using Clicar.Views;
+﻿using Clicar.ViewModels;
+using Clicar.Views;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System;
@@ -14,8 +15,8 @@ namespace Clicar
         {
             InitializeComponent();
 
-
-
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Login = new LoginViewModel();
 
             MainPage = new LoginView();
             //MainPage = new ConfigView();
