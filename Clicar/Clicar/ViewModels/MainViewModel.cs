@@ -30,6 +30,12 @@ namespace Clicar.ViewModels
         private Color baseGreen;
         private int menuIndex;
 
+        public string Token;
+        public string Url;
+        public string Prefix;
+        public string ControllerLogin;
+        public string ControllerSucursal;
+        
         public int isLastItem { get; set; }
 
         public object currentItem { get; set; }
@@ -39,14 +45,32 @@ namespace Clicar.ViewModels
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
 
         public LoginViewModel Login { get; set; }
+        public ConfigViewModel Config { get; set; }
 
         public MainViewModel()
         {
+            //Inicializa valores del diccionario
+            Application.Current.PageAppearing += CurrentPageAppearing;
+
             instance = this;
         }
 
-        private static MainViewModel instance;
+        private void CurrentPageAppearing(object sender, Page e)
+        {
+            try
+            {
+                Url = Application.Current.Resources["UrlAPI"].ToString();
+                Prefix = Application.Current.Resources["UrlPrefix"].ToString();
+                ControllerLogin = Application.Current.Resources["UrlLoginController"].ToString();
+                ControllerSucursal = Application.Current.Resources["UrlSucursalController"].ToString();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("~(>'.')>  " + ex.Message);
+            }
+        }
 
+        private static MainViewModel instance;
 
         private List<ItemInspeccion> list;
 

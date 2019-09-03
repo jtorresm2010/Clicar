@@ -96,11 +96,17 @@
 
             
             <!--URL princilap-->
-            <x:String x:Key="UrlAPI">http://10.40.190.85:395</x:String>
+                <!--Externa-->
+                <!--<x:String x:Key="UrlAPI">http://www.genesys.cl:396</x:String>-->
+                <!--Interna-->
+                <x:String x:Key="UrlAPI">http://10.40.190.85:395</x:String>
             <!-- Carpeta-->
-            <x:String x:Key="UrlPrefix">/api/login</x:String>
-            <!--Comando-->
-            <x:String x:Key="UrlLoginController">/authenticate</x:String>
+            <x:String x:Key="UrlPrefix">/api</x:String>
+            <!--Comandos-->
+            <x:String x:Key="UrlLoginController">/login/authenticate</x:String>
+            <x:String x:Key="UrlSucursalController">/sucursales/MobileSucursalesVigentes</x:String>
+            
+            
 
 
 

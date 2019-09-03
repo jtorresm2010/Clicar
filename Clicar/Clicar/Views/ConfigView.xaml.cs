@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +16,23 @@ namespace Clicar.Views
         public ConfigView()
         {
             InitializeComponent();
+            instance = this;
         }
 
-
-
-        private void LoginCommand(object sender, EventArgs e)
+        private static ConfigView instance;
+        public static ConfigView GetInstance()
         {
-            Application.Current.MainPage = new NavigationPage(new AgendaView());
+            if (instance == null)
+            {
+                instance = new ConfigView();
+            }
+            return instance;
         }
 
-
-
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Debug.WriteLine("~(>'.')> xml ona");
+        }
     }
 }

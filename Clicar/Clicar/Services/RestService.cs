@@ -56,7 +56,7 @@ namespace Clicar.Services
             };
         }
 
-        public async Task<Response> Login<T>(Usuario usuario, string urlBase, string prefix, string controller)
+        public async Task<Response> PostAsync<T>(string urlBase, string prefix, string controller, object data = null)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace Clicar.Services
                 client.BaseAddress = new Uri(urlBase);
                 var url = $"{prefix}{controller}";
 
-                var json = JsonConvert.SerializeObject(usuario);
+                var json = JsonConvert.SerializeObject(data);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await client.PostAsync(url, content);
@@ -91,13 +91,57 @@ namespace Clicar.Services
             }
             catch (Exception ex)
             {
-                return new Response //Declaracion de un nuevo objeto con las siguientes propiedades
+                return new Response
                 {
                     IsSuccess = false,
                     Message = ex.Message,
                 };
             }
 
+        }
+
+        public async Task<Response> GetAsync<T>(string urlBase, string prefix, string controller, object data = null, string token = "")
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                var url = $"{prefix}{controller}";
+
+                if(data != null)
+                {
+                    var json = JsonConvert.SerializeObject(data);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                }
+                var response = await client.GetAsync(url);
+
+                var answer = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+
+                var obj = JsonConvert.DeserializeObject<T>(answer);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = obj
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
         }
 
     }

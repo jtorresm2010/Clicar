@@ -16,28 +16,24 @@ namespace Clicar.ViewModels
     {
 
         private RestService restService;
-
+        MainViewModel MainInstance;
 
         public LoginViewModel()
         {
+            MainInstance = MainViewModel.GetInstance();
             restService = new RestService();
+            instance = this;
         }
 
-        private static LoginViewModel m_Instancia;
-
-        public static LoginViewModel Instancia
+        private static LoginViewModel instance;
+        public static LoginViewModel GetInstance()
         {
-            get
+            if (instance == null)
             {
-                if (m_Instancia == null)
-                {
-                    m_Instancia = new LoginViewModel();
-                }
-
-                return m_Instancia;
+                instance = new LoginViewModel();
             }
+            return instance;
         }
-
         public string Usuario { get; set; }
         public string Clave { get; set; }
         public ICommand LoginICommand
@@ -47,13 +43,11 @@ namespace Clicar.ViewModels
                 return new RelayCommand(LoginCommand);
             }
         }
-
-        private void LoginCommand()
+        private void LoginCommand4()
         {
             Application.Current.MainPage = new ConfigView();
         }
-
-        private async void LoginCommand0()
+        private async void LoginCommand()
         {
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
@@ -69,11 +63,7 @@ namespace Clicar.ViewModels
                 ORIGEN = "mobile"
             };
 
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
-            var controller = Application.Current.Resources["UrlLoginController"].ToString();
-
-            var response = await restService.Login<LoginResponse>(usuario, url, prefix, controller);
+            var response = await restService.PostAsync<LoginResponse>(MainInstance.Url, MainInstance.Prefix, MainInstance.ControllerLogin, usuario);
 
             try
             {
@@ -81,17 +71,17 @@ namespace Clicar.ViewModels
 
                 if (resp.Resultado)
                 {
-                    Debug.WriteLine("~(>^.^)> " + resp.Mensaje);
+                    MainInstance.Token = resp.Mensaje;
+                    MainInstance.Config = new ConfigViewModel();
                     Application.Current.MainPage = new ConfigView();
                 }
-
-
-                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Debug.WriteLine("~(>-_-)> Datos erroneos");
+                Debug.WriteLine("~(>-_-)> Datos erroneos" + ex.Message);
             }
+
+
         }
     }
 }

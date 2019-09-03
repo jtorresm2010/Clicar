@@ -5,10 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Clicar.Customs"
              xmlns:i18n="clr-namespace:Clicar.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
              mc:Ignorable="d"
              x:Class="Clicar.Views.ConfigView">
     <ContentPage.Content>
         <ScrollView
+            BindingContext="{Binding Config}"
             BackgroundColor="{StaticResource BGGrey}">
             <StackLayout
                 Spacing="0"
@@ -119,27 +121,20 @@
                                         Grid.Column="1"
                                         Source="ic_arrow_down.png"/>
                                     <local:CustomPicker
+                                        SelectedItem="{Binding SelectedSucursal}"
+                                        ItemsSource="{Binding Sucursales}"
+                                        ItemDisplayBinding="{Binding MAESU_NOMBRE_SUCURSAL}"
+                                        
                                         HeightRequest="40"
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
-                                        Image="ic_arrow_down"
                                         Title="{i18n:Translate ConfigPicker}"
                                         FontSize="14"
                                         TextColor="{StaticResource BaseGrey44}"
-                                        FontFamily="{StaticResource SemiBoldFontOpenSans}">
-                                        <Picker.Items>
-                                            <x:String>Clicar-Movicenter</x:String>
-                                            <x:String>Clicar-Wom</x:String>
-                                            <x:String>Clicar-Claro</x:String>
-                                            <x:String>Clicar-Entel</x:String>
-                                            <x:String>Clicar-Virgin</x:String>
-                                            <x:String>Clicar-VTR</x:String>
-                                            <x:String>Clicar-Pacifico</x:String>
-                                            <x:String>Clicar-ATT</x:String>
-                                            <x:String>Clicar-Comcast</x:String>
-                                        </Picker.Items>
-                                    </local:CustomPicker>
+                                        FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+
+
 
 
                                 </Grid>
@@ -154,9 +149,9 @@
                                 Margin="20,0">
 
 
+                                <!--Clicked="LoginCommand"-->
                             <Button
-                            
-                                Clicked="LoginCommand"
+                                Command="{Binding ConfigICommand}"
                                 BackgroundColor="{StaticResource BaseGreen}"
                                 Text="{i18n:Translate InspectionAccessButton}"
                                 FontSize="16"

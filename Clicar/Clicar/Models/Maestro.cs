@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Clicar.Models
 {
-    public class Elemento
+    public class Maestro
     {
         public string USU_ID { get; set; }
         public string USU_PERFIL_ID { get; set; }
