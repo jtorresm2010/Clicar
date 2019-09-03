@@ -92,9 +92,9 @@
                             TextColor="{StaticResource BaseGrey}"/>
 
                         <views:StarTemplate
-                             StarValue="4"
-                             IsEditable="False"
-                             HorizontalOptions="CenterAndExpand"/>
+                            StarValue="4"
+                            IsEditable="False"
+                            HorizontalOptions="CenterAndExpand"/>
                        
                         
                     </StackLayout>

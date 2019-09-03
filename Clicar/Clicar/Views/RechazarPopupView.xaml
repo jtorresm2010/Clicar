@@ -127,7 +127,7 @@
                     <Button
                         Clicked="ConfirmarCommand"
                         HorizontalOptions="End"
-                        BackgroundColor="{StaticResource MidOrange}"
+                        BackgroundColor="{StaticResource BaseOrange}"
                         Text="{i18n:Translate Confirm}"
                         FontSize="14"
                         FontFamily="{StaticResource BoldFontOpenSans}"

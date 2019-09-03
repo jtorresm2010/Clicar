@@ -67,6 +67,10 @@
     <Compile Include="Implementations\Localize.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <BundleResource Include="Resources\image_regular.png" />
+    <BundleResource Include="Resources\star_black.png" />
+    <BundleResource Include="Resources\star_border.png" />
+    <BundleResource Include="Resources\star_half.png" />
     <None Include="Entitlements.plist" />
     <Content Include="Info.plist">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

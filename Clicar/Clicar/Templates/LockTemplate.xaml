@@ -9,6 +9,7 @@
              WidthRequest="100"
              Orientation="Horizontal">
     <Image 
+        HeightRequest="20"
         x:Name="LockIcon"
         Source="lock_solid_grey"/>
     <Label

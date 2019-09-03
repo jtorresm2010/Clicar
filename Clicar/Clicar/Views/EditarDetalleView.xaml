@@ -211,6 +211,7 @@
                                     Orientation="Horizontal" 
                                     Spacing="10">
                                     <Image
+                                        HeightRequest="20"
                                         Source="camera_solid"/>
                                     <Label
                                         VerticalTextAlignment="Center"
@@ -224,6 +225,7 @@
                                     Orientation="Horizontal" 
                                     Spacing="10">
                                     <Image
+                                        HeightRequest="20"
                                         Source="image_regular"/>
                                     <Label
                                         VerticalTextAlignment="Center"

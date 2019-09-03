@@ -33,7 +33,9 @@
                 <StackLayout 
                     WidthRequest="100"
                     Orientation="Horizontal">
-                    <Image Source="edit_solid"/>
+                    <Image 
+                        HeightRequest="20"
+                        Source="edit_solid"/>
                     <Label  
                         VerticalOptions="CenterAndExpand"
                         TextColor="{StaticResource BaseGreyLight}"

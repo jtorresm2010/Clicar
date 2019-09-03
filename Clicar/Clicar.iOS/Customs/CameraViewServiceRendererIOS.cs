@@ -36,6 +36,7 @@ namespace Clicar.iOS.Customs
         {
             if (uiCameraPreview.IsPreviewing)
             {
+                uiCameraPreview.Capture();
                 uiCameraPreview.CaptureSession.StopRunning();
                 uiCameraPreview.IsPreviewing = false;
             }

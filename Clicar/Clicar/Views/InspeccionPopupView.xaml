@@ -56,9 +56,8 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     HorizontalOptions="CenterAndExpand"
-                    WidthRequest="15"
-                    Source="exclamation_solid.png" 
-                    VerticalOptions="Center" />
+                    HeightRequest="20"
+                    Source="exclamation_solid.png"/>
                 <local:CustomEntry 
                     Grid.Row="0"
                     Grid.Column="1"

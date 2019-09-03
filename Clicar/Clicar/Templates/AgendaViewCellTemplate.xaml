@@ -89,7 +89,7 @@
             HasShadow="False"
             Padding="0"
             Margin="15,0"
-            BackgroundColor="{StaticResource BaseGrey}"
+            BackgroundColor="{StaticResource BaseGreyLight}"
             HeightRequest="1"/>
     </StackLayout>
 </ViewCell>

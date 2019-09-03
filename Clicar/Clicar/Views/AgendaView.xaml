@@ -40,7 +40,6 @@
             <!--Iconos de carga y comportamiento-->
             <Grid
                 x:Name="RefreshImages"
-                HeightRequest="25"
                 WidthRequest="50"
                 HorizontalOptions="End">
                 <Image
@@ -48,13 +47,28 @@
                     Grid.Row="0"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
-                    Source="sync_alt.png"/>
+                    Source="sync_alt.png">
+                    <Image.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="18" />
+                            <On Platform="Android, UWP" Value="35" />
+                        </OnPlatform>
+                    </Image.HeightRequest>
+                </Image>
                 <Image 
+                    HeightRequest="30"
                     Opacity="0"
                     Grid.Row="0"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
-                    Source="sync_alt_orange.png"/>
+                    Source="sync_alt_orange.png">
+                    <Image.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="iOS" Value="18" />
+                            <On Platform="Android, UWP" Value="35" />
+                        </OnPlatform>
+                    </Image.HeightRequest>
+                </Image>
                 <Grid.Behaviors>
                     <behavior:LoadingBehavior
                          ControlView="{x:Reference Name=MainScrollView}"/>

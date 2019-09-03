@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+﻿using System.Globalization;
 using System.Threading;
 using Clicar.Helpers;
 using Clicar.Interface;
 using Foundation;
-using UIKit;
 
+[assembly: Xamarin.Forms.Dependency(typeof(Clicar.iOS.Implementations.Localize))]
 namespace Clicar.iOS.Implementations
 {
     public class Localize : ILocalize
