@@ -103,15 +103,9 @@
                             TextColor="{StaticResource BaseGrey}"/>
 
                         <views:StarTemplate
-                             HorizontalOptions="CenterAndExpand"
-                             Orientation="Horizontal"/>
- 
-                        <Label
-                            HorizontalOptions="CenterAndExpand"
-                            Text="{i18n:Translate Score}"
-                            FontSize="10"
-                            FontFamily="{StaticResource RegularFontOpenSans}"
-                            TextColor="{StaticResource BaseGreyLight}"/>
+                             StarValue="2"
+                             HorizontalOptions="CenterAndExpand"/>
+                        
                     </StackLayout>
 
 

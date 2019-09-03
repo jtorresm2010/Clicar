@@ -87,5 +87,10 @@ namespace Clicar.Helpers
         public static string InspectorComment => Resource.InspectorComment;
         public static string CompletedBy => Resource.CompletedBy;
         public static string Close => Resource.Close;
+        public static string OneStar => Resource.OneStar;
+        public static string TwoStars => Resource.TwoStars;
+        public static string ThreeStars => Resource.ThreeStars;
+        public static string FourStars => Resource.FourStars;
+        public static string FiveStars => Resource.FiveStars;
     }
 }

@@ -394,6 +394,24 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Excellent.
+        /// </summary>
+        internal static string FiveStars {
+            get {
+                return ResourceManager.GetString("FiveStars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Good.
+        /// </summary>
+        internal static string FourStars {
+            get {
+                return ResourceManager.GetString("FourStars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Enter the Inspection.
         /// </summary>
         internal static string InspectionAccessButton {
@@ -507,6 +525,15 @@ namespace Clicar.Resources {
         internal static string Mechanic {
             get {
                 return ResourceManager.GetString("Mechanic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bad.
+        /// </summary>
+        internal static string OneStar {
+            get {
+                return ResourceManager.GetString("OneStar", resourceCulture);
             }
         }
         
@@ -637,6 +664,15 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Regular.
+        /// </summary>
+        internal static string ThreeStars {
+            get {
+                return ResourceManager.GetString("ThreeStars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Touch ID Aunthentication.
         /// </summary>
         internal static string TouchIDButton {
@@ -660,6 +696,15 @@ namespace Clicar.Resources {
         internal static string Transmission {
             get {
                 return ResourceManager.GetString("Transmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Acceptable.
+        /// </summary>
+        internal static string TwoStars {
+            get {
+                return ResourceManager.GetString("TwoStars", resourceCulture);
             }
         }
         

@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:Clicar.Helpers"
              mc:Ignorable="d"
              VerticalOptions="CenterAndExpand"
              HorizontalOptions="CenterAndExpand"
-             x:Class="Clicar.Templates.StarTemplate"
-             Orientation="Horizontal">
+             x:Class="Clicar.Templates.StarTemplate">
 
     <Grid
         HeightRequest="40"
@@ -19,7 +19,6 @@
             Margin="0"
             Grid.Row="0"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
             HeightRequest="40"
             WidthRequest="40"
             Source="star_border.png"/>
@@ -27,8 +26,7 @@
             x:Name="Star2"
             Margin="0"
             Grid.Row="0"
-            Grid.Column="2"
-            Grid.ColumnSpan="2"
+            Grid.Column="1"
             HeightRequest="40"
             WidthRequest="40"
             Source="star_border.png"/>
@@ -36,8 +34,7 @@
             x:Name="Star3"
             Margin="0"
             Grid.Row="0"
-            Grid.Column="4"
-            Grid.ColumnSpan="2"
+            Grid.Column="2"
             HeightRequest="40"
             WidthRequest="40"
             Source="star_border.png"/>
@@ -45,8 +42,7 @@
             x:Name="Star4"
             Margin="0"
             Grid.Row="0"
-            Grid.Column="6"
-            Grid.ColumnSpan="2"
+            Grid.Column="3"
             HeightRequest="40"
             WidthRequest="40"
             Source="star_border.png"/>
@@ -54,166 +50,77 @@
             x:Name="Star5"
             Margin="0"
             Grid.Row="0"
-            Grid.Column="8"
-            Grid.ColumnSpan="2"
+            Grid.Column="4"
             HeightRequest="40"
             WidthRequest="40"
             Source="star_border.png"/>
-        
-        <Frame
+
+        <StackLayout
             BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
             Margin="0"
-            WidthRequest="20"
+            WidthRequest="40"
             Padding="0"
             Grid.Row="0"
-            Grid.ColumnSpan="1"
             Grid.Column="0">
-            <Frame.GestureRecognizers>
+            <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-        <Frame
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout
             BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
             Margin="0"
-            HeightRequest="40"
-            WidthRequest="20"
+            WidthRequest="40"
             Padding="0"
             Grid.Row="0"
-            Grid.ColumnSpan="1"
             Grid.Column="1">
-            <Frame.GestureRecognizers>
+            <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-
-        <Frame
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout
             BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
             Margin="0"
-            WidthRequest="20"
+            WidthRequest="40"
             Padding="0"
             Grid.Row="0"
-            Grid.ColumnSpan="1"
             Grid.Column="2">
-            <Frame.GestureRecognizers>
+            <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-        <Frame
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout
             BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
             Margin="0"
-            HeightRequest="40"
-            WidthRequest="20"
+            WidthRequest="40"
             Padding="0"
             Grid.Row="0"
-            Grid.ColumnSpan="1"
             Grid.Column="3">
-            <Frame.GestureRecognizers>
+            <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-
-        <Frame
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout
             BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
             Margin="0"
-            WidthRequest="20"
+            WidthRequest="40"
             Padding="0"
             Grid.Row="0"
-            Grid.ColumnSpan="1"
             Grid.Column="4">
-            <Frame.GestureRecognizers>
+            <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-        <Frame
-            BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
-            Margin="0"
-            HeightRequest="40"
-            WidthRequest="20"
-            Padding="0"
-            Grid.Row="0"
-            Grid.ColumnSpan="1"
-            Grid.Column="5">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-
-        <Frame
-            BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
-            Margin="0"
-            WidthRequest="20"
-            Padding="0"
-            Grid.Row="0"
-            Grid.ColumnSpan="1"
-            Grid.Column="6">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-        <Frame
-            BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
-            Margin="0"
-            HeightRequest="40"
-            WidthRequest="20"
-            Padding="0"
-            Grid.Row="0"
-            Grid.ColumnSpan="1"
-            Grid.Column="7">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-
-        <Frame
-            BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
-            Margin="0"
-            WidthRequest="20"
-            Padding="0"
-            Grid.Row="0"
-            Grid.ColumnSpan="1"
-            Grid.Column="8">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-        <Frame
-            BackgroundColor="Transparent"
-            CornerRadius="0"
-            HasShadow="False"
-            Margin="0"
-            HeightRequest="40"
-            WidthRequest="20"
-            Padding="0"
-            Grid.Row="0"
-            Grid.ColumnSpan="1"
-            Grid.Column="9">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="SetStar"/>
-            </Frame.GestureRecognizers>
-        </Frame>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
 
     </Grid>
-    
-    
-    
-    
-    
+
+    <Label
+        x:Name="StarStringValue"
+        HorizontalOptions="CenterAndExpand"
+        Text="{i18n:Translate Score}"
+        FontSize="10"
+        FontFamily="{StaticResource RegularFontOpenSans}"
+        TextColor="{StaticResource BaseGreyLight}"/>
+
+
+
 </StackLayout>

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Clicar.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,121 +16,134 @@ namespace Clicar.Templates
     public partial class StarTemplate : StackLayout
     {
 
-        ImageSource StarFill, StarHalf, StarBorder;
+        private readonly BindableProperty IsEditableProperty = BindableProperty.Create(nameof(IsEditable), typeof(bool), typeof(StarTemplate), true);
+        private readonly BindableProperty StarValueProperty = BindableProperty.Create(nameof(StarValue), typeof(float), typeof(StarTemplate), 0f);
+        public static readonly BindableProperty TextVisibleProperty = BindableProperty.Create(nameof(TextVisible), typeof(bool), typeof(StarTemplate), true);
 
-        public float StarValue { get; private set; }
-
+        public bool IsEditable
+        {
+            get { return (bool)GetValue(IsEditableProperty); }
+            set { SetValue(IsEditableProperty, value); }
+        }
+        public float StarValue
+        {
+            get { return (float)GetValue(StarValueProperty); }
+            set { SetValue(StarValueProperty, value); }
+        }
+        public bool TextVisible
+        {
+            get { return (bool)GetValue(TextVisibleProperty); }
+            set { SetValue(TextVisibleProperty, value); }
+        }
+        private Color       baseOrange;
+        private ImageSource StarFill, StarBorder;
         public StarTemplate()
         {
             InitializeComponent();
-            StarFill =  ImageSource.FromFile("star_black.png");
-            StarHalf = ImageSource.FromFile("star_half.png");
-            StarBorder = ImageSource.FromFile("star_border.png");
-            StarValue = 0f;
-        }
 
+            StarFill =  ImageSource.FromFile("star_black.png");
+            StarBorder = ImageSource.FromFile("star_border.png");
+
+            baseOrange = (Color)Application.Current.Resources["BaseOrange"];
+        }
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+
+
+            switch (propertyName)
+            {
+                case "TextVisible":
+                    if(!TextVisible)
+                        StarStringValue.IsVisible = false;
+                    break;
+
+                case "IsEditable":
+                     if (!IsEditable)
+                        StarStringValue.TextColor = baseOrange;
+                    break;
+
+                case "StarValue":
+                    SetStarRating();
+                    SetStarStrings();
+                    break;
+                
+                default:
+                    break;
+            }
+
+        }
         private void SetStar(object sender, EventArgs e)
         {
-
-
-            Frame frame = (Frame)sender;
-            Grid grid = (Grid)frame.Parent;
-
-           
-            //Debug.WriteLine(grid.Children.IndexOf((Frame)sender));
-
-            switch (grid.Children.IndexOf(frame))
+            if (IsEditable)
+            {
+                StackLayout layout = (StackLayout)sender;
+                Grid grid = (Grid)layout.Parent;
+                switch (grid.Children.IndexOf(layout))
             {
                 case 5:
-                    Star1.Source = StarHalf;
-                    Star2.Source = StarBorder;
-                    Star3.Source = StarBorder;
-                    Star4.Source = StarBorder;
-                    Star5.Source = StarBorder;
-                    StarValue = 0.5f;
+                    StarValue = StarValue >= 1f ? 0f : 1f;
                     break;
+
                 case 6:
-                    Star1.Source = StarFill;
-                    Star2.Source = StarBorder;
-                    Star3.Source = StarBorder;
-                    Star4.Source = StarBorder;
-                    Star5.Source = StarBorder;
-                    StarValue = 1f;
+                    StarValue = StarValue >= 2f ? 1f : 2f;
                     break;
 
                 case 7:
-                    Star1.Source = StarFill;
-                    Star2.Source = StarHalf;
-                    Star3.Source = StarBorder;
-                    Star4.Source = StarBorder;
-                    Star5.Source = StarBorder;
-                    StarValue = 1.5f;
+                    StarValue = StarValue >= 3f ? 2f : 3f;
                     break;
+
                 case 8:
-                    Star1.Source = StarFill;
-                    Star2.Source = StarFill;
-                    Star3.Source = StarBorder;
-                    Star4.Source = StarBorder;
-                    Star5.Source = StarBorder;
-                    StarValue = 2f;
+                    StarValue = StarValue >= 4f ? 3f : 4f;
                     break;
 
                 case 9:
-                    Star1.Source = StarFill;
-                    Star2.Source = StarFill;
-                    Star3.Source = StarHalf;
-                    Star4.Source = StarBorder;
-                    Star5.Source = StarBorder;
-                    StarValue = 2.5f;
-                    break;
-                case 10:
-                    Star1.Source = StarFill;
-                    Star2.Source = StarFill;
-                    Star3.Source = StarFill;
-                    Star4.Source = StarBorder;
-                    Star5.Source = StarBorder;
-                    StarValue = 3f;
-                    break;
-
-                case 11:
-                    Star1.Source = StarFill;
-                    Star2.Source = StarFill;
-                    Star3.Source = StarFill;
-                    Star4.Source = StarHalf;
-                    Star5.Source = StarBorder;
-                    StarValue = 3.5f;
-                    break;
-                case 12:
-                    Star1.Source = StarFill;
-                    Star2.Source = StarFill;
-                    Star3.Source = StarFill;
-                    Star4.Source = StarFill;
-                    Star5.Source = StarBorder;
-                    StarValue = 4f;
-                    break;
-
-                case 13:
-                    Star1.Source = StarFill;
-                    Star2.Source = StarFill;
-                    Star3.Source = StarFill;
-                    Star4.Source = StarFill;
-                    Star5.Source = StarHalf;
-                    StarValue = 4.5f;
-                    break;
-                case 14:
-                    Star1.Source = StarFill;
-                    Star2.Source = StarFill;
-                    Star3.Source = StarFill;
-                    Star4.Source = StarFill;
-                    Star5.Source = StarFill;
-                    StarValue = 5f;
+                    StarValue = StarValue >= 5f ? 4f : 5f;
                     break;
 
                 default:
                     break;
             }
+            }
+        }
+        private void SetStarStrings()
+        {
+            switch (StarValue)
+            {
+                case 0:
+                    StarStringValue.Text = Languages.Score;
+                    break;
+                case 1:
+                    StarStringValue.Text = Languages.OneStar;
+                    break;
 
+                case 2:
+                    StarStringValue.Text = Languages.TwoStars;
+                    break;
 
+                case 3:
+                    StarStringValue.Text = Languages.ThreeStars;
+                    break;
+
+                case 4:
+                    StarStringValue.Text = Languages.FourStars;
+                    break;
+
+                case 5:
+                    StarStringValue.Text = Languages.FiveStars;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        private void SetStarRating()
+        {
+            Star1.Source = StarValue >= 1f ? StarFill : StarBorder;
+            Star2.Source = StarValue >= 2f ? StarFill : StarBorder;
+            Star3.Source = StarValue >= 3f ? StarFill : StarBorder;
+            Star4.Source = StarValue >= 4f ? StarFill : StarBorder;
+            Star5.Source = StarValue >= 5f ? StarFill : StarBorder;
         }
     }
 }

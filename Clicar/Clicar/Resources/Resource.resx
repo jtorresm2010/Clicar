@@ -307,4 +307,19 @@
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="OneStar" xml:space="preserve">
+    <value>Bad</value>
+  </data>
+  <data name="TwoStars" xml:space="preserve">
+    <value>Acceptable</value>
+  </data>
+  <data name="ThreeStars" xml:space="preserve">
+    <value>Regular</value>
+  </data>
+  <data name="FourStars" xml:space="preserve">
+    <value>Good</value>
+  </data>
+  <data name="FiveStars" xml:space="preserve">
+    <value>Excellent</value>
+  </data>
 </root>

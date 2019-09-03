@@ -49,7 +49,7 @@ namespace Clicar.Templates
         {
             base.OnPropertyChanged(propertyName);
 
-            if (propertyName.Equals("Lockable"))
+            if(propertyName.Equals("Lockable"))
             {
                 if (!Lockable)
                 {

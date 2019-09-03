@@ -90,15 +90,12 @@
                             FontSize="14"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="{StaticResource BaseGrey}"/>
+
                         <views:StarTemplate
-                             HorizontalOptions="CenterAndExpand"
-                             Orientation="Horizontal"/>
-                        <Label
-                            HorizontalOptions="CenterAndExpand"
-                            Text="Excelente"
-                            FontSize="10"
-                            FontFamily="{StaticResource RegularFontOpenSans}"
-                            TextColor="{StaticResource BaseGreyLight}"/>
+                             StarValue="4"
+                             IsEditable="False"
+                             HorizontalOptions="CenterAndExpand"/>
+                       
                         
                     </StackLayout>
 
