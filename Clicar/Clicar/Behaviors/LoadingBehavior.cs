@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Clicar.ViewModels;
 
 namespace Clicar.Behaviors
 {
@@ -68,7 +69,9 @@ namespace Clicar.Behaviors
             uint intervalo = 600;
 
             parent.IsEnabled = false;
-            ((ScrollView)ControlView).IsEnabled = false;
+
+            MainViewModel.GetInstance().Agenda.ListLoading = false;
+            //((ScrollView)ControlView).IsEnabled = false;
 
 
             //comienza a girar
@@ -99,7 +102,9 @@ namespace Clicar.Behaviors
                 imageB.RotateTo(imageB.Rotation + 180, intervalo, Easing.Linear)
                 );
 
-            ((ScrollView)ControlView).IsEnabled = true;
+
+            MainViewModel.GetInstance().Agenda.ListLoading = true;
+            //((ScrollView)ControlView).IsEnabled = true;
             parent.IsEnabled = true;
         }
 

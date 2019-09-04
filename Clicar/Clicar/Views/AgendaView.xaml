@@ -82,9 +82,10 @@
 
 
     <ContentPage.Content>
-
-
-        <ScrollView
+        <StackLayout
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <ScrollView
             BindingContext="{Binding Agenda}"
             x:Name="MainScrollView"
             Grid.Row="0"
@@ -130,6 +131,7 @@
 
                 <!--Lista de Pendientes-->
                 <Frame 
+                    IsEnabled="{Binding ListLoading}"
                     HasShadow="False"
                     x:Name="ListaPendientesFrame"
                     CornerRadius="0"
@@ -148,6 +150,7 @@
 
                 </Frame>
                 <ListView
+                    IsEnabled="{Binding ListLoading}"
                     HeightRequest="{Binding PendientesHeight}"
                     ItemsSource="{Binding ListaVehiculos}"
                     RowHeight="{Binding RowHeight}"
@@ -164,7 +167,8 @@
                 </ListView>
 
                 <!--Lista de completados-->
-                <Frame 
+                    <Frame 
+                    IsEnabled="{Binding ListLoading}"
                     HasShadow="False"
                     CornerRadius="0"
                     x:Name="ListaCompletadosFrame"
@@ -183,6 +187,7 @@
 
                 </Frame>
                 <ListView
+                    IsEnabled="{Binding ListLoading}"
                     HeightRequest="{Binding PendientesHeight}"
                     ItemsSource="{Binding ListaVehiculos}"
                     RowHeight="{Binding RowHeight}"
@@ -198,14 +203,10 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-
-                <StackLayout
-                    HeightRequest="300"/>
-
             </StackLayout>
-
 
             
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

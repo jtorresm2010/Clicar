@@ -25,6 +25,14 @@ namespace Clicar.ViewModels
             set { SetValue(ref pendientesHeight, value); }
         }
 
+        private bool listLoading;
+        public bool ListLoading
+        {
+            get { return listLoading; }
+            set { SetValue(ref listLoading, value); }
+        }
+
+
         private int ListCount = 1;
         private double rowHeight = 110;
         public double RowHeight
