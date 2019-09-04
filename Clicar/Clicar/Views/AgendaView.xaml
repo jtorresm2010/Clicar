@@ -99,18 +99,26 @@
 
                 <!--Nombre del inspector-->
                 <Frame
-                CornerRadius="0"
-                Margin="0,8"
-                HasShadow="False"
-                Padding="10,12"
-                BackgroundColor="{StaticResource BaseGrey63}">
+                    CornerRadius="0"
+                    Margin="0,8"
+                    HasShadow="False"
+                    Padding="10,12"
+                    BackgroundColor="{StaticResource BaseGrey63}">
                     <StackLayout
                     VerticalOptions="CenterAndExpand">
-                        <Label
-                        TextColor="{StaticResource BaseGrey}"
-                        FontSize="10"
-                        FontFamily="{StaticResource RegularFontOpenSans}"
-                        Text="08/06/2019 Clicar-Movicenter"/>
+                            <StackLayout
+                            Orientation="Horizontal">
+                                <Label
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontSize="10"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"
+                                    Text="{Binding CurrentDate}"/>
+                                <Label
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontSize="10"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"
+                                    Text="{Binding CurrentSucursal.MAESU_NOMBRE_SUCURSAL}"/>
+                            </StackLayout>
                         <StackLayout
                         Orientation="Horizontal">
 
@@ -123,7 +131,7 @@
                             TextColor="{StaticResource BaseGrey}"
                             FontSize="13"
                             FontFamily="{StaticResource RegularFontOpenSans}"
-                            Text="Mario Quezada Andrade"/>
+                            Text="{Binding NombreMaestro}"/>
                         </StackLayout>
                     </StackLayout>
 
@@ -131,7 +139,7 @@
 
                 <!--Lista de Pendientes-->
                 <Frame 
-                    IsEnabled="{Binding ListLoading}"
+                    IsEnabled="{Binding ListReady}"
                     HasShadow="False"
                     x:Name="ListaPendientesFrame"
                     CornerRadius="0"
@@ -150,12 +158,11 @@
 
                 </Frame>
                 <ListView
-                    IsEnabled="{Binding ListLoading}"
+                    IsEnabled="{Binding ListReady}"
                     HeightRequest="{Binding PendientesHeight}"
                     ItemsSource="{Binding ListaVehiculos}"
                     RowHeight="{Binding RowHeight}"
                     VerticalScrollBarVisibility="Never"
-                    ItemTapped="AgendaItemTapped"
                     SelectionMode="None"
                     SeparatorVisibility="None"
                     x:Name="PendientesListView">
@@ -168,7 +175,7 @@
 
                 <!--Lista de completados-->
                     <Frame 
-                    IsEnabled="{Binding ListLoading}"
+                    IsEnabled="{Binding ListReady}"
                     HasShadow="False"
                     CornerRadius="0"
                     x:Name="ListaCompletadosFrame"
@@ -187,7 +194,7 @@
 
                 </Frame>
                 <ListView
-                    IsEnabled="{Binding ListLoading}"
+                    IsEnabled="{Binding ListReady}"
                     HeightRequest="{Binding PendientesHeight}"
                     ItemsSource="{Binding ListaVehiculos}"
                     RowHeight="{Binding RowHeight}"

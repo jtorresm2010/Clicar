@@ -105,7 +105,10 @@ namespace Clicar.ViewModels
 
         private void ConfigCommand()
         {
-            MainInstance.Agenda = new AgendaViewModel();
+            MainInstance.Agenda.CurrentSucursal = 
+                ConfiguredSucursal != SelectedSucursal && SelectedSucursal != null? 
+                SelectedSucursal : 
+                ConfiguredSucursal;
             Application.Current.MainPage = new NavigationPage(new AgendaView());
         }
 

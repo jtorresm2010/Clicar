@@ -24,7 +24,6 @@ namespace Clicar.ViewModels
         private Color baseGreen;
         private int menuIndex;
 
-
         public string Token { get; set; }
         public string Url { get; set; }
         public string Prefix { get; set; }
@@ -35,6 +34,8 @@ namespace Clicar.ViewModels
 
         public object currentItem { get; set; }
         public int MenuIndex { get { return this.menuIndex; } }
+
+
 
 
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }

@@ -8,7 +8,7 @@ namespace Clicar.Models
     {
         public bool Resultado { get; set; }
         public string Mensaje { get; set; }
-        public Maestro Maestro { get; set; }
+        public Maestro Elemento { get; set; }
 
     }
 }

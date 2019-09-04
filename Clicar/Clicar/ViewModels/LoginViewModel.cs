@@ -21,8 +21,8 @@ namespace Clicar.ViewModels
         public LoginViewModel()
         {
 
-            usuario = "palarcon";
-            clave = "123456";
+            usuario = "PATRICIO.ALARCON@GMA";
+            clave = "123";
 
 
             MainInstance = MainViewModel.GetInstance();
@@ -88,6 +88,8 @@ namespace Clicar.ViewModels
 
                 if (resp.Resultado)
                 {
+                    MainInstance.Agenda = new AgendaViewModel();
+                    MainInstance.Agenda.MaestroName(resp.Elemento);
                     MainInstance.Token = resp.Mensaje;
                     MainInstance.Config = new ConfigViewModel();
                     Application.Current.MainPage = new ConfigView();
@@ -95,7 +97,7 @@ namespace Clicar.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("~(>-_-)> Datos erroneos" + ex.Message);
+                Debug.WriteLine("~(>-_-)> Error: " + ex.Message);
             }
 
 

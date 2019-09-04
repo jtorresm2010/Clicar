@@ -68,7 +68,7 @@ namespace Clicar.Behaviors
             };
             Action<double, bool> endAction = (x, y) => { listView.IsVisible = IsVisible; };
             uint rate = 16;
-            uint length = 600;
+            uint length = 400;
             double startingHeight = 0;
             double endingHeight = 0;
             Easing easing = Easing.Linear;

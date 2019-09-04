@@ -70,7 +70,7 @@ namespace Clicar.Behaviors
 
             parent.IsEnabled = false;
 
-            MainViewModel.GetInstance().Agenda.ListLoading = false;
+            MainViewModel.GetInstance().Agenda.ListReady = false;
             //((ScrollView)ControlView).IsEnabled = false;
 
 
@@ -103,7 +103,7 @@ namespace Clicar.Behaviors
                 );
 
 
-            MainViewModel.GetInstance().Agenda.ListLoading = true;
+            MainViewModel.GetInstance().Agenda.ListReady = true;
             //((ScrollView)ControlView).IsEnabled = true;
             parent.IsEnabled = true;
         }
