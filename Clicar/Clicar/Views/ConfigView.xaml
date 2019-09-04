@@ -86,18 +86,17 @@
                             Spacing="0">
 
                             <Frame
-
-                            Padding="15,4"
-                            HasShadow="False"
-                            Margin="70,10,70,5"
-                            CornerRadius="10"
-                            BackgroundColor="{StaticResource BaseGreen20}">
+                                Padding="15,4"
+                                HasShadow="False"
+                                Margin="70,10,70,5"
+                                CornerRadius="10"
+                                BackgroundColor="{StaticResource BaseGreen20}">
                                 <Label
-                                HorizontalOptions="Center"
-                                Text="Clicar-Vespucio"
-                                FontSize="12"
-                                TextColor="{StaticResource DarkGreen}"
-                                FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+                                    HorizontalOptions="Center"
+                                    Text="{Binding ConfiguredSucursal.MAESU_NOMBRE_SUCURSAL}"
+                                    FontSize="12"
+                                    TextColor="{StaticResource DarkGreen}"
+                                    FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
                             </Frame>
 
                             <Frame
@@ -121,6 +120,7 @@
                                         Grid.Column="1"
                                         Source="ic_arrow_down.png"/>
                                     <local:CustomPicker
+                                        x:Name="SucursalPicker"
                                         SelectedItem="{Binding SelectedSucursal}"
                                         ItemsSource="{Binding Sucursales}"
                                         ItemDisplayBinding="{Binding MAESU_NOMBRE_SUCURSAL}"

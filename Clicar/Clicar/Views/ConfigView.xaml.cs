@@ -32,7 +32,6 @@ namespace Clicar.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Debug.WriteLine("~(>'.')> xml ona");
         }
     }
 }

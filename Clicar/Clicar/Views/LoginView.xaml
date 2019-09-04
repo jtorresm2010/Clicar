@@ -78,6 +78,9 @@
                                     VerticalOptions="Center" />
 
                                 <local:CustomEntry 
+                                    
+                                    
+                                    
                                     x:Name="UsuarioEntry"
                                     Text="{Binding Usuario}"
                                     Grid.Row="0"

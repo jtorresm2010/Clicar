@@ -1,10 +1,7 @@
-﻿using Clicar.Interface;
-using Clicar.Models;
+﻿using Clicar.Models;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
 using Plugin.DeviceOrientation;
-using Plugin.Media;
-using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System;
@@ -12,12 +9,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CustomControls;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 
 namespace Clicar.ViewModels
@@ -30,12 +24,13 @@ namespace Clicar.ViewModels
         private Color baseGreen;
         private int menuIndex;
 
-        public string Token;
-        public string Url;
-        public string Prefix;
-        public string ControllerLogin;
-        public string ControllerSucursal;
-        
+
+        public string Token { get; set; }
+        public string Url { get; set; }
+        public string Prefix { get; set; }
+        public string ControllerLogin { get; set; }
+        public string ControllerSucursal { get; set; }
+
         public int isLastItem { get; set; }
 
         public object currentItem { get; set; }
@@ -44,8 +39,12 @@ namespace Clicar.ViewModels
 
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
 
+
+        #region Instancias VM
         public LoginViewModel Login { get; set; }
         public ConfigViewModel Config { get; set; }
+        public AgendaViewModel Agenda { get; set; }
+        #endregion
 
         public MainViewModel()
         {
@@ -57,12 +56,14 @@ namespace Clicar.ViewModels
 
         private void CurrentPageAppearing(object sender, Page e)
         {
+            Debug.WriteLine("~(>'.')> Page Appearing");
             try
             {
                 Url = Application.Current.Resources["UrlAPI"].ToString();
                 Prefix = Application.Current.Resources["UrlPrefix"].ToString();
                 ControllerLogin = Application.Current.Resources["UrlLoginController"].ToString();
                 ControllerSucursal = Application.Current.Resources["UrlSucursalController"].ToString();
+                Application.Current.PageAppearing -= CurrentPageAppearing;
             }
             catch (Exception ex)
             {
@@ -70,10 +71,10 @@ namespace Clicar.ViewModels
             }
         }
 
-        private static MainViewModel instance;
 
         private List<ItemInspeccion> list;
 
+        private static MainViewModel instance;
         public static MainViewModel GetInstance()
         {
             if (instance == null)
@@ -246,8 +247,6 @@ namespace Clicar.ViewModels
 
 
         }
-
-
         public ICommand EditarDetalleICommand
         {
             get

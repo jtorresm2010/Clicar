@@ -97,9 +97,9 @@
             
             <!--URL princilap-->
                 <!--Externa-->
-                <!--<x:String x:Key="UrlAPI">http://www.genesys.cl:396</x:String>-->
+                <x:String x:Key="UrlAPI">http://www.genesys.cl:396</x:String>
                 <!--Interna-->
-                <x:String x:Key="UrlAPI">http://10.40.190.85:395</x:String>
+                <!--<x:String x:Key="UrlAPI">http://10.40.190.85:395</x:String>-->
             <!-- Carpeta-->
             <x:String x:Key="UrlPrefix">/api</x:String>
             <!--Comandos-->

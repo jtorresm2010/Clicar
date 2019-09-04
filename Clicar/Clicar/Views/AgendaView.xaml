@@ -6,6 +6,7 @@
              xmlns:views="clr-namespace:Clicar.Templates"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
              xmlns:i18n="clr-namespace:Clicar.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
              mc:Ignorable="d"
              x:Class="Clicar.Views.AgendaView">
 
@@ -84,9 +85,11 @@
 
 
         <ScrollView
+            BindingContext="{Binding Agenda}"
             x:Name="MainScrollView"
             Grid.Row="0"
-            Orientation="Vertical" HorizontalScrollBarVisibility="Never">
+            Orientation="Vertical" 
+            HorizontalScrollBarVisibility="Never">
 
 
             <StackLayout
@@ -134,18 +137,20 @@
                     BackgroundColor="{StaticResource BaseOrange}">
 
                     <Label 
-                            TextColor="White"
-                            FontFamily="{StaticResource BoldFontOpenSans}"
-                            Text="{i18n:Translate Pending}" 
-                            FontSize="20"/>
-
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToggleVisible"/>
-                    </Frame.GestureRecognizers>
+                        TextColor="White"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        Text="{i18n:Translate Pending}" 
+                        FontSize="20"/>
+                    <Frame.Behaviors>
+                        <behavior:CloseOpenBehavior
+                        AttachedListView="{x:Reference Name=PendientesListView}"/>
+                    </Frame.Behaviors>
 
                 </Frame>
                 <ListView
-                    RowHeight="110"
+                    HeightRequest="{Binding PendientesHeight}"
+                    ItemsSource="{Binding ListaVehiculos}"
+                    RowHeight="{Binding RowHeight}"
                     VerticalScrollBarVisibility="Never"
                     ItemTapped="AgendaItemTapped"
                     SelectionMode="None"
@@ -167,18 +172,20 @@
                     BackgroundColor="{StaticResource BaseGreen}">
 
                     <Label 
-                                TextColor="White"
-                                FontFamily="{StaticResource BoldFontOpenSans}"
-                                Text="{i18n:Translate Completed}" 
-                                FontSize="20"/>
-
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="ToggleVisible"/>
-                    </Frame.GestureRecognizers>
+                        TextColor="White"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        Text="{i18n:Translate Completed}" 
+                        FontSize="20"/>
+                    <Frame.Behaviors>
+                        <behavior:CloseOpenBehavior
+                        AttachedListView="{x:Reference Name=CompletadosListView}"/>
+                    </Frame.Behaviors>
 
                 </Frame>
                 <ListView
-                    RowHeight="110"
+                    HeightRequest="{Binding PendientesHeight}"
+                    ItemsSource="{Binding ListaVehiculos}"
+                    RowHeight="{Binding RowHeight}"
                     ItemTapped="AgendaItemTapped"
                     VerticalScrollBarVisibility="Never"
                     SelectionMode="None"
@@ -190,8 +197,15 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                
+
+
+                <StackLayout
+                    HeightRequest="300"/>
+
             </StackLayout>
+
+
+            
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

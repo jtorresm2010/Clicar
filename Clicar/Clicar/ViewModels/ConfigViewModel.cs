@@ -16,8 +16,22 @@ namespace Clicar.ViewModels
 {
     public class ConfigViewModel : BaseViewModel
     {
-        private ObservableCollection<Sucursal> ListaSucursales;
 
+        private Sucursal selectedSucursal;
+        public Sucursal SelectedSucursal
+        {
+            get { return selectedSucursal; }
+            set { SetValue(ref selectedSucursal, value); }
+        }
+
+        private Sucursal configuredSucursal;
+        public Sucursal ConfiguredSucursal
+        {
+            get { return configuredSucursal; }
+            set { SetValue(ref configuredSucursal, value); }
+        }
+
+        private ObservableCollection<Sucursal> ListaSucursales;
         public ObservableCollection<Sucursal> Sucursales
         {
             get { return this.ListaSucursales; }
@@ -47,7 +61,6 @@ namespace Clicar.ViewModels
             return instance;
         }
 
-        public string SelectedSucursal { get; set; }
 
         private async void GetListSucursales()
         {
@@ -72,7 +85,8 @@ namespace Clicar.ViewModels
                 if (resp.Resultado)
                 {
                     Sucursales = new ObservableCollection<Sucursal>(resp.Elemento);
-                    
+                    ConfiguredSucursal = Sucursales[0]; //Se cambia por la sucursal almacenada en la config local
+
                 }
             }
             catch (Exception ex)
@@ -91,7 +105,8 @@ namespace Clicar.ViewModels
 
         private void ConfigCommand()
         {
-            Debug.WriteLine("~(>'.')> Binding Test");
+            MainInstance.Agenda = new AgendaViewModel();
+            Application.Current.MainPage = new NavigationPage(new AgendaView());
         }
 
 

@@ -20,6 +20,11 @@ namespace Clicar.ViewModels
 
         public LoginViewModel()
         {
+
+            usuario = "palarcon";
+            clave = "123456";
+
+
             MainInstance = MainViewModel.GetInstance();
             restService = new RestService();
             instance = this;
@@ -34,8 +39,23 @@ namespace Clicar.ViewModels
             }
             return instance;
         }
-        public string Usuario { get; set; }
-        public string Clave { get; set; }
+
+        private string usuario;
+        public string Usuario
+        {
+            get { return usuario; }
+            set { SetValue(ref usuario, value); }
+        }
+
+        private string clave;
+        public string Clave
+        {
+            get { return clave; }
+            set { SetValue(ref clave, value); }
+        }
+
+
+
         public ICommand LoginICommand
         {
             get
@@ -43,10 +63,7 @@ namespace Clicar.ViewModels
                 return new RelayCommand(LoginCommand);
             }
         }
-        private void LoginCommand4()
-        {
-            Application.Current.MainPage = new ConfigView();
-        }
+
         private async void LoginCommand()
         {
             var connection = restService.CheckConnection();
