@@ -9,8 +9,8 @@
             mc:Ignorable="d"
             x:Class="Clicar.Templates.ItemInspeccionTemplate"
             xmlns:accordionview="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
-    
-            Text="{Binding Nombre}"
+
+            Text="{Binding AINSP_DESCRIPCION}"
                             
             TextPosition="Left"
             TextColor="White"

@@ -100,7 +100,7 @@ namespace Clicar.Services
 
         }
 
-        public async Task<Response> GetAsync<T>(string urlBase, string prefix, string controller, object data = null, string token = "")
+        public async Task<Response> GetAsync<T>(string urlBase, string prefix, string controller, string data = "", string token = "")
         {
             try
             {
@@ -108,12 +108,7 @@ namespace Clicar.Services
                 client.BaseAddress = new Uri(urlBase);
                 var url = $"{prefix}{controller}";
 
-                if(data != null)
-                {
-                    var json = JsonConvert.SerializeObject(data);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-                }
-                var response = await client.GetAsync(url);
+                var response = await client.GetAsync($"{url}{data}");
 
                 var answer = await response.Content.ReadAsStringAsync();
 

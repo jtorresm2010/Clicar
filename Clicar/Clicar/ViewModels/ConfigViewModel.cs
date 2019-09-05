@@ -74,9 +74,7 @@ namespace Clicar.ViewModels
             var response = await restService.GetAsync<SucursalesResponse>(
                 MainInstance.Url,
                 MainInstance.Prefix,
-                MainInstance.ControllerSucursal,
-                null,
-                MainInstance.Token);
+                MainInstance.ControllerSucursal);
 
             try
             {

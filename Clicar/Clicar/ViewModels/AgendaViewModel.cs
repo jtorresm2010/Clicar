@@ -1,4 +1,5 @@
 ﻿using Clicar.Models;
+using Clicar.Services;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -17,6 +18,8 @@ namespace Clicar.ViewModels
         MainViewModel MainInstance;
 
         #region Variables
+        public List<AreasInspeccion> AreasInspeccion;
+        private RestService RestService;
         private List<Inspeccion> listaInpecciones;
         private ObservableCollection<Inspeccion> listaPendientes;
         private ObservableCollection<Inspeccion> listaCompletados;
@@ -92,6 +95,7 @@ namespace Clicar.ViewModels
         public AgendaViewModel()
         {
             MainInstance = MainViewModel.GetInstance();
+            RestService = new RestService();
             LoadMainList();
             CargararListas();
             CurrentDate = $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}";
@@ -178,9 +182,37 @@ namespace Clicar.ViewModels
 
         private void ItemTappedCommand(Inspeccion inspeccion)
         {
+            ObtenerAreasInspeccion();
+
+
             MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
             MainInstance.DetalleInspeccion.CurrentInspeccion = inspeccion;
             Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
+        }
+
+        private async void ObtenerAreasInspeccion()
+        {
+            string data = $"?UsuID={Maestro.USU_ID}";
+
+
+            var response = await RestService.GetAsync<AreasResponse>(MainInstance.Url, MainInstance.Prefix, MainInstance.ControllerMaestros, data);
+
+            try
+            {
+                AreasResponse resp = (AreasResponse)response.Result;
+
+                if (resp.Resultado)
+                {
+                    AreasInspeccion = resp.Elemento.areas_inspeccion;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("~(>-_-)> Error" + ex.Message);
+            }
+
+
+
         }
 
         public void RechazarInspeccion(Inspeccion inspeccion)

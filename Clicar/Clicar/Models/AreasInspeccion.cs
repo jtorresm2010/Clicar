@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Clicar.Models
 {
-    class AreasInspeccion
+    public class AreasInspeccion
     {
         public int AINSP_ID { get; set; }
         public string AINSP_DESCRIPCION { get; set; }

@@ -24,14 +24,14 @@ namespace Clicar.ViewModels
         private Color baseGreen;
         private int menuIndex;
         public object currentItem { get; set; }
-        private ObservableCollection<AreaInspeccion> areasInspeccion;
+        private ObservableCollection<AreasInspeccion> areasInspeccion;
         #endregion
 
 
         #region Propiedades
         public int MenuIndex { get { return this.menuIndex; } }
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
-        public ObservableCollection<AreaInspeccion> AreasInspeccion
+        public ObservableCollection<AreasInspeccion> AreasInspeccion
         {
             get { return areasInspeccion; }
             set { SetValue(ref areasInspeccion, value); }
@@ -44,21 +44,22 @@ namespace Clicar.ViewModels
 
             GetNewItemList();
 
-            var areasInspeccion = new ListaAreasInspeccion().GetListaAreas();
+            var areasInspeccion = MainViewModel.GetInstance().Agenda.AreasInspeccion;
+            //var areasInspeccion = new ListaAreasInspeccion().GetListaAreas();
 
             //Ordenar areas segun el valor en Orden
             var areasOrdenadas =
                 from areaInspeccion in areasInspeccion
-                orderby areaInspeccion.Orden ascending
+                orderby areaInspeccion.AINSP_ORDEN_APP ascending
                 select areaInspeccion;
 
             //Setea el nombre de las imagenes
-            foreach (AreaInspeccion area in areasOrdenadas)
-            {
-                area.Image = "MenuNum" + area.Orden;
-            }
+            //foreach (AreasInspeccion area in areasOrdenadas)
+            //{
+            //    area.Image = "MenuNum" + area.Orden;
+            //}
 
-            AreasInspeccion = new ObservableCollection<AreaInspeccion>(areasOrdenadas);
+            AreasInspeccion = new ObservableCollection<AreasInspeccion>(areasOrdenadas);
 
 
 

@@ -54,7 +54,7 @@
         </StackLayout>
 
         <Image
-            BindingContext="{Binding Main, Source={StaticResource Locator}}"
+            BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"
             Source="Forward">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding EditarDetalleICommand}"/>
