@@ -123,8 +123,10 @@ namespace Clicar.ViewModels
             if (PendienteCount == ListCount)
             {
                 ListCount = 1;
+                PendienteCount = CompletadosCount;
                 return true;
             }
+
             else
             {
                 ListCount++;

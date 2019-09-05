@@ -36,9 +36,6 @@ namespace Clicar.Behaviors
             else
                 AttachedListView.SizeChanged += ListViewSizeChanged;
 
-
-            
-
         }
 
         private void ListViewSizeChanged(object sender, EventArgs e)
