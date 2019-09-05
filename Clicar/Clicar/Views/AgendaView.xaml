@@ -165,13 +165,8 @@
                     VerticalScrollBarVisibility="Never"
                     SelectionMode="None"
                     SeparatorVisibility="None"
-                    x:Name="PendientesListView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <views:AgendaViewCellTemplate/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    x:Name="PendientesListView"
+                    ItemTemplate="{StaticResource agendaTemplateSelector}" />
 
                 <!--Lista de completados-->
                 <Frame 
@@ -201,13 +196,8 @@
                     VerticalScrollBarVisibility="Never"
                     SelectionMode="None"
                     SeparatorVisibility="None"
-                    x:Name="CompletadosListView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <views:AgendaViewCellTemplate/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    x:Name="CompletadosListView"
+                    ItemTemplate="{StaticResource agendaTemplateSelector}" />
 
             </StackLayout>
 

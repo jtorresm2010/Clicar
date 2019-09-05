@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -16,8 +17,8 @@ namespace Clicar.ViewModels
         MainViewModel MainInstance;
 
         #region Variables
-        private ObservableCollection<Vehiculo> listaPendientes;
-        private ObservableCollection<Vehiculo> listaCompletados;
+        private ObservableCollection<Inspeccion> listaPendientes;
+        private ObservableCollection<Inspeccion> listaCompletados;
         private int PendienteCount;
         private int CompletadosCount;
         private double pendientesHeight;
@@ -33,12 +34,12 @@ namespace Clicar.ViewModels
 
 
         #region Propiedades
-        public ObservableCollection<Vehiculo> ListaCompletados
+        public ObservableCollection<Inspeccion> ListaCompletados
         {
             get { return listaCompletados; }
             set { SetValue(ref listaCompletados, value); }
         }
-        public ObservableCollection<Vehiculo> ListaPendientes
+        public ObservableCollection<Inspeccion> ListaPendientes
         {
             get { return this.listaPendientes; }
             set { this.SetValue(ref this.listaPendientes, value); }
@@ -103,15 +104,27 @@ namespace Clicar.ViewModels
 
         public void InicializarLista()
         {
-            var listaVehiulos = new VehiculosList().GetListaVehiculos();
+            List<Inspeccion> listaInpecciones = new ListaInspecciones().GetListaInspeccion();
 
-            ListaPendientes = new ObservableCollection<Vehiculo>(listaVehiulos);
+            //var listaVehiulos = new VehiculosList().GetListaVehiculos();
+
+            var pendientesQuery =
+                from inspeccion in listaInpecciones
+                where inspeccion.Estado != "Completado"
+                select inspeccion;
+
+            ListaPendientes = new ObservableCollection<Inspeccion>(pendientesQuery);
             PendienteCount = ListaPendientes.Count;
             PendientesHeight = PendienteCount * RowHeight;
 
-            var listaModificada = listaVehiulos.GetRange(2, 5);
+            //var listaModificada = listaInpecciones.GetRange(2, 5);
 
-            ListaCompletados = new ObservableCollection<Vehiculo>(listaModificada);
+            var completadasQuery =
+                from inspeccion in listaInpecciones
+                where inspeccion.Estado == "Completado"
+                select inspeccion;
+
+            ListaCompletados = new ObservableCollection<Inspeccion>(completadasQuery);
             CompletadosCount = ListaCompletados.Count;
             CompletadosHeight = CompletadosCount * RowHeight;
 
@@ -138,15 +151,15 @@ namespace Clicar.ViewModels
         {
             get
             {
-                return new RelayCommand<Vehiculo>(parameter => ItemTappedCommand(parameter));
+                return new RelayCommand<Inspeccion>(inspeccion => ItemTappedCommand(inspeccion));
             }
 
         }
 
-        private void ItemTappedCommand(Vehiculo parameter)
+        private void ItemTappedCommand(Inspeccion inspeccion)
         {
-            Debug.WriteLine("~(>'.-)> Maestro: " +Maestro.USU_NOMBRES);
-            Debug.WriteLine("~(>'.')> Vehiculo seleccionado: " + parameter.Modelo);
+            MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
+            MainInstance.DetalleInspeccion.CurrentInspeccion = inspeccion;
             Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
         }
 

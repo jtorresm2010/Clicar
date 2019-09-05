@@ -45,6 +45,7 @@ namespace Clicar.ViewModels
         public LoginViewModel Login { get; set; }
         public ConfigViewModel Config { get; set; }
         public AgendaViewModel Agenda { get; set; }
+        public DetalleInspeccionViewModel DetalleInspeccion { get; set; }
         #endregion
 
         public MainViewModel()

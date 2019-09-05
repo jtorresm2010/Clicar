@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i18n="clr-namespace:Clicar.Helpers"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
              mc:Ignorable="d"
              x:Class="Clicar.Views.DetalleInspeccionView">
 
@@ -29,9 +30,10 @@
 
 
     <ContentPage.Content>
-        
-        
+
+
         <StackLayout
+            BindingContext="{Binding DetalleInspeccion}"
             Spacing="0"
             Margin="0,8"
             BackgroundColor="{StaticResource BGGrey}">
@@ -42,20 +44,62 @@
 
                 <StackLayout
                     Spacing="0">
-                    
-                    <Label
-                        Text="JRGK85 TUCSON"
-                        HorizontalOptions="Start"
-                        FontSize="16"
-                        TextColor="{StaticResource BGGrey}"
-                        FontFamily="{StaticResource BoldFontOpenSans}"/>
 
-                    <Label
-                        Text="PEUGEOT - BLANCO"
-                        HorizontalOptions="Start"
-                        FontSize="14"
-                        TextColor="{StaticResource BGGrey}"
-                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                    <StackLayout 
+                        Orientation="Horizontal" 
+                        Spacing="0">
+
+                        <Label
+                            Text="{Binding CurrentInspeccion.Patente}"
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
+
+                        <Label
+                            Text=" - "
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
+
+
+                        <Label
+                            Text="{Binding CurrentInspeccion.Model}"
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
+
+                    </StackLayout>
+
+                    <StackLayout 
+                        Orientation="Horizontal" 
+                        Spacing="0">
+
+                        <Label
+                            Text="{Binding CurrentInspeccion.Brand}"
+                            HorizontalOptions="Start"
+                            FontSize="14"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                        <Label
+                            Text=" - "
+                            HorizontalOptions="Start"
+                            FontSize="14"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+
+                        <Label
+                            Text="{Binding CurrentInspeccion.Color}"
+                            HorizontalOptions="Start"
+                            FontSize="14"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                    </StackLayout>
 
                     <StackLayout 
                         Orientation="Horizontal" 
@@ -69,7 +113,7 @@
                             FontFamily="{StaticResource BoldFontOpenSans}"/>
 
                         <Label
-                            Text="10:00"
+                            Text="{Binding CurrentInspeccion.StartTime}"
                             HorizontalOptions="Start"
                             FontSize="12"
                             TextColor="{StaticResource BGGrey}"
@@ -116,7 +160,7 @@
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="W-20190706-1-303"
+                        Text="{Binding CurrentInspeccion.Num_Inspeccion}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -137,7 +181,7 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="PEUGEOT"
+                        Text="{Binding CurrentInspeccion.Brand}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -158,7 +202,7 @@
                         Grid.Row="2"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="208"
+                        Text="{Binding CurrentInspeccion.Model}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -179,7 +223,7 @@
                         Grid.Row="3"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="Blanco"
+                        Text="{Binding CurrentInspeccion.Color}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -200,7 +244,7 @@
                         Grid.Row="4"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="2017"
+                        Text="{Binding CurrentInspeccion.Year}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -221,7 +265,7 @@
                         Grid.Row="5"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="208 ACTIVE PAC..."
+                        Text="{Binding CurrentInspeccion.Version}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -242,7 +286,7 @@
                         Grid.Row="6"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="Kilometraje"
+                        Text="{Binding CurrentInspeccion.Mileage}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -263,7 +307,7 @@
                         Grid.Row="7"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="CITI_CAR"
+                        Text="{Binding CurrentInspeccion.Type}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -284,7 +328,7 @@
                         Grid.Row="8"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="Patricio Alarcon"
+                        Text="{Binding CurrentInspeccion.Client_Name}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -305,7 +349,7 @@
                         Grid.Row="9"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="12.968.185-5"
+                        Text="{Binding CurrentInspeccion.Client_Rut}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>

@@ -37,11 +37,26 @@
                 <template:ItemInspSwitchVCTemplate/>
             </DataTemplate>
 
+            <DataTemplate x:Key="agendaViewCellTemplate">
+                <template:AgendaViewCellTemplate/>
+            </DataTemplate>
+            <DataTemplate x:Key="agendaViewCellAnulado">
+                <template:AgendaViewCellAnulado/>
+            </DataTemplate>
+
+
+
+
             <template:ItemDataTemplateSelector 
                     x:Key="itemDataTemplateSelector" 
                         ItemTemplateA="{StaticResource itemInspeccionVCTemplate}"
                         ItemTemplateB="{StaticResource itemInspSwitchVCTemplate}"
                         ItemTemplateC="{StaticResource itemInspeccionVCTemplate}"/>
+
+            <template:AgendaTemplateSelector 
+                    x:Key="agendaTemplateSelector" 
+                        ItemTemplateA="{StaticResource agendaViewCellTemplate}"
+                        ItemTemplateB="{StaticResource agendaViewCellAnulado}"/>
 
 
 
