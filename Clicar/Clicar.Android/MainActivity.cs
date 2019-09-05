@@ -28,7 +28,7 @@ namespace Clicar.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CrossFingerprint.SetCurrentActivityResolver(() => CrossCurrentActivity.Current.Activity);
-            // RequestedOrientation = ScreenOrientation.Portrait;
+            RequestedOrientation = ScreenOrientation.Portrait;
 
 
             //System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(delegate { return true; });

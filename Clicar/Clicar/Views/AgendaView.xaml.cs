@@ -5,6 +5,7 @@ using Clicar.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Clicar.Utils;
+using Clicar.ViewModels;
 
 namespace Clicar.Views
 {
@@ -15,10 +16,12 @@ namespace Clicar.Views
         {
             InitializeComponent();
         }
-        private void AgendaItemTapped(object sender, ItemTappedEventArgs e)
+
+        protected override void OnAppearing()
         {
-            Navigation.PushAsync(new DetalleInspeccionView());
+            base.OnAppearing();
         }
+
         private async void LogOutCommand(object sender, EventArgs e)
         {
             var popup = PopupNavigation.Instance;

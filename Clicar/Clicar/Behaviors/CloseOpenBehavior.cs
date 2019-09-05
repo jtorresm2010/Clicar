@@ -21,7 +21,8 @@ namespace Clicar.Behaviors
 
         TapGestureRecognizer itemTapped;
 
-        private double ListHeight = 0;
+        private double ListHeight;
+
 
         protected override void OnAttachedTo(View view)
         {
@@ -30,8 +31,20 @@ namespace Clicar.Behaviors
             ((Frame)view).GestureRecognizers.Add(itemTapped);
             itemTapped.Tapped += RefreshCommand;
 
-            ListHeight = MainViewModel.GetInstance().Agenda.PendientesHeight;
+            if (AttachedListView == null)
+                Debug.WriteLine("~(>'.')> Lista no especificada");
+            else
+                AttachedListView.SizeChanged += ListViewSizeChanged;
 
+
+            
+
+        }
+
+        private void ListViewSizeChanged(object sender, EventArgs e)
+        {
+            ListHeight = AttachedListView.HeightRequest;
+            AttachedListView.SizeChanged -= ListViewSizeChanged;
         }
 
         private void RefreshCommand(object sender, EventArgs e)
@@ -43,7 +56,6 @@ namespace Clicar.Behaviors
             }
             else
             {
-
                 CloseOpenAnimation(AttachedListView, ListHeight, AttachedListView.IsVisible);
             }
         }

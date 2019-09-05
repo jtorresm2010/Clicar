@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Clicar.ViewModels;
+using Xamarin.Essentials;
 
 namespace Clicar.Behaviors
 {
@@ -66,7 +67,10 @@ namespace Clicar.Behaviors
             var imageF = (Image)parent.Children[0];
             var imageB = (Image)parent.Children[1];
 
-            uint intervalo = 600;
+            uint intervalo = 500;
+
+            //IsVibrating = true;
+            //ToggleVibration();
 
             parent.IsEnabled = false;
 
@@ -106,6 +110,10 @@ namespace Clicar.Behaviors
             MainViewModel.GetInstance().Agenda.ListReady = true;
             //((ScrollView)ControlView).IsEnabled = true;
             parent.IsEnabled = true;
+
+            //IsVibrating = false;
+            //ToggleVibration();
+
         }
 
         protected override void OnDetachingFrom(View sender)
@@ -113,5 +121,46 @@ namespace Clicar.Behaviors
             base.OnDetachingFrom(sender);
             itemTapped.Tapped -= RefreshCommand;
         }
+
+        //private bool IsVibrating = true;
+        //private void ToggleVibration()
+        //{
+
+        //    if(IsVibrating)
+        //        try
+        //    {
+        //            // Use default vibration length
+        //            var duration = TimeSpan.FromSeconds(5);
+        //            Vibration.Vibrate(duration);
+
+
+
+                   
+        //    }
+        //    catch (FeatureNotSupportedException ex)
+        //    {
+        //        // Feature not supported on device
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Other error has occurred.
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            Vibration.Cancel();
+        //        }
+        //        catch (FeatureNotSupportedException ex)
+        //        {
+        //            // Feature not supported on device
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Other error has occurred.
+        //        }
+        //    }
+        //}
+
     }
 }

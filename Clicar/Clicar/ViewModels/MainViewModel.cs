@@ -57,7 +57,6 @@ namespace Clicar.ViewModels
 
         private void CurrentPageAppearing(object sender, Page e)
         {
-            Debug.WriteLine("~(>'.')> Page Appearing");
             try
             {
                 Url = Application.Current.Resources["UrlAPI"].ToString();

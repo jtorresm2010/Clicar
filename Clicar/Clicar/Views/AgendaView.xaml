@@ -160,7 +160,7 @@
                 <ListView
                     IsEnabled="{Binding ListReady}"
                     HeightRequest="{Binding PendientesHeight}"
-                    ItemsSource="{Binding ListaVehiculos}"
+                    ItemsSource="{Binding ListaPendientes}"
                     RowHeight="{Binding RowHeight}"
                     VerticalScrollBarVisibility="Never"
                     SelectionMode="None"
@@ -174,7 +174,7 @@
                 </ListView>
 
                 <!--Lista de completados-->
-                    <Frame 
+                <Frame 
                     IsEnabled="{Binding ListReady}"
                     HasShadow="False"
                     CornerRadius="0"
@@ -195,10 +195,9 @@
                 </Frame>
                 <ListView
                     IsEnabled="{Binding ListReady}"
-                    HeightRequest="{Binding PendientesHeight}"
-                    ItemsSource="{Binding ListaVehiculos}"
+                    HeightRequest="{Binding CompletadosHeight}"
+                    ItemsSource="{Binding ListaCompletados}"
                     RowHeight="{Binding RowHeight}"
-                    ItemTapped="AgendaItemTapped"
                     VerticalScrollBarVisibility="Never"
                     SelectionMode="None"
                     SeparatorVisibility="None"

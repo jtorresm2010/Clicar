@@ -16,9 +16,12 @@ namespace Clicar.ViewModels
         MainViewModel MainInstance;
 
         #region Variables
-        private ObservableCollection<Vehiculo> listaVehiculos;
+        private ObservableCollection<Vehiculo> listaPendientes;
+        private ObservableCollection<Vehiculo> listaCompletados;
         private int PendienteCount;
+        private int CompletadosCount;
         private double pendientesHeight;
+        private double completadosHeight;
         private bool listReady;
         private int ListCount = 1;
         private double rowHeight = 110;
@@ -30,15 +33,25 @@ namespace Clicar.ViewModels
 
 
         #region Propiedades
-        public ObservableCollection<Vehiculo> ListaVehiculos
+        public ObservableCollection<Vehiculo> ListaCompletados
         {
-            get { return this.listaVehiculos; }
-            set { this.SetValue(ref this.listaVehiculos, value); }
+            get { return listaCompletados; }
+            set { SetValue(ref listaCompletados, value); }
+        }
+        public ObservableCollection<Vehiculo> ListaPendientes
+        {
+            get { return this.listaPendientes; }
+            set { this.SetValue(ref this.listaPendientes, value); }
         }
         public double PendientesHeight
         {
             get { return pendientesHeight; }
             set { SetValue(ref pendientesHeight, value); }
+        }
+        public double CompletadosHeight
+        {
+            get { return completadosHeight; }
+            set { SetValue(ref completadosHeight, value); }
         }
         public bool ListReady
         {
@@ -77,11 +90,9 @@ namespace Clicar.ViewModels
         public AgendaViewModel()
         {
             MainInstance = MainViewModel.GetInstance();
-            ListReady = true;
             InicializarLista();
 
             CurrentDate = $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}";
-
         }
 
         public void MaestroName(Maestro maestro)
@@ -90,11 +101,21 @@ namespace Clicar.ViewModels
             NombreMaestro = $"{Maestro.USU_NOMBRES} {Maestro.USU_APELLIDO_PATERNO}";
         }
 
-        private void InicializarLista()
+        public void InicializarLista()
         {
-            ListaVehiculos = new ObservableCollection<Vehiculo>(new VehiculosList().GetListaVehiculos());
-            PendienteCount = listaVehiculos.Count;
-            PendientesHeight = listaVehiculos.Count * RowHeight;
+            var listaVehiulos = new VehiculosList().GetListaVehiculos();
+
+            ListaPendientes = new ObservableCollection<Vehiculo>(listaVehiulos);
+            PendienteCount = ListaPendientes.Count;
+            PendientesHeight = PendienteCount * RowHeight;
+
+            var listaModificada = listaVehiulos.GetRange(2, 5);
+
+            ListaCompletados = new ObservableCollection<Vehiculo>(listaModificada);
+            CompletadosCount = ListaCompletados.Count;
+            CompletadosHeight = CompletadosCount * RowHeight;
+
+            ListReady = true;
         }
 
         public bool IsLastItem()
@@ -110,7 +131,6 @@ namespace Clicar.ViewModels
                 return false;
             }
         }
-
 
         public ICommand ItemTappedICommand
         {
