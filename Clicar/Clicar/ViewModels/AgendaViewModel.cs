@@ -163,5 +163,16 @@ namespace Clicar.ViewModels
             Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
         }
 
+
+        public void RechazarInspeccion(Inspeccion inspeccion)
+        {
+            var InspeccionRechazada = inspeccion;
+            InspeccionRechazada.Estado = "Anulado";
+
+            ListaPendientes[ListaPendientes.IndexOf(inspeccion)] = InspeccionRechazada;
+        }
+
+
+
     }
 }

@@ -11,10 +11,10 @@
         BackgroundColor="{StaticResource LighterOrange}"
             VerticalOptions="FillAndExpand"
             Spacing="0">
-        <StackLayout.GestureRecognizers>
+        <!--<StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding Main.Agenda.ItemTappedICommand, Source={StaticResource Locator}}" 
                                   CommandParameter="{Binding .}" />
-        </StackLayout.GestureRecognizers>
+        </StackLayout.GestureRecognizers>-->
 
 
         <Grid
@@ -116,7 +116,7 @@
                 <Label
                     Margin="0,0,0,10"
                     VerticalOptions="EndAndExpand"
-                    Text="Rechazado"
+                    Text="{i18n:Translate Rejected}"
                     HorizontalOptions="Start"
                     FontSize="16"
                     TextColor="{StaticResource BaseOrange}"

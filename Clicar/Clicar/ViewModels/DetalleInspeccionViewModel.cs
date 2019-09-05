@@ -1,7 +1,11 @@
 ﻿using Clicar.Models;
+using Clicar.Views;
+using GalaSoft.MvvmLight.Command;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 
 namespace Clicar.ViewModels
 {
@@ -23,8 +27,27 @@ namespace Clicar.ViewModels
 
         public DetalleInspeccionViewModel()
         {
+        }
+
+
+        public ICommand RechazarICommand
+        {
+            get
+            {
+                return new RelayCommand<Inspeccion>(inspeccion => RechazarCommand(inspeccion));
+            }
 
         }
+
+        private async void RechazarCommand(Inspeccion inspeccion)
+        {
+
+            var popup = PopupNavigation.Instance;
+            await popup.PushAsync(new RechazarPopupView());
+
+        }
+
+
 
     }
 }

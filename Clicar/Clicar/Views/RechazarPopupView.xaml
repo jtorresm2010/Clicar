@@ -7,11 +7,13 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:Clicar.Customs"
             xmlns:i18n="clr-namespace:Clicar.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
             mc:Ignorable="d"
             x:Class="Clicar.Views.RechazarPopupView">
-    
+
     <Frame
-        HeightRequest="260"
+            BindingContext="{Binding DetalleInspeccion}"
+            HeightRequest="260"
             Padding="24,18"
             CornerRadius="20"
             VerticalOptions="CenterAndExpand"
@@ -52,7 +54,7 @@
                     BackgroundColor="{StaticResource LightOrange}">
                     
                     <Label
-                        Text="JRGK85"
+                        Text="{Binding CurrentInspeccion.Patente}"
                         FontSize="24"
                         TextColor="{StaticResource BaseOrange}"
                         FontFamily="{StaticResource BoldFontOpenSans}"/>

@@ -364,7 +364,8 @@
                         HorizontalOptions="CenterAndExpand">
                         
                         <Button
-                            Clicked="RechazarCommand"
+                            Command="{Binding RechazarICommand}"
+                            CommandParameter="{Binding CurrentInspeccion}"
                             BackgroundColor="{StaticResource BaseOrange}"
                             Text="{i18n:Translate Reject}"
                             FontSize="14"

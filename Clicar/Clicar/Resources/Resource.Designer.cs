@@ -601,6 +601,15 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Rejected.
+        /// </summary>
+        internal static string Rejected {
+            get {
+                return ResourceManager.GetString("Rejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Reject inspection for:.
         /// </summary>
         internal static string RejectInfoText {

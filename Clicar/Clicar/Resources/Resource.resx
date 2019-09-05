@@ -322,4 +322,7 @@
   <data name="FiveStars" xml:space="preserve">
     <value>Excellent</value>
   </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
 </root>
