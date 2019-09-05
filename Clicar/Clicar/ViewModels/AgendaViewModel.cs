@@ -17,6 +17,7 @@ namespace Clicar.ViewModels
         MainViewModel MainInstance;
 
         #region Variables
+        private List<Inspeccion> listaInpecciones;
         private ObservableCollection<Inspeccion> listaPendientes;
         private ObservableCollection<Inspeccion> listaCompletados;
         private int PendienteCount;
@@ -91,8 +92,8 @@ namespace Clicar.ViewModels
         public AgendaViewModel()
         {
             MainInstance = MainViewModel.GetInstance();
-            InicializarLista();
-
+            LoadMainList();
+            CargararListas();
             CurrentDate = $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}";
         }
 
@@ -102,22 +103,24 @@ namespace Clicar.ViewModels
             NombreMaestro = $"{Maestro.USU_NOMBRES} {Maestro.USU_APELLIDO_PATERNO}";
         }
 
-        public void InicializarLista()
+        private void LoadMainList()
         {
-            List<Inspeccion> listaInpecciones = new ListaInspecciones().GetListaInspeccion();
+            listaInpecciones = new ListaInspecciones().GetListaInspeccion();
 
-            //var listaVehiulos = new VehiculosList().GetListaVehiculos();
+        }
 
+        public void CargararListas()
+        {
             var pendientesQuery =
                 from inspeccion in listaInpecciones
                 where inspeccion.Estado != "Completado"
+                orderby inspeccion.Estado descending
                 select inspeccion;
 
             ListaPendientes = new ObservableCollection<Inspeccion>(pendientesQuery);
             PendienteCount = ListaPendientes.Count;
             PendientesHeight = PendienteCount * RowHeight;
 
-            //var listaModificada = listaInpecciones.GetRange(2, 5);
 
             var completadasQuery =
                 from inspeccion in listaInpecciones
@@ -146,6 +149,14 @@ namespace Clicar.ViewModels
                 return false;
             }
         }
+        public ICommand ItemCompletadoICommand
+        {
+            get
+            {
+                return new RelayCommand<Inspeccion>(inspeccion => ItemCompletadoCommand(inspeccion));
+            }
+
+        }
 
         public ICommand ItemTappedICommand
         {
@@ -156,6 +167,15 @@ namespace Clicar.ViewModels
 
         }
 
+        private void ItemCompletadoCommand(Inspeccion inspeccion)
+        {
+            
+            Debug.WriteLine($"~(>'.')> Inspeccion completada {inspeccion.Num_Inspeccion}");
+            //MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
+            //MainInstance.DetalleInspeccion.CurrentInspeccion = inspeccion;
+            //Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
+        }
+
         private void ItemTappedCommand(Inspeccion inspeccion)
         {
             MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
@@ -163,16 +183,14 @@ namespace Clicar.ViewModels
             Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
         }
 
-
         public void RechazarInspeccion(Inspeccion inspeccion)
         {
             var InspeccionRechazada = inspeccion;
-            InspeccionRechazada.Estado = "Anulado";
+            InspeccionRechazada.Estado = "Rechazado";
 
-            ListaPendientes[ListaPendientes.IndexOf(inspeccion)] = InspeccionRechazada;
+            listaInpecciones[listaInpecciones.IndexOf(inspeccion)] = InspeccionRechazada;
+
+            CargararListas();
         }
-
-
-
     }
 }

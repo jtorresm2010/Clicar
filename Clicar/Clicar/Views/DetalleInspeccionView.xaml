@@ -376,7 +376,7 @@
                             BorderRadius="20"/>
 
                         <Button
-                            Clicked="InspeccionarCommand"
+                            Command="{Binding InspeccionarICommand}"
                             BackgroundColor="{StaticResource BaseGreen}"
                             Text="{i18n:Translate StartInspection}"
                             FontSize="14"

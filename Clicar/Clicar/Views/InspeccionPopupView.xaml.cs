@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using Clicar.ViewModels;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using Xamarin.Forms.Xaml;
@@ -21,8 +22,10 @@ namespace Clicar.Views
 
         private async void ContinuarCommand(object sender, EventArgs e)
         {
+            MainViewModel.GetInstance().Inspeccion = new InspeccionViewModel();
+
             await Navigation.PushAsync(new InspeccionView());
-           
+
             Navigation.RemovePage(Navigation.NavigationStack[1]);
             var popup = PopupNavigation.Instance;
             await popup.PopAsync();

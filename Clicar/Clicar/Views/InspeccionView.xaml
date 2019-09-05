@@ -32,8 +32,10 @@
 
     <ContentPage.Content>
         <ScrollView
+            BindingContext="{Binding Inspeccion}"
             BackgroundColor="White">
             <accordionview:AccordionRepeaterView
+                ItemsSource="{Binding AreasInspeccion}"
                 x:Name="AccordionMenu"
                 KeepOnlyOneItemOpen="True" 
                 Margin="0,8"

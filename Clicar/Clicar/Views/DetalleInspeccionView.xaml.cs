@@ -30,18 +30,10 @@ namespace Clicar.Views
 
         }
 
-
-
         private async void RechazarCommand(object sender, EventArgs e)
         {
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new RechazarPopupView());
-        }
-
-        private async void InspeccionarCommand(object sender, EventArgs e)
-        {
-            var popup = PopupNavigation.Instance;
-            await popup.PushAsync(new InspeccionPopupView());
         }
 
         private static DetalleInspeccionView instance;

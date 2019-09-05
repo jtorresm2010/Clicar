@@ -24,45 +24,40 @@ namespace Clicar.Views
             InitializeComponent();
 
 
-            instance = this;
+            //instance = this;
 
-            var mainInstance = MainViewModel.GetInstance();
+            //var mainInstance = MainViewModel.GetInstance();
 
-            mainInstance.GetNewItemList();
+            //mainInstance.GetNewItemList();
 
-            var areasInspeccion = new ListaAreasInspeccion().GetListaAreas();
+            //var areasInspeccion = new ListaAreasInspeccion().GetListaAreas();
 
-            //Ordenar areas segun el valor en Orden
-            var areasOrdenadas =
-                from areaInspeccion in areasInspeccion
-                orderby areaInspeccion.Orden ascending
-                select areaInspeccion;
-
-
+            ////Ordenar areas segun el valor en Orden
+            //var areasOrdenadas =
+            //    from areaInspeccion in areasInspeccion
+            //    orderby areaInspeccion.Orden ascending
+            //    select areaInspeccion;
 
 
 
 
 
-            //Setea el nombre de las imagenes
-            foreach(AreaInspeccion area in areasOrdenadas)
-            {
-                area.Image = "MenuNum" + area.Orden;
-            }
+
+
+            ////Setea el nombre de las imagenes
+            //foreach(AreaInspeccion area in areasOrdenadas)
+            //{
+            //    area.Image = "MenuNum" + area.Orden;
+            //}
 
             //Setea el dataset delacordion
-            AccordionMenu.ItemsSource = areasOrdenadas.ToList<AreaInspeccion>();
+            //AccordionMenu.ItemsSource = areasOrdenadas.ToList<AreaInspeccion>();
 
 
             //Abre  el primer panel
-            var primerItem = (AccordionItemView)AccordionMenu.Children[0];
-            primerItem.OpenPanel();
+            //var primerItem = (AccordionItemView)AccordionMenu.Children[0];
+            //primerItem.OpenPanel();
             
-
-            //Aqui se implementaria Skias...
-            //primerItem.ActiveLeftImage = 
-
-
 
         }
 

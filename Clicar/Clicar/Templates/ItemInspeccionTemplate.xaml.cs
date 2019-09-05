@@ -19,25 +19,25 @@ namespace Clicar.Templates
     public partial class ItemInspeccionTemplate : AccordionItemView
     {
         private int index;
-        MainViewModel mainInstance;
+        InspeccionViewModel MainInstance;
         public ItemInspeccionTemplate()
         {
             InitializeComponent();
 
-            mainInstance = MainViewModel.GetInstance();
+            MainInstance = MainViewModel.GetInstance().Inspeccion;
 
-            index = mainInstance.MenuIndex;
+            index = MainInstance.MenuIndex;
 
             SetButtons();
 
-            mainInstance.LoadItemList();
+            MainInstance.LoadItemList();
 
             var filteringQuery =
-                from itemInspeccion in mainInstance.ItemsInspeccion
+                from itemInspeccion in MainInstance.ItemsInspeccion
                 where itemInspeccion.Tipo == "3"
                 select itemInspeccion;
 
-            if(filteringQuery.Count() != 0)
+            if (filteringQuery.Count() != 0)
             {
                 itemsInspeccionListView.IsVisible = false;
                 CreateGrid();
@@ -56,7 +56,7 @@ namespace Clicar.Templates
 
         private void SetList()
         {
-            itemsInspeccionListView.HeightRequest = mainInstance.ItemsInspeccion.Count() * itemsInspeccionListView.RowHeight;
+            itemsInspeccionListView.HeightRequest = MainInstance.ItemsInspeccion.Count() * itemsInspeccionListView.RowHeight;
         }
 
         private void CreateGrid()
@@ -65,7 +65,7 @@ namespace Clicar.Templates
             var gridRow = 0;
             var gridCol = 0;
 
-            foreach (ItemInspeccion item in mainInstance.ItemsInspeccion)
+            foreach (ItemInspeccion item in MainInstance.ItemsInspeccion)
             {
 
 
@@ -79,29 +79,31 @@ namespace Clicar.Templates
 
                 var tapAction = new TapGestureRecognizer();
 
-                mainInstance.currentItem = item;
+                MainInstance.currentItem = item;
 
                 //Accion relacionada a tomar foto y su eventual parametro (objeto)
                 tapAction.SetBinding(TapGestureRecognizer.CommandProperty, "ICommandImageTap");
                 tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, "currentItem");
-                
+
 
                 imagen.GestureRecognizers.Add(tapAction);
 
                 layout.Children.Add(imagen);
 
                 layout.Children.Add(new Label
-                { HorizontalOptions = LayoutOptions.CenterAndExpand,
+                {
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
                     FontSize = 10,
                     HorizontalTextAlignment = TextAlignment.Center,
                     FontFamily = "{StaticResource RegularFontOpenSans}",
                     TextColor = (Color)Application.Current.Resources["BaseGrey"],
-                    Text = item.Nombre }); ;
+                    Text = item.Nombre
+                }); ;
 
                 ImageGrid.Children.Add(layout, gridCol, gridRow);
 
                 gridCol++;
-                if(gridCol > 2)
+                if (gridCol > 2)
                 {
                     gridCol = 0;
                     gridRow++;
@@ -119,7 +121,7 @@ namespace Clicar.Templates
 
         private void SetButtons()
         {
-            if(index == 1)
+            if (index == 1)
             {
                 BackButton.IsVisible = false;
             }

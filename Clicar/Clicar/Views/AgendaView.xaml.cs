@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Clicar.Utils;
 using Clicar.ViewModels;
+using System.Diagnostics;
 
 namespace Clicar.Views
 {
@@ -24,6 +25,9 @@ namespace Clicar.Views
 
         private async void LogOutCommand(object sender, EventArgs e)
         {
+
+            Debug.WriteLine($"~(>'.')> {PendientesListView.ItemsSource}");
+
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new LogOutPopupView());
         }

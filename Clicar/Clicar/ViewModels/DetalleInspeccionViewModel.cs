@@ -47,7 +47,20 @@ namespace Clicar.ViewModels
 
         }
 
+        public ICommand InspeccionarICommand
+        {
+            get
+            {
+                return new RelayCommand<Inspeccion>(inspeccion => InspeccionarCommand(inspeccion));
+            }
 
+        }
+
+        private async void InspeccionarCommand(Inspeccion inspeccion)
+        {
+            var popup = PopupNavigation.Instance;
+            await popup.PushAsync(new InspeccionPopupView());
+        }
 
     }
 }

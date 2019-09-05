@@ -43,7 +43,9 @@
             <DataTemplate x:Key="agendaViewCellAnulado">
                 <template:AgendaViewCellAnulado/>
             </DataTemplate>
-
+            <DataTemplate x:Key="agendaViewCellCompletado">
+                <template:AgendaViewCellCompletado/>
+            </DataTemplate>
 
 
 
@@ -56,8 +58,9 @@
             <template:AgendaTemplateSelector 
                     x:Key="agendaTemplateSelector" 
                         ItemTemplateA="{StaticResource agendaViewCellTemplate}"
-                        ItemTemplateB="{StaticResource agendaViewCellAnulado}"/>
-
+                        ItemTemplateB="{StaticResource agendaViewCellCompletado}"
+                        ItemTemplateC="{StaticResource agendaViewCellAnulado}"/>
+            
 
 
             <Color x:Key="BaseGreyE">#eeeeee</Color>
@@ -120,8 +123,7 @@
             <!--Comandos-->
             <x:String x:Key="UrlLoginController">/login/authenticate</x:String>
             <x:String x:Key="UrlSucursalController">/sucursales/MobileSucursalesVigentes</x:String>
-            
-            
+            <x:String x:Key="UrlMaestrosController">/Maestros</x:String>
 
 
 

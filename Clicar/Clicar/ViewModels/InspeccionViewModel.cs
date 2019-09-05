@@ -1,92 +1,68 @@
 ﻿using Clicar.Models;
-using Clicar.Views;
-using GalaSoft.MvvmLight.Command;
-using Plugin.DeviceOrientation;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+using System.Text;
 using System.Linq;
-using System.Windows.Input;
-using Xamarin.CustomControls;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
-
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
+using Plugin.Permissions;
+using Plugin.DeviceOrientation;
+using Clicar.Views;
+using Xamarin.CustomControls;
+using Plugin.Permissions.Abstractions;
 
 namespace Clicar.ViewModels
 {
-    public class MainViewModel : BaseViewModel
+    public class InspeccionViewModel : BaseViewModel
     {
-
+        #region Variables
+        private List<ItemInspeccion> list;
         private Color baseGreyLight;
         private Color baseOrange;
         private Color baseGreen;
         private int menuIndex;
-
-        public string Token { get; set; }
-        public string Url { get; set; }
-        public string Prefix { get; set; }
-        public string ControllerLogin { get; set; }
-        public string ControllerSucursal { get; set; }
-        public string ControllerMaestros { get; set; }
-
-        public int isLastItem { get; set; }
-
         public object currentItem { get; set; }
+        private ObservableCollection<AreaInspeccion> areasInspeccion;
+        #endregion
+
+
+        #region Propiedades
         public int MenuIndex { get { return this.menuIndex; } }
-
-
-
-
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
-
-
-        #region Instancias VM
-        public LoginViewModel Login { get; set; }
-        public ConfigViewModel Config { get; set; }
-        public AgendaViewModel Agenda { get; set; }
-        public DetalleInspeccionViewModel DetalleInspeccion { get; set; }
-        public InspeccionViewModel Inspeccion { get; set; }
+        public ObservableCollection<AreaInspeccion> AreasInspeccion
+        {
+            get { return areasInspeccion; }
+            set { SetValue(ref areasInspeccion, value); }
+        }
 
         #endregion
 
-        public MainViewModel()
+        public InspeccionViewModel()
         {
-            //Inicializa valores del diccionario
-            Application.Current.PageAppearing += CurrentPageAppearing;
 
-            instance = this;
-        }
+            GetNewItemList();
 
-        private void CurrentPageAppearing(object sender, Page e)
-        {
-            try
+            var areasInspeccion = new ListaAreasInspeccion().GetListaAreas();
+
+            //Ordenar areas segun el valor en Orden
+            var areasOrdenadas =
+                from areaInspeccion in areasInspeccion
+                orderby areaInspeccion.Orden ascending
+                select areaInspeccion;
+
+            //Setea el nombre de las imagenes
+            foreach (AreaInspeccion area in areasOrdenadas)
             {
-                Url = Application.Current.Resources["UrlAPI"].ToString();
-                Prefix = Application.Current.Resources["UrlPrefix"].ToString();
-                ControllerLogin = Application.Current.Resources["UrlLoginController"].ToString();
-                ControllerSucursal = Application.Current.Resources["UrlSucursalController"].ToString();
-                ControllerMaestros = Application.Current.Resources["UrlMaestrosController"].ToString();
-                Application.Current.PageAppearing -= CurrentPageAppearing;
+                area.Image = "MenuNum" + area.Orden;
             }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("~(>'.')>  " + ex.Message);
-            }
-        }
+
+            AreasInspeccion = new ObservableCollection<AreaInspeccion>(areasOrdenadas);
 
 
-        private List<ItemInspeccion> list;
 
-        private static MainViewModel instance;
-        public static MainViewModel GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new MainViewModel();
-            }
-            return instance;
+
         }
 
         public void GetNewItemList()
@@ -105,7 +81,7 @@ namespace Clicar.ViewModels
             var listIteration = new List<ItemInspeccion>();
 
             var areasInspeccion = new ListaAreasInspeccion().GetListaAreas().Count;
-            
+
             var ilistIteration = list.Select(ItemInspeccion => ItemInspeccion.Nombre);
 
             // Filtra la lista dependiendo de cual iteracion del menu acordion principal se esta mostrando
@@ -125,7 +101,7 @@ namespace Clicar.ViewModels
 
             var accordionMenu = (AccordionRepeaterView)inspeccionView.FindByName("AccordionMenu");
 
-            var itemActual = (AccordionItemView)accordionMenu.Children[int.Parse(parameter)-1];
+            var itemActual = (AccordionItemView)accordionMenu.Children[int.Parse(parameter) - 1];
 
             itemActual.ButtonBackgroundColor = baseGreen;
             itemActual.BorderColor = baseGreen;
@@ -196,7 +172,6 @@ namespace Clicar.ViewModels
             }
 
         }
-
         private async void CommandImageTap(object parameter)
         {
 
@@ -260,7 +235,6 @@ namespace Clicar.ViewModels
             }
 
         }
-
         private async void EditarDetalleCommand(string parameter)
         {
             Console.WriteLine("(>'.')>-----------" + parameter);
@@ -271,7 +245,6 @@ namespace Clicar.ViewModels
             //var instance = InspeccionView.GetInstance();
             //await instance.Navigation.PushAsync(new EditarDetalleView());
         }
-
 
 
 

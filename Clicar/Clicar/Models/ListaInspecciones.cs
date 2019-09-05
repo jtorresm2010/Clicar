@@ -13,7 +13,7 @@ namespace Clicar.Models
             listaInspeccion.AddRange(new[] {
                       new Inspeccion
                       {
-                          Num_Inspeccion = "W-2831354", Patente="QQ1245", StartTime = "1220", Brand = "PEUGEOT", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Anulado"
+                          Num_Inspeccion = "W-2831354", Patente="QQ1245", StartTime = "1220", Brand = "PEUGEOT", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Rechazado"
                       },
                       new Inspeccion
                       {
@@ -37,11 +37,11 @@ namespace Clicar.Models
                       },
                       new Inspeccion
                       {
-                          Num_Inspeccion = "W-21354354", Patente="EF1245", StartTime = "1220", Brand = "CHEVROLET", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Anulado"
+                          Num_Inspeccion = "W-21354354", Patente="EF1245", StartTime = "1220", Brand = "CHEVROLET", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Rechazado"
                       },
                       new Inspeccion
                       {
-                          Num_Inspeccion = "W-211451354", Patente="AB1245", StartTime = "1220", Brand = "MAZDA", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Anulado"
+                          Num_Inspeccion = "W-211451354", Patente="AB1245", StartTime = "1220", Brand = "MAZDA", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Rechazado"
                       },
                       new Inspeccion
                       {
@@ -53,7 +53,7 @@ namespace Clicar.Models
                       },
                       new Inspeccion
                       {
-                          Num_Inspeccion = "W-2831354", Patente="QQ1245", StartTime = "1220", Brand = "PEUGEOT", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Anulado"
+                          Num_Inspeccion = "W-2831354", Patente="QQ1245", StartTime = "1220", Brand = "PEUGEOT", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Rechazado"
                       },
                       new Inspeccion
                       {
@@ -77,11 +77,11 @@ namespace Clicar.Models
                       },
                       new Inspeccion
                       {
-                          Num_Inspeccion = "W-21354354", Patente="EF1245", StartTime = "1220", Brand = "CHEVROLET", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Anulado"
+                          Num_Inspeccion = "W-21354354", Patente="EF1245", StartTime = "1220", Brand = "CHEVROLET", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Rechazado"
                       },
                       new Inspeccion
                       {
-                          Num_Inspeccion = "W-211451354", Patente="AB1245", StartTime = "1220", Brand = "MAZDA", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Anulado"
+                          Num_Inspeccion = "W-211451354", Patente="AB1245", StartTime = "1220", Brand = "MAZDA", Model = "208", Color = "Blanco", Year = "2017", Version = "208 Act", Mileage = "120000", Type = "CITI_CAR", Client_Name = "Patricio Alarcon", Client_Rut = "12.968.564-4", Estado = "Rechazado"
                       },
                       new Inspeccion
                       {

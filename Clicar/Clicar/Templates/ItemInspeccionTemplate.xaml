@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <customcontrols:AccordionItemView
-        xmlns:customcontrols="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
-        xmlns="http://xamarin.com/schemas/2014/forms"
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i18n="clr-namespace:Clicar.Helpers"
-        mc:Ignorable="d"
-        x:Class="Clicar.Templates.ItemInspeccionTemplate"
-        xmlns:accordionview="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
+            xmlns:customcontrols="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
+            xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:i18n="clr-namespace:Clicar.Helpers"
+            mc:Ignorable="d"
+            x:Class="Clicar.Templates.ItemInspeccionTemplate"
+            xmlns:accordionview="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
     
             Text="{Binding Nombre}"
                             
@@ -33,7 +33,7 @@
         <StackLayout
             Margin="0,20">
             <Grid
-                BindingContext="{Binding Main, Source={StaticResource Locator}}"
+                BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"
                 x:Name="ImageGrid"
                  Margin="25,0">
                 <Grid.ColumnDefinitions>
@@ -44,8 +44,8 @@
             </Grid>
 
             <ListView 
+                BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"
 
-                BindingContext="{Binding Main, Source={StaticResource Locator}}"
                 ItemsSource="{Binding ItemsInspeccion}"
                 RowHeight="80"
                 SeparatorVisibility="None"
@@ -56,7 +56,7 @@
                 ItemTemplate="{StaticResource itemDataTemplateSelector}" />
 
             <StackLayout
-                BindingContext="{Binding Main, Source={StaticResource Locator}}"
+                BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"
                 Spacing="10"
                 Orientation="Horizontal"
                 Margin="24,0">
@@ -87,6 +87,7 @@
                     WidthRequest="128"
                     BorderRadius="20"/>
             </StackLayout>
+            
         </StackLayout>
     </accordionview:AccordionItemView.ItemContent>
 </customcontrols:AccordionItemView>
