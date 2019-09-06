@@ -9,9 +9,12 @@ namespace Clicar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InspeccionPopupView : PopupPage
     {
+        MainViewModel MainInstance;
+
         public InspeccionPopupView()
         {
             InitializeComponent();
+            MainInstance = MainViewModel.GetInstance();
         }
 
         private async void CancelarCommand(object sender, EventArgs e)
@@ -22,7 +25,9 @@ namespace Clicar.Views
 
         private async void ContinuarCommand(object sender, EventArgs e)
         {
-            MainViewModel.GetInstance().Inspeccion = new InspeccionViewModel();
+            MainInstance.Inspeccion = new InspeccionViewModel();
+
+            MainInstance.Inspeccion.CurrentInspeccion = MainInstance.DetalleInspeccion.CurrentInspeccion;
 
             await Navigation.PushAsync(new InspeccionView());
 

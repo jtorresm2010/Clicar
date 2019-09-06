@@ -40,58 +40,10 @@ namespace Clicar.ViewModels
 
 
         MainViewModel MainInstance;
-        private RestService restService;
         public ConfigViewModel()
         {
-            restService = new RestService();
-            instance = this;
             MainInstance = MainViewModel.GetInstance();
-
-            //GetListSucursales();
         }
-
-
-        private static ConfigViewModel instance;
-        public static ConfigViewModel GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new ConfigViewModel();
-            }
-            return instance;
-        }
-
-
-        //private async void GetListSucursales()
-        //{
-        //    var connection = restService.CheckConnection();
-        //    if (!connection.IsSuccess)
-        //    {
-        //        await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
-        //        return;
-        //    }
-
-        //    var response = await restService.GetAsync<SucursalesResponse>(
-        //        MainInstance.Url,
-        //        MainInstance.Prefix,
-        //        MainInstance.ControllerSucursal);
-
-        //    try
-        //    {
-        //        SucursalesResponse resp = (SucursalesResponse)response.Result;
-
-        //        if (resp.Resultado)
-        //        {
-        //            Sucursales = new ObservableCollection<Sucursal>(resp.Elemento);
-        //            ClosestSucursal = Sucursales[0]; //Se cambia por la sucursal almacenada en la config local
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine("~(>-_-)> Error" + ex.Message);
-        //    }
-        //}
 
         public ICommand ConfigICommand
         {
@@ -107,6 +59,7 @@ namespace Clicar.ViewModels
                 ClosestSucursal != SelectedSucursal && SelectedSucursal != null? 
                 SelectedSucursal : 
                 ClosestSucursal;
+
             Application.Current.MainPage = new NavigationPage(new AgendaView());
         }
 

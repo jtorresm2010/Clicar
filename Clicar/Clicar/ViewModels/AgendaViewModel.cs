@@ -98,8 +98,22 @@ namespace Clicar.ViewModels
             RestService = new RestService();
             LoadMainList();
             CargararListas();
-            CurrentDate = $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}";
+            CurrentDate = GetFormattedDate();
+
         }
+
+
+        private string GetFormattedDate()
+        {
+            var day = DateTime.Now.Day.ToString().Length > 1 ? DateTime.Now.Day.ToString() : $"0{DateTime.Now.Day}";
+            var month = DateTime.Now.Month.ToString().Length > 1 ? DateTime.Now.Month.ToString() : $"0{DateTime.Now.Month}";
+            var year = DateTime.Now.Year;
+
+            string date = $"{day}/{month}/{year}";
+
+            return date;
+        }
+
 
         public void MaestroName(Maestro maestro)
         {
@@ -182,37 +196,10 @@ namespace Clicar.ViewModels
 
         private void ItemTappedCommand(Inspeccion inspeccion)
         {
-            ObtenerAreasInspeccion();
-
 
             MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
             MainInstance.DetalleInspeccion.CurrentInspeccion = inspeccion;
             Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
-        }
-
-        private async void ObtenerAreasInspeccion()
-        {
-            string data = $"?UsuID={Maestro.USU_ID}";
-
-
-            var response = await RestService.GetAsync<AreasResponse>(MainInstance.Url, MainInstance.Prefix, MainInstance.ControllerMaestros, data);
-
-            try
-            {
-                AreasResponse resp = (AreasResponse)response.Result;
-
-                if (resp.Resultado)
-                {
-                    AreasInspeccion = resp.Elemento.areas_inspeccion;
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("~(>-_-)> Error" + ex.Message);
-            }
-
-
-
         }
 
         public void RechazarInspeccion(Inspeccion inspeccion)

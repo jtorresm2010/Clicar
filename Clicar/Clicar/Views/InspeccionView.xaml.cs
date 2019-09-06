@@ -24,7 +24,7 @@ namespace Clicar.Views
             InitializeComponent();
 
 
-            //instance = this;
+            instance = this;
 
             //var mainInstance = MainViewModel.GetInstance();
 

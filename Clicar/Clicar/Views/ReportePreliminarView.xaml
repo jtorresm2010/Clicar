@@ -43,7 +43,8 @@
                 Padding="39,21,39,9" 
                 BackgroundColor="{StaticResource BaseOrange}">
 
-                <StackLayout
+                    <StackLayout
+                        BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"     
                     Spacing="0">
 
                     <Label
@@ -52,24 +53,65 @@
                         FontSize="16"
                         TextColor="{StaticResource BGGrey}"
                         FontFamily="{StaticResource BoldFontOpenSans}"/>
+                        <StackLayout 
+                        Orientation="Horizontal" 
+                        Spacing="0">
 
-                    <Label
-                        Text="JRGK85 TUCSON"
-                        HorizontalOptions="Start"
-                        FontSize="14"
-                        TextColor="{StaticResource BGGrey}"
-                        FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+                            <Label
+                            Text="{Binding CurrentInspeccion.Patente}"
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
 
-                    <Label
-                        Text="PEUGEOT - BLANCO"
-                        HorizontalOptions="Start"
-                        FontSize="12"
-                        TextColor="{StaticResource BGGrey}"
-                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+                            <Label
+                            Text=" - "
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
 
-                 
 
-                </StackLayout>
+                            <Label
+                            Text="{Binding CurrentInspeccion.Model}"
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
+
+                        </StackLayout>
+
+                        <StackLayout 
+                        Orientation="Horizontal" 
+                        Spacing="0">
+
+                            <Label
+                            Text="{Binding CurrentInspeccion.Brand}"
+                            HorizontalOptions="Start"
+                            FontSize="14"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            <Label
+                            Text=" - "
+                            HorizontalOptions="Start"
+                            FontSize="14"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+
+                            <Label
+                            Text="{Binding CurrentInspeccion.Color}"
+                            HorizontalOptions="Start"
+                            FontSize="14"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                        </StackLayout>
+
+
+
+                    </StackLayout>
 
 
 

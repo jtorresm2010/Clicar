@@ -23,12 +23,20 @@ namespace Clicar.ViewModels
         private Color baseOrange;
         private Color baseGreen;
         private int menuIndex;
-        public object currentItem { get; set; }
+        private MainViewModel MainInstance;
+        private Inspeccion currentInspeccion;
         private ObservableCollection<AreasInspeccion> areasInspeccion;
+        public object currentItem { get; set; }
         #endregion
 
 
         #region Propiedades
+
+        public Inspeccion CurrentInspeccion
+        {
+            get { return currentInspeccion; }
+            set { SetValue(ref currentInspeccion, value); }
+        }
         public int MenuIndex { get { return this.menuIndex; } }
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
         public ObservableCollection<AreasInspeccion> AreasInspeccion
@@ -41,6 +49,8 @@ namespace Clicar.ViewModels
 
         public InspeccionViewModel()
         {
+            MainInstance = MainViewModel.GetInstance();
+
 
             GetNewItemList();
 
@@ -53,7 +63,6 @@ namespace Clicar.ViewModels
                 orderby areaInspeccion.AINSP_ORDEN_APP ascending
                 select areaInspeccion;
 
-            //Setea el nombre de las imagenes
             //foreach (AreasInspeccion area in areasOrdenadas)
             //{
             //    area.Image = "MenuNum" + area.Orden;
@@ -115,6 +124,7 @@ namespace Clicar.ViewModels
             }
             catch
             {
+                MainInstance.Reporte = new ReporteViewModel();
                 Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
                 //Console.WriteLine(e.Message);
             }

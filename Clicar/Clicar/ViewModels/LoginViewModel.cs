@@ -19,6 +19,7 @@ namespace Clicar.ViewModels
     {
 
         #region Variables
+        private bool isLoading;
         private string usuario;
         private string clave;
         LoginResponse loginResponse;
@@ -36,6 +37,12 @@ namespace Clicar.ViewModels
             set { SetValue(ref clave, value); }
         }
 
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set { SetValue(ref isLoading, value); }
+        }
+
         #endregion
 
 
@@ -44,6 +51,7 @@ namespace Clicar.ViewModels
 
         public LoginViewModel()
         {
+            IsLoading = false;
 
             usuario = "PATRICIO.ALARCON@GMA";
             clave = "123";
@@ -63,6 +71,8 @@ namespace Clicar.ViewModels
 
         private async void LoginCommand()
         {
+            IsLoading = true;
+
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
             {
@@ -86,9 +96,6 @@ namespace Clicar.ViewModels
                 if (loginResponse.Resultado)
                 {
                     InicializarDatos();
-
-
-
                 }
             }
             catch (Exception ex)
@@ -96,18 +103,17 @@ namespace Clicar.ViewModels
                 Debug.WriteLine("~(>-_-)> Error: " + ex.Message);
             }
 
-
+            IsLoading = false;
         }
 
         private async void InicializarDatos()
         {
+            IsLoading = true;
 
             MainInstance.Agenda = new AgendaViewModel();
-            //Setea variabe Nombre de Maestro en Agenda
 
-            MainInstance.Token = loginResponse.Mensaje;
-
-            
+            Preferences.Set("Token", loginResponse.Mensaje);
+            Preferences.Set("Correo", Usuario);
 
             await MainInstance.DataService.Insert<Maestro>(loginResponse.Elemento);
             var maestroFromBD = await MainInstance.DataService.GetMaestro();
@@ -117,17 +123,21 @@ namespace Clicar.ViewModels
 
             MainInstance.Config = new ConfigViewModel();
 
-
-
             GetListSucursales();
 
             GetClosestSucursal();
+
+            ObtenerAreasInspeccion();
+
+            IsLoading = false;
 
             Application.Current.MainPage = new ConfigView();
         }
 
         private async void GetListSucursales()
         {
+            IsLoading = true;
+
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
             {
@@ -175,10 +185,16 @@ namespace Clicar.ViewModels
             {
                 Debug.WriteLine("~(>-_-)> Error" + ex.Message);
             }
+
+            IsLoading = false;
+
         }
 
         private async void GetClosestSucursal()
         {
+            IsLoading = true;
+
+
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
             {
@@ -189,22 +205,24 @@ namespace Clicar.ViewModels
 
             var loc = await GetLocation();
 
-            var posicion = new dTOUbicacion
-            {
-                LATITUD = loc.Latitude,
-                LONGITUD = loc.Longitude
-            };
+            dTOUbicacion posicion =  new dTOUbicacion();
 
-            //var response = await restService.PostAsync<LoginResponse>(MainInstance.Url, MainInstance.Prefix, MainInstance.ControllerLogin, usuario);
+            if (loc == null)
+            {
+                posicion.LATITUD = 0;
+                posicion.LONGITUD = 0;
+            }
+            else
+            {
+                posicion.LATITUD = loc.Latitude;
+                posicion.LONGITUD = loc.Longitude;
+            }
 
             var response = await restService.PostAsync<SucursalesResponse>(
                 MainInstance.Url,
                 MainInstance.Prefix,
                 MainInstance.ControllerCercanaSucursal,
                 posicion);
-
-
-
 
             try
             {
@@ -227,9 +245,7 @@ namespace Clicar.ViewModels
                 Debug.WriteLine("~(>-_-)> Error closest succ " + ex.Message);
             }
 
-
-
-
+            IsLoading = false;
         }
 
         private async Task<Location> GetLocation()
@@ -265,5 +281,44 @@ namespace Clicar.ViewModels
 
             return location;
         }
+
+        private async void ObtenerAreasInspeccion()
+        {
+            IsLoading = true;
+
+            string data = $"?UsuID={loginResponse.Elemento.USU_ID}";
+
+            var response = await restService.GetAsync<AreasResponse>(MainInstance.Url, MainInstance.Prefix, MainInstance.ControllerMaestros, data);
+            
+            try
+            {
+                AreasResponse resp = (AreasResponse)response.Result;
+
+                if (resp.Resultado)
+                {
+                    foreach(AreasInspeccion area in resp.Elemento.areas_inspeccion)
+                    {
+                        try
+                        {
+                            await MainInstance.DataService.Insert<AreasInspeccion>(area);
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine($"~(>.-.)> Error de Insert {e.Message}");
+                        }
+                    }
+
+                    MainInstance.Agenda.AreasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("~(>-_-)> Error" + ex.Message);
+            }
+
+            IsLoading = false;
+        }
+
+
     }
 }

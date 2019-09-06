@@ -80,6 +80,13 @@ namespace Clicar.Services
             return maestro;
         }
 
+        public async Task<List<AreasInspeccion>> GetAreasInspeccion()
+        {
+            var query = await this.connection.QueryAsync<AreasInspeccion>("select * from [AreasInspeccion]");
+
+            return query;
+        }
+
         #endregion
 
 

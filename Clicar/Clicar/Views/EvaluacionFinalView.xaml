@@ -8,6 +8,7 @@
         xmlns:behaviors="clr-namespace:Clicar.Behaviors"
         xmlns:views="clr-namespace:Clicar.Templates"
         xmlns:i18n="clr-namespace:Clicar.Helpers"
+        BindingContext="{Binding Main, Source={StaticResource Locator}}" 
         mc:Ignorable="d"
         x:Class="Clicar.Views.EvaluacionFinalView">
     
@@ -33,7 +34,8 @@
 
 
         <ContentPage.Content>
-            <ScrollView>
+        <ScrollView
+            BindingContext="{Binding Reporte}">
             <StackLayout
                 VerticalOptions="FillAndExpand"
                 Margin="0,8"
@@ -83,7 +85,7 @@
                             BackgroundColor="{StaticResource BGGrey}"
                             Padding="0">
                         <local:CustomEditor
-                            
+                            Text="{Binding EvalGeneral}"
                             FontSize="12"
                             TextColor="{StaticResource BaseGrey}"
                             FontFamily="{StaticResource RegularFontOpenSans}"
@@ -103,8 +105,8 @@
                             TextColor="{StaticResource BaseGrey}"/>
 
                         <views:StarTemplate
-                             StarValue="2"
-                             HorizontalOptions="CenterAndExpand"/>
+                            StarValue="{Binding CurrentStarRating}"
+                            HorizontalOptions="CenterAndExpand"/>
                         
                     </StackLayout>
 

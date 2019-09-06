@@ -16,22 +16,6 @@ namespace Clicar.Views
         public ConfigView()
         {
             InitializeComponent();
-            instance = this;
-        }
-
-        private static ConfigView instance;
-        public static ConfigView GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new ConfigView();
-            }
-            return instance;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Clicar.ViewModels
         public DetalleInspeccionViewModel DetalleInspeccion { get; set; }
         public InspeccionViewModel Inspeccion { get; set; }
         public DataService DataService { get; set; }
-
+        public ReporteViewModel Reporte { get; set; }
         #endregion
 
         public MainViewModel()

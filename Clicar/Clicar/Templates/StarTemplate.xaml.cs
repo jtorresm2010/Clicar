@@ -1,4 +1,5 @@
 ﻿using Clicar.Helpers;
+using Clicar.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,10 +16,33 @@ namespace Clicar.Templates
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StarTemplate : StackLayout
     {
+        private static MainViewModel MainInstance;
+
 
         private readonly BindableProperty IsEditableProperty = BindableProperty.Create(nameof(IsEditable), typeof(bool), typeof(StarTemplate), true);
-        private readonly BindableProperty StarValueProperty = BindableProperty.Create(nameof(StarValue), typeof(float), typeof(StarTemplate), 0f);
+
+        public static readonly BindableProperty StarValueProperty = BindableProperty.Create(
+        propertyName: "StarValue",
+        returnType: typeof(float),
+        declaringType: typeof(StarTemplate),
+        defaultValue: 0f,
+        defaultBindingMode: BindingMode.TwoWay);
+
+        private static void CurrentStarChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var starView = (StarTemplate)bindable;
+            var value = (float)newValue;
+
+            MainInstance.Reporte.CurrentStarRating = value;
+            
+            starView.StarValue = value;
+        }
+
+
+
         public static readonly BindableProperty TextVisibleProperty = BindableProperty.Create(nameof(TextVisible), typeof(bool), typeof(StarTemplate), true);
+
+
 
         public bool IsEditable
         {
@@ -30,6 +54,7 @@ namespace Clicar.Templates
             get { return (float)GetValue(StarValueProperty); }
             set { SetValue(StarValueProperty, value); }
         }
+
         public bool TextVisible
         {
             get { return (bool)GetValue(TextVisibleProperty); }
@@ -41,10 +66,15 @@ namespace Clicar.Templates
         {
             InitializeComponent();
 
+            MainInstance = MainViewModel.GetInstance();
+
             StarFill =  ImageSource.FromFile("star_black.png");
             StarBorder = ImageSource.FromFile("star_border.png");
 
             baseOrange = (Color)Application.Current.Resources["BaseOrange"];
+
+            StarValue = MainInstance.Reporte.CurrentStarRating;
+
         }
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

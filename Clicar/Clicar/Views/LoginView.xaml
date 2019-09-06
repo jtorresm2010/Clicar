@@ -191,7 +191,11 @@
                             </Label>
                             
                         </StackLayout>
-                
+
+                        <ActivityIndicator 
+                            HeightRequest="10"
+                            Color="{StaticResource BaseGreen}" 
+                            IsRunning="{Binding IsLoading}" />
 
                         <!--Botones-->
                         <StackLayout

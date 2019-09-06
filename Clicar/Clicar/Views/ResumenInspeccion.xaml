@@ -7,6 +7,7 @@
              xmlns:views="clr-namespace:Clicar.Templates"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
              xmlns:i18n="clr-namespace:Clicar.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
              mc:Ignorable="d"
              x:Class="Clicar.Views.ResumenInspeccion">
 
@@ -32,7 +33,8 @@
 
 
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding Reporte}">
             <StackLayout
                 Spacing="0"
                 VerticalOptions="FillAndExpand"
@@ -47,7 +49,8 @@
                 BackgroundColor="{StaticResource BaseGreen}">
 
                     <StackLayout
-                    Spacing="0">
+                        BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}" 
+                        Spacing="0">
 
                         <Label
                             Text="Resumen de inspección"
@@ -55,20 +58,62 @@
                             FontSize="16"
                             TextColor="{StaticResource BGGrey}"
                             FontFamily="{StaticResource BoldFontOpenSans}"/>
-                        
-                        <Label
-                            Text="JRGK85 TUCSON"
+
+                        <StackLayout 
+                        Orientation="Horizontal" 
+                        Spacing="0">
+
+                            <Label
+                            Text="{Binding CurrentInspeccion.Patente}"
                             HorizontalOptions="Start"
                             FontSize="16"
                             TextColor="{StaticResource BGGrey}"
-                            FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
 
-                        <Label
-                            Text="PEUGEOT - BLANCO"
+                            <Label
+                            Text=" - "
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
+
+
+                            <Label
+                            Text="{Binding CurrentInspeccion.Model}"
+                            HorizontalOptions="Start"
+                            FontSize="16"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource BoldFontOpenSans}"/>
+
+                        </StackLayout>
+
+                        <StackLayout 
+                        Orientation="Horizontal" 
+                        Spacing="0">
+
+                            <Label
+                            Text="{Binding CurrentInspeccion.Brand}"
                             HorizontalOptions="Start"
                             FontSize="14"
                             TextColor="{StaticResource BGGrey}"
                             FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            <Label
+                            Text=" - "
+                            HorizontalOptions="Start"
+                            FontSize="14"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+
+                            <Label
+                            Text="{Binding CurrentInspeccion.Color}"
+                            HorizontalOptions="Start"
+                            FontSize="14"
+                            TextColor="{StaticResource BGGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                        </StackLayout>
 
                     </StackLayout>
 
@@ -92,7 +137,7 @@
                             TextColor="{StaticResource BaseGrey}"/>
 
                         <views:StarTemplate
-                            StarValue="4"
+                            StarValue="{Binding CurrentStarRating}"
                             IsEditable="False"
                             HorizontalOptions="CenterAndExpand"/>
                        
@@ -117,7 +162,9 @@
                             BorderColor="{StaticResource BaseGreyE}"
                             BackgroundColor="{StaticResource BGGrey}"
                             Padding="0">
-                            <local:CustomEditor
+                        <local:CustomEditor
+                            IsReadOnly="True"
+                            Text="{Binding EvalGeneral}"
                             FontSize="12"
                             TextColor="{StaticResource BaseGrey}"
                             FontFamily="{StaticResource RegularFontOpenSans}"
@@ -175,7 +222,7 @@
                                 HorizontalTextAlignment="Center"
                                 HorizontalOptions="StartAndExpand"
                                 WidthRequest="230"
-                                Text="Rodrigo.banda@gac-sa.cl"
+                                Text="{Binding CorreoUsuario}"
                                 FontSize="14"
                                 FontFamily="{StaticResource RegularFontOpenSans}"
                                 TextColor="{StaticResource BaseOrange}"/>

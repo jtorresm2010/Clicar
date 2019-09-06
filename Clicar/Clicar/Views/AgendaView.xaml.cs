@@ -25,9 +25,6 @@ namespace Clicar.Views
 
         private async void LogOutCommand(object sender, EventArgs e)
         {
-
-            Debug.WriteLine($"~(>'.')> {PendientesListView.ItemsSource}");
-
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new LogOutPopupView());
         }

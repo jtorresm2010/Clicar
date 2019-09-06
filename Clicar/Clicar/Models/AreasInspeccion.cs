@@ -8,6 +8,7 @@ namespace Clicar.Models
     [Table("AreasInspeccion")]
     public class AreasInspeccion
     {
+        [PrimaryKey, MaxLength(20)]
         public int AINSP_ID { get; set; }
         public string AINSP_DESCRIPCION { get; set; }
         public int AINSP_ORDEN_APP { get; set; }
