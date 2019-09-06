@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Clicar.Models
 {
+    [Table("AreasInspeccion")]
     public class AreasInspeccion
     {
         public int AINSP_ID { get; set; }

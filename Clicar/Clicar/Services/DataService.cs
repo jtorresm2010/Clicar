@@ -3,6 +3,7 @@ using Clicar.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace Clicar.Services
 
 
 
-    class DataService
+    public class DataService
     {
         #region Variables
         private SQLiteAsyncConnection connection;
@@ -25,15 +26,17 @@ namespace Clicar.Services
         {
             var databasePath = DependencyService.Get<IPathService>().GetDatabasePath();
             connection = new SQLiteAsyncConnection(databasePath);
-            OpenOrCreateDB();
+            //OpenOrCreateDB();
         }
 
-        private async Task OpenOrCreateDB()
+        public async Task OpenOrCreateDB()
         {
+
+
+            await connection.CreateTableAsync<SucursalDB>().ConfigureAwait(false);
             await connection.CreateTableAsync<Maestro>().ConfigureAwait(false);
             await connection.CreateTableAsync<Usuario>().ConfigureAwait(false);
             await connection.CreateTableAsync<AreasInspeccion>().ConfigureAwait(false);
-            await connection.CreateTableAsync<Sucursal>().ConfigureAwait(false);
         }
 
         #region Metodos Genericos
@@ -61,14 +64,21 @@ namespace Clicar.Services
 
         #region Consultas
 
-        public async Task<List<Sucursal>> GetAllSucursales()
+        public async Task<List<SucursalDB>> GetAllSucursales()
         {
-            var query = await this.connection.QueryAsync<Sucursal>("select * from [Sucursal]");
+            var query = await this.connection.QueryAsync<SucursalDB>("select * from [SucursalDB]");
 
             return query;
         }
 
+        public async Task<Maestro> GetMaestro()
+        {
+            var query = await this.connection.QueryAsync<Maestro>("select * from [Maestro]");
 
+            var maestro = query[0];
+
+            return maestro;
+        }
 
         #endregion
 

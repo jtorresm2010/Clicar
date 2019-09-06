@@ -30,7 +30,7 @@ namespace Clicar.ViewModels
         private bool listReady;
         private int ListCount = 1;
         private double rowHeight = 110;
-        private Sucursal currentSucursal;
+        private SucursalDB currentSucursal;
         private Maestro maestro;
         private string nombreMaestro;
         private string currentDate;
@@ -78,7 +78,7 @@ namespace Clicar.ViewModels
             get { return nombreMaestro; }
             set { SetValue(ref nombreMaestro, value); }
         }
-        public Sucursal CurrentSucursal
+        public SucursalDB CurrentSucursal
         {
             get { return currentSucursal; }
             set { SetValue(ref currentSucursal, value); }

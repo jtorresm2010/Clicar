@@ -60,5 +60,7 @@
     </array>
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Permite obtener la sucursal mas cercana.</string>
 </dict>
 </plist>

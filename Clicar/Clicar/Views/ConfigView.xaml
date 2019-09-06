@@ -93,7 +93,7 @@
                                 BackgroundColor="{StaticResource BaseGreen20}">
                                 <Label
                                     HorizontalOptions="Center"
-                                    Text="{Binding ConfiguredSucursal.MAESU_NOMBRE_SUCURSAL}"
+                                    Text="{Binding ClosestSucursal.MAESU_NOMBRE_SUCURSAL}"
                                     FontSize="12"
                                     TextColor="{StaticResource DarkGreen}"
                                     FontFamily="{StaticResource SemiBoldFontOpenSans}"/>

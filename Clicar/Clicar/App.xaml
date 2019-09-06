@@ -123,8 +123,8 @@
             <!--Comandos-->
             <x:String x:Key="UrlLoginController">/login/authenticate</x:String>
             <x:String x:Key="UrlSucursalController">/sucursales/MobileSucursalesVigentes</x:String>
+            <x:String x:Key="UrlSucursalCercanaController">/sucursales/MobileSucursalesDistancia</x:String>
             <x:String x:Key="UrlMaestrosController">/Maestros</x:String>
-
 
 
 

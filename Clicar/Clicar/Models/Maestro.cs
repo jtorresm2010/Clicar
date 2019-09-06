@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Clicar.Models
 {
+    [Table("Maestro")]
     public class Maestro
     {
         public string USU_ID { get; set; }

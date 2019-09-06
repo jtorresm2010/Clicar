@@ -17,22 +17,22 @@ namespace Clicar.ViewModels
     public class ConfigViewModel : BaseViewModel
     {
 
-        private Sucursal selectedSucursal;
-        public Sucursal SelectedSucursal
+        private SucursalDB selectedSucursal;
+        public SucursalDB SelectedSucursal
         {
             get { return selectedSucursal; }
             set { SetValue(ref selectedSucursal, value); }
         }
 
-        private Sucursal configuredSucursal;
-        public Sucursal ConfiguredSucursal
+        private SucursalDB configuredSucursal;
+        public SucursalDB ClosestSucursal
         {
             get { return configuredSucursal; }
             set { SetValue(ref configuredSucursal, value); }
         }
 
-        private ObservableCollection<Sucursal> ListaSucursales;
-        public ObservableCollection<Sucursal> Sucursales
+        private ObservableCollection<SucursalDB> ListaSucursales;
+        public ObservableCollection<SucursalDB> Sucursales
         {
             get { return this.ListaSucursales; }
             set { this.SetValue(ref this.ListaSucursales, value); } 
@@ -47,7 +47,7 @@ namespace Clicar.ViewModels
             instance = this;
             MainInstance = MainViewModel.GetInstance();
 
-            GetListSucursales();
+            //GetListSucursales();
         }
 
 
@@ -62,36 +62,36 @@ namespace Clicar.ViewModels
         }
 
 
-        private async void GetListSucursales()
-        {
-            var connection = restService.CheckConnection();
-            if (!connection.IsSuccess)
-            {
-                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
-                return;
-            }
+        //private async void GetListSucursales()
+        //{
+        //    var connection = restService.CheckConnection();
+        //    if (!connection.IsSuccess)
+        //    {
+        //        await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+        //        return;
+        //    }
 
-            var response = await restService.GetAsync<SucursalesResponse>(
-                MainInstance.Url,
-                MainInstance.Prefix,
-                MainInstance.ControllerSucursal);
+        //    var response = await restService.GetAsync<SucursalesResponse>(
+        //        MainInstance.Url,
+        //        MainInstance.Prefix,
+        //        MainInstance.ControllerSucursal);
 
-            try
-            {
-                SucursalesResponse resp = (SucursalesResponse)response.Result;
+        //    try
+        //    {
+        //        SucursalesResponse resp = (SucursalesResponse)response.Result;
 
-                if (resp.Resultado)
-                {
-                    Sucursales = new ObservableCollection<Sucursal>(resp.Elemento);
-                    ConfiguredSucursal = Sucursales[0]; //Se cambia por la sucursal almacenada en la config local
+        //        if (resp.Resultado)
+        //        {
+        //            Sucursales = new ObservableCollection<Sucursal>(resp.Elemento);
+        //            ClosestSucursal = Sucursales[0]; //Se cambia por la sucursal almacenada en la config local
 
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("~(>-_-)> Error" + ex.Message);
-            }
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine("~(>-_-)> Error" + ex.Message);
+        //    }
+        //}
 
         public ICommand ConfigICommand
         {
@@ -104,9 +104,9 @@ namespace Clicar.ViewModels
         private void ConfigCommand()
         {
             MainInstance.Agenda.CurrentSucursal = 
-                ConfiguredSucursal != SelectedSucursal && SelectedSucursal != null? 
+                ClosestSucursal != SelectedSucursal && SelectedSucursal != null? 
                 SelectedSucursal : 
-                ConfiguredSucursal;
+                ClosestSucursal;
             Application.Current.MainPage = new NavigationPage(new AgendaView());
         }
 
