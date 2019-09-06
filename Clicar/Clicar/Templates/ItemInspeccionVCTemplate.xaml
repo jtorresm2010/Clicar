@@ -59,7 +59,7 @@
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding EditarDetalleICommand}"/>
             </Image.GestureRecognizers>
-        </Image>
+        </Image> 
 
 
 
