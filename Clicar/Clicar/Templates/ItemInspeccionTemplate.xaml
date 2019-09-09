@@ -9,7 +9,7 @@
             mc:Ignorable="d"
             x:Class="Clicar.Templates.ItemInspeccionTemplate"
             xmlns:accordionview="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
-
+    
             Text="{Binding AINSP_DESCRIPCION}"
                             
             TextPosition="Left"
@@ -32,9 +32,10 @@
     <accordionview:AccordionItemView.ItemContent>
         <StackLayout
             Margin="0,20">
+
             <Grid
-                BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"
-                x:Name="ImageGrid"
+                 BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"
+                 x:Name="ImageGrid"
                  Margin="25,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -42,8 +43,6 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
             </Grid>
-
-                <!--BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"-->
             <ListView 
 
                 ItemsSource="{Binding Items}"
@@ -55,7 +54,6 @@
                 Margin="0" 
                 ItemTemplate="{StaticResource itemDataTemplateSelector}" />
 
-                <!--BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"-->
             <StackLayout
                 Spacing="10"
                 Orientation="Horizontal"

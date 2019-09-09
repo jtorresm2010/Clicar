@@ -308,7 +308,7 @@ namespace Clicar.ViewModels
                         }
                     }
 
-                    MainInstance.Agenda.AreasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
+                    //MainInstance.Agenda.AreasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
                 }
             }
             catch (Exception ex)

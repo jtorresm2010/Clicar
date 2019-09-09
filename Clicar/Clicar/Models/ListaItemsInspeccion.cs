@@ -17,7 +17,7 @@ namespace Clicar.Models
                 //Area 1
                 new ItemInspeccion
                 {
-                    Nombre = "Llave original con chip", Area="1", Deshabilitable= true, RequiereFoto = true, Tipo = "2", Locked = false
+                    Nombre = "Llave original con chip", Area="1", Deshabilitable= true, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {

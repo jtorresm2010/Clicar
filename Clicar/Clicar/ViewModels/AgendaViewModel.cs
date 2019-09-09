@@ -18,8 +18,7 @@ namespace Clicar.ViewModels
         MainViewModel MainInstance;
 
         #region Variables
-        public List<AreasInspeccion> AreasInspeccion;
-        private RestService RestService;
+        public List<AreasInspeccion> AreasInspeccion { get; set; }
         private List<Inspeccion> listaInpecciones;
         private ObservableCollection<Inspeccion> listaPendientes;
         private ObservableCollection<Inspeccion> listaCompletados;
@@ -95,7 +94,6 @@ namespace Clicar.ViewModels
         public AgendaViewModel()
         {
             MainInstance = MainViewModel.GetInstance();
-            RestService = new RestService();
             LoadMainList();
             CargararListas();
             CargarAreasDeInspeccion();

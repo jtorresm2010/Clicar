@@ -18,27 +18,22 @@ namespace Clicar.Templates
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemInspeccionTemplate : AccordionItemView
     {
-        private int index;
         InspeccionViewModel MainInstance;
         public ItemInspeccionTemplate()
         {
             InitializeComponent();
 
-            //SetButtons();
+            MainInstance = MainViewModel.GetInstance().Inspeccion;
 
+            if(MainInstance.AreasInspeccion[MainInstance.CurrentIteration].IsImageSet)
+            {
+                itemsInspeccionListView.IsVisible = false;
+                CreateGrid();
+            }
 
-
-
-
-
-
+            MainInstance.CurrentIteration++;
         }
 
-
-        //private void SetList()
-        //{
-        //    itemsInspeccionListView.HeightRequest = MainInstance.ItemsInspeccion.Count() * itemsInspeccionListView.RowHeight;
-        //}
 
         private void CreateGrid()
         {
@@ -46,7 +41,7 @@ namespace Clicar.Templates
             var gridRow = 0;
             var gridCol = 0;
 
-            foreach (ItemInspeccion item in MainInstance.ItemsInspeccion)
+            foreach (ItemInspeccion item in MainInstance.AreasInspeccion[MainInstance.CurrentIteration].Items)
             {
 
 
@@ -89,29 +84,7 @@ namespace Clicar.Templates
                     gridCol = 0;
                     gridRow++;
                 }
-
-
-
-
             }
-
-
-
-
         }
-
-        //private void SetButtons()
-        //{
-        //    if (index == 1)
-        //    {
-        //        BackButton.IsVisible = false;
-        //    }
-        //    BackButton.CommandParameter = index.ToString();
-        //    ForwardButton.CommandParameter = index.ToString();
-        //}
-
-
-
-
     }
 }

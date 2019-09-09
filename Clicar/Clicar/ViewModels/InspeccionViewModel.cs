@@ -31,9 +31,8 @@ namespace Clicar.ViewModels
         public object currentItem { get; set; }
         #endregion
 
-
         #region Propiedades
-
+        public int CurrentIteration { get; set; }
         public Inspeccion CurrentInspeccion
         {
             get { return currentInspeccion; }
@@ -52,13 +51,13 @@ namespace Clicar.ViewModels
         public InspeccionViewModel()
         {
             MainInstance = MainViewModel.GetInstance();
-
+            CurrentIteration = 0;
 
             GetNewItemList();
 
             var areasInspeccion = MainInstance.Agenda.AreasInspeccion;
 
-            //Ordenar areas segun el valor en Orden
+            //Ordenar areas segun el valor en "Orden"
             try
             {
                 var areasOrdenadas =
@@ -159,6 +158,41 @@ namespace Clicar.ViewModels
             menuIndex++;
         }
 
+        #region Icommands
+        public ICommand ICommandNext
+        {
+            get
+            {
+                //return new Command<string>((parameter) => CommandNext(parameter));
+                return new RelayCommand<int>(parameter => CommandNext(parameter));
+            }
+        }
+        public ICommand ICommandBack
+        {
+            get
+            {
+                return new RelayCommand<int>(parameter => CommandBack(parameter));
+            }
+
+        }
+        public ICommand ICommandImageTap
+        {
+            get
+            {
+                return new RelayCommand<object>(parameter => CommandImageTap(parameter));
+            }
+
+        }
+        public ICommand EditarDetalleICommand
+        {
+            get
+            {
+                return new RelayCommand<string>(parameter => EditarDetalleCommand(parameter));
+            }
+
+        }
+        #endregion
+
         public void CommandNext(int parameter)
         {
             var inspeccionView = InspeccionView.GetInstance();
@@ -180,22 +214,11 @@ namespace Clicar.ViewModels
             {
                 MainInstance.Reporte = new ReporteViewModel();
                 Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
-                //Console.WriteLine(e.Message);
             }
 
             itemActual.ClosePanel();
 
         }
-
-        public ICommand ICommandNext
-        {
-            get
-            {
-                //return new Command<string>((parameter) => CommandNext(parameter));
-                return new RelayCommand<int>(parameter => CommandNext(parameter));
-            }
-        }
-
         public void CommandBack(int parameter)
         {
             var inspeccionView = InspeccionView.GetInstance();
@@ -216,24 +239,6 @@ namespace Clicar.ViewModels
             {
 
                 Console.WriteLine(e.Message);
-            }
-
-        }
-
-        public ICommand ICommandBack
-        {
-            get
-            {
-                return new RelayCommand<int>(parameter => CommandBack(parameter));
-            }
-
-        }
-
-        public ICommand ICommandImageTap
-        {
-            get
-            {
-                return new RelayCommand<object>(parameter => CommandImageTap(parameter));
             }
 
         }
@@ -292,14 +297,6 @@ namespace Clicar.ViewModels
 
 
         }
-        public ICommand EditarDetalleICommand
-        {
-            get
-            {
-                return new RelayCommand<string>(parameter => EditarDetalleCommand(parameter));
-            }
-
-        }
         private async void EditarDetalleCommand(string parameter)
         {
             Console.WriteLine("(>'.')>-----------" + parameter);
@@ -310,11 +307,5 @@ namespace Clicar.ViewModels
             //var instance = InspeccionView.GetInstance();
             //await instance.Navigation.PushAsync(new EditarDetalleView());
         }
-
-
-
-
-
-
     }
 }

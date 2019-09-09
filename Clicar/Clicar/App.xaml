@@ -28,8 +28,11 @@
             <DataTemplate x:Key="itemInspeccionTemplate">
                 <template:ItemInspeccionTemplate/>
             </DataTemplate>
+            <DataTemplate x:Key="itemInspeccionGridTemplate">
+                <template:ItemInspeccionGridTemplate/>
+            </DataTemplate>
 
-            
+
             <!--Templates de Items diferentes-->
             <DataTemplate x:Key="itemInspeccionVCTemplate">
                 <template:ItemInspeccionVCTemplate/>
@@ -61,7 +64,11 @@
                         ItemTemplateA="{StaticResource agendaViewCellTemplate}"
                         ItemTemplateB="{StaticResource agendaViewCellCompletado}"
                         ItemTemplateC="{StaticResource agendaViewCellAnulado}"/>
-            
+
+            <template:AccordionTemplateSelector 
+                    x:Key="acordionTemplateSelector" 
+                        ItemTemplateA="{StaticResource itemInspeccionTemplate}"
+                        ItemTemplateB="{StaticResource itemInspeccionGridTemplate}"/>
 
 
             <Color x:Key="BaseGreyE">#eeeeee</Color>
