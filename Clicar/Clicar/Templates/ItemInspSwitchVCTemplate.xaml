@@ -27,8 +27,10 @@
                 Spacing="15"
                 HeightRequest="30"
                 Orientation="Horizontal">
-                
-                <local:LockTemplate/>
+
+                <local:LockTemplate
+                    LockState="{Binding Locked}"
+                    Lockable="{Binding Deshabilitable}"/>
 
                 <StackLayout 
                     WidthRequest="100"

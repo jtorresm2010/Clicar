@@ -10,6 +10,7 @@ namespace Clicar.Models
         public string Area { get; set; }
         public string Tipo { get; set; }
         public bool RequiereFoto { get; set; }
+        public bool Locked { get; set; }
         public bool Deshabilitable { get; set; }
     }
 }

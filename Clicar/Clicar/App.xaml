@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:template="clr-namespace:Clicar.Templates"
              xmlns:infra="clr-namespace:Clicar.Infrastructure"
+             xmlns:behaviors="clr-namespace:Clicar.Behaviors"
              mc:Ignorable="d"
              x:Class="Clicar.App">
     <Application.Resources>
@@ -15,9 +16,9 @@
 
         <ResourceDictionary>
 
-            <infra:InstanceLocator x:Key="Locator" />
+            <infra:InstanceLocator x:Key="Locator"/>
 
-
+            <behaviors:IntToBool x:Key="IntToBool"/>
 
 
             <!--data templates-->

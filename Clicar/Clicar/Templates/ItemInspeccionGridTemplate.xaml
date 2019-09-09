@@ -7,7 +7,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:i18n="clr-namespace:Clicar.Helpers"
             mc:Ignorable="d"
-            x:Class="Clicar.Templates.ItemInspeccionTemplate"
+            x:Class="Clicar.Templates.ItemInspeccionGridTemplate"
             xmlns:accordionview="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
 
             Text="{Binding AINSP_DESCRIPCION}"
@@ -33,8 +33,7 @@
         <StackLayout
             Margin="0,20">
             <Grid
-                BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"
-                x:Name="ImageGrid"
+                 x:Name="ImageGrid"
                  Margin="25,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -42,20 +41,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
             </Grid>
-
-                <!--BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"-->
-            <ListView 
-
-                ItemsSource="{Binding Items}"
-                RowHeight="80"
-                SeparatorVisibility="None"
-                VerticalScrollBarVisibility="Never"
-                SelectionMode="None"
-                x:Name="itemsInspeccionListView" 
-                Margin="0" 
-                ItemTemplate="{StaticResource itemDataTemplateSelector}" />
-
-                <!--BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"-->
+            
+            <!--BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"-->
             <StackLayout
                 Spacing="10"
                 Orientation="Horizontal"
@@ -90,7 +77,7 @@
                     WidthRequest="128"
                     BorderRadius="20"/>
             </StackLayout>
-            
+
         </StackLayout>
     </accordionview:AccordionItemView.ItemContent>
 </customcontrols:AccordionItemView>

@@ -17,234 +17,234 @@ namespace Clicar.Models
                 //Area 1
                 new ItemInspeccion
                 {
-                    Nombre = "Llave original con chip", Area="1", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Llave original con chip", Area="1", Deshabilitable= true, RequiereFoto = true, Tipo = "2", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Segunda llave original con chip", Area="1", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Segunda llave original con chip", Area="1", Deshabilitable= true, RequiereFoto = true, Tipo = "2", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Manual propietario", Area="1", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Manual propietario", Area="1", Deshabilitable= true, RequiereFoto = true, Tipo = "2", Locked = true
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Libro de mantención", Area="1", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                    Nombre = "Libro de mantención", Area="1", Deshabilitable= false, RequiereFoto = true, Tipo = "2", Locked = false
                 },
-                new ItemInspeccion
-                {
-                    Nombre = "Placas patentes", Area="1", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
-                },
+                //new ItemInspeccion
+                //{
+                //    Nombre = "Placas patentes", Area="1", Deshabilitable= false, RequiereFoto = true, Tipo = "2"
+                //},
 
                 //Area 2
                 new ItemInspeccion
                 {
-                    Nombre = "Aire acondicionado", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Aire acondicionado", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Climatizador", Area="2", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Climatizador", Area="2", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "ABS", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1"
+                    Nombre = "ABS", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Airbags laterales", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Airbags laterales", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Cinturones pirotécnicos", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Cinturones pirotécnicos", Area="2", Deshabilitable= true, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 //Area 3
                 new ItemInspeccion
                 {
-                    Nombre = "Motor", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Motor", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Nivel de aceite", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Nivel de aceite", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Radiador", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Radiador", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Tapa del combustible", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Tapa del combustible", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Pérdidas de agua", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Pérdidas de agua", Area="3", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 //Area 4
                 new ItemInspeccion
                 {
-                    Nombre = "Volante", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Volante", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Asientos delanteros", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Asientos delanteros", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Asientos traseros", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Asientos traseros", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Piso, alfombra", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Piso, alfombra", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Espejo retrovisor interior", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Espejo retrovisor interior", Area="4", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 //Area 5
                 new ItemInspeccion
                 {
-                    Nombre = "Tablero encendido", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Tablero encendido", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Cabina general", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Cabina general", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Llaves y documentos", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Llaves y documentos", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Asientos delanteros", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Asientos delanteros", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Asientos traseros", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Asientos traseros", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Maleta abierta interior pickup", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Maleta abierta interior pickup", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Ruedas de repuestos", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Ruedas de repuestos", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Opcional 1", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Opcional 1", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Opcional 2", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Opcional 2", Area="5", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 //Area 6
                 new ItemInspeccion
                 {
-                    Nombre = "Parachoques delanteros", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Parachoques delanteros", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Frontal interior", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Frontal interior", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Capot", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Capot", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Tapabarro derecho", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Tapabarro derecho", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Costado Tras. Der.", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Costado Tras. Der.", Area="6", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 //Area 7
                 new ItemInspeccion
                 {
-                    Nombre = "Frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Lateral izquierdo", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Lateral izquierdo", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Lateral derecho", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Lateral derecho", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Techo", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Techo", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Capot", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Capot", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Tapa Maleta", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Tapa Maleta", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 new ItemInspeccion
                 {
-                    Nombre = "Prabrisas delantero", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Prabrisas delantero", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 new ItemInspeccion
                 {
-                    Nombre = "Luneta trasera", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Luneta trasera", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 new ItemInspeccion
                 {
-                    Nombre = "Rueda delantera izquierda", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Rueda delantera izquierda", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 new ItemInspeccion
                 {
-                    Nombre = "Rueda delantera derecha", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Rueda delantera derecha", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 new ItemInspeccion
                 {
-                    Nombre = "Rueda trasera derecha", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Rueda trasera derecha", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 new ItemInspeccion
                 {
-                    Nombre = "Rueda trasera izquierda", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Rueda trasera izquierda", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 new ItemInspeccion
                 {
-                    Nombre = "Debajo frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Debajo frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 new ItemInspeccion
                 {
-                    Nombre = "Debajo izquierdo frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Debajo izquierdo frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                 },
 
                 new ItemInspeccion
                 {
-                    Nombre = "Debajo derecho frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Debajo derecho frontal", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 new ItemInspeccion
                 {
-                    Nombre = "Debajo trasero", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3"
+                    Nombre = "Debajo trasero", Area="7", Deshabilitable= false, RequiereFoto = true, Tipo = "3", Locked = false
                     },
                 
                 
                 //Area 8
                 new ItemInspeccion
                 {
-                    Nombre = "Arranque", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Arranque", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Aceleración", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Aceleración", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Vibraciones", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Vibraciones", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Alineación", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Alineación", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
                 new ItemInspeccion
                 {
-                    Nombre = "Suspensión", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1"
+                    Nombre = "Suspensión", Area="8", Deshabilitable= false, RequiereFoto = true, Tipo = "1", Locked = false
                 },
 
 

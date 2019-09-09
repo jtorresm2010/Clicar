@@ -24,40 +24,21 @@ namespace Clicar.Templates
         {
             InitializeComponent();
 
-            MainInstance = MainViewModel.GetInstance().Inspeccion;
+            //SetButtons();
 
-            index = MainInstance.MenuIndex;
 
-            SetButtons();
 
-            MainInstance.LoadItemList();
 
-            var filteringQuery =
-                from itemInspeccion in MainInstance.ItemsInspeccion
-                where itemInspeccion.Tipo == "3"
-                select itemInspeccion;
-
-            if (filteringQuery.Count() != 0)
-            {
-                itemsInspeccionListView.IsVisible = false;
-                CreateGrid();
-            }
-            else
-            {
-                ImageGrid.IsVisible = false;
-                SetList();
-
-            }
 
 
 
         }
 
 
-        private void SetList()
-        {
-            itemsInspeccionListView.HeightRequest = MainInstance.ItemsInspeccion.Count() * itemsInspeccionListView.RowHeight;
-        }
+        //private void SetList()
+        //{
+        //    itemsInspeccionListView.HeightRequest = MainInstance.ItemsInspeccion.Count() * itemsInspeccionListView.RowHeight;
+        //}
 
         private void CreateGrid()
         {
@@ -119,15 +100,15 @@ namespace Clicar.Templates
 
         }
 
-        private void SetButtons()
-        {
-            if (index == 1)
-            {
-                BackButton.IsVisible = false;
-            }
-            BackButton.CommandParameter = index.ToString();
-            ForwardButton.CommandParameter = index.ToString();
-        }
+        //private void SetButtons()
+        //{
+        //    if (index == 1)
+        //    {
+        //        BackButton.IsVisible = false;
+        //    }
+        //    BackButton.CommandParameter = index.ToString();
+        //    ForwardButton.CommandParameter = index.ToString();
+        //}
 
 
 

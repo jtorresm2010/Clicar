@@ -19,7 +19,7 @@ namespace Clicar.Templates
         private static MainViewModel MainInstance;
 
 
-        private readonly BindableProperty IsEditableProperty = BindableProperty.Create(nameof(IsEditable), typeof(bool), typeof(StarTemplate), true);
+        public readonly BindableProperty IsEditableProperty = BindableProperty.Create(nameof(IsEditable), typeof(bool), typeof(StarTemplate), true);
 
         public static readonly BindableProperty StarValueProperty = BindableProperty.Create(
         propertyName: "StarValue",

@@ -98,10 +98,16 @@ namespace Clicar.ViewModels
             RestService = new RestService();
             LoadMainList();
             CargararListas();
+            CargarAreasDeInspeccion();
             CurrentDate = GetFormattedDate();
+
 
         }
 
+        private async void CargarAreasDeInspeccion()
+        {
+            AreasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
+        }
 
         private string GetFormattedDate()
         {
@@ -113,7 +119,6 @@ namespace Clicar.ViewModels
 
             return date;
         }
-
 
         public void MaestroName(Maestro maestro)
         {

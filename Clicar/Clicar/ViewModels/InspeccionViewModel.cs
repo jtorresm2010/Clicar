@@ -12,20 +12,22 @@ using Plugin.DeviceOrientation;
 using Clicar.Views;
 using Xamarin.CustomControls;
 using Plugin.Permissions.Abstractions;
+using System.Diagnostics;
 
 namespace Clicar.ViewModels
 {
     public class InspeccionViewModel : BaseViewModel
     {
         #region Variables
-        private List<ItemInspeccion> list;
+        private List<AccordionItem> ListAccordionItems;
+        private List<ItemInspeccion> ItemList;
         private Color baseGreyLight;
         private Color baseOrange;
         private Color baseGreen;
         private int menuIndex;
         private MainViewModel MainInstance;
         private Inspeccion currentInspeccion;
-        private ObservableCollection<AreasInspeccion> areasInspeccion;
+        private ObservableCollection<AccordionItem> areasInspeccion;
         public object currentItem { get; set; }
         #endregion
 
@@ -39,7 +41,7 @@ namespace Clicar.ViewModels
         }
         public int MenuIndex { get { return this.menuIndex; } }
         public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
-        public ObservableCollection<AreasInspeccion> AreasInspeccion
+        public ObservableCollection<AccordionItem> AreasInspeccion
         {
             get { return areasInspeccion; }
             set { SetValue(ref areasInspeccion, value); }
@@ -54,21 +56,73 @@ namespace Clicar.ViewModels
 
             GetNewItemList();
 
-            var areasInspeccion = MainViewModel.GetInstance().Agenda.AreasInspeccion;
-            //var areasInspeccion = new ListaAreasInspeccion().GetListaAreas();
+            var areasInspeccion = MainInstance.Agenda.AreasInspeccion;
 
             //Ordenar areas segun el valor en Orden
-            var areasOrdenadas =
-                from areaInspeccion in areasInspeccion
-                orderby areaInspeccion.AINSP_ORDEN_APP ascending
-                select areaInspeccion;
+            try
+            {
+                var areasOrdenadas =
+                    from areaInspeccion in areasInspeccion
+                    orderby areaInspeccion.AINSP_ORDEN_APP ascending
+                    select areaInspeccion;
 
-            //foreach (AreasInspeccion area in areasOrdenadas)
-            //{
-            //    area.Image = "MenuNum" + area.Orden;
-            //}
+                CrearListaCompuesta(areasOrdenadas);
 
-            AreasInspeccion = new ObservableCollection<AreasInspeccion>(areasOrdenadas);
+
+                AreasInspeccion = new ObservableCollection<AccordionItem>(ListAccordionItems);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"~(>'.')> ?? {ex.Message}");
+            }
+
+
+
+
+        }
+
+        private void CrearListaCompuesta(IOrderedEnumerable<AreasInspeccion> areas)
+        {
+           ListAccordionItems = new List<AccordionItem>();
+
+
+            foreach (AreasInspeccion area in areas)
+            {
+
+                var listaItems =
+                    from itemInspeccion in ItemList
+                    where itemInspeccion.Area == area.AINSP_ORDEN_APP.ToString()
+                    select itemInspeccion;
+
+                var filteringQuery =
+                    from itemInspeccion in listaItems
+                    where itemInspeccion.Tipo == "3"
+                    select itemInspeccion;
+
+                bool isImageSet = filteringQuery.Count() != 0;
+
+
+
+                ListAccordionItems.AddRange(new[] {
+                new AccordionItem
+                        {
+                            AINSP_ACTIVO = area.AINSP_ACTIVO,
+                            AINSP_DESCRIPCION = area.AINSP_DESCRIPCION,
+                            AINSP_ID = area.AINSP_ID,
+                            AINSP_ORDEN_APP = area.AINSP_ORDEN_APP,
+                            AINSP_PAIS_ID = area.AINSP_PAIS_ID,
+                            Image = "MenuNum" + area.AINSP_ORDEN_APP,
+
+                            Items = listaItems.ToList(),
+
+                            IsImageSet = isImageSet
+                        }
+
+                });
+
+
+
+            }
 
 
 
@@ -77,7 +131,7 @@ namespace Clicar.ViewModels
 
         public void GetNewItemList()
         {
-            list = (List<ItemInspeccion>)new ListaItemsInspeccion().GetListaItems();
+            ItemList = (List<ItemInspeccion>)new ListaItemsInspeccion().GetListaItems();
             menuIndex = 1;
 
             baseGreyLight = (Color)Application.Current.Resources["BaseGreyLight"];
@@ -86,39 +140,39 @@ namespace Clicar.ViewModels
 
         }
 
-        public void LoadItemList()
+        public void AccordionCounter()
         {
-            var listIteration = new List<ItemInspeccion>();
+            //var listIteration = new List<ItemInspeccion>();
 
-            var areasInspeccion = new ListaAreasInspeccion().GetListaAreas().Count;
+            //var areasInspeccion = new ListaAreasInspeccion().GetListaAreas().Count;
 
-            var ilistIteration = list.Select(ItemInspeccion => ItemInspeccion.Nombre);
+            //var ilistIteration = ItemList.Select(ItemInspeccion => ItemInspeccion.Nombre);
 
-            // Filtra la lista dependiendo de cual iteracion del menu acordion principal se esta mostrando
-            var filteringQuery =
-                from itemInspeccion in list
-                where itemInspeccion.Area == menuIndex.ToString()
-                select itemInspeccion;
+            //// Filtra la lista dependiendo de cual iteracion del menu acordion principal se esta mostrando
+            //var filteringQuery =
+            //    from itemInspeccion in ItemList
+            //    where itemInspeccion.Area == menuIndex.ToString()
+            //    select itemInspeccion;
 
-            this.ItemsInspeccion = new ObservableCollection<ItemInspeccion>(filteringQuery);
+            //this.ItemsInspeccion = new ObservableCollection<ItemInspeccion>(filteringQuery);
 
             menuIndex++;
         }
 
-        public void CommandNext(string parameter)
+        public void CommandNext(int parameter)
         {
             var inspeccionView = InspeccionView.GetInstance();
 
             var accordionMenu = (AccordionRepeaterView)inspeccionView.FindByName("AccordionMenu");
 
-            var itemActual = (AccordionItemView)accordionMenu.Children[int.Parse(parameter) - 1];
+            var itemActual = (AccordionItemView)accordionMenu.Children[parameter - 1];
 
             itemActual.ButtonBackgroundColor = baseGreen;
             itemActual.BorderColor = baseGreen;
 
             try
             {
-                var itemSiguiente = (AccordionItemView)accordionMenu.Children[int.Parse(parameter)];
+                var itemSiguiente = (AccordionItemView)accordionMenu.Children[parameter];
                 itemSiguiente.OpenPanel();
 
             }
@@ -130,6 +184,7 @@ namespace Clicar.ViewModels
             }
 
             itemActual.ClosePanel();
+
         }
 
         public ICommand ICommandNext
@@ -137,23 +192,23 @@ namespace Clicar.ViewModels
             get
             {
                 //return new Command<string>((parameter) => CommandNext(parameter));
-                return new RelayCommand<string>(parameter => CommandNext(parameter));
+                return new RelayCommand<int>(parameter => CommandNext(parameter));
             }
         }
 
-        public void CommandBack(string parameter)
+        public void CommandBack(int parameter)
         {
             var inspeccionView = InspeccionView.GetInstance();
 
             var accordionMenu = (AccordionRepeaterView)inspeccionView.FindByName("AccordionMenu");
 
-            var itemActual = (AccordionItemView)accordionMenu.Children[int.Parse(parameter) - 1];
+            var itemActual = (AccordionItemView)accordionMenu.Children[parameter - 1];
 
             itemActual.ClosePanel();
 
             try
             {
-                var itemAnterior = (AccordionItemView)accordionMenu.Children[int.Parse(parameter) - 2];
+                var itemAnterior = (AccordionItemView)accordionMenu.Children[parameter - 2];
                 itemAnterior.OpenPanel();
 
             }
@@ -163,14 +218,13 @@ namespace Clicar.ViewModels
                 Console.WriteLine(e.Message);
             }
 
-            Console.WriteLine("---------------------" + parameter);
         }
 
         public ICommand ICommandBack
         {
             get
             {
-                return new RelayCommand<string>(parameter => CommandBack(parameter));
+                return new RelayCommand<int>(parameter => CommandBack(parameter));
             }
 
         }
