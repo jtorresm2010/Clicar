@@ -25,21 +25,29 @@ namespace Clicar.ViewModels
         private Color baseGreyLight;
         private Color baseOrange;
         private Color baseGreen;
-        private int menuIndex;
         private MainViewModel MainInstance;
         private Inspeccion currentInspeccion;
         private ObservableCollection<AccordionItem> areasInspeccion;
         public object currentItem { get; set; }
+        private List<AreasInspeccion> areasInspeccionDB;
         #endregion
 
+
+
+
         #region Propiedades
+
+        public List<AreasInspeccion> AreasInspeccionDB
+        {
+            get { return areasInspeccionDB; }
+            set { SetValue(ref areasInspeccionDB, value); }
+        }
         public int CurrentIteration { get; set; }
         public Inspeccion CurrentInspeccion
         {
             get { return currentInspeccion; }
             set { SetValue(ref currentInspeccion, value); }
         }
-        public int MenuIndex { get { return this.menuIndex; } }
         public ObservableCollection<ItemsAreasInspeccionDB> ItemsInspeccion { get; set; }
         public ObservableCollection<AccordionItem> AreasInspeccion
         {
@@ -54,11 +62,11 @@ namespace Clicar.ViewModels
             MainInstance = MainViewModel.GetInstance();
             CurrentIteration = 0;
 
-            Inicializar();
+            //Inicializar();
 
             CrearListaCompuesta();
 
-
+            MainInstance.DetalleItem = new DetalleItemViewModel();
 
 
         }
@@ -67,16 +75,17 @@ namespace Clicar.ViewModels
         {
             ListAccordionItems = new List<AccordionItem>();
 
-            var areasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
+            AreasInspeccionDB = await MainInstance.DataService.GetAreasInspeccion();
+
             var ListaItems = await MainInstance.DataService.GetItemsInspeccion();
 
             IOrderedEnumerable<AreasInspeccion> areasOrdenadas;
 
-            if(areasInspeccion.Count>0 && ListaItems.Count > 0)
+            if(AreasInspeccionDB.Count>0 && ListaItems.Count > 0)
             {
                 //Ordenar areas segun el valor en "Orden"
                 areasOrdenadas =
-                    from areaInspeccion in areasInspeccion
+                    from areaInspeccion in AreasInspeccionDB
                     orderby areaInspeccion.AINSP_ORDEN_APP ascending
                     select areaInspeccion;
             
@@ -90,13 +99,6 @@ namespace Clicar.ViewModels
                         where itemInspeccion.ITINS_AINSP_ID == area.AINSP_ID// && itemInspeccion.ITINS_ACTIVO == true
                         select itemInspeccion;
 
-
-                    //var filteringQuery =
-                    //    from itemInspeccion in listaItems
-                    //    where itemInspeccion.ITINS_CONDICION == "Es Daño"
-                    //    select itemInspeccion;
-
-                    //bool isImageSet = filteringQuery.Count() != 0;
                     bool isImageSet = false;
 
 
@@ -114,18 +116,9 @@ namespace Clicar.ViewModels
 
                                 IsImageSet = isImageSet
                             }
-
                     });
-
-
-
                 }
-
             }
-
-
-
-
 
             AreasInspeccion = new ObservableCollection<AccordionItem>(ListAccordionItems);
 
@@ -133,36 +126,30 @@ namespace Clicar.ViewModels
 
         public void Inicializar()
         {
-            
-
-
-            //ItemList = (List<ItemInspeccion>)new ListaItemsInspeccion().GetListaItems();
-            menuIndex = 1;
-
             baseGreyLight = (Color)Application.Current.Resources["BaseGreyLight"];
             baseOrange = (Color)Application.Current.Resources["BaseOrange"];
             baseGreen = (Color)Application.Current.Resources["BaseGreen"];
 
         }
 
-        public void AccordionCounter()
-        {
-            //var listIteration = new List<ItemInspeccion>();
+        //public void AccordionCounter()
+        //{
+        //    //var listIteration = new List<ItemInspeccion>();
 
-            //var areasInspeccion = new ListaAreasInspeccion().GetListaAreas().Count;
+        //    //var areasInspeccion = new ListaAreasInspeccion().GetListaAreas().Count;
 
-            //var ilistIteration = ItemList.Select(ItemInspeccion => ItemInspeccion.Nombre);
+        //    //var ilistIteration = ItemList.Select(ItemInspeccion => ItemInspeccion.Nombre);
 
-            //// Filtra la lista dependiendo de cual iteracion del menu acordion principal se esta mostrando
-            //var filteringQuery =
-            //    from itemInspeccion in ItemList
-            //    where itemInspeccion.Area == menuIndex.ToString()
-            //    select itemInspeccion;
+        //    //// Filtra la lista dependiendo de cual iteracion del menu acordion principal se esta mostrando
+        //    //var filteringQuery =
+        //    //    from itemInspeccion in ItemList
+        //    //    where itemInspeccion.Area == menuIndex.ToString()
+        //    //    select itemInspeccion;
 
-            //this.ItemsInspeccion = new ObservableCollection<ItemInspeccion>(filteringQuery);
+        //    //this.ItemsInspeccion = new ObservableCollection<ItemInspeccion>(filteringQuery);
 
-            menuIndex++;
-        }
+        //    menuIndex++;
+        //}
 
         #region Icommands
         public ICommand ICommandNext
@@ -193,7 +180,7 @@ namespace Clicar.ViewModels
         {
             get
             {
-                return new RelayCommand<string>(parameter => EditarDetalleCommand(parameter));
+                return new RelayCommand<object>(parameter => EditarDetalleCommand(parameter));
             }
 
         }
@@ -303,10 +290,25 @@ namespace Clicar.ViewModels
 
 
         }
-        private async void EditarDetalleCommand(string parameter)
+        private async void EditarDetalleCommand(object parameter)
         {
-            Console.WriteLine("(>'.')>-----------" + parameter);
+            Console.WriteLine("(>'.')>-----------" + ((ItemsAreasInspeccion)parameter).ITINS_DESCRIPCION);
 
+
+            ItemsAreasInspeccion currentItem = (ItemsAreasInspeccion)parameter;
+            AreasInspeccion currArea = null;
+
+            foreach(AreasInspeccion  area in AreasInspeccionDB)
+            {
+                if (area.AINSP_ID == currentItem.ITINS_AINSP_ID)
+                {
+                    currArea = area;
+                    break;
+                }
+            }
+
+            MainInstance.DetalleItem.CurrentItem = currentItem;
+            MainInstance.DetalleItem.CurrentArea = currArea;
 
             await Application.Current.MainPage.Navigation.PushAsync(new EditarDetalleView());
 

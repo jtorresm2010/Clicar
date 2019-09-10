@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i18n="clr-namespace:Clicar.Helpers"
              mc:Ignorable="d"
+             HeightRequest="30"
              x:Class="Clicar.Templates.LockTemplate"
              WidthRequest="100"
              Orientation="Horizontal">

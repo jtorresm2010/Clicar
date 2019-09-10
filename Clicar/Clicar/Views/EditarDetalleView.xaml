@@ -6,6 +6,7 @@
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              xmlns:local="clr-namespace:Clicar.Customs"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
              mc:Ignorable="d"
              x:Class="Clicar.Views.EditarDetalleView">
 
@@ -31,7 +32,8 @@
 
 
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding DetalleItem}">
             <StackLayout
             Margin="0,8"
             BackgroundColor="White">
@@ -45,14 +47,14 @@
                         Spacing="8"
                         Margin="8,0"
                         Orientation="Horizontal">
-                        <Image
+                        <!--<Image
                             HeightRequest="30"
-                            Source="MenuNum1"/>
+                            Source="MenuNum1"/>-->
                         <Label
                             FontSize="16"
                             HorizontalOptions="StartAndExpand"
                             VerticalOptions="CenterAndExpand"
-                            Text="Título elemento"
+                            Text="{Binding CurrentArea.AINSP_DESCRIPCION}"
                             FontFamily="{StaticResource BoldFontOpenSans}"
                             TextColor="White"/>
                         
@@ -65,13 +67,14 @@
             
                 <!--Titulo-->
                 <Label
-                    Text="Item a revisar"
+                    Text="{Binding CurrentItem.ITINS_DESCRIPCION}"
                     FontSize="14"
                     FontFamily="{StaticResource BoldFontOpenSans}"
                     TextColor="{StaticResource BaseGreen}"/>
 
                 <!--Radio buttons estado-->
-                <StackLayout>
+                <StackLayout
+                    IsVisible="{Binding DamageInfo}">
                     <Label
                             HorizontalOptions="StartAndExpand"
                             Text="Seleccione estado"
@@ -83,33 +86,37 @@
                         Spacing="0"
                         Orientation="Horizontal">
                     <input:RadioButton 
-                        CircleColor="{StaticResource BaseGreyE}"
-                            WidthRequest="90"
-                            TextColor="{StaticResource BaseGrey}"
-                            FontFamily="{StaticResource RegularFontOpenSans}"
-                            TextFontSize="12"
-                            Text="Bueno" 
-                            Color="{StaticResource BaseOrange}"/>
+                                CircleColor="{StaticResource BaseGreyE}"
+                                WidthRequest="90"
+                                TextColor="{StaticResource BaseGrey}"
+                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                TextFontSize="12"
+                                Text="Bueno" 
+                                Color="{StaticResource BaseOrange}"/>
                             <input:RadioButton
-                        CircleColor="{StaticResource BaseGreyE}"
-                            HorizontalOptions="StartAndExpand"
-                            TextColor="{StaticResource BaseGrey}"
-                            FontFamily="{StaticResource RegularFontOpenSans}"
-                            TextFontSize="12"
-                            Text="Malo" 
-                            Color="{StaticResource BaseOrange}"/>
+                                x:Name="EstadoMalo"
+                                CircleColor="{StaticResource BaseGreyE}"
+                                HorizontalOptions="StartAndExpand"
+                                TextColor="{StaticResource BaseGrey}"
+                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                TextFontSize="12"
+                                Text="Malo" 
+                                
+                                Color="{StaticResource BaseOrange}"/>
                 </input:RadioButtonGroupView>
                 </StackLayout>
 
                 <!--Radio buttons solucion-->
-                <StackLayout>
-                    <Label
-                        HorizontalOptions="StartAndExpand"
-                        Text="Seleccione solución"
-                        FontSize="14"
-                        FontFamily="{StaticResource RegularFontOpenSans}"
-                        TextColor="{StaticResource BaseGrey}"/>
-                    <input:RadioButtonGroupView 
+                <StackLayout
+                    IsVisible="{Binding IsChecked, Source={x:Reference EstadoMalo}}">
+                       
+                            <Label
+                                HorizontalOptions="StartAndExpand"
+                                Text="Seleccione solución"
+                                FontSize="14"
+                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                TextColor="{StaticResource BaseGrey}"/>
+                            <input:RadioButtonGroupView 
                         Orientation="Horizontal"
                         Spacing="0">
                             <input:RadioButton 
@@ -129,31 +136,52 @@
                             Text="Sustituir" 
                             Color="{StaticResource BaseOrange}"/>
                 </input:RadioButtonGroupView>
+                     
                 </StackLayout>
 
                 <!--Picker nivel de daño-->
-                <StackLayout
-                    Spacing="10">
-                    <Label
-                        Text="Indique nivel de daño"
-                        FontSize="14"
-                        FontFamily="{StaticResource RegularFontOpenSans}"
-                        TextColor="{StaticResource BaseGrey}"/>
-                    <local:CustomPicker
-                        Image="ic_arrow_down"
-                        Title="Nivel de daño"
-                        FontSize="14"
-                        TextColor="{StaticResource BaseGrey44}"
-                        FontFamily="{StaticResource SemiBoldFontOpenSans}">
-                            <Picker.Items>
-                                <x:String>Leve</x:String>
-                                <x:String>Medio</x:String>
-                                <x:String>Grave</x:String>
-                            </Picker.Items>
-                    </local:CustomPicker>
-                </StackLayout>
+                    <Frame
+                        IsVisible="{Binding IsChecked, Source={x:Reference EstadoMalo}}"
+                        Margin="0,20"
+                        BackgroundColor="White"
+                        CornerRadius="10"
+                        HasShadow="True"
+                        Padding="15,0">
 
-                <!--Editor Descripcion-->
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image
+                                    
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Source="ic_arrow_down.png"/>
+                            <local:CustomPicker
+                                x:Name="SucursalPicker"
+                                ItemsSource="{Binding ItemsDetalle}"
+                                ItemDisplayBinding="{Binding IDINSP_DESCRIPCION}"
+                                        
+                                HeightRequest="40"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Title="Indique nivel de daño"
+                                FontSize="14"
+                                TextColor="{StaticResource BaseGrey44}"
+                                FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+
+
+
+
+                        </Grid>
+
+                    </Frame>
+
+                    <!--Editor Descripcion-->
                 <StackLayout
                     Spacing="10">
                     <Label
@@ -180,6 +208,7 @@
 
                 <!--Ingreso de foto-->
                 <StackLayout
+                    IsVisible="{Binding CurrentItem.ITINS_REQUIERE_FOTO}"
                     Spacing="10">
                 
                     <Label

@@ -295,33 +295,39 @@ namespace Clicar.ViewModels
 
                 if (resp.Resultado)
                 {
-
-                    if (resp.Elemento.items_areas_inspeccion.Count > 0)
+                    //Se obtienen las areas
+                    if (resp.Elemento.areas_inspeccion.Count > 0)
                     {
                         var currentareas = await MainInstance.DataService.GetAreasInspeccion();
-
-                        foreach(AreasInspeccion area in resp.Elemento.areas_inspeccion)
-                        {
-                            await MainInstance.DataService.Delete<AreasInspeccion>(area);
-                        }
-
-                        foreach(AreasInspeccion area in resp.Elemento.areas_inspeccion)
-                    {
                         try
                         {
-                            await MainInstance.DataService.Insert<AreasInspeccion>(area);
+                            foreach(AreasInspeccion area in resp.Elemento.areas_inspeccion)
+                            {
+                                await MainInstance.DataService.Delete<AreasInspeccion>(area);
+                            }
                         }
                         catch (Exception e)
                         {
-                            Debug.WriteLine($"~(>.-.)> Error de Insert {e.Message}");
+                            Debug.WriteLine($"~(>'.')> {e.Message}");
+                        }
+                        
+                        foreach(AreasInspeccion area in resp.Elemento.areas_inspeccion)
+                        {
+                            try
+                            {
+                                await MainInstance.DataService.Insert<AreasInspeccion>(area);
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.WriteLine($"~(>.-.)> Error de Insert {e.Message}");
+                            }
                         }
                     }
-                    }
 
-
+                    //se obtieen los items
                     if(resp.Elemento.items_areas_inspeccion.Count > 0)
                     {
-                        var currentItems = await MainInstance.DataService.GetItemsInspeccion();
+                        var currentItems = await MainInstance.DataService.GetItemsInspeccionDB();
 
                         foreach(ItemsAreasInspeccionDB itemDel in currentItems)
                         {
@@ -346,8 +352,6 @@ namespace Clicar.ViewModels
                             try
                             {
                                 await MainInstance.DataService.Insert<ItemsAreasInspeccionDB>(itemDB);
-                                //Debug.WriteLine($"~(>'.')> {itemDB.ITINS_DESCRIPCION}");
-
                             }
                             catch (Exception e)
                             {
@@ -356,6 +360,42 @@ namespace Clicar.ViewModels
                             }
                         }
                     }
+
+                    //Se obtienen detalles de lo items (daño)
+                    if (resp.Elemento.itemsdetalleinspeccion.Count > 0)
+                    {
+
+                        var currentdetalle = await MainInstance.DataService.GetDetallesInspeccion();
+
+                        foreach (ItemsdetalleinspeccionDB detalle in currentdetalle)
+                        {
+                            await MainInstance.DataService.Delete<ItemsdetalleinspeccionDB>(detalle);
+                        }
+
+                        foreach (Itemsdetalleinspeccion newDetalle in resp.Elemento.itemsdetalleinspeccion)
+                        {
+
+                            var detalleDB = new ItemsdetalleinspeccionDB
+                            {
+                                IDINSP_ID = newDetalle.IDINSP_ID,
+                                IDINSP_DEINSP_ID = newDetalle.IDINSP_DEINSP_ID,
+                                IDINSP_DESCRIPCION = newDetalle.IDINSP_DESCRIPCION,
+                                IDINSP_FECHA_CREACION = newDetalle.IDINSP_FECHA_CREACION
+                            };
+
+
+
+                            try
+                            {
+                                await MainInstance.DataService.Insert<ItemsdetalleinspeccionDB>(detalleDB);
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.WriteLine($"~(>.-.)> Error de Insert {e.Message}");
+                            }
+                        }
+                    }
+
                 }
             }
             catch (Exception ex)

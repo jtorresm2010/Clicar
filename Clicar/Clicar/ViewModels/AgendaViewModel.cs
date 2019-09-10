@@ -114,8 +114,8 @@ namespace Clicar.ViewModels
 
         private async void CargarAreasDeInspeccion()
         {
-            AreasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
-            ItemsInspeccion = await MainInstance.DataService.GetItemsInspeccion();
+            //AreasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
+            //ItemsInspeccion = await MainInstance.DataService.GetItemsInspeccion();
         }
 
         private string GetFormattedDate()

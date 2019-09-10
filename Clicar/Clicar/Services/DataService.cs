@@ -31,7 +31,7 @@ namespace Clicar.Services
 
         public async Task OpenOrCreateDB()
         {
-
+            await connection.CreateTableAsync<ItemsdetalleinspeccionDB>().ConfigureAwait(false);
             await connection.CreateTableAsync<ItemsAreasInspeccionDB>().ConfigureAwait(false);
             await connection.CreateTableAsync<SucursalDB>().ConfigureAwait(false);
             await connection.CreateTableAsync<Maestro>().ConfigureAwait(false);
@@ -72,6 +72,13 @@ namespace Clicar.Services
             return query;
         }
 
+        public async Task<List<ItemsdetalleinspeccionDB>> GetAllItemsDetalle()
+        {
+            var query = await this.connection.QueryAsync<ItemsdetalleinspeccionDB>("select * from [ItemsdetalleinspeccionDB]");
+
+            return query;
+        }
+
         public async Task<Maestro> GetMaestro()
         {
             var query = await this.connection.QueryAsync<Maestro>("select * from [Maestro]");
@@ -89,20 +96,40 @@ namespace Clicar.Services
         }
 
 
-
-        public async Task ResetTable()
+        public async Task<List<ItemsAreasInspeccion>> GetItemsInspeccion()
         {
-            var query = await this.connection.QueryAsync<ItemsAreasInspeccionDB>("delete * from [ItemsAreasInspeccionDB]");
+            var query = await this.connection.QueryAsync<ItemsAreasInspeccionDB>("select * from [ItemsAreasInspeccionDB]");
 
+            var array = query.ToArray();
+            var list = array.Select(p => new ItemsAreasInspeccion
+            {
+                ITINS_ID = p.ITINS_ID,
+                ITINS_AINSP_ID = p.ITINS_AINSP_ID,
+                ITINS_DESCRIPCION = p.ITINS_DESCRIPCION,
+                ITINS_CONDICION = p.ITINS_CONDICION,
+                ITINS_DESHABILITAR = p.ITINS_DESHABILITAR,
+                ITINS_REQUIERE_FOTO = p.ITINS_REQUIERE_FOTO,
+                ITINS_ORDEN_APP = p.ITINS_ORDEN_APP,
+                ITINS_ACTIVO = p.ITINS_ACTIVO
+            }).ToList();
+
+            return list;
         }
 
-
-        public async Task<List<ItemsAreasInspeccionDB>> GetItemsInspeccion()
+        public async Task<List<ItemsAreasInspeccionDB>> GetItemsInspeccionDB()
         {
             var query = await this.connection.QueryAsync<ItemsAreasInspeccionDB>("select * from [ItemsAreasInspeccionDB]");
 
             return query;
         }
+
+        public async Task<List<ItemsdetalleinspeccionDB>> GetDetallesInspeccion()
+        {
+            var query = await this.connection.QueryAsync<ItemsdetalleinspeccionDB>("select * from [ItemsdetalleinspeccionDB]");
+
+            return query;
+        }
+
 
         #endregion
 

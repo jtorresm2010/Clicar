@@ -25,13 +25,18 @@
                 Text="{Binding ITINS_DESCRIPCION}"/>
             <StackLayout
                 Spacing="15"
-                HeightRequest="30"
+                HeightRequest="40"
                 Orientation="Horizontal">
                 
                 <local:LockTemplate
+                    HeightRequest="40"
                     Lockable="{Binding ITINS_DESHABILITAR}"/>
 
-                <StackLayout 
+                <local:StateTemplate
+                    HeightRequest="40"
+                    IsDamage="{Binding ITINS_CONDICION}"/>
+
+                <!--<StackLayout 
                     VerticalOptions="CenterAndExpand"
                     Orientation="Horizontal">
 
@@ -48,16 +53,15 @@
                         FontSize="12"
                         FontFamily="{StaticResource RegularFontOpenSans}"
                         Text="no informado"/>
-                </StackLayout>
+                </StackLayout>-->
 
             </StackLayout>
         </StackLayout>
 
         <Image
-            BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"
             Source="Forward">
             <Image.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding EditarDetalleICommand}"/>
+                <TapGestureRecognizer Command="{Binding Main.Inspeccion.EditarDetalleICommand, Source={StaticResource Locator}}" CommandParameter="{Binding .}"/>
             </Image.GestureRecognizers>
         </Image> 
 

@@ -18,7 +18,7 @@ namespace Clicar.Templates
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            var currentItem = (ItemsAreasInspeccionDB)item;
+            var currentItem = (ItemsAreasInspeccion)item;
             var template = new DataTemplate();
 
             switch (currentItem.ITINS_CONDICION)

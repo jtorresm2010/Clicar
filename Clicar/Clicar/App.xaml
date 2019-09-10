@@ -59,8 +59,8 @@
 
             <template:ItemDataTemplateSelector 
                     x:Key="itemDataTemplateSelector" 
-                        ItemTemplateB="{StaticResource itemInspSwitchVCTemplate}"
-                        ItemTemplateA="{StaticResource itemInspeccionVCTemplate}"
+                        ItemTemplateA="{StaticResource itemInspSwitchVCTemplate}"
+                        ItemTemplateB="{StaticResource itemInspeccionVCTemplate}"
                         ItemTemplateC="{StaticResource itemInspDmgVCTemplate}"/>
 
             <template:AgendaTemplateSelector 
@@ -74,7 +74,7 @@
                         ItemTemplateA="{StaticResource itemInspeccionTemplate}"
                         ItemTemplateB="{StaticResource itemInspeccionGridTemplate}"/>
 
-
+        <!--#region Colores-->
             <Color x:Key="BaseGreyE">#eeeeee</Color>
             <Color x:Key="BaseGreyLight">#A8A8A8</Color>
             <Color x:Key="BaseGrey">#59595C</Color>
@@ -92,6 +92,8 @@
             <Color x:Key="MidOrange">#f6ca9f</Color>
             <Color x:Key="BaseOrange">#E87B0E</Color>
 
+        <!--#endregion-->   
+            
             <!--Fuentes-->
             <OnPlatform 
                     x:TypeArguments="x:String" 

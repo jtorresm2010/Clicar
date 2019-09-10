@@ -23,6 +23,7 @@ namespace Clicar.ViewModels
 
 
         #region Instancias VM
+        public DetalleItemViewModel DetalleItem { get; set; }
         public LoginViewModel Login { get; set; }
         public ConfigViewModel Config { get; set; }
         public AgendaViewModel Agenda { get; set; }

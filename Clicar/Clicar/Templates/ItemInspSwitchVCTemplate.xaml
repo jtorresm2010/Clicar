@@ -25,10 +25,11 @@
                 Text="{Binding ITINS_DESCRIPCION}"/>
             <StackLayout
                 Spacing="15"
-                HeightRequest="30"
+                HeightRequest="40"
                 Orientation="Horizontal">
 
                 <local:LockTemplate
+                    HeightRequest="40"
                     Lockable="{Binding ITINS_DESHABILITAR}"/>
 
                 <StackLayout 
@@ -43,9 +44,9 @@
                         FontSize="12"
                         FontFamily="{StaticResource BoldFontOpenSans}"
                         Text="{i18n:Translate Edit}"/>
-                    <!--<StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="EditarCommand"/>
-                    </StackLayout.GestureRecognizers>-->
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Main.Inspeccion.EditarDetalleICommand, Source={StaticResource Locator}}" CommandParameter="{Binding .}"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
 
             </StackLayout>
