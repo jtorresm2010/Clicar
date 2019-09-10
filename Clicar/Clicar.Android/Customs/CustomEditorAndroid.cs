@@ -5,9 +5,11 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
+using Android.Text;
 using Android.Views;
 using Android.Widget;
 using Clicar.Customs;
@@ -34,7 +36,8 @@ namespace Clicar.Droid.Customs
                 var gradientDrawable = new GradientDrawable();
                 gradientDrawable.SetColor(Android.Graphics.Color.Transparent);
 
-
+                this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
+                Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.White));
                 Control.SetBackground(gradientDrawable);
                 Control.SetPadding(15, Control.PaddingTop, 15, Control.PaddingBottom);
             }
