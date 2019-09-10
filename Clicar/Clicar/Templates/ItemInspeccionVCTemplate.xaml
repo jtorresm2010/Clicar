@@ -29,6 +29,7 @@
                 Orientation="Horizontal">
                 
                 <local:LockTemplate
+                    x:Name="LockedState"
                     HeightRequest="40"
                     Lockable="{Binding ITINS_DESHABILITAR}"/>
 
@@ -36,29 +37,12 @@
                     HeightRequest="40"
                     IsDamage="{Binding ITINS_CONDICION}"/>
 
-                <!--<StackLayout 
-                    VerticalOptions="CenterAndExpand"
-                    Orientation="Horizontal">
-
-                    <Label  
-                        VerticalOptions="Start"
-                        TextColor="{StaticResource BaseGreyLight}"
-                        FontSize="12"
-                        FontFamily="{StaticResource BoldFontOpenSans}"
-                        Text="{i18n:Translate State}"/>
-
-                    <Label  
-                        VerticalOptions="StartAndExpand"
-                        TextColor="{StaticResource BaseGreyLight}"
-                        FontSize="12"
-                        FontFamily="{StaticResource RegularFontOpenSans}"
-                        Text="no informado"/>
-                </StackLayout>-->
-
             </StackLayout>
         </StackLayout>
 
         <Image
+            Opacity="{Binding LockState, Source={x:Reference LockedState}, Converter={StaticResource BoolToOpacity}}"
+            IsEnabled="{Binding LockState, Source={x:Reference LockedState}, Converter={StaticResource BoolInverter}}"
             Source="Forward">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Main.Inspeccion.EditarDetalleICommand, Source={StaticResource Locator}}" CommandParameter="{Binding .}"/>

@@ -15,7 +15,7 @@ namespace Clicar.Templates
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LockTemplate : StackLayout
     {
-        public static readonly BindableProperty LockStateProperty = BindableProperty.Create(nameof(LockState), typeof(bool), typeof(LockTemplate), false);
+        public static readonly BindableProperty LockStateProperty = BindableProperty.Create(nameof(LockState), typeof(bool), typeof(LockTemplate), false, BindingMode.TwoWay);
         public static readonly BindableProperty LockableProperty = BindableProperty.Create(nameof(Lockable), typeof(bool), typeof(LockTemplate), true);
 
         public bool LockState {
@@ -34,6 +34,7 @@ namespace Clicar.Templates
 
         ImageSource LockOrange;
         ImageSource LockGrey;
+        ImageSource LockGreen;
 
         public LockTemplate()
         {
@@ -44,6 +45,7 @@ namespace Clicar.Templates
             baseGreen = (Color)Application.Current.Resources["BaseGreen"];
 
             LockOrange = ImageSource.FromFile("lock_solid_orange.png");
+            LockGreen = ImageSource.FromFile("lock_solid.png");
             LockGrey = ImageSource.FromFile("lock_solid_grey.png");
         }
 
@@ -56,7 +58,8 @@ namespace Clicar.Templates
                 if (!Lockable)
                 {
                     //LockState = true;
-                    LockText.TextColor = baseGreen;
+                    LockText.TextColor = baseGreyLight;
+                    LockIcon.Source = LockGrey;
                 }
             }
 
@@ -68,9 +71,9 @@ namespace Clicar.Templates
 
         private void SwitchState(bool state)
         {
-            LockIcon.Source = state ? LockOrange : LockGrey;
+            LockIcon.Source = state ? LockOrange : LockGreen;
             LockText.Text = state ? Languages.LockedText : Languages.LockText;
-            LockText.TextColor = state ? baseOrange : baseGreyLight;
+            LockText.TextColor = state ? baseOrange : baseGreen;
         }
 
         private void SwitchStateCommand(object sender, EventArgs e)

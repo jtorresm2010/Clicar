@@ -160,11 +160,13 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Source="ic_arrow_down.png"/>
+                            
+                            
+                                        
+                            <!--ItemsSource="{Binding ItemsDetalle}"
+                                ItemDisplayBinding="{Binding IDINSP_DESCRIPCION}"-->
                             <local:CustomPicker
                                 x:Name="SucursalPicker"
-                                ItemsSource="{Binding ItemsDetalle}"
-                                ItemDisplayBinding="{Binding IDINSP_DESCRIPCION}"
-                                        
                                 HeightRequest="40"
                                 Grid.Row="0"
                                 Grid.Column="0"
@@ -172,7 +174,13 @@
                                 Title="Indique nivel de daño"
                                 FontSize="14"
                                 TextColor="{StaticResource BaseGrey44}"
-                                FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+                                FontFamily="{StaticResource SemiBoldFontOpenSans}">
+                                <Picker.Items>
+                                    <x:String>Leve</x:String>
+                                    <x:String>Medio</x:String>
+                                    <x:String>Grave</x:String>
+                                </Picker.Items>
+                            </local:CustomPicker>
 
 
 

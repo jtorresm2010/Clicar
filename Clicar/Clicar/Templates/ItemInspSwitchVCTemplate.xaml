@@ -5,8 +5,8 @@
         xmlns:d="http://xamarin.com/schemas/2014/forms/design"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i18n="clr-namespace:Clicar.Helpers"
-    xmlns:local="clr-namespace:Clicar.Templates"
-    mc:Ignorable="d"
+        xmlns:local="clr-namespace:Clicar.Templates"
+        mc:Ignorable="d"
         x:Class="Clicar.Templates.ItemInspSwitchVCTemplate">
 
 
@@ -29,10 +29,13 @@
                 Orientation="Horizontal">
 
                 <local:LockTemplate
+                    x:Name="LockedState"
                     HeightRequest="40"
                     Lockable="{Binding ITINS_DESHABILITAR}"/>
 
                 <StackLayout 
+                    Opacity="{Binding LockState, Source={x:Reference LockedState}, Converter={StaticResource BoolToOpacity}}"
+                    IsEnabled="{Binding LockState, Source={x:Reference LockedState}, Converter={StaticResource BoolInverter}}"
                     WidthRequest="100"
                     Orientation="Horizontal">
                     <Image 
@@ -45,7 +48,9 @@
                         FontFamily="{StaticResource BoldFontOpenSans}"
                         Text="{i18n:Translate Edit}"/>
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Main.Inspeccion.EditarDetalleICommand, Source={StaticResource Locator}}" CommandParameter="{Binding .}"/>
+                        <TapGestureRecognizer 
+                            Command="{Binding Main.Inspeccion.EditarDetalleICommand, Source={StaticResource Locator}}" 
+                            CommandParameter="{Binding .}"/>
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 
@@ -55,6 +60,7 @@
         <StackLayout>
 
             <Switch 
+                IsEnabled="{Binding LockState, Source={x:Reference LockedState}, Converter={StaticResource BoolInverter}}"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="EndAndExpand"
                 IsToggled="True"/>

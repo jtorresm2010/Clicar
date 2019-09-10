@@ -12,11 +12,11 @@
     <Image 
         HeightRequest="20"
         x:Name="LockIcon"
-        Source="lock_solid_grey"/>
+        Source="lock_solid"/>
     <Label
         x:Name="LockText"
         VerticalOptions="CenterAndExpand"
-        TextColor="{StaticResource BaseGreyLight}"
+        TextColor="{StaticResource BaseGreen}"
         FontSize="12"
         FontFamily="{StaticResource BoldFontOpenSans}"
         Text="{i18n:Translate LockText}"/>

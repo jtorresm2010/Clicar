@@ -62,7 +62,7 @@ namespace Clicar.ViewModels
             MainInstance = MainViewModel.GetInstance();
             CurrentIteration = 0;
 
-            //Inicializar();
+            Inicializar();
 
             CrearListaCompuesta();
 

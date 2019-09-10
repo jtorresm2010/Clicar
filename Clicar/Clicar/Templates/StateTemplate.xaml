@@ -6,14 +6,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i18n="clr-namespace:Clicar.Helpers"
         mc:Ignorable="d"
-        HeightRequest="30"
+        HeightRequest="40"
         VerticalOptions="CenterAndExpand"
         Orientation="Horizontal"
         
         x:Class="Clicar.Templates.StateTemplate">
 
     <Label  
-        VerticalOptions="Start"
+        VerticalOptions="CenterAndExpand"
         TextColor="{StaticResource BaseGreyLight}"
         FontSize="12"
         FontFamily="{StaticResource BoldFontOpenSans}"
@@ -21,7 +21,7 @@
 
     <Label  
         x:Name="StateText"
-        VerticalOptions="StartAndExpand"
+        VerticalOptions="CenterAndExpand"
         TextColor="{StaticResource BaseGreyLight}"
         FontSize="12"
         FontFamily="{StaticResource RegularFontOpenSans}"

@@ -18,8 +18,11 @@
 
             <infra:InstanceLocator x:Key="Locator"/>
 
+            <!--#region Converters-->
             <behaviors:IntToBool x:Key="IntToBool"/>
-
+            <behaviors:BoolInverter x:Key="BoolInverter"/>
+            <behaviors:BoolToOpacity x:Key="BoolToOpacity"/>
+            <!--#endregion-->
 
             <!--data templates-->
 
