@@ -7,9 +7,9 @@
         xmlns:i18n="clr-namespace:Clicar.Helpers"
     xmlns:local="clr-namespace:Clicar.Templates"
     mc:Ignorable="d"
-        x:Class="Clicar.Templates.ItemInspeccionVCTemplate">
-    
-    
+        x:Class="Clicar.Templates.ItemInspDmgVCTemplate">
+
+
     <StackLayout
         Margin="24,0,15,0"
         HorizontalOptions="FillAndExpand"
@@ -27,7 +27,7 @@
                 Spacing="15"
                 HeightRequest="30"
                 Orientation="Horizontal">
-                
+
                 <local:LockTemplate
                     Lockable="{Binding ITINS_DESHABILITAR}"/>
 
@@ -59,12 +59,12 @@
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding EditarDetalleICommand}"/>
             </Image.GestureRecognizers>
-        </Image> 
+        </Image>
 
 
 
 
     </StackLayout>
-    
-    
+
+
 </ViewCell>

@@ -32,7 +32,7 @@ namespace Clicar.Services
         public async Task OpenOrCreateDB()
         {
 
-
+            await connection.CreateTableAsync<ItemsAreasInspeccionDB>().ConfigureAwait(false);
             await connection.CreateTableAsync<SucursalDB>().ConfigureAwait(false);
             await connection.CreateTableAsync<Maestro>().ConfigureAwait(false);
             await connection.CreateTableAsync<Usuario>().ConfigureAwait(false);
@@ -60,6 +60,7 @@ namespace Clicar.Services
         {
             await this.connection.DeleteAsync(model);
         }
+
         #endregion
 
         #region Consultas
@@ -83,6 +84,22 @@ namespace Clicar.Services
         public async Task<List<AreasInspeccion>> GetAreasInspeccion()
         {
             var query = await this.connection.QueryAsync<AreasInspeccion>("select * from [AreasInspeccion]");
+
+            return query;
+        }
+
+
+
+        public async Task ResetTable()
+        {
+            var query = await this.connection.QueryAsync<ItemsAreasInspeccionDB>("delete * from [ItemsAreasInspeccionDB]");
+
+        }
+
+
+        public async Task<List<ItemsAreasInspeccionDB>> GetItemsInspeccion()
+        {
+            var query = await this.connection.QueryAsync<ItemsAreasInspeccionDB>("select * from [ItemsAreasInspeccionDB]");
 
             return query;
         }

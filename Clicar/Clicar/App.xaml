@@ -40,6 +40,10 @@
             <DataTemplate x:Key="itemInspSwitchVCTemplate">
                 <template:ItemInspSwitchVCTemplate/>
             </DataTemplate>
+            <DataTemplate x:Key="itemInspDmgVCTemplate">
+                <template:ItemInspDmgVCTemplate/>
+            </DataTemplate>
+            
 
             <DataTemplate x:Key="agendaViewCellTemplate">
                 <template:AgendaViewCellTemplate/>
@@ -55,9 +59,9 @@
 
             <template:ItemDataTemplateSelector 
                     x:Key="itemDataTemplateSelector" 
-                        ItemTemplateA="{StaticResource itemInspeccionVCTemplate}"
                         ItemTemplateB="{StaticResource itemInspSwitchVCTemplate}"
-                        ItemTemplateC="{StaticResource itemInspeccionVCTemplate}"/>
+                        ItemTemplateA="{StaticResource itemInspeccionVCTemplate}"
+                        ItemTemplateC="{StaticResource itemInspDmgVCTemplate}"/>
 
             <template:AgendaTemplateSelector 
                     x:Key="agendaTemplateSelector" 
@@ -133,11 +137,13 @@
             <x:String x:Key="UrlSucursalController">/sucursales/MobileSucursalesVigentes</x:String>
             <x:String x:Key="UrlSucursalCercanaController">/sucursales/MobileSucursalesDistancia</x:String>
             <x:String x:Key="UrlMaestrosController">/Maestros</x:String>
-
-
-
-
-
+            
+            <x:String x:Key="AgendaInspeccion">/Inspecciones/MobileAgendaInspeccion</x:String>
+            <x:String x:Key="AgendaInspeccionEncabezado">/Inspecciones/MobileEnvioInspeccionEncabezado</x:String>
+            <x:String x:Key="AgendaInspeccionRechazo">/Inspecciones/MobileRechazoInspeccion</x:String>
+            <x:String x:Key="AgendaInspeccionCuerpo">/Inspecciones/MobileEnvioInspeccionCuerpo</x:String>
+            <x:String x:Key="AgendaInspeccionEnvioFoto">/Inspecciones/MobileEnvioFotoInspeccion</x:String>
+            
 
         </ResourceDictionary>
 

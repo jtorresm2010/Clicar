@@ -22,15 +22,14 @@
                 TextColor="{StaticResource DarkGrey}"
                 FontSize="14"
                 FontFamily="{StaticResource RegularFontOpenSans}"
-                Text="{Binding Nombre}"/>
+                Text="{Binding ITINS_DESCRIPCION}"/>
             <StackLayout
                 Spacing="15"
                 HeightRequest="30"
                 Orientation="Horizontal">
 
                 <local:LockTemplate
-                    LockState="{Binding Locked}"
-                    Lockable="{Binding Deshabilitable}"/>
+                    Lockable="{Binding ITINS_DESHABILITAR}"/>
 
                 <StackLayout 
                     WidthRequest="100"

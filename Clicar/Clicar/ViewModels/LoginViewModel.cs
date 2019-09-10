@@ -45,7 +45,6 @@ namespace Clicar.ViewModels
 
         #endregion
 
-
         private RestService restService;
         MainViewModel MainInstance;
 
@@ -53,8 +52,8 @@ namespace Clicar.ViewModels
         {
             IsLoading = false;
 
-            usuario = "PATRICIO.ALARCON@GMA";
-            clave = "123";
+            usuario = "palarcon";
+            clave = "123456";
 
 
             MainInstance = MainViewModel.GetInstance();
@@ -256,11 +255,11 @@ namespace Clicar.ViewModels
             {
                 location = await Geolocation.GetLastKnownLocationAsync();
 
-                if (location != null)
-                {
-                    Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+                //if (location != null)
+                //{
+                //    Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
 
-                }
+                //}
             }
             catch (FeatureNotSupportedException fnsEx)
             {
@@ -296,7 +295,17 @@ namespace Clicar.ViewModels
 
                 if (resp.Resultado)
                 {
-                    foreach(AreasInspeccion area in resp.Elemento.areas_inspeccion)
+
+                    if (resp.Elemento.items_areas_inspeccion.Count > 0)
+                    {
+                        var currentareas = await MainInstance.DataService.GetAreasInspeccion();
+
+                        foreach(AreasInspeccion area in resp.Elemento.areas_inspeccion)
+                        {
+                            await MainInstance.DataService.Delete<AreasInspeccion>(area);
+                        }
+
+                        foreach(AreasInspeccion area in resp.Elemento.areas_inspeccion)
                     {
                         try
                         {
@@ -307,8 +316,46 @@ namespace Clicar.ViewModels
                             Debug.WriteLine($"~(>.-.)> Error de Insert {e.Message}");
                         }
                     }
+                    }
 
-                    //MainInstance.Agenda.AreasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
+
+                    if(resp.Elemento.items_areas_inspeccion.Count > 0)
+                    {
+                        var currentItems = await MainInstance.DataService.GetItemsInspeccion();
+
+                        foreach(ItemsAreasInspeccionDB itemDel in currentItems)
+                        {
+                            await MainInstance.DataService.Delete<ItemsAreasInspeccionDB>(itemDel);
+                        }
+
+
+                        foreach (ItemsAreasInspeccion item in resp.Elemento.items_areas_inspeccion)
+                        {
+                            var itemDB = new ItemsAreasInspeccionDB
+                            {
+                                ITINS_ID = item.ITINS_ID,
+                                ITINS_AINSP_ID = item.ITINS_AINSP_ID,
+                                ITINS_DESCRIPCION = item.ITINS_DESCRIPCION,
+                                ITINS_CONDICION = item.ITINS_CONDICION,
+                                ITINS_DESHABILITAR = item.ITINS_DESHABILITAR,
+                                ITINS_REQUIERE_FOTO = item.ITINS_REQUIERE_FOTO,
+                                ITINS_ORDEN_APP = item.ITINS_ORDEN_APP,
+                                ITINS_ACTIVO = item.ITINS_ACTIVO
+                            };
+
+                            try
+                            {
+                                await MainInstance.DataService.Insert<ItemsAreasInspeccionDB>(itemDB);
+                                //Debug.WriteLine($"~(>'.')> {itemDB.ITINS_DESCRIPCION}");
+
+                            }
+                            catch (Exception e)
+                            {
+
+                                Debug.WriteLine($"~(>'.')> {e.Message}");
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)

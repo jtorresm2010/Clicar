@@ -15,6 +15,12 @@ namespace Clicar.ViewModels
         public string ControllerSucursal { get; set; }
         public string ControllerMaestros { get; set; }
         public string ControllerCercanaSucursal { get; set; }
+        public string AgendaInspeccion { get; set; }
+        public string AgendaInspeccionEncabezado { get; set; }
+        public string AgendaInspeccionRechazo { get; set; }
+        public string AgendaInspeccionCuerpo { get; set; }
+        public string AgendaInspeccionEnvioFoto { get; set; }
+
 
         #region Instancias VM
         public LoginViewModel Login { get; set; }
@@ -23,6 +29,7 @@ namespace Clicar.ViewModels
         public DetalleInspeccionViewModel DetalleInspeccion { get; set; }
         public InspeccionViewModel Inspeccion { get; set; }
         public DataService DataService { get; set; }
+        public RestService RestService { get; set; }
         public ReporteViewModel Reporte { get; set; }
         #endregion
 
@@ -30,7 +37,7 @@ namespace Clicar.ViewModels
         {
             //Inicializa valores del diccionario
             Application.Current.PageAppearing += CurrentPageAppearing;
-
+            RestService = new RestService();
             DataService = new DataService();
             
             instance = this;
@@ -46,8 +53,13 @@ namespace Clicar.ViewModels
                 ControllerSucursal = Application.Current.Resources["UrlSucursalController"].ToString();
                 ControllerCercanaSucursal = Application.Current.Resources["UrlSucursalCercanaController"].ToString();
                 ControllerMaestros = Application.Current.Resources["UrlMaestrosController"].ToString();
+                AgendaInspeccion = Application.Current.Resources["AgendaInspeccion"].ToString();
+                AgendaInspeccionEncabezado = Application.Current.Resources["AgendaInspeccionEncabezado"].ToString();
+                AgendaInspeccionRechazo = Application.Current.Resources["AgendaInspeccionRechazo"].ToString();
+                AgendaInspeccionCuerpo = Application.Current.Resources["AgendaInspeccionCuerpo"].ToString();
+                AgendaInspeccionEnvioFoto = Application.Current.Resources["AgendaInspeccionEnvioFoto"].ToString();
 
-                
+
                 await DataService.OpenOrCreateDB();
 
 

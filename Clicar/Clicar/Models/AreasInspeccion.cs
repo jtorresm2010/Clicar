@@ -14,5 +14,6 @@ namespace Clicar.Models
         public int AINSP_ORDEN_APP { get; set; }
         public int AINSP_ACTIVO { get; set; }
         public int AINSP_PAIS_ID { get; set; }
+
     }
 }

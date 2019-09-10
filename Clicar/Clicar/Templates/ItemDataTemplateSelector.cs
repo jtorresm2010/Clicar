@@ -18,19 +18,19 @@ namespace Clicar.Templates
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            var currentItem = (ItemInspeccion)item;
+            var currentItem = (ItemsAreasInspeccionDB)item;
             var template = new DataTemplate();
 
-            switch (currentItem.Tipo)
+            switch (currentItem.ITINS_CONDICION)
             {
-                case "1":
+                case "Esta presente":
                     template = ItemTemplateA;
                     break;
-                case "2":
+                case "Es Condición":
                     template = ItemTemplateB;
                     break;
-                case "3":
-                    template = ItemTemplateB;
+                case "Es daño":
+                    template = ItemTemplateC;
                     break;
                 default:
                     break;

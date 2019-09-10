@@ -345,4 +345,10 @@
   <data name="Rejected" xml:space="preserve">
     <value>Rechazado</value>
   </data>
+  <data name="ConditionGood" xml:space="preserve">
+    <value>Bueno</value>
+  </data>
+  <data name="ConditionBad" xml:space="preserve">
+    <value>Malo</value>
+  </data>
 </root>

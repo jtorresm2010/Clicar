@@ -62,7 +62,5 @@ namespace Clicar.ViewModels
 
             Application.Current.MainPage = new NavigationPage(new AgendaView());
         }
-
-
     }
 }

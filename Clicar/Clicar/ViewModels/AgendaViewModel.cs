@@ -1,4 +1,5 @@
-﻿using Clicar.Models;
+﻿using Clicar.Helpers;
+using Clicar.Models;
 using Clicar.Services;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
@@ -8,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -19,6 +21,7 @@ namespace Clicar.ViewModels
 
         #region Variables
         public List<AreasInspeccion> AreasInspeccion { get; set; }
+        public List<ItemsAreasInspeccionDB> ItemsInspeccion { get; set; }
         private List<Inspeccion> listaInpecciones;
         private ObservableCollection<Inspeccion> listaPendientes;
         private ObservableCollection<Inspeccion> listaCompletados;
@@ -31,12 +34,19 @@ namespace Clicar.ViewModels
         private double rowHeight = 110;
         private SucursalDB currentSucursal;
         private Maestro maestro;
+        private bool isLoading;
         private string nombreMaestro;
         private string currentDate;
         #endregion
 
 
+
         #region Propiedades
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set { SetValue(ref isLoading, value); }
+        }
         public ObservableCollection<Inspeccion> ListaCompletados
         {
             get { return listaCompletados; }
@@ -105,6 +115,7 @@ namespace Clicar.ViewModels
         private async void CargarAreasDeInspeccion()
         {
             AreasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
+            ItemsInspeccion = await MainInstance.DataService.GetItemsInspeccion();
         }
 
         private string GetFormattedDate()
@@ -124,9 +135,43 @@ namespace Clicar.ViewModels
             NombreMaestro = $"{Maestro.USU_NOMBRES} {Maestro.USU_APELLIDO_PATERNO}";
         }
 
-        private void LoadMainList()
+        private async void LoadMainList()
         {
             listaInpecciones = new ListaInspecciones().GetListaInspeccion();
+
+            IsLoading = true;
+
+            var connection = MainInstance.RestService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+                return;
+            }
+
+            var parameter = $"?suc_id=1";
+            //var parameter = $"suc_id={CurrentSucursal.MAESU_ID}";
+
+
+            var response = await MainInstance.RestService.PostAsync<AgendaResponse>(MainInstance.Url, MainInstance.Prefix, $"{MainInstance.AgendaInspeccion}{parameter}");
+
+            Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.AgendaInspeccion}{parameter}");
+
+            try
+            {
+                var AgendaResponse = (AgendaResponse)response.Result;
+
+                if (AgendaResponse.Resultado)
+                {
+                    Debug.WriteLine($"~(>'.')> {AgendaResponse.Elemento}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("~(>-_-)> Error: " + ex.Message);
+            }
+
+            IsLoading = false;
+
 
         }
 

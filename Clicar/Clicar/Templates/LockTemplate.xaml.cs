@@ -30,6 +30,7 @@ namespace Clicar.Templates
 
         private Color baseGreyLight;
         private Color baseOrange;
+        private Color baseGreen;
 
         ImageSource LockOrange;
         ImageSource LockGrey;
@@ -40,6 +41,7 @@ namespace Clicar.Templates
 
             baseGreyLight = (Color)Application.Current.Resources["BaseGreyLight"];
             baseOrange = (Color)Application.Current.Resources["BaseOrange"];
+            baseGreen = (Color)Application.Current.Resources["BaseGreen"];
 
             LockOrange = ImageSource.FromFile("lock_solid_orange.png");
             LockGrey = ImageSource.FromFile("lock_solid_grey.png");
@@ -49,15 +51,16 @@ namespace Clicar.Templates
         {
             base.OnPropertyChanged(propertyName);
 
-            if(propertyName.Equals("Lockable"))
+            if (propertyName.Equals("Lockable"))
             {
                 if (!Lockable)
                 {
-                    LockState = true;
+                    //LockState = true;
+                    LockText.TextColor = baseGreen;
                 }
             }
 
-            if(propertyName.Equals("LockState"))
+            if (propertyName.Equals("LockState"))
             {
                 SwitchState(LockState);
             }

@@ -20,7 +20,8 @@ namespace Clicar.ViewModels
     {
         #region Variables
         private List<AccordionItem> ListAccordionItems;
-        private List<ItemInspeccion> ItemList;
+        //private List<ItemsAreasInspeccionDB> ListaItems;
+        //private List<ItemInspeccion> ItemList;
         private Color baseGreyLight;
         private Color baseOrange;
         private Color baseGreen;
@@ -39,7 +40,7 @@ namespace Clicar.ViewModels
             set { SetValue(ref currentInspeccion, value); }
         }
         public int MenuIndex { get { return this.menuIndex; } }
-        public ObservableCollection<ItemInspeccion> ItemsInspeccion { get; set; }
+        public ObservableCollection<ItemsAreasInspeccionDB> ItemsInspeccion { get; set; }
         public ObservableCollection<AccordionItem> AreasInspeccion
         {
             get { return areasInspeccion; }
@@ -53,84 +54,89 @@ namespace Clicar.ViewModels
             MainInstance = MainViewModel.GetInstance();
             CurrentIteration = 0;
 
-            GetNewItemList();
+            Inicializar();
 
-            var areasInspeccion = MainInstance.Agenda.AreasInspeccion;
+            CrearListaCompuesta();
 
-            //Ordenar areas segun el valor en "Orden"
-            try
+
+
+
+        }
+
+        private async void CrearListaCompuesta()
+        {
+            ListAccordionItems = new List<AccordionItem>();
+
+            var areasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
+            var ListaItems = await MainInstance.DataService.GetItemsInspeccion();
+
+            IOrderedEnumerable<AreasInspeccion> areasOrdenadas;
+
+            if(areasInspeccion.Count>0 && ListaItems.Count > 0)
             {
-                var areasOrdenadas =
+                //Ordenar areas segun el valor en "Orden"
+                areasOrdenadas =
                     from areaInspeccion in areasInspeccion
                     orderby areaInspeccion.AINSP_ORDEN_APP ascending
                     select areaInspeccion;
+            
 
-                CrearListaCompuesta(areasOrdenadas);
+                foreach (AreasInspeccion area in areasOrdenadas)
+                {
+
+                    //asignar items a cada area
+                    var listaItems =
+                        from itemInspeccion in ListaItems
+                        where itemInspeccion.ITINS_AINSP_ID == area.AINSP_ID// && itemInspeccion.ITINS_ACTIVO == true
+                        select itemInspeccion;
 
 
-                AreasInspeccion = new ObservableCollection<AccordionItem>(ListAccordionItems);
+                    //var filteringQuery =
+                    //    from itemInspeccion in listaItems
+                    //    where itemInspeccion.ITINS_CONDICION == "Es Daño"
+                    //    select itemInspeccion;
+
+                    //bool isImageSet = filteringQuery.Count() != 0;
+                    bool isImageSet = false;
+
+
+                    ListAccordionItems.AddRange(new[] {
+                    new AccordionItem
+                            {
+                                AINSP_ACTIVO = area.AINSP_ACTIVO,
+                                AINSP_DESCRIPCION = area.AINSP_DESCRIPCION,
+                                AINSP_ID = area.AINSP_ID,
+                                AINSP_ORDEN_APP = area.AINSP_ORDEN_APP,
+                                AINSP_PAIS_ID = area.AINSP_PAIS_ID,
+                                Image = "MenuNum" + area.AINSP_ORDEN_APP,
+
+                                Items = listaItems.ToList(),
+
+                                IsImageSet = isImageSet
+                            }
+
+                    });
+
+
+
+                }
+
             }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"~(>'.')> ?? {ex.Message}");
-            }
 
 
 
+
+
+            AreasInspeccion = new ObservableCollection<AccordionItem>(ListAccordionItems);
 
         }
 
-        private void CrearListaCompuesta(IOrderedEnumerable<AreasInspeccion> areas)
+        public void Inicializar()
         {
-           ListAccordionItems = new List<AccordionItem>();
+            
 
 
-            foreach (AreasInspeccion area in areas)
-            {
-
-                var listaItems =
-                    from itemInspeccion in ItemList
-                    where itemInspeccion.Area == area.AINSP_ORDEN_APP.ToString()
-                    select itemInspeccion;
-
-                var filteringQuery =
-                    from itemInspeccion in listaItems
-                    where itemInspeccion.Tipo == "3"
-                    select itemInspeccion;
-
-                bool isImageSet = filteringQuery.Count() != 0;
-
-
-
-                ListAccordionItems.AddRange(new[] {
-                new AccordionItem
-                        {
-                            AINSP_ACTIVO = area.AINSP_ACTIVO,
-                            AINSP_DESCRIPCION = area.AINSP_DESCRIPCION,
-                            AINSP_ID = area.AINSP_ID,
-                            AINSP_ORDEN_APP = area.AINSP_ORDEN_APP,
-                            AINSP_PAIS_ID = area.AINSP_PAIS_ID,
-                            Image = "MenuNum" + area.AINSP_ORDEN_APP,
-
-                            Items = listaItems.ToList(),
-
-                            IsImageSet = isImageSet
-                        }
-
-                });
-
-
-
-            }
-
-
-
-
-        }
-
-        public void GetNewItemList()
-        {
-            ItemList = (List<ItemInspeccion>)new ListaItemsInspeccion().GetListaItems();
+            //ItemList = (List<ItemInspeccion>)new ListaItemsInspeccion().GetListaItems();
             menuIndex = 1;
 
             baseGreyLight = (Color)Application.Current.Resources["BaseGreyLight"];

@@ -12,7 +12,7 @@ using Xamarin.Essentials;
 
 namespace Clicar.Services
 {
-    class RestService
+    public class RestService
     {
         public readonly HttpClient client;
         //private readonly DataService dataService;

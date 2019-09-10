@@ -24,4 +24,11 @@ namespace Clicar.Models
         public Elemento Elemento { get; set; }
     }
 
+    public partial class AgendaResponse
+    {
+        public bool Resultado { get; set; }
+        public object Mensaje { get; set; }
+        public string Elemento { get; set; }
+    }
+
 }

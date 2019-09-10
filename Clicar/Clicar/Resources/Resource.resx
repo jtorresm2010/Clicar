@@ -325,4 +325,10 @@
   <data name="Rejected" xml:space="preserve">
     <value>Rejected</value>
   </data>
+  <data name="ConditionGood" xml:space="preserve">
+    <value>Good</value>
+  </data>
+  <data name="ConditionBad" xml:space="preserve">
+    <value>Bad</value>
+  </data>
 </root>

@@ -7,7 +7,7 @@ namespace Clicar.Models
     public class AccordionItem : AreasInspeccion
     {
         public string Image { get; set; }
-        public List<ItemInspeccion> Items { get; set; }
+        public List<ItemsAreasInspeccionDB> Items { get; set; }
         public bool IsImageSet { get; set; }
 
     }

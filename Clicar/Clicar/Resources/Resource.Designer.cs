@@ -241,6 +241,24 @@ namespace Clicar.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Bad.
+        /// </summary>
+        internal static string ConditionBad {
+            get {
+                return ResourceManager.GetString("ConditionBad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Good.
+        /// </summary>
+        internal static string ConditionGood {
+            get {
+                return ResourceManager.GetString("ConditionGood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Currently, the APP is active for the following Branch:.
         /// </summary>
         internal static string ConfigCurrentBranch {

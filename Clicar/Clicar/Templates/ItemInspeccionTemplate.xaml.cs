@@ -41,7 +41,7 @@ namespace Clicar.Templates
             var gridRow = 0;
             var gridCol = 0;
 
-            foreach (ItemInspeccion item in MainInstance.AreasInspeccion[MainInstance.CurrentIteration].Items)
+            foreach (ItemsAreasInspeccionDB item in MainInstance.AreasInspeccion[MainInstance.CurrentIteration].Items)
             {
 
 
@@ -73,7 +73,7 @@ namespace Clicar.Templates
                     HorizontalTextAlignment = TextAlignment.Center,
                     FontFamily = "{StaticResource RegularFontOpenSans}",
                     TextColor = (Color)Application.Current.Resources["BaseGrey"],
-                    Text = item.Nombre
+                    Text = item.ITINS_DESCRIPCION
                 }); ;
 
                 ImageGrid.Children.Add(layout, gridCol, gridRow);
