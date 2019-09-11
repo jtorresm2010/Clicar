@@ -17,6 +17,7 @@ namespace Clicar.Views
         {
             CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
+            ButtonWorking = false;
             MainInstance = MainViewModel.GetInstance();
         }
 
@@ -26,8 +27,13 @@ namespace Clicar.Views
             await popup.PopAsync();
         }
 
+        public bool ButtonWorking { get; set; }
         private async void ContinuarCommand(object sender, EventArgs e)
         {
+            if (ButtonWorking)
+                return;
+            ButtonWorking = true;
+
             MainInstance.Inspeccion = new InspeccionViewModel();
 
             MainInstance.Inspeccion.CurrentInspeccion = MainInstance.DetalleInspeccion.CurrentInspeccion;
@@ -37,6 +43,8 @@ namespace Clicar.Views
             Navigation.RemovePage(Navigation.NavigationStack[1]);
             var popup = PopupNavigation.Instance;
             await popup.PopAsync();
+
+            ButtonWorking = false;
         }
     }
 }

@@ -19,28 +19,25 @@ namespace Clicar.Views
     public partial class RechazarPopupView : PopupPage
     {
         MainViewModel MainInstance;
-        //private Inspeccion rechazarInspeccion;
-
-        //public Inspeccion RechazarInspeccion
-        //{
-        //    get { return rechazarInspeccion; }
-        //    set { SetValue(ref rechazarInspeccion, value); }
-        //}
-
         public RechazarPopupView()
         {
             CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
             MainInstance = MainViewModel.GetInstance();
-            
+            ButtonWorking = false;
         }
-
+        public bool ButtonWorking { get; set; }
         private async void ConfirmarCommand(object sender, EventArgs e)
         {
+            if (ButtonWorking)
+                return;
+            ButtonWorking = true;
+
             MainInstance.Agenda.RechazarInspeccion(MainInstance.DetalleInspeccion.CurrentInspeccion);
             var popup = PopupNavigation.Instance;
             await Navigation.PopToRootAsync();
             await popup.PopAsync();
+            ButtonWorking = false;
         }
 
     }

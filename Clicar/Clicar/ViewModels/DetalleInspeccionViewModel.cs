@@ -27,6 +27,7 @@ namespace Clicar.ViewModels
 
         public DetalleInspeccionViewModel()
         {
+            ButtonWorking = false;
         }
 
 
@@ -41,10 +42,12 @@ namespace Clicar.ViewModels
 
         private async void RechazarCommand(Inspeccion inspeccion)
         {
-
+            if (ButtonWorking)
+                return;
+            ButtonWorking = true;
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new RechazarPopupView());
-
+            ButtonWorking = false;
         }
 
         public ICommand InspeccionarICommand
@@ -55,11 +58,15 @@ namespace Clicar.ViewModels
             }
 
         }
-
+        public bool ButtonWorking { get; set; }
         private async void InspeccionarCommand(Inspeccion inspeccion)
         {
+            if (ButtonWorking)
+                return;
+            ButtonWorking = true;
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new InspeccionPopupView());
+            ButtonWorking = false;
         }
 
     }

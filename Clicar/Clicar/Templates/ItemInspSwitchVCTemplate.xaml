@@ -29,6 +29,7 @@
                 Orientation="Horizontal">
 
                 <local:LockTemplate
+                    LockState="{Binding ITINS_IS_LOCKED}"
                     x:Name="LockedState"
                     HeightRequest="40"
                     Lockable="{Binding ITINS_DESHABILITAR}"/>

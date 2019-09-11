@@ -17,6 +17,10 @@ namespace Clicar.Models
         //public List<ItemsAreasInspeccionACC> Items { get; set; }
         public bool IsImageSet { get; set; }
 
+
+
+
+
         private List<ItemsAreasInspeccionACC> items;
 
         public List<ItemsAreasInspeccionACC> Items

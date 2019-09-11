@@ -44,6 +44,14 @@ namespace Clicar.Models
             set { SetValue(ref iTINS_STATE_ACTIVO, value); }
         }
 
+        private bool isLocked;
+
+        public bool ITINS_IS_LOCKED
+        {
+            get { return isLocked; }
+            set { SetValue(ref isLocked, value); }
+        }
+
     }
 
 

@@ -111,7 +111,8 @@ namespace Clicar.Services
                 ITINS_REQUIERE_FOTO = p.ITINS_REQUIERE_FOTO,
                 ITINS_ORDEN_APP = p.ITINS_ORDEN_APP,
                 ITINS_ACTIVO = p.ITINS_ACTIVO,
-                ITINS_STATE_ACTIVO = false
+                ITINS_STATE_ACTIVO = false,
+                ITINS_IS_LOCKED = false
             }).ToList();
 
             return list;
