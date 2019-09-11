@@ -86,9 +86,10 @@
                             Spacing="0">
 
                             <Frame
-                                Padding="15,4"
+                                Padding="8,4"
+                                HorizontalOptions="CenterAndExpand"
                                 HasShadow="False"
-                                Margin="70,10,70,5"
+                                Margin="0,10,0,5"
                                 CornerRadius="10"
                                 BackgroundColor="{StaticResource BaseGreen20}">
                                 <Label
@@ -124,7 +125,7 @@
                                         SelectedItem="{Binding SelectedSucursal}"
                                         ItemsSource="{Binding Sucursales}"
                                         ItemDisplayBinding="{Binding MAESU_NOMBRE_SUCURSAL}"
-                                        
+                                        IsEnabled="{Binding IsReady}"
                                         HeightRequest="40"
                                         Grid.Row="0"
                                         Grid.Column="0"

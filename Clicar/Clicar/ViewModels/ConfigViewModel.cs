@@ -38,10 +38,26 @@ namespace Clicar.ViewModels
             set { this.SetValue(ref this.ListaSucursales, value); } 
         }
 
+        private bool isReady;
+
+        public bool IsReady
+        {
+            get { return isReady; }
+            set { SetValue(ref isReady, value); }
+        }
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+
+            if (propertyName.Equals("SelectedSucursal"))
+                ClosestSucursal = SelectedSucursal;
+        }
 
         MainViewModel MainInstance;
         public ConfigViewModel()
         {
+            isReady = false;
             MainInstance = MainViewModel.GetInstance();
         }
 

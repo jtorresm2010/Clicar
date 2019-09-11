@@ -1,4 +1,4 @@
-﻿                                                                                                                                 using Rg.Plugins.Popup.Services;
+﻿using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using Clicar.Models;
@@ -25,11 +25,18 @@ namespace Clicar.Views
         {
             base.OnAppearing();
         }
-
+        private bool ActionBusy = false;
         private async void LogOutCommand(object sender, EventArgs e)
         {
+            if (ActionBusy)
+                return;
+
+            ActionBusy = true;
+
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new LogOutPopupView());
+
+            ActionBusy = false;
         }
     }
 }

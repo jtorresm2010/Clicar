@@ -242,12 +242,16 @@ namespace Clicar.ViewModels
             //Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
         }
 
-        private void ItemTappedCommand(Inspeccion inspeccion)
+        private bool IsBusy = false;
+        private async void ItemTappedCommand(Inspeccion inspeccion)
         {
-
+            if (IsBusy)
+                return;
+            IsBusy = true;
             MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
             MainInstance.DetalleInspeccion.CurrentInspeccion = inspeccion;
-            Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
+            await Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
+            IsBusy = false;
         }
 
         public void RechazarInspeccion(Inspeccion inspeccion)

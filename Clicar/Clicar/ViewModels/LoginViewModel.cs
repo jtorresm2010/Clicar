@@ -208,6 +208,7 @@ namespace Clicar.ViewModels
                     var sucursalesFromDB = await MainInstance.DataService.GetAllSucursales();
                     
                     MainInstance.Config.Sucursales = new ObservableCollection<SucursalDB>(sucursalesFromDB);
+                    MainInstance.Config.IsReady = true;
                 }
             }
             catch (Exception ex)
