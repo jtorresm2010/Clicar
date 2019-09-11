@@ -18,7 +18,7 @@ namespace Clicar.ViewModels
 
         private MainViewModel MainInstance { get; set; }
         private DetallesItem currentItemDetails;
-        private ItemsAreasInspeccion currentItem;
+        private ItemsAreasInspeccionACC currentItem;
         private List<AreasInspeccion> areasInspeccionDB;
         private AreasInspeccion currentArea;
         private ObservableCollection<ItemsdetalleinspeccionDB> itemsDetalle;
@@ -66,7 +66,7 @@ namespace Clicar.ViewModels
             set { SetValue(ref currentArea, value); }
         }
         public List<AreasInspeccion> ListaAreas { get; set; }
-        public ItemsAreasInspeccion CurrentItem
+        public ItemsAreasInspeccionACC CurrentItem
         {
             get { return currentItem; }
             set { SetValue(ref currentItem, value); }
@@ -79,7 +79,7 @@ namespace Clicar.ViewModels
 
 
 
-
+        
 
         public DetalleItemViewModel()
         {
@@ -123,6 +123,17 @@ namespace Clicar.ViewModels
         }
 
         #region ICommands
+
+        
+        public ICommand ConfirmarICommand
+        {
+            get
+            {
+                return new RelayCommand(ConfirmarCommand);
+            }
+        }
+
+
         public ICommand TakePictureICommand
         {
             get
@@ -138,6 +149,32 @@ namespace Clicar.ViewModels
             }
         }
         #endregion
+
+
+
+        private void ConfirmarCommand()
+        {
+            //var a = MainInstance.Inspeccion.AreasInspeccion[CurrentItem.ITINS_ORDEN_APP - 1].Items.IndexOf(CurrentItem)
+
+            var lista = new List<ValorRepararItem>();
+            lista.Add(new ValorRepararItem { VAREP_VALOR_REPARACION = 2 });
+
+
+            try
+            {
+                MainInstance.Inspeccion.AreasInspeccion[CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP - 1]
+                    .Items[MainInstance.Inspeccion.AreasInspeccion[CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP - 1].Items.IndexOf(CurrentItem)]
+                    .ITINS_STATE_ACTIVO = true;
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"~(>'o')> {e.Message}");
+            }
+
+
+            Debug.WriteLine($"~(>'.')> {CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP}");
+        }
 
         private async void OpenGalleryCommand()
         {

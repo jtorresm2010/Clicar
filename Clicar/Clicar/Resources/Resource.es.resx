@@ -253,10 +253,10 @@
     <value>Ingresar</value>
   </data>
   <data name="LockedText" xml:space="preserve">
-    <value>Habilitar</value>
+    <value>Deshabilitado</value>
   </data>
   <data name="LockText" xml:space="preserve">
-    <value>Deshabilitar</value>
+    <value>Habilitado</value>
   </data>
   <data name="State" xml:space="preserve">
     <value>Estado: </value>

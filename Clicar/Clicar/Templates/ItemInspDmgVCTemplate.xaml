@@ -35,6 +35,7 @@
 
                 <local:StateTemplate
                     HeightRequest="40"
+                    IsActive="{Binding ITINS_STATE_ACTIVO}"
                     IsDamage="{Binding ITINS_CONDICION}"/>
 
             </StackLayout>

@@ -101,6 +101,13 @@ namespace Clicar.ViewModels
                         where itemInspeccion.ITINS_AINSP_ID == area.AINSP_ID && itemInspeccion.ITINS_ACTIVO == true
                         select itemInspeccion;
 
+                    foreach(ItemsAreasInspeccionACC items in listaItems)
+                    {
+                        items.CLCAR_AREA_INSPECCION = area;
+                    }
+
+
+
                     bool isImageSet = false;
 
 
@@ -280,10 +287,10 @@ namespace Clicar.ViewModels
 
             IsBusy = true;
 
-            Console.WriteLine("(>'.')>-----------" + ((ItemsAreasInspeccion)parameter).ITINS_DESCRIPCION);
+            Console.WriteLine("(>'.')>-----------" + ((ItemsAreasInspeccionACC)parameter).ITINS_DESCRIPCION);
 
 
-            ItemsAreasInspeccion currentItem = (ItemsAreasInspeccion)parameter;
+            var currentItem = (ItemsAreasInspeccionACC)parameter;
             AreasInspeccion currArea = null;
 
             foreach(AreasInspeccion  area in AreasInspeccionDB)

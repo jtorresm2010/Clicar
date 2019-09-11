@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,7 +15,13 @@ namespace Clicar.Templates
     public partial class StateTemplate : StackLayout
     {
 
-        public static readonly BindableProperty IsDamageProperty = BindableProperty.Create(nameof(IsDamage), typeof(string), typeof(StateTemplate), string.Empty );
+        public static readonly BindableProperty IsDamageProperty = BindableProperty.Create(nameof(IsDamage), typeof(string), typeof(StateTemplate), string.Empty/*, propertyChanged: accion*/ );
+
+        //private static void accion(BindableObject bindable, object oldValue, object newValue)
+        //{
+
+        //}
+
         public static readonly BindableProperty IsActiveProperty = BindableProperty.Create(nameof(IsActive), typeof(bool), typeof(StateTemplate), false);
 
 
@@ -55,17 +62,20 @@ namespace Clicar.Templates
                     default:
                         break;
                 }
-
             }
 
             if (propertyName.Equals("IsActive"))
             {
-                StateText.Text = IsActive ? StateActive : StateInactive;
+                SwitchState();
             }
         }
 
 
-
+        private async void SwitchState()
+        {
+            await Task.Delay(100);
+            StateText.Text = IsActive ?StateActive  : StateInactive;
+        }
 
         public StateTemplate()
         {

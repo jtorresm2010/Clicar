@@ -96,12 +96,12 @@ namespace Clicar.Services
         }
 
 
-        public async Task<List<ItemsAreasInspeccion>> GetItemsInspeccion()
+        public async Task<List<ItemsAreasInspeccionACC>> GetItemsInspeccion()
         {
             var query = await this.connection.QueryAsync<ItemsAreasInspeccionDB>("select * from [ItemsAreasInspeccionDB]");
 
             var array = query.ToArray();
-            var list = array.Select(p => new ItemsAreasInspeccion
+            var list = array.Select(p => new ItemsAreasInspeccionACC
             {
                 ITINS_ID = p.ITINS_ID,
                 ITINS_AINSP_ID = p.ITINS_AINSP_ID,
@@ -110,7 +110,8 @@ namespace Clicar.Services
                 ITINS_DESHABILITAR = p.ITINS_DESHABILITAR,
                 ITINS_REQUIERE_FOTO = p.ITINS_REQUIERE_FOTO,
                 ITINS_ORDEN_APP = p.ITINS_ORDEN_APP,
-                ITINS_ACTIVO = p.ITINS_ACTIVO
+                ITINS_ACTIVO = p.ITINS_ACTIVO,
+                ITINS_STATE_ACTIVO = false
             }).ToList();
 
             return list;

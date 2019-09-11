@@ -306,7 +306,6 @@
 
                 <!--Botones-->
                 <StackLayout
-                    BindingContext="{Binding Main, Source={StaticResource Locator}}"
                     Spacing="5"
                     Orientation="Horizontal"
                     Margin="8,0">
@@ -323,6 +322,7 @@
                         BorderRadius="20"/>
 
                         <Button
+                        Command="{Binding ConfirmarICommand}"
                         HorizontalOptions="EndAndExpand"
                         BackgroundColor="{StaticResource BaseGreen}"
                         Text="Registrar"

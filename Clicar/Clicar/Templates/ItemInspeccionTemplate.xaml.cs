@@ -41,7 +41,7 @@ namespace Clicar.Templates
             var gridRow = 0;
             var gridCol = 0;
 
-            foreach (ItemsAreasInspeccion item in MainInstance.AreasInspeccion[MainInstance.CurrentIteration].Items)
+            foreach (ItemsAreasInspeccionACC item in MainInstance.AreasInspeccion[MainInstance.CurrentIteration].Items)
             {
 
 
