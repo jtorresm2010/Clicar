@@ -23,6 +23,7 @@ namespace Clicar.ViewModels
         private string usuario;
         private string clave;
         LoginResponse loginResponse;
+        private bool isBusy;
         #endregion
 
         #region Propiedades
@@ -37,6 +38,17 @@ namespace Clicar.ViewModels
             set { SetValue(ref clave, value); }
         }
 
+
+
+        public bool IsIdle
+        {
+            get { return isBusy; }
+            set { SetValue(ref isBusy, value); }
+        }
+
+
+
+
         public bool IsLoading
         {
             get { return isLoading; }
@@ -50,6 +62,7 @@ namespace Clicar.ViewModels
 
         public LoginViewModel()
         {
+            IsIdle = true;
             IsLoading = false;
 
             usuario = "palarcon";
@@ -70,6 +83,11 @@ namespace Clicar.ViewModels
 
         private async void LoginCommand()
         {
+            if (!IsIdle)
+                return;
+
+
+            IsIdle = false;
             IsLoading = true;
 
             var connection = restService.CheckConnection();
@@ -96,13 +114,24 @@ namespace Clicar.ViewModels
                 {
                     InicializarDatos();
                 }
+                else
+                {
+                    Debug.WriteLine($"~(>'.')> Datos de login incorrectos");
+                    IsIdle = true;
+                    IsLoading = false;
+                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("~(>-_-)> Error: " + ex.Message);
+
+
+                IsIdle = true;
+                IsLoading = false;
             }
 
-            IsLoading = false;
+            //IsLoading = false;
+            //IsBusy = true;
         }
 
         private async void InicializarDatos()
@@ -113,6 +142,7 @@ namespace Clicar.ViewModels
 
             Preferences.Set("Token", loginResponse.Mensaje);
             Preferences.Set("Correo", Usuario);
+            Preferences.Set("Clave", Clave);
 
             await MainInstance.DataService.Insert<Maestro>(loginResponse.Elemento);
             var maestroFromBD = await MainInstance.DataService.GetMaestro();
@@ -185,14 +215,13 @@ namespace Clicar.ViewModels
                 Debug.WriteLine("~(>-_-)> Error" + ex.Message);
             }
 
-            IsLoading = false;
-
+            //IsLoading = false;
+            //IsBusy = true;
         }
 
         private async void GetClosestSucursal()
         {
             IsLoading = true;
-
 
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
@@ -244,7 +273,8 @@ namespace Clicar.ViewModels
                 Debug.WriteLine("~(>-_-)> Error closest succ " + ex.Message);
             }
 
-            IsLoading = false;
+            //IsBusy = true;
+            //IsLoading = false;
         }
 
         private async Task<Location> GetLocation()
@@ -403,6 +433,7 @@ namespace Clicar.ViewModels
                 Debug.WriteLine("~(>-_-)> Error" + ex.Message);
             }
 
+            IsIdle = true;
             IsLoading = false;
         }
 

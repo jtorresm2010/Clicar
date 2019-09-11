@@ -1,4 +1,5 @@
-﻿using Plugin.Fingerprint;
+﻿using Clicar.ViewModels;
+using Plugin.Fingerprint;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,12 @@ namespace Clicar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginView : ContentPage
     {
+
+        MainViewModel MainInstance;
         public LoginView()
         {
             InitializeComponent();
+            MainInstance = MainViewModel.GetInstance();
         }
         public void ShowPass(object sender, EventArgs args) //Intercambia el entry de contraseña entre texto visible y protegido
         {
@@ -43,6 +47,9 @@ namespace Clicar.Views
 
         private async void PasswordRecoveryCommand(object sender, EventArgs e)
         {
+            if (!MainInstance.Login.IsIdle)
+                return;
+
             UsuarioEntry.FontFamily = "OpenSans-Bold";
             Console.WriteLine("Fuente actual: " + UsuarioEntry.FontFamily.ToString());
             var popup = PopupNavigation.Instance;
@@ -53,19 +60,11 @@ namespace Clicar.Views
 
         private async void FingerprintCommand(object sender, EventArgs e)
         {
+            if (!MainInstance.Login.IsIdle)
+                return;
 
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new FingerPrintPopupView());
-
-
-
-
-        }
-        
-        private void LoginCommand(object sender, EventArgs e)
-        {
-            Debug.WriteLine("Accion login codebehind <('_'<)");
-            //Application.Current.MainPage = new ConfigView();
         }
     }
 }

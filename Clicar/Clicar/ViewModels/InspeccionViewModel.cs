@@ -96,7 +96,7 @@ namespace Clicar.ViewModels
                     //asignar items a cada area
                     var listaItems =
                         from itemInspeccion in ListaItems
-                        where itemInspeccion.ITINS_AINSP_ID == area.AINSP_ID// && itemInspeccion.ITINS_ACTIVO == true
+                        where itemInspeccion.ITINS_AINSP_ID == area.AINSP_ID && itemInspeccion.ITINS_ACTIVO == true
                         select itemInspeccion;
 
                     bool isImageSet = false;

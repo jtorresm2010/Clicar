@@ -46,7 +46,7 @@
                         
                         <!--Usuario, contraseña y recordatorio-->
                         <StackLayout 
-                            Spacing="10"
+                            Spacing="8"
                             VerticalOptions="Center">
                             
                             <!--Texto Bienvenida-->
@@ -122,6 +122,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Image  
+                                    Opacity="0.6"
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="CenterAndExpand"
@@ -177,25 +178,34 @@
                             </Grid>
 
                             <!--recuperar pass-->
-                            <Label
-                                HorizontalOptions="CenterAndExpand"
-                                Text="{i18n:Translate PasswordRecovery}"
-                                TextColor="{StaticResource BaseOrange}"
-                                TextDecorations="Underline"
-                                FontSize="12"
-                                FontFamily="{StaticResource RegularFontOpenSans}">
 
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PasswordRecoveryCommand" NumberOfTapsRequired="1" />
-                                </Label.GestureRecognizers>
-                            </Label>
+                            <StackLayout
+                                HeightRequest="25"
+                                HorizontalOptions="CenterAndExpand">
+                                
+                                <Label
+                                    Text="{i18n:Translate PasswordRecovery}"
+                                    TextColor="{StaticResource BaseOrange}"
+                                    TextDecorations="Underline"
+                                    FontSize="12"
+                                    FontFamily="{StaticResource RegularFontOpenSans}">
+
+                                </Label>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PasswordRecoveryCommand" NumberOfTapsRequired="1" />
+                            </StackLayout.GestureRecognizers>
+                            </StackLayout>
                             
-                        </StackLayout>
-
-                        <ActivityIndicator 
+                            <!--Loading icon-->
+                            <ActivityIndicator 
+                            Margin="0"
                             HeightRequest="10"
                             Color="{StaticResource BaseGreen}" 
                             IsRunning="{Binding IsLoading}" />
+                            
+                            
+                        </StackLayout>
+
 
                         <!--Botones-->
                         <StackLayout
