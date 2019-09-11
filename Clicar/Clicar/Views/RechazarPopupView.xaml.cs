@@ -1,5 +1,7 @@
 ﻿using Clicar.Models;
 using Clicar.ViewModels;
+using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -27,6 +29,7 @@ namespace Clicar.Views
 
         public RechazarPopupView()
         {
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
             MainInstance = MainViewModel.GetInstance();
             

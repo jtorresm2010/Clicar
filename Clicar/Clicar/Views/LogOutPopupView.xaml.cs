@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
+using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ namespace Clicar.Views
     {
         public LogOutPopupView()
         {
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
         }
     }

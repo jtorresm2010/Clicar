@@ -1,4 +1,6 @@
-﻿using Plugin.Fingerprint;
+﻿using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
+using Plugin.Fingerprint;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -17,6 +19,7 @@ namespace Clicar.Views
     {
         public FingerPrintPopupView()
         {
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
         }
 

@@ -1,4 +1,6 @@
 ﻿using Clicar.Utils;
+using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,7 @@ namespace Clicar.Views
     {
         public DetalleInspeccionView()
         {
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
             instance = this;
             

@@ -11,6 +11,8 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using Clicar.ViewModels;
 using Clicar.Utils;
+using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
 
 namespace Clicar.Views
 {
@@ -23,7 +25,7 @@ namespace Clicar.Views
         {
             InitializeComponent();
 
-
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             instance = this;
 
             //var mainInstance = MainViewModel.GetInstance();

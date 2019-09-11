@@ -1,4 +1,6 @@
 ﻿using Clicar.Utils;
+using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,7 @@ namespace Clicar.Views
 
         private void FinalizarCommand(object sender, EventArgs e)
         {
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             Navigation.PushAsync(new ReportePreliminarView());
         }
     }

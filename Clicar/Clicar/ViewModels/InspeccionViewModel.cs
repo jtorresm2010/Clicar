@@ -36,7 +36,7 @@ namespace Clicar.ViewModels
 
 
         #region Propiedades
-
+        public bool IsBusy { get; set; }
         public List<AreasInspeccion> AreasInspeccionDB
         {
             get { return areasInspeccionDB; }
@@ -62,7 +62,9 @@ namespace Clicar.ViewModels
             MainInstance = MainViewModel.GetInstance();
             CurrentIteration = 0;
 
-            Inicializar();
+            IsBusy = false;
+
+            InicializarColores();
 
             CrearListaCompuesta();
 
@@ -106,11 +108,11 @@ namespace Clicar.ViewModels
                     new AccordionItem
                             {
                                 AINSP_ACTIVO = area.AINSP_ACTIVO,
-                                AINSP_DESCRIPCION = area.AINSP_DESCRIPCION,
+                                AINSP_DESCRIPCION = $"{area.AINSP_ORDEN_APP}\t\t{area.AINSP_DESCRIPCION}",
                                 AINSP_ID = area.AINSP_ID,
                                 AINSP_ORDEN_APP = area.AINSP_ORDEN_APP,
                                 AINSP_PAIS_ID = area.AINSP_PAIS_ID,
-                                Image = "MenuNum" + area.AINSP_ORDEN_APP,
+                                //Image = "MenuNum" + area.AINSP_ORDEN_APP,
 
                                 Items = listaItems.ToList(),
 
@@ -124,32 +126,13 @@ namespace Clicar.ViewModels
 
         }
 
-        public void Inicializar()
+        public void InicializarColores()
         {
             baseGreyLight = (Color)Application.Current.Resources["BaseGreyLight"];
             baseOrange = (Color)Application.Current.Resources["BaseOrange"];
             baseGreen = (Color)Application.Current.Resources["BaseGreen"];
 
         }
-
-        //public void AccordionCounter()
-        //{
-        //    //var listIteration = new List<ItemInspeccion>();
-
-        //    //var areasInspeccion = new ListaAreasInspeccion().GetListaAreas().Count;
-
-        //    //var ilistIteration = ItemList.Select(ItemInspeccion => ItemInspeccion.Nombre);
-
-        //    //// Filtra la lista dependiendo de cual iteracion del menu acordion principal se esta mostrando
-        //    //var filteringQuery =
-        //    //    from itemInspeccion in ItemList
-        //    //    where itemInspeccion.Area == menuIndex.ToString()
-        //    //    select itemInspeccion;
-
-        //    //this.ItemsInspeccion = new ObservableCollection<ItemInspeccion>(filteringQuery);
-
-        //    menuIndex++;
-        //}
 
         #region Icommands
         public ICommand ICommandNext
@@ -292,6 +275,11 @@ namespace Clicar.ViewModels
         }
         private async void EditarDetalleCommand(object parameter)
         {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
             Console.WriteLine("(>'.')>-----------" + ((ItemsAreasInspeccion)parameter).ITINS_DESCRIPCION);
 
 
@@ -314,6 +302,8 @@ namespace Clicar.ViewModels
 
             //var instance = InspeccionView.GetInstance();
             //await instance.Navigation.PushAsync(new EditarDetalleView());
+
+            IsBusy = false;
         }
     }
 }

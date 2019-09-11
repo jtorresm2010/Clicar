@@ -1,9 +1,14 @@
 ﻿using Clicar.Models;
+using GalaSoft.MvvmLight.Command;
+using Plugin.Media;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Clicar.ViewModels
 {
@@ -19,6 +24,7 @@ namespace Clicar.ViewModels
         private ObservableCollection<ItemsdetalleinspeccionDB> itemsDetalle;
         private bool needImage;
         private bool damageInfo;
+        private ImageSource image;
 
 
 
@@ -28,7 +34,13 @@ namespace Clicar.ViewModels
 
 
 
-        public bool NeedImage
+
+        public ImageSource CurrentImage
+        {
+            get { return image; }
+            set { SetValue(ref image, value); }
+        }
+     public bool NeedImage
         {
             get { return needImage; }
             set { SetValue(ref needImage, value); }
@@ -73,13 +85,16 @@ namespace Clicar.ViewModels
         {
             MainInstance = MainViewModel.GetInstance();
 
-            GetPickerItems();
+            CurrentImage = ImageSource.FromFile("camara_select_foto");
+
+
+            //GetPickerItems();
         }
 
-        private async void GetPickerItems()
-        {
-            ItemsDetalle = new ObservableCollection<ItemsdetalleinspeccionDB>(await MainInstance.DataService.GetAllItemsDetalle());
-        }
+        //private async void GetPickerItems()
+        //{
+        //    ItemsDetalle = new ObservableCollection<ItemsdetalleinspeccionDB>(await MainInstance.DataService.GetAllItemsDetalle());
+        //}
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -107,9 +122,65 @@ namespace Clicar.ViewModels
 
         }
 
+        #region ICommands
+        public ICommand TakePictureICommand
+        {
+            get
+            {
+                return new RelayCommand(TakePictureCommand);
+            }
+        }
+        public ICommand OpenGalleryICommand
+        {
+            get
+            {
+                return new RelayCommand(OpenGalleryCommand);
+            }
+        }
+        #endregion
+
+        private async void OpenGalleryCommand()
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                Debug.WriteLine("Galeria no Disponible Q(-.-Q)~");
+                return;
+            }
+
+            var photo = await CrossMedia.Current.PickPhotoAsync();
+
+            if (photo == null)
+                return;
 
 
+            Debug.WriteLine("Ruta de la imagen: " + photo.Path);
 
+            CurrentImage = ImageSource.FromFile(photo.Path);
+        }
 
+        private async void TakePictureCommand()
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                Debug.WriteLine("Camara no Disponible Q(-.-Q)~");
+                return;
+            }
+
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                Directory = "Clicar",
+                Name = $"{currentItem.ITINS_ID}test.jpg"
+            });
+
+            if (file == null)
+                return;
+
+            Debug.WriteLine($"~(>'.')> {file.Path}");
+            CurrentImage = ImageSource.FromFile(file.Path);
+        }
     }
 }

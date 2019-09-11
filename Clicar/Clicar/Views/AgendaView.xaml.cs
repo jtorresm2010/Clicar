@@ -7,6 +7,8 @@ using Xamarin.Forms.Xaml;
 using Clicar.Utils;
 using Clicar.ViewModels;
 using System.Diagnostics;
+using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
 
 namespace Clicar.Views
 {
@@ -16,6 +18,7 @@ namespace Clicar.Views
         public AgendaView()
         {
             InitializeComponent();
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
         }
 
         protected override void OnAppearing()

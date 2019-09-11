@@ -1,4 +1,6 @@
 ﻿using Clicar.ViewModels;
+using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
 using Plugin.Fingerprint;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -20,6 +22,7 @@ namespace Clicar.Views
         MainViewModel MainInstance;
         public LoginView()
         {
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
             MainInstance = MainViewModel.GetInstance();
         }

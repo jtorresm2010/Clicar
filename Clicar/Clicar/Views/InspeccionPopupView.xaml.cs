@@ -1,4 +1,6 @@
 ﻿using Clicar.ViewModels;
+using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -13,6 +15,7 @@ namespace Clicar.Views
 
         public InspeccionPopupView()
         {
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
             MainInstance = MainViewModel.GetInstance();
         }

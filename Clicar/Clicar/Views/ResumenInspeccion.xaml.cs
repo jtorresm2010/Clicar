@@ -1,4 +1,6 @@
 ﻿using Clicar.Utils;
+using Plugin.DeviceOrientation;
+using Plugin.DeviceOrientation.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ namespace Clicar.Views
     {
         public ResumenInspeccion()
         {
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
         }
 
