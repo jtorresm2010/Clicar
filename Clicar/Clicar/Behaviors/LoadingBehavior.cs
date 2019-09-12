@@ -10,8 +10,17 @@ namespace Clicar.Behaviors
 {
     class LoadingBehavior : Behavior<View>
     {
-
+        MainViewModel MainInstance;
         public static readonly BindableProperty ControlViewProperty = BindableProperty.Create(nameof(ControlView), typeof(View), typeof(LoginBehavior), null);
+        public static readonly BindableProperty RefreshingProperty = BindableProperty.Create(nameof(Refreshing), typeof(bool), typeof(LoginBehavior), false);
+        
+
+        public bool Refreshing
+        {
+            get { return (bool)GetValue(RefreshingProperty); }
+            set { SetValue(RefreshingProperty, value); }
+        }
+
 
         public View ControlView
         {
@@ -22,6 +31,8 @@ namespace Clicar.Behaviors
         TapGestureRecognizer itemTapped;
         protected override void OnAttachedTo(View sender)
         {
+            MainInstance = MainViewModel.GetInstance();
+
             base.OnAttachedTo(sender);
             itemTapped = new TapGestureRecognizer();
             ((Grid)sender).GestureRecognizers.Add(itemTapped);
@@ -63,6 +74,10 @@ namespace Clicar.Behaviors
         //Test de animacion para carga continua
         private async void RefreshCommand(object sender, EventArgs e)
         {
+            MainInstance.Agenda.LoadMainList();
+
+
+
             var parent = (Grid)sender;
             var imageF = (Image)parent.Children[0];
             var imageB = (Image)parent.Children[1];
@@ -88,9 +103,9 @@ namespace Clicar.Behaviors
                 );
 
             //sigue girando por los ciclos necesarios
-            for (int i = 0; i < 5; i++)
+            //for (int i = 0; i < 5; i++)
+            while(Refreshing)
             {
-
                 await Task.WhenAll(
                     imageF.RotateTo(imageF.Rotation + 180, intervalo, Easing.Linear),
                     imageB.RotateTo(imageB.Rotation + 180, intervalo, Easing.Linear)
@@ -108,11 +123,8 @@ namespace Clicar.Behaviors
 
 
             MainViewModel.GetInstance().Agenda.ListReady = true;
-            //((ScrollView)ControlView).IsEnabled = true;
             parent.IsEnabled = true;
 
-            //IsVibrating = false;
-            //ToggleVibration();
 
         }
 
@@ -122,45 +134,6 @@ namespace Clicar.Behaviors
             itemTapped.Tapped -= RefreshCommand;
         }
 
-        //private bool IsVibrating = true;
-        //private void ToggleVibration()
-        //{
-
-        //    if(IsVibrating)
-        //        try
-        //    {
-        //            // Use default vibration length
-        //            var duration = TimeSpan.FromSeconds(5);
-        //            Vibration.Vibrate(duration);
-
-
-
-                   
-        //    }
-        //    catch (FeatureNotSupportedException ex)
-        //    {
-        //        // Feature not supported on device
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Other error has occurred.
-        //    }
-        //    else
-        //    {
-        //        try
-        //        {
-        //            Vibration.Cancel();
-        //        }
-        //        catch (FeatureNotSupportedException ex)
-        //        {
-        //            // Feature not supported on device
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            // Other error has occurred.
-        //        }
-        //    }
-        //}
 
     }
 }

@@ -73,6 +73,7 @@
 
 
                 <Button
+                        Clicked="CancelCommand"
                         HorizontalOptions="End"
                         BackgroundColor="White"
                         Text="{i18n:Translate Cancel}"
@@ -84,6 +85,7 @@
                         WidthRequest="100"/>
 
                 <Button
+                        Clicked="LogoutCommand"
                         HorizontalOptions="End"
                         BackgroundColor="{StaticResource BaseOrange}"
                         Text="{i18n:Translate Exit}"

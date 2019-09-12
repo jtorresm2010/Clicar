@@ -3,6 +3,7 @@ using Clicar.Models;
 using Clicar.Services;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -40,6 +41,15 @@ namespace Clicar.ViewModels
         #endregion
 
 
+        private bool isRefreshing;
+
+        public bool IsRefreshing
+        {
+            get { return isRefreshing; }
+            set { SetValue(ref isRefreshing, value); }
+        }
+
+
 
         #region Propiedades
         public bool IsLoading
@@ -47,11 +57,35 @@ namespace Clicar.ViewModels
             get { return isLoading; }
             set { SetValue(ref isLoading, value); }
         }
+
+
+
+        private ObservableCollection<SolicitudesTerminada> listaCompletadosAPI;
+        public ObservableCollection<SolicitudesTerminada> ListaCompletadosAPI
+        {
+            get { return listaCompletadosAPI; }
+            set { SetValue(ref listaCompletadosAPI, value); }
+        }
+
+
+        private ObservableCollection<SolicitudesPendiente> listaPendientesAPI;
+        public ObservableCollection<SolicitudesPendiente> ListaPendientesAPI
+        {
+            get { return this.listaPendientesAPI; }
+            set { this.SetValue(ref this.listaPendientesAPI, value); }
+        }
+
+
+
+
         public ObservableCollection<Inspeccion> ListaCompletados
         {
             get { return listaCompletados; }
             set { SetValue(ref listaCompletados, value); }
         }
+
+
+
         public ObservableCollection<Inspeccion> ListaPendientes
         {
             get { return this.listaPendientes; }
@@ -105,7 +139,7 @@ namespace Clicar.ViewModels
         {
             MainInstance = MainViewModel.GetInstance();
             LoadMainList();
-            CargararListas();
+            //CargararListas();
             CargarAreasDeInspeccion();
             CurrentDate = GetFormattedDate();
 
@@ -135,8 +169,11 @@ namespace Clicar.ViewModels
             NombreMaestro = $"{Maestro.USU_NOMBRES} {Maestro.USU_APELLIDO_PATERNO}";
         }
 
-        private async void LoadMainList()
+        public async void LoadMainList()
         {
+            IsRefreshing = true;
+
+
             listaInpecciones = new ListaInspecciones().GetListaInspeccion();
 
             IsLoading = true;
@@ -162,7 +199,19 @@ namespace Clicar.ViewModels
 
                 if (AgendaResponse.Resultado)
                 {
-                    Debug.WriteLine($"~(>'.')> {AgendaResponse.Elemento}");
+                    var agendaResponse = JsonConvert.DeserializeObject<ElementoAgenda>(AgendaResponse.Elemento);
+
+                    //foreach(SolicitudesPendiente ele in agendaResponse.solicitudes_pendientes)
+                    //{
+                    //    Debug.WriteLine($"~(>'.')> {ele.SOINS_FECHA_CREACION}");
+                    //}
+
+                    //Debug.WriteLine($"~(>'.')> {AgendaResponse.Elemento}");
+
+
+                    CargarListas(agendaResponse.solicitudes_pendientes, agendaResponse.solicitudes_terminadas);
+
+
                 }
             }
             catch (Exception ex)
@@ -171,11 +220,25 @@ namespace Clicar.ViewModels
             }
 
             IsLoading = false;
-
+            IsRefreshing = false;
 
         }
 
-        public void CargararListas()
+        public void CargarListas(List<SolicitudesPendiente> pendientes, List<SolicitudesTerminada> terminadas)
+        {
+            ListaPendientesAPI = new ObservableCollection<SolicitudesPendiente>(pendientes);
+            PendienteCount = ListaPendientesAPI.Count;
+            PendientesHeight = PendienteCount * RowHeight;
+
+            ListaCompletadosAPI = new ObservableCollection<SolicitudesTerminada>(terminadas);
+            CompletadosCount = ListaCompletadosAPI.Count;
+            CompletadosHeight = CompletadosCount * RowHeight;
+
+            ListReady = true;
+        }
+
+
+        public void CargarListas()
         {
             var pendientesQuery =
                 from inspeccion in listaInpecciones
@@ -261,7 +324,7 @@ namespace Clicar.ViewModels
 
             listaInpecciones[listaInpecciones.IndexOf(inspeccion)] = InspeccionRechazada;
 
-            CargararListas();
+            CargarListas();
         }
     }
 }

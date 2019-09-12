@@ -25,7 +25,7 @@
                 Orientation="Horizontal" 
                 Spacing="0">
                 <Label
-                    Text="{Binding Patente}"
+                    Text="{Binding SOINS_CODIGO_CASO }"
                     HorizontalOptions="Start"
                     FontSize="16"
                     TextColor="{StaticResource BaseGrey}"

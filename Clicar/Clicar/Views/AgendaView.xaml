@@ -12,6 +12,7 @@
 
     <NavigationPage.TitleView>
         <StackLayout 
+            BindingContext="{Binding Agenda}"
             Margin="0"
             HorizontalOptions="FillAndExpand"
             Orientation="Horizontal" 
@@ -72,7 +73,8 @@
                 </Image>
                 <Grid.Behaviors>
                     <behavior:LoadingBehavior
-                         ControlView="{x:Reference Name=MainScrollView}"/>
+                        Refreshing="{Binding IsRefreshing}"
+                        ControlView="{x:Reference Name=MainScrollView}"/>
                 </Grid.Behaviors>
             </Grid>
 
@@ -157,16 +159,22 @@
                     </Frame.Behaviors>
 
                 </Frame>
-                <ListView
+                    <ListView
                     IsEnabled="{Binding ListReady}"
                     HeightRequest="{Binding PendientesHeight}"
-                    ItemsSource="{Binding ListaPendientes}"
+                    ItemsSource="{Binding ListaPendientesAPI}"
                     RowHeight="{Binding RowHeight}"
                     VerticalScrollBarVisibility="Never"
                     SelectionMode="None"
                     SeparatorVisibility="None"
-                    x:Name="PendientesListView"
-                    ItemTemplate="{StaticResource agendaTemplateSelector}" />
+                    x:Name="PendientesListView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <views:AgendaViewCellTemplate/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <!--ItemTemplate="{StaticResource agendaTemplateSelector}"--> 
 
                 <!--Lista de completados-->
                 <Frame 
@@ -191,13 +199,18 @@
                 <ListView
                     IsEnabled="{Binding ListReady}"
                     HeightRequest="{Binding CompletadosHeight}"
-                    ItemsSource="{Binding ListaCompletados}"
+                    ItemsSource="{Binding ListaCompletadosAPI}"
                     RowHeight="{Binding RowHeight}"
                     VerticalScrollBarVisibility="Never"
                     SelectionMode="None"
                     SeparatorVisibility="None"
-                    x:Name="CompletadosListView"
-                    ItemTemplate="{StaticResource agendaTemplateSelector}" />
+                    x:Name="CompletadosListView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <views:AgendaViewCellCompletado/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
             </StackLayout>
 

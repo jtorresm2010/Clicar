@@ -2,6 +2,7 @@
 using Clicar.ViewModels;
 using Plugin.DeviceOrientation;
 using Plugin.DeviceOrientation.Abstractions;
+using Rg.Plugins.Popup.Contracts;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -18,9 +19,12 @@ namespace Clicar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RechazarPopupView : PopupPage
     {
+        IPopupNavigation PopupInstance;
         MainViewModel MainInstance;
         public RechazarPopupView()
         {
+
+            PopupInstance = PopupNavigation.Instance;
             CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
             MainInstance = MainViewModel.GetInstance();
@@ -34,11 +38,11 @@ namespace Clicar.Views
             ButtonWorking = true;
 
             MainInstance.Agenda.RechazarInspeccion(MainInstance.DetalleInspeccion.CurrentInspeccion);
-            var popup = PopupNavigation.Instance;
             await Navigation.PopToRootAsync();
-            await popup.PopAsync();
+            await PopupInstance.PopAsync();
             ButtonWorking = false;
         }
+
 
     }
 }

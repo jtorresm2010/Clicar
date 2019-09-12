@@ -33,6 +33,7 @@ namespace Clicar.Views
 
             ActionBusy = true;
 
+
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new LogOutPopupView());
 
