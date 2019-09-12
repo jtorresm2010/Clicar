@@ -19,8 +19,8 @@ namespace Clicar
             mainViewModel.Login = new LoginViewModel();
 
             MainPage = new LoginView();
-            //MainPage = new ConfigView();
-           // MainPage = new NavigationPage(new AgendaView());
+            //MainPage = new CameraView();
+            //MainPage = new NavigationPage(new CameraView());
 
 
 

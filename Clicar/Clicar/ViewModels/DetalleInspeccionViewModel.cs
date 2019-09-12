@@ -12,11 +12,11 @@ namespace Clicar.ViewModels
     public class DetalleInspeccionViewModel : BaseViewModel
     {
         #region Variables
-        private Inspeccion currentInspeccion;
+        private SolicitudesPendiente currentInspeccion;
         #endregion
 
         #region Propiedades
-        public Inspeccion CurrentInspeccion
+        public SolicitudesPendiente CurrentInspeccion
         {
             get { return currentInspeccion; }
             set { SetValue(ref currentInspeccion, value); }

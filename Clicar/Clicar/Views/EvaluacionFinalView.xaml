@@ -115,7 +115,6 @@
                     <!--Botones-->
                     <StackLayout
                         VerticalOptions="EndAndExpand"
-                        BindingContext="{Binding Main, Source={StaticResource Locator}}"
                         Spacing="5"
                         Orientation="Horizontal"
                         Margin="8,30,8,0">

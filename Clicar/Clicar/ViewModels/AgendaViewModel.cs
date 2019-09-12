@@ -23,7 +23,7 @@ namespace Clicar.ViewModels
         #region Variables
         public List<AreasInspeccion> AreasInspeccion { get; set; }
         public List<ItemsAreasInspeccionDB> ItemsInspeccion { get; set; }
-        private List<Inspeccion> listaInpecciones;
+        private List<SolicitudesPendiente> listaInpecciones;
         private ObservableCollection<Inspeccion> listaPendientes;
         private ObservableCollection<Inspeccion> listaCompletados;
         private int PendienteCount;
@@ -174,7 +174,7 @@ namespace Clicar.ViewModels
             IsRefreshing = true;
 
 
-            listaInpecciones = new ListaInspecciones().GetListaInspeccion();
+            //listaInpecciones = new ListaInspecciones().GetListaInspeccion();
 
             IsLoading = true;
 
@@ -238,30 +238,30 @@ namespace Clicar.ViewModels
         }
 
 
-        public void CargarListas()
-        {
-            var pendientesQuery =
-                from inspeccion in listaInpecciones
-                where inspeccion.Estado != "Completado"
-                orderby inspeccion.Estado descending
-                select inspeccion;
+        //public void CargarListas()
+        //{
+        //    var pendientesQuery =
+        //        from inspeccion in listaInpecciones
+        //        where inspeccion.Estado != "Completado"
+        //        orderby inspeccion.Estado descending
+        //        select inspeccion;
 
-            ListaPendientes = new ObservableCollection<Inspeccion>(pendientesQuery);
-            PendienteCount = ListaPendientes.Count;
-            PendientesHeight = PendienteCount * RowHeight;
+        //    ListaPendientes = new ObservableCollection<Inspeccion>(pendientesQuery);
+        //    PendienteCount = ListaPendientes.Count;
+        //    PendientesHeight = PendienteCount * RowHeight;
 
 
-            var completadasQuery =
-                from inspeccion in listaInpecciones
-                where inspeccion.Estado == "Completado"
-                select inspeccion;
+        //    var completadasQuery =
+        //        from inspeccion in listaInpecciones
+        //        where inspeccion.Estado == "Completado"
+        //        select inspeccion;
 
-            ListaCompletados = new ObservableCollection<Inspeccion>(completadasQuery);
-            CompletadosCount = ListaCompletados.Count;
-            CompletadosHeight = CompletadosCount * RowHeight;
+        //    ListaCompletados = new ObservableCollection<Inspeccion>(completadasQuery);
+        //    CompletadosCount = ListaCompletados.Count;
+        //    CompletadosHeight = CompletadosCount * RowHeight;
 
-            ListReady = true;
-        }
+        //    ListReady = true;
+        //}
 
         public bool IsLastItem()
         {
@@ -282,7 +282,7 @@ namespace Clicar.ViewModels
         {
             get
             {
-                return new RelayCommand<Inspeccion>(inspeccion => ItemCompletadoCommand(inspeccion));
+                return new RelayCommand<SolicitudesTerminada>(inspeccion => ItemCompletadoCommand(inspeccion));
             }
 
         }
@@ -291,22 +291,22 @@ namespace Clicar.ViewModels
         {
             get
             {
-                return new RelayCommand<Inspeccion>(inspeccion => ItemTappedCommand(inspeccion));
+                return new RelayCommand<SolicitudesPendiente>(inspeccion => ItemTappedCommand(inspeccion));
             }
 
         }
 
-        private void ItemCompletadoCommand(Inspeccion inspeccion)
+        private void ItemCompletadoCommand(SolicitudesTerminada inspeccion)
         {
             
-            Debug.WriteLine($"~(>'.')> Inspeccion completada {inspeccion.Num_Inspeccion}");
+            Debug.WriteLine($"~(>'.')> Inspeccion completada {inspeccion.SOINS_RUT_CLIENTE}");
             //MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
             //MainInstance.DetalleInspeccion.CurrentInspeccion = inspeccion;
             //Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
         }
 
         private bool IsBusy = false;
-        private async void ItemTappedCommand(Inspeccion inspeccion)
+        private async void ItemTappedCommand(SolicitudesPendiente inspeccion)
         {
             if (IsBusy)
                 return;
@@ -317,14 +317,20 @@ namespace Clicar.ViewModels
             IsBusy = false;
         }
 
-        public void RechazarInspeccion(Inspeccion inspeccion)
+        public void RechazarInspeccion(SolicitudesPendiente inspeccion)
         {
-            var InspeccionRechazada = inspeccion;
-            InspeccionRechazada.Estado = "Rechazado";
+            Debug.WriteLine($"~(>'.')> rechazasda para {inspeccion.SOINS_RUT_CLIENTE}");
 
-            listaInpecciones[listaInpecciones.IndexOf(inspeccion)] = InspeccionRechazada;
+            //var InspeccionRechazada = inspeccion;
+            //InspeccionRechazada.Estado = "Rechazado";
 
-            CargarListas();
+            //listaInpecciones[listaInpecciones.IndexOf(inspeccion)] = InspeccionRechazada;
+
+            //CargarListas();
         }
+
+
+
+
     }
 }

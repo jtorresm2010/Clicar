@@ -1,5 +1,6 @@
 ﻿using Clicar.Interface;
 using Clicar.Models;
+using Clicar.ViewModels;
 using Plugin.DeviceOrientation;
 using Plugin.DeviceOrientation.Abstractions;
 using Plugin.Media;
@@ -23,12 +24,14 @@ namespace Clicar.Views
     {
         readonly SensorSpeed speed = SensorSpeed.Default;
         private bool ImageIsFlipping = false;
-        public ItemInspeccion iteminspeccion;
+        public Fotografia iteminspeccion;
+        MainViewModel MainInstance;
+
 
         public CameraView()
         {
             InitializeComponent();
-
+            MainInstance = MainViewModel.GetInstance();
             CameraPreview.PictureFinished += OnPictureFinished;
 
             InitializeAccelerometer();
@@ -96,21 +99,18 @@ namespace Clicar.Views
 
             if(CameraPreview.Orientation == Customs.Orientation.Portrait)
             {
-
                 await Task.WhenAll(
-                    OverlayImage.RotateTo(0, intervalo, Easing.CubicIn),
-                    GalleryButton.RotateTo(0, intervalo, Easing.CubicIn),
-                    CameraButton.RotateTo(0, intervalo, Easing.CubicIn)
+                    OverlayImage.RotateTo(0, intervalo, Easing.CubicIn)
+                    //GalleryButton.RotateTo(0, intervalo, Easing.CubicIn),
+                    //CameraButton.RotateTo(0, intervalo, Easing.CubicIn)
                     );
-
-
             }
             else
             {
                 await Task.WhenAll(
-                    OverlayImage.RotateTo(90, intervalo, Easing.CubicIn),
-                    GalleryButton.RotateTo(90, intervalo, Easing.CubicIn),
-                    CameraButton.RotateTo(90, intervalo, Easing.CubicIn)
+                    OverlayImage.RotateTo(90, intervalo, Easing.CubicIn)
+                    //GalleryButton.RotateTo(90, intervalo, Easing.CubicIn),
+                    //CameraButton.RotateTo(90, intervalo, Easing.CubicIn)
                     );
             }
 
@@ -120,13 +120,13 @@ namespace Clicar.Views
         protected async override void OnAppearing()
             {
 
-            NavigationPage.SetHasNavigationBar(this, false);
-        
+            //NavigationPage.SetHasNavigationBar(this, false);
+            
             
 
             bool hasCameraPermission = await GetCameraPermission();
 
-            testLabel.Text = "Imagen: " + iteminspeccion.Nombre;
+            //testLabel.Text = "Imagen: " + iteminspeccion.FOTO_DESCRIPCION;
 
             if (hasCameraPermission)
             {
@@ -142,11 +142,19 @@ namespace Clicar.Views
         }
 
         private async void OnCameraClicked(object sender, EventArgs e)
-
-
         {
+            try
+            {
+                CameraPreview.ObjectItem = iteminspeccion;
+
+            }
+            catch (Exception ea)
+            {
+                Debug.WriteLine($"~(>o.o)> {ea.Message}"); ;
+            }
+
             var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
-            
+            Debug.WriteLine($"~(>'.')> {DateTime.Today}");
             CameraPreview.CameraClick.Execute(this);
 
         }
@@ -199,5 +207,42 @@ namespace Clicar.Views
 
         }
 
+        private async void OnGalleryClicked(object sender, EventArgs e)
+        {
+
+            try
+            {
+                CameraPreview.ObjectItem = iteminspeccion;
+
+            }
+            catch (Exception ea)
+            {
+                Debug.WriteLine($"~(>o.o)> {ea.Message}"); ;
+            }
+
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                Debug.WriteLine("Galeria no Disponible Q(-.-Q)~");
+                return;
+            }
+
+            var photo = await CrossMedia.Current.PickPhotoAsync();
+
+            if (photo == null)
+                return;
+
+
+            Debug.WriteLine("Ruta de la imagen: " + photo.Path);
+
+            //CurrentImage = ImageSource.FromFile(photo.Path);
+
+
+        }
+
+
+
     }
+
 }

@@ -5,7 +5,6 @@
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
-		<integer>2</integer>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
@@ -52,15 +51,35 @@
 		<string>OpenSans-Regular.ttf</string>
 		<string>OpenSans-SemiBold.ttf</string>
 	</array>
-	<key>MinimumOSVersion</key>
-	<string>9.0</string>
 	<key>CFBundleLocalizations</key>
-    <array>
-        <string>es</string>
-    </array>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Permite obtener la sucursal mas cercana.</string>
+	<array>
+		<string>es</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Permite obtener la sucursal mas cercana.</string>
+	<key>MinimumOSVersion</key>
+	<string>8.0</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>www.genesys.cl</key>
+			<dict>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.0</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+
+
+
 </dict>
 </plist>

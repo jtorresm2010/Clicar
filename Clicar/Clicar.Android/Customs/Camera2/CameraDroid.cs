@@ -184,14 +184,12 @@ namespace Clicar.Droid.Customs.Camera2
             _previewSize = GetOptimalSize(map.GetOutputSizes(Class.FromType(typeof(SurfaceTexture))), width, height);
         }
 
-        public async void OpenCamera(int width, int height)
+        public void OpenCamera(int width, int height)
         {
             if (_context == null || OpeningCamera)
             {
                 return;
             }
-
-
 
             OpeningCamera = true;
 

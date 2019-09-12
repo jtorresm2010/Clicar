@@ -34,6 +34,17 @@ namespace Clicar.Customs
             declaringType: typeof(CameraPreview),
             defaultValue: Orientation.Portrait);
 
+        public static readonly BindableProperty ObjectItemProperty = BindableProperty.Create(
+            propertyName: "ObjectItem",
+            returnType: typeof(object),
+            declaringType: typeof(CameraPreview),
+            defaultValue: null);
+
+        public object ObjectItem
+        {
+            get { return (object)GetValue(ObjectItemProperty); }
+            set { SetValue(ObjectItemProperty, value); }
+        }
 
 
         public Orientation Orientation

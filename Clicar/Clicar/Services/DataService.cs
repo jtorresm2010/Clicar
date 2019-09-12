@@ -37,6 +37,10 @@ namespace Clicar.Services
             await connection.CreateTableAsync<Maestro>().ConfigureAwait(false);
             await connection.CreateTableAsync<Usuario>().ConfigureAwait(false);
             await connection.CreateTableAsync<AreasInspeccion>().ConfigureAwait(false);
+            await connection.CreateTableAsync<TipoFotografia>().ConfigureAwait(false);
+            await connection.CreateTableAsync<FotografiaDB>().ConfigureAwait(false);
+            await connection.CreateTableAsync<FotografiaLocal>().ConfigureAwait(false);
+            
         }
 
         #region Metodos Genericos
@@ -131,6 +135,50 @@ namespace Clicar.Services
 
             return query;
         }
+        public async Task<List<Fotografia>> GetImagenes()
+        {
+            var imgDB = await this.connection.QueryAsync<FotografiaDB>("select * from [FotografiaDB]");
+            var imgType = await this.connection.QueryAsync<TipoFotografia>("select * from [TipoFotografia]");
+
+            var array = imgDB.ToArray();
+            var list = array.Select(p => new Fotografia
+            {
+                FOTO_ID = p.FOTO_ID,
+                FOTO_TIPOF_ID = p.FOTO_TIPOF_ID,
+                FOTO_DESCRIPCION = p.FOTO_DESCRIPCION,
+                FOTO_REQUIERE_MARCO = p.FOTO_REQUIERE_MARCO,
+                //FOTO_MARCO = 
+                FOTO_ACTIVO = p.FOTO_ACTIVO,
+                FOTO_OBLIGATORIA = p.FOTO_OBLIGATORIA,
+                CLCAR_TIPO_FOTOGRAFIA = imgType.Where(a => a.TIPOF_ID == p.FOTO_TIPOF_ID).FirstOrDefault()
+
+            }).ToList();
+
+            return list;
+        }
+
+        public async Task<List<FotografiaDB>> GetImagenesDB()
+        {
+            var imgDB = await this.connection.QueryAsync<FotografiaDB>("select * from [FotografiaDB]");
+            
+            return imgDB;
+        }
+
+        public async Task<List<TipoFotografia>> GetTipoImagenes()
+        {
+            var imgDB = await this.connection.QueryAsync<TipoFotografia>("select * from [TipoFotografia]");
+
+            return imgDB;
+        }
+
+        public async Task<List<FotografiaLocal>> GetLocalImagenes()
+        {
+            var imgDB = await this.connection.QueryAsync<FotografiaLocal>("select * from [FotografiaLocal]");
+
+            return imgDB;
+        }
+
+
 
 
         #endregion

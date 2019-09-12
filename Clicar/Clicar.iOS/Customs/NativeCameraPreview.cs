@@ -16,6 +16,7 @@ namespace Clicar.iOS.Customs
         public event EventHandler<EventArgs> Tapped;
 
         public AVCaptureSession CaptureSession { get; private set; }
+        AVCaptureStillImageOutput stillImageOutput;
 
         public bool IsPreviewing { get; set; }
 
@@ -38,8 +39,21 @@ namespace Clicar.iOS.Customs
             OnTapped();
         }
 
+
+        async void TakePhotoButtonTapped(UIButton sender)
+        {
+            var videoConnection = stillImageOutput.ConnectionFromMediaType(AVMediaType.Video);
+            var sampleBuffer = await stillImageOutput.CaptureStillImageTaskAsync(videoConnection);
+
+            var jpegImageAsNsData = AVCaptureStillImageOutput.JpegStillToNSData(sampleBuffer);
+            var jpegAsByteArray = jpegImageAsNsData.ToArray();
+
+            // TODO: Send this to local storage or cloud storage such as Azure Storage.
+        }
+
         protected virtual void OnTapped()
         {
+
             var eventHandler = Tapped;
             if (eventHandler != null)
             {
@@ -64,6 +78,12 @@ namespace Clicar.iOS.Customs
             {
                 return;
             }
+
+            stillImageOutput = new AVCaptureStillImageOutput()
+            {
+                OutputSettings = new NSDictionary()
+            };
+
 
             NSError error;
             var input = new AVCaptureDeviceInput(device, out error);

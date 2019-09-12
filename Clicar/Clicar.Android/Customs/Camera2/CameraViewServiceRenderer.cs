@@ -13,12 +13,17 @@ using Android.Views;
 using Android.Graphics;
 using Java.IO;
 using Plugin.Media;
+using Clicar.ViewModels;
+using Clicar.Models;
+using Xamarin.Essentials;
 
 [assembly: ExportRenderer(typeof(CameraPreview), typeof(CameraViewServiceRenderer))]
 namespace Clicar.Droid.Customs.Camera2
 {
     public class CameraViewServiceRenderer : ViewRenderer<CameraPreview, CameraDroid>
     {
+
+        MainViewModel MainInstance;
         private CameraDroid _camera;
         private CameraPreview _currentElement;
         private readonly Context _context;
@@ -34,7 +39,7 @@ namespace Clicar.Droid.Customs.Camera2
         protected override void OnElementChanged(ElementChangedEventArgs<CameraPreview> e)
         {
             base.OnElementChanged(e);
-
+            MainInstance = MainViewModel.GetInstance();
             _camera = new CameraDroid(Context);
 
             SetNativeControl(_camera);
@@ -53,7 +58,7 @@ namespace Clicar.Droid.Customs.Camera2
             _camera.LockFocus();
         }
 
-        private void OnPhoto(object sender, byte[] imgSource)
+        private async void OnPhoto(object sender, byte[] imgSource)
         {
             var path = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures);
 
@@ -72,11 +77,24 @@ namespace Clicar.Droid.Customs.Camera2
                 bitmapData = stream.ToArray();
             }
 
-            
+            //Preferences.Set("ImageNumber", "0000");
 
+            var numeroImagen = int.Parse(Preferences.Get("ImageNumber", "0000"));
 
-            System.IO.File.WriteAllBytes(path + "/Clicar/test002_" + this.Element.Orientation.ToString() + ".Jpeg", bitmapData);
+            var fullpath = $"{path}/Clicar/CLCR{numeroImagen + 1}_{this.Element.Orientation.ToString()}.Jpeg";
 
+            System.IO.File.WriteAllBytes(fullpath, bitmapData);
+
+            var numeriINc = numeroImagen + 1;
+            Preferences.Set("ImageNumber", numeriINc.ToString());
+
+            System.Console.WriteLine(fullpath);
+
+            if (this.Element.ObjectItem != null)
+            {
+                await MainInstance.DataService.Insert<FotografiaLocal>(new FotografiaLocal { LOCAL_IMAGERUTA = fullpath , ITEM_CORRESP = ((Fotografia)this.Element.ObjectItem).FOTO_ID });
+
+            }
 
             Device.BeginInvokeOnMainThread(() =>
             {

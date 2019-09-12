@@ -13,13 +13,17 @@ namespace Clicar.Models
         public int AINSP_ORDEN_APP { get; set; }
         public int AINSP_ACTIVO { get; set; }
         public int AINSP_PAIS_ID { get; set; }
-        public string Image { get; set; }
-        //public List<ItemsAreasInspeccionACC> Items { get; set; }
+
         public bool IsImageSet { get; set; }
 
 
+        private List<Fotografia> listaFotos;
 
-
+        public List<Fotografia> ListaFotos
+        {
+            get { return listaFotos; }
+            set { SetValue(ref listaFotos, value); }
+        }
 
         private List<ItemsAreasInspeccionACC> items;
 

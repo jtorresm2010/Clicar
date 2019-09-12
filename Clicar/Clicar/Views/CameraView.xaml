@@ -4,10 +4,34 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:Clicar.Customs"
+             xmlns:behavior="clr-namespace:Clicar.Behaviors"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
              mc:Ignorable="d"
              x:Class="Clicar.Views.CameraView">
+
+    <NavigationPage.TitleView>
+        <StackLayout 
+            Margin="0"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal" 
+            VerticalOptions="Center" 
+            Spacing="0">
+            <Image 
+                WidthRequest="100"
+                x:Name="TitleImage"
+                HorizontalOptions="EndAndExpand"
+                Source="clicar.png">
+                <Image.Behaviors>
+                    <behavior:TitleImageBehavior/>
+                </Image.Behaviors>
+            </Image>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+
     <ContentPage.Content>
         <StackLayout
+            BindingContext="{Binding Inspeccion}"
             Spacing="0"
             BackgroundColor="White">
 
@@ -26,6 +50,7 @@
                 </Grid.ColumnDefinitions>
 
                 <controls:CameraPreview 
+                    ObjectItem="{Binding CurrentFoto}"
                     x:Name="CameraPreview" 
                     Grid.Row="0"
                     Grid.ColumnSpan="2" 
@@ -64,10 +89,12 @@
                 Orientation="Horizontal"
                 Spacing="20"
                 HorizontalOptions="CenterAndExpand"
-                HeightRequest="130"
+                HeightRequest="80"
                 Padding="0">
 
                 <Button
+                    
+                    Clicked="OnGalleryClicked"
                     VerticalOptions="CenterAndExpand"
                     x:Name="GalleryButton"
                     BackgroundColor="{StaticResource BaseOrange}"

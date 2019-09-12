@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:Clicar.Customs"
         xmlns:behavior="clr-namespace:Clicar.Behaviors"
         xmlns:i18n="clr-namespace:Clicar.Helpers"
+        BindingContext="{Binding Main, Source={StaticResource Locator}}" 
         mc:Ignorable="d"
         x:Class="Clicar.Views.ReportePreliminarView">
 
@@ -33,7 +34,8 @@
 
 
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding Reporte}">
             <StackLayout
                 Margin="0,8"
                 Spacing="0"

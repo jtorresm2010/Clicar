@@ -41,7 +41,8 @@ namespace Clicar.Templates
             var gridRow = 0;
             var gridCol = 0;
 
-            foreach (ItemsAreasInspeccionACC item in MainInstance.AreasInspeccion[MainInstance.CurrentIteration].Items)
+            int i = 0;
+            foreach (Fotografia foto in MainInstance.ListaImagenes)
             {
 
 
@@ -55,11 +56,11 @@ namespace Clicar.Templates
 
                 var tapAction = new TapGestureRecognizer();
 
-                MainInstance.currentItem = item;
+                //MainInstance.CurrentFoto = foto;
 
                 //Accion relacionada a tomar foto y su eventual parametro (objeto)
                 tapAction.SetBinding(TapGestureRecognizer.CommandProperty, "ICommandImageTap");
-                tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, "currentItem");
+                tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, $"ListaImagenes[{i}]");
 
 
                 imagen.GestureRecognizers.Add(tapAction);
@@ -73,7 +74,7 @@ namespace Clicar.Templates
                     HorizontalTextAlignment = TextAlignment.Center,
                     FontFamily = "{StaticResource RegularFontOpenSans}",
                     TextColor = (Color)Application.Current.Resources["BaseGrey"],
-                    Text = item.ITINS_DESCRIPCION
+                    Text = foto.FOTO_DESCRIPCION
                 }); ;
 
                 ImageGrid.Children.Add(layout, gridCol, gridRow);
@@ -84,6 +85,9 @@ namespace Clicar.Templates
                     gridCol = 0;
                     gridRow++;
                 }
+
+
+                i++;
             }
         }
     }

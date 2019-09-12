@@ -286,7 +286,7 @@
                         Grid.Row="6"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Mileage}"
+                        Text="{Binding CurrentInspeccion.SOINS_KILOMETRAJE}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -349,7 +349,7 @@
                         Grid.Row="9"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Client_Rut}"
+                        Text="{Binding CurrentInspeccion.SOINS_RUT_CLIENTE}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>

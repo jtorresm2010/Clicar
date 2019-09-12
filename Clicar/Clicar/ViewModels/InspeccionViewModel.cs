@@ -13,6 +13,9 @@ using Clicar.Views;
 using Xamarin.CustomControls;
 using Plugin.Permissions.Abstractions;
 using System.Diagnostics;
+using Clicar.Interface;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 
 namespace Clicar.ViewModels
 {
@@ -26,16 +29,30 @@ namespace Clicar.ViewModels
         private Color baseOrange;
         private Color baseGreen;
         private MainViewModel MainInstance;
-        private Inspeccion currentInspeccion;
+        private SolicitudesPendiente currentInspeccion;
         private ObservableCollection<AccordionItem> areasInspeccion;
         public object currentItem { get; set; }
         private List<AreasInspeccion> areasInspeccionDB;
+        private List<Fotografia> listaImagenes;
+        private Fotografia currentFoto;
         #endregion
 
 
 
 
+
+
         #region Propiedades
+        public List<Fotografia> ListaImagenes
+        {
+            get { return listaImagenes; }
+            set { SetValue(ref listaImagenes, value); }
+        }
+        public Fotografia CurrentFoto
+        {
+            get { return currentFoto; }
+            set { SetValue(ref currentFoto, value); }
+        }
         public bool IsBusy { get; set; }
         public List<AreasInspeccion> AreasInspeccionDB
         {
@@ -43,7 +60,7 @@ namespace Clicar.ViewModels
             set { SetValue(ref areasInspeccionDB, value); }
         }
         public int CurrentIteration { get; set; }
-        public Inspeccion CurrentInspeccion
+        public SolicitudesPendiente CurrentInspeccion
         {
             get { return currentInspeccion; }
             set { SetValue(ref currentInspeccion, value); }
@@ -80,6 +97,8 @@ namespace Clicar.ViewModels
             AreasInspeccionDB = await MainInstance.DataService.GetAreasInspeccion();
 
             var ListaItems = await MainInstance.DataService.GetItemsInspeccion();
+
+            ListaImagenes = await MainInstance.DataService.GetImagenes();
 
             IOrderedEnumerable<AreasInspeccion> areasOrdenadas;
 
@@ -120,14 +139,21 @@ namespace Clicar.ViewModels
 
                     bool isImageSet = false;
 
+                    var numeroAacc = area.AINSP_ORDEN_APP;
+
+                    if (numeroAacc == areasOrdenadas.Count<AreasInspeccion>())
+                    {
+                        numeroAacc = numeroAacc + 1;
+                    }
+
 
                     ListAccordionItems.AddRange(new[] {
                     new AccordionItem
                             {
                                 AINSP_ACTIVO = area.AINSP_ACTIVO,
-                                AINSP_DESCRIPCION = $"{area.AINSP_ORDEN_APP}\t\t{area.AINSP_DESCRIPCION}",
+                                AINSP_DESCRIPCION = $"{numeroAacc}.\t\t{area.AINSP_DESCRIPCION}",
                                 AINSP_ID = area.AINSP_ID,
-                                AINSP_ORDEN_APP = area.AINSP_ORDEN_APP,
+                                AINSP_ORDEN_APP = numeroAacc,
                                 AINSP_PAIS_ID = area.AINSP_PAIS_ID,
                                 //Image = "MenuNum" + area.AINSP_ORDEN_APP,
 
@@ -138,6 +164,31 @@ namespace Clicar.ViewModels
                     });
                 }
             }
+            var tiposImagen = await MainInstance.DataService.GetTipoImagenes();
+            var numeroGrupoImagen = ListAccordionItems.Count;
+            var tituloImagenBase = $"{numeroGrupoImagen}.\t\tFotografía";
+            var tituloImagen = "";
+
+            if(tiposImagen.Count <= 2)
+            {
+                tituloImagen = $"{tituloImagenBase} {tiposImagen[0].TIPOF_DESCRIPCION} y {tiposImagen[1].TIPOF_DESCRIPCION}";
+            }
+            else
+            {
+                tituloImagen = $"{tituloImagenBase}s";
+            }
+
+
+            var grupoImagenes = new AccordionItem
+            {
+                AINSP_DESCRIPCION = tituloImagen,
+                AINSP_ORDEN_APP = numeroGrupoImagen,
+                IsImageSet = true,
+                ListaFotos = ListaImagenes
+            };
+
+            ListAccordionItems.Insert(numeroGrupoImagen-1, grupoImagenes);
+
 
             AreasInspeccion = new ObservableCollection<AccordionItem>(ListAccordionItems);
 
@@ -168,14 +219,16 @@ namespace Clicar.ViewModels
             }
 
         }
+
         public ICommand ICommandImageTap
         {
             get
             {
-                return new RelayCommand<object>(parameter => CommandImageTap(parameter));
+                return new RelayCommand<object>(objeto => CommandImageTap(objeto));
             }
-
         }
+
+
         public ICommand EditarDetalleICommand
         {
             get
@@ -238,56 +291,35 @@ namespace Clicar.ViewModels
         private async void CommandImageTap(object parameter)
         {
 
-            //if (Device.RuntimePlatform == Device.iOS)
-            //{
-            //    Func<object> func = () =>
-            //    {
-            //        var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
-            //        return obj;
-            //    };
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                //Func<object> func = () =>
+                //{
+                //    var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
+                //    return obj;
+                //};
 
-            //    var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
-            //    {
-            //        Directory = "Clicar",
-            //        Name = "front_example.jpg",
-            //        PhotoSize = PhotoSize.Medium,
-            //        OverlayViewProvider = func,
-            //        DefaultCamera = CameraDevice.Rear,
-            //    });
-            //}
-            //else if (Device.RuntimePlatform == Device.Android)
-            //{
-            //    var item = (ItemInspeccion)parameter;
-            //    CameraView cameraView = new CameraView();
-            //    cameraView.iteminspeccion = item;
+                //var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
+                //{
+                //    Directory = "Clicar",
+                //    Name = "front_example.jpg",
+                //    PhotoSize = PhotoSize.Medium,
+                //    OverlayViewProvider = func,
+                //    DefaultCamera = CameraDevice.Rear,
+                //});
+            }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                var item = (Fotografia)parameter;
+                CameraView cameraView = new CameraView();
+                cameraView.iteminspeccion = item;
 
+                CurrentFoto = item;
 
-            //    var test = CrossDeviceOrientation.Current;
-            //    Console.WriteLine(test.CurrentOrientation.ToString());
+                var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
 
-            //    var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
-
-            //    await Application.Current.MainPage.Navigation.PushAsync(cameraView);
-
-
-
-
-
-            //}
-
-
-            var item = (ItemInspeccion)parameter;
-            CameraView cameraView = new CameraView();
-            cameraView.iteminspeccion = item;
-
-
-            var test = CrossDeviceOrientation.Current;
-            Console.WriteLine(test.CurrentOrientation.ToString());
-
-            var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
-
-            await Application.Current.MainPage.Navigation.PushAsync(cameraView);
-
+                await Application.Current.MainPage.Navigation.PushAsync(cameraView);
+            }
 
         }
         private async void EditarDetalleCommand(object parameter)

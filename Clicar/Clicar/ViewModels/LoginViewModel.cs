@@ -427,6 +427,72 @@ namespace Clicar.ViewModels
                         }
                     }
 
+
+                    //Obtener fotografias
+                    if (resp.Elemento.fotografias.Count > 0)
+                    {
+
+                        var currentImages = await MainInstance.DataService.GetImagenesDB();
+
+                        foreach (FotografiaDB foto in currentImages)
+                        {
+                            await MainInstance.DataService.Delete<FotografiaDB>(foto);
+                        }
+
+
+
+                        var array = resp.Elemento.fotografias.ToArray();
+                        var list = array.Select(p => new FotografiaDB
+                        {
+                            FOTO_ID = p.FOTO_ID,
+                            FOTO_TIPOF_ID = p.FOTO_TIPOF_ID,
+                            FOTO_DESCRIPCION = p.FOTO_DESCRIPCION,
+                            FOTO_REQUIERE_MARCO = p.FOTO_REQUIERE_MARCO,
+                            //FOTO_MARCO = 
+                            FOTO_ACTIVO = p.FOTO_ACTIVO,
+                            FOTO_OBLIGATORIA = p.FOTO_OBLIGATORIA
+                            //CLCAR_TIPO_FOTOGRAFIA = imgType.Where(a => a.TIPOF_ID == p.CLCAR_TIPO_FOTOGRAFIA_ID).FirstOrDefault()
+
+                        }).ToList();
+
+
+
+                        foreach(TipoFotografia tipo in resp.Elemento.tipo_fotografias)
+                        {
+                            await MainInstance.DataService.Insert<TipoFotografia>(tipo);
+                        }
+
+
+
+                        foreach (FotografiaDB fotoN in list)
+                        {
+
+                            Debug.WriteLine($"~(>'.')> uwu");
+
+
+                            //var newfotoDB = new FotografiaDB
+                            //{
+                            //    IDINSP_ID = newDetalle.IDINSP_ID,
+                            //    IDINSP_DEINSP_ID = newDetalle.IDINSP_DEINSP_ID,
+                            //    IDINSP_DESCRIPCION = newDetalle.IDINSP_DESCRIPCION,
+                            //    IDINSP_FECHA_CREACION = newDetalle.IDINSP_FECHA_CREACION
+                            //};
+
+
+
+                            try
+                            {
+                                await MainInstance.DataService.Insert<FotografiaDB>(fotoN);
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.WriteLine($"~(>.-.)> Error de Insert {e.Message}");
+                            }
+                        }
+                    }
+
+
+
                 }
             }
             catch (Exception ex)

@@ -24,4 +24,3 @@ namespace Clicar.iOS.Customs
         }
     }
 }
-}
