@@ -96,13 +96,23 @@ namespace Clicar.ViewModels
                 {
 
                     //asignar items a cada area
+
+                    //items que corresponden al area
                     var listaItems =
                         from itemInspeccion in ListaItems
                         where itemInspeccion.ITINS_AINSP_ID == area.AINSP_ID && itemInspeccion.ITINS_ACTIVO == true
                         select itemInspeccion;
 
-                    foreach(ItemsAreasInspeccionACC items in listaItems)
+                    //se ordenan segun "orden app"
+                    var itemsOrdenados =
+                           from itemInspeccion in listaItems
+                           orderby itemInspeccion.ITINS_ORDEN_APP ascending
+                           select itemInspeccion;
+
+
+                    foreach (ItemsAreasInspeccionACC items in itemsOrdenados)
                     {
+                        //se agrega al item correspondiente
                         items.CLCAR_AREA_INSPECCION = area;
                     }
 
