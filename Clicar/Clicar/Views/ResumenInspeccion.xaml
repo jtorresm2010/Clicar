@@ -238,16 +238,16 @@
 
                     <!--Boton-->
                     <Button
-                            Clicked="FinishCommand"
-                            HorizontalOptions="CenterAndExpand"
-                            BackgroundColor="{StaticResource BaseGreen}"
-                            Text="{i18n:Translate Close}"
-                            FontSize="14"
-                            FontFamily="{StaticResource BoldFontOpenSans}"
-                            TextColor="White"
-                            HeightRequest="40"
-                            WidthRequest="128"
-                            BorderRadius="20"/>
+                        Command="{Binding FinishICommand}"
+                        HorizontalOptions="CenterAndExpand"
+                        BackgroundColor="{StaticResource BaseGreen}"
+                        Text="{i18n:Translate Close}"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="White"
+                        HeightRequest="40"
+                        WidthRequest="128"
+                        BorderRadius="20"/>
 
                 </StackLayout>
 

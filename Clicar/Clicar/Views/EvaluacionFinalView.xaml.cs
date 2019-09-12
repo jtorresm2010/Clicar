@@ -18,12 +18,8 @@ namespace Clicar.Views
         public EvaluacionFinalView()
         {
             InitializeComponent();
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
         }
 
-        private void FinalizarCommand(object sender, EventArgs e)
-        {
-            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
-            Navigation.PushAsync(new ReportePreliminarView());
-        }
     }
 }

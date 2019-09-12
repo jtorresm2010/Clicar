@@ -121,6 +121,7 @@
                         Margin="8,30,8,0">
 
                         <Button
+                            Command="{Binding CancelarICommand}"
                             HorizontalOptions="EndAndExpand"
                             BackgroundColor="White"
                             Text="{i18n:Translate Cancel}"
@@ -131,7 +132,7 @@
                             WidthRequest="90"
                             BorderRadius="20"/>
                         <Button
-                            Clicked="FinalizarCommand"
+                            Command="{Binding FinalizarICommand}"
                             HorizontalOptions="EndAndExpand"
                             BackgroundColor="{StaticResource BaseGreen}"
                             Text="{i18n:Translate Conclude}"

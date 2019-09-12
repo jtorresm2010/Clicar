@@ -295,14 +295,14 @@
                         HorizontalOptions="FillAndExpand">
 
                             <Button
-                            Clicked="VerResumenCommand"
-                            BackgroundColor="{StaticResource BaseGreen}"
-                            Text="{i18n:Translate InspectionSummaryBtn}"
-                            FontSize="14"
-                            FontFamily="{StaticResource BoldFontOpenSans}"
-                            TextColor="White"
-                            HeightRequest="40"
-                            BorderRadius="20"/>
+                                Command="{Binding VerResumenICommand}"
+                                BackgroundColor="{StaticResource BaseGreen}"
+                                Text="{i18n:Translate InspectionSummaryBtn}"
+                                FontSize="14"
+                                FontFamily="{StaticResource BoldFontOpenSans}"
+                                TextColor="White"
+                                HeightRequest="40"
+                                BorderRadius="20"/>
                         </StackLayout>
 
                         <!--Firmas-->
