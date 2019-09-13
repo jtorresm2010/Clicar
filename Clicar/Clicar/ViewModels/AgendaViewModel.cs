@@ -21,9 +21,9 @@ namespace Clicar.ViewModels
         MainViewModel MainInstance;
 
         #region Variables
+        private bool IsBusy = false;
         public List<AreasInspeccion> AreasInspeccion { get; set; }
-        public List<ItemsAreasInspeccionDB> ItemsInspeccion { get; set; }
-        private List<SolicitudesPendiente> listaInpecciones;
+        private List<SolicitudesInspeccionPendiente> listaInpecciones;
         private ObservableCollection<Inspeccion> listaPendientes;
         private ObservableCollection<Inspeccion> listaCompletados;
         private int PendienteCount;
@@ -50,42 +50,30 @@ namespace Clicar.ViewModels
         }
 
 
-
         #region Propiedades
         public bool IsLoading
         {
             get { return isLoading; }
             set { SetValue(ref isLoading, value); }
         }
-
-
-
-        private ObservableCollection<SolicitudesTerminada> listaCompletadosAPI;
-        public ObservableCollection<SolicitudesTerminada> ListaCompletadosAPI
+        private ObservableCollection<SolicitudesInspeccionTerminada> listaCompletadosAPI;
+        public ObservableCollection<SolicitudesInspeccionTerminada> ListaCompletadosAPI
         {
             get { return listaCompletadosAPI; }
             set { SetValue(ref listaCompletadosAPI, value); }
         }
 
-
-        private ObservableCollection<SolicitudesPendiente> listaPendientesAPI;
-        public ObservableCollection<SolicitudesPendiente> ListaPendientesAPI
+        private ObservableCollection<SolicitudesInspeccionPendiente> listaPendientesAPI;
+        public ObservableCollection<SolicitudesInspeccionPendiente> ListaPendientesAPI
         {
             get { return this.listaPendientesAPI; }
             set { this.SetValue(ref this.listaPendientesAPI, value); }
         }
-
-
-
-
         public ObservableCollection<Inspeccion> ListaCompletados
         {
             get { return listaCompletados; }
             set { SetValue(ref listaCompletados, value); }
         }
-
-
-
         public ObservableCollection<Inspeccion> ListaPendientes
         {
             get { return this.listaPendientes; }
@@ -139,17 +127,9 @@ namespace Clicar.ViewModels
         {
             MainInstance = MainViewModel.GetInstance();
             LoadMainList();
-            //CargararListas();
-            CargarAreasDeInspeccion();
             CurrentDate = GetFormattedDate();
 
 
-        }
-
-        private async void CargarAreasDeInspeccion()
-        {
-            //AreasInspeccion = await MainInstance.DataService.GetAreasInspeccion();
-            //ItemsInspeccion = await MainInstance.DataService.GetItemsInspeccion();
         }
 
         private string GetFormattedDate()
@@ -191,7 +171,7 @@ namespace Clicar.ViewModels
 
             var response = await MainInstance.RestService.PostAsync<AgendaResponse>(MainInstance.Url, MainInstance.Prefix, $"{MainInstance.AgendaInspeccion}{parameter}");
 
-            Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.AgendaInspeccion}{parameter}");
+            Debug.WriteLine($"~(>'.')> {response.Message}");
 
             try
             {
@@ -199,18 +179,7 @@ namespace Clicar.ViewModels
 
                 if (AgendaResponse.Resultado)
                 {
-                    var agendaResponse = JsonConvert.DeserializeObject<ElementoAgenda>(AgendaResponse.Elemento);
-
-                    //foreach(SolicitudesPendiente ele in agendaResponse.solicitudes_pendientes)
-                    //{
-                    //    Debug.WriteLine($"~(>'.')> {ele.SOINS_FECHA_CREACION}");
-                    //}
-
-                    //Debug.WriteLine($"~(>'.')> {AgendaResponse.Elemento}");
-
-
-                    CargarListas(agendaResponse.solicitudes_pendientes, agendaResponse.solicitudes_terminadas);
-
+                    CargarListas(AgendaResponse.Elemento.solicitudes_inspeccion_pendiente, AgendaResponse.Elemento.solicitudes_inspeccion_terminada);
 
                 }
             }
@@ -224,44 +193,18 @@ namespace Clicar.ViewModels
 
         }
 
-        public void CargarListas(List<SolicitudesPendiente> pendientes, List<SolicitudesTerminada> terminadas)
+        public void CargarListas(List<SolicitudesInspeccionPendiente> pendientes, List<SolicitudesInspeccionTerminada> terminadas)
         {
-            ListaPendientesAPI = new ObservableCollection<SolicitudesPendiente>(pendientes);
+            ListaPendientesAPI = new ObservableCollection<SolicitudesInspeccionPendiente>(pendientes);
             PendienteCount = ListaPendientesAPI.Count;
             PendientesHeight = PendienteCount * RowHeight;
 
-            ListaCompletadosAPI = new ObservableCollection<SolicitudesTerminada>(terminadas);
+            ListaCompletadosAPI = new ObservableCollection<SolicitudesInspeccionTerminada>(terminadas);
             CompletadosCount = ListaCompletadosAPI.Count;
             CompletadosHeight = CompletadosCount * RowHeight;
 
             ListReady = true;
         }
-
-
-        //public void CargarListas()
-        //{
-        //    var pendientesQuery =
-        //        from inspeccion in listaInpecciones
-        //        where inspeccion.Estado != "Completado"
-        //        orderby inspeccion.Estado descending
-        //        select inspeccion;
-
-        //    ListaPendientes = new ObservableCollection<Inspeccion>(pendientesQuery);
-        //    PendienteCount = ListaPendientes.Count;
-        //    PendientesHeight = PendienteCount * RowHeight;
-
-
-        //    var completadasQuery =
-        //        from inspeccion in listaInpecciones
-        //        where inspeccion.Estado == "Completado"
-        //        select inspeccion;
-
-        //    ListaCompletados = new ObservableCollection<Inspeccion>(completadasQuery);
-        //    CompletadosCount = ListaCompletados.Count;
-        //    CompletadosHeight = CompletadosCount * RowHeight;
-
-        //    ListReady = true;
-        //}
 
         public bool IsLastItem()
         {
@@ -278,46 +221,53 @@ namespace Clicar.ViewModels
                 return false;
             }
         }
-        public ICommand ItemCompletadoICommand
-        {
-            get
-            {
-                return new RelayCommand<SolicitudesTerminada>(inspeccion => ItemCompletadoCommand(inspeccion));
-            }
 
-        }
 
+
+        #region ICommands
         public ICommand ItemTappedICommand
         {
             get
             {
-                return new RelayCommand<SolicitudesPendiente>(inspeccion => ItemTappedCommand(inspeccion));
+                return new RelayCommand<SolicitudesInspeccionPendiente>(inspeccion => ItemTappedCommand(inspeccion));
+            }
+
+        }
+        public ICommand ItemCompletadoICommand
+        {
+            get
+            {
+                return new RelayCommand<SolicitudesInspeccionTerminada>(inspeccion => ItemCompletadoCommand(inspeccion));
             }
 
         }
 
-        private void ItemCompletadoCommand(SolicitudesTerminada inspeccion)
+
+
+        #endregion
+
+
+
+
+        private void ItemCompletadoCommand(SolicitudesInspeccionTerminada inspeccion)
         {
-            
             Debug.WriteLine($"~(>'.')> Inspeccion completada {inspeccion.SOINS_RUT_CLIENTE}");
-            //MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
-            //MainInstance.DetalleInspeccion.CurrentInspeccion = inspeccion;
-            //Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
         }
 
-        private bool IsBusy = false;
-        private async void ItemTappedCommand(SolicitudesPendiente inspeccion)
+        private async void ItemTappedCommand(SolicitudesInspeccionPendiente inspeccion)
         {
             if (IsBusy)
                 return;
             IsBusy = true;
+
             MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
             MainInstance.DetalleInspeccion.CurrentInspeccion = inspeccion;
             await Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
+
             IsBusy = false;
         }
 
-        public void RechazarInspeccion(SolicitudesPendiente inspeccion)
+        public void RechazarInspeccion(SolicitudesInspeccionPendiente inspeccion)
         {
             Debug.WriteLine($"~(>'.')> rechazasda para {inspeccion.SOINS_RUT_CLIENTE}");
 
@@ -328,9 +278,6 @@ namespace Clicar.ViewModels
 
             //CargarListas();
         }
-
-
-
 
     }
 }

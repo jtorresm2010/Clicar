@@ -29,7 +29,7 @@ namespace Clicar.ViewModels
         private Color baseOrange;
         private Color baseGreen;
         private MainViewModel MainInstance;
-        private SolicitudesPendiente currentInspeccion;
+        private SolicitudesInspeccionPendiente currentInspeccion;
         private ObservableCollection<AccordionItem> areasInspeccion;
         public object currentItem { get; set; }
         private List<AreasInspeccion> areasInspeccionDB;
@@ -60,7 +60,7 @@ namespace Clicar.ViewModels
             set { SetValue(ref areasInspeccionDB, value); }
         }
         public int CurrentIteration { get; set; }
-        public SolicitudesPendiente CurrentInspeccion
+        public SolicitudesInspeccionPendiente CurrentInspeccion
         {
             get { return currentInspeccion; }
             set { SetValue(ref currentInspeccion, value); }
@@ -293,20 +293,20 @@ namespace Clicar.ViewModels
 
             if (Device.RuntimePlatform == Device.iOS)
             {
-                //Func<object> func = () =>
-                //{
-                //    var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
-                //    return obj;
-                //};
+                Func<object> func = () =>
+                {
+                    var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
+                    return obj;
+                };
 
-                //var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
-                //{
-                //    Directory = "Clicar",
-                //    Name = "front_example.jpg",
-                //    PhotoSize = PhotoSize.Medium,
-                //    OverlayViewProvider = func,
-                //    DefaultCamera = CameraDevice.Rear,
-                //});
+                var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
+                {
+                    Directory = "Clicar",
+                    Name = "front_example.jpg",
+                    PhotoSize = PhotoSize.Medium,
+                    OverlayViewProvider = func,
+                    DefaultCamera = CameraDevice.Rear,
+                });
             }
             else if (Device.RuntimePlatform == Device.Android)
             {

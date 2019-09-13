@@ -71,12 +71,13 @@ namespace Clicar.Behaviors
             parent.IsEnabled = true;
         }
 
+
+
+
         //Test de animacion para carga continua
         private async void RefreshCommand(object sender, EventArgs e)
         {
             MainInstance.Agenda.LoadMainList();
-
-
 
             var parent = (Grid)sender;
             var imageF = (Image)parent.Children[0];
@@ -104,7 +105,8 @@ namespace Clicar.Behaviors
 
             //sigue girando por los ciclos necesarios
             //for (int i = 0; i < 5; i++)
-            while(Refreshing)
+
+            while (Refreshing)
             {
                 await Task.WhenAll(
                     imageF.RotateTo(imageF.Rotation + 180, intervalo, Easing.Linear),

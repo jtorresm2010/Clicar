@@ -50,7 +50,7 @@
                         Spacing="0">
 
                         <Label
-                            Text="{Binding CurrentInspeccion.Patente}"
+                            Text="{Binding CurrentInspeccion.SOTAS_PATENTE}"
                             HorizontalOptions="Start"
                             FontSize="16"
                             TextColor="{StaticResource BGGrey}"
@@ -65,7 +65,7 @@
 
 
                         <Label
-                            Text="{Binding CurrentInspeccion.Model}"
+                            Text="{Binding CurrentInspeccion.MODELO}"
                             HorizontalOptions="Start"
                             FontSize="16"
                             TextColor="{StaticResource BGGrey}"
@@ -78,7 +78,7 @@
                         Spacing="0">
 
                         <Label
-                            Text="{Binding CurrentInspeccion.Brand}"
+                            Text="{Binding CurrentInspeccion.MARCA}"
                             HorizontalOptions="Start"
                             FontSize="14"
                             TextColor="{StaticResource BGGrey}"
@@ -93,7 +93,7 @@
 
 
                         <Label
-                            Text="{Binding CurrentInspeccion.Color}"
+                            Text="{Binding CurrentInspeccion.MACOL_DESCRIPCION}"
                             HorizontalOptions="Start"
                             FontSize="14"
                             TextColor="{StaticResource BGGrey}"
@@ -160,7 +160,7 @@
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Num_Inspeccion}"
+                        Text="{Binding CurrentInspeccion.SOINS_CODIGO_CASO}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -181,7 +181,7 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Brand}"
+                        Text="{Binding CurrentInspeccion.MARCA}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -202,7 +202,7 @@
                         Grid.Row="2"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Model}"
+                        Text="{Binding CurrentInspeccion.MODELO}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -223,7 +223,7 @@
                         Grid.Row="3"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Color}"
+                        Text="{Binding CurrentInspeccion.MACOL_DESCRIPCION}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -244,7 +244,7 @@
                         Grid.Row="4"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Year}"
+                        Text="{Binding CurrentInspeccion.MAE_ANIO}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -265,7 +265,7 @@
                         Grid.Row="5"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Version}"
+                        Text="{Binding CurrentInspeccion.VERSION_DESCRIPCION}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -307,7 +307,7 @@
                         Grid.Row="7"
                         Grid.Column="1"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Type}"
+                        Text="{Binding CurrentInspeccion.SUBTI_DESCRIPCION}"
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -323,16 +323,37 @@
                         FontSize="14"
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource BoldFontOpenSans}"/>
-                    <Label
-                        Margin="0,5"
-                        Grid.Row="8"
-                        Grid.Column="1"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{Binding CurrentInspeccion.Client_Name}"
-                        FontSize="14"
-                        TextColor="{StaticResource BaseGrey}"
-                        FontFamily="{StaticResource RegularFontOpenSans}"/>
 
+                            <StackLayout
+                            Grid.Row="8"
+                            Grid.Column="1"
+                        Spacing="0"
+                        Orientation="Horizontal">
+                                
+                            
+                        <Label
+                            Margin="0,5"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding CurrentInspeccion.SOTAS_NOMBRE}"
+                            FontSize="14"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        <Label
+                            Margin="0,5"
+                            HorizontalOptions="StartAndExpand"
+                            Text=" "
+                            FontSize="14"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+                        <Label
+                            Margin="0,5"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding CurrentInspeccion.SOTAS_APELLIDO}"
+                            FontSize="14"
+                            TextColor="{StaticResource BaseGrey}"
+                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            </StackLayout>      
                     <!--Rut Cliente-->
 
                     <Label

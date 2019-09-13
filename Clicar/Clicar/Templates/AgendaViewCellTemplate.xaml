@@ -25,7 +25,7 @@
                 Orientation="Horizontal" 
                 Spacing="0">
                 <Label
-                    Text="{Binding SOINS_CODIGO_CASO }"
+                    Text="{Binding SOTAS_PATENTE}"
                     HorizontalOptions="Start"
                     FontSize="16"
                     TextColor="{StaticResource BaseGrey}"
@@ -37,7 +37,7 @@
                     TextColor="{StaticResource BaseGrey}"
                     FontFamily="{StaticResource BoldFontOpenSans}"/>
                 <Label
-                    Text="{Binding Model}"
+                    Text="{Binding MODELO}"
                     HorizontalOptions="Start"
                     FontSize="16"
                     TextColor="{StaticResource DarkGrey}"
@@ -48,7 +48,7 @@
                 Orientation="Horizontal" 
                 Spacing="0">
                 <Label
-                    Text="{Binding Brand}"
+                    Text="{Binding MARCA}"
                     HorizontalOptions="Start"
                     FontSize="14"
                     TextColor="{StaticResource BaseGrey}"
@@ -60,7 +60,7 @@
                     TextColor="{StaticResource BaseGrey}"
                     FontFamily="{StaticResource RegularFontOpenSans}"/>
                 <Label
-                    Text="{Binding Color}"
+                    Text="{Binding MACOL_DESCRIPCION}"
                     HorizontalOptions="Start"
                     FontSize="14"
                     TextColor="{StaticResource BaseGrey}"
@@ -94,7 +94,7 @@
                     TextColor="{StaticResource BaseOrange}"
                     FontFamily="{StaticResource BoldFontOpenSans}"/>
                 <Label
-                    Text="{Binding Num_Inspeccion}"
+                    Text="{Binding SOINS_CODIGO_CASO}"
                     HorizontalOptions="Start"
                     FontSize="12"
                     TextColor="{StaticResource BaseOrange}"

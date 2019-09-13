@@ -29,13 +29,13 @@ namespace Clicar.Models
     {
         public bool Resultado { get; set; }
         public object Mensaje { get; set; }
-        public string Elemento { get; set; }
+        public ElementoAgenda Elemento { get; set; }
     }
 
     public partial class ElementoAgenda
     {
-        public List<SolicitudesPendiente> solicitudes_pendientes { get; set; }
-        public List<SolicitudesTerminada> solicitudes_terminadas { get; set; }
+        public List<SolicitudesInspeccionPendiente> solicitudes_inspeccion_pendiente { get; set; }
+        public List<SolicitudesInspeccionTerminada> solicitudes_inspeccion_terminada { get; set; }
     }
 
 
