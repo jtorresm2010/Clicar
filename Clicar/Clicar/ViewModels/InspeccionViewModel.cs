@@ -35,6 +35,7 @@ namespace Clicar.ViewModels
         public object currentItem { get; set; }
         private List<AreasInspeccion> areasInspeccionDB;
         private List<Fotografia> listaImagenes;
+        private List<Fotografia> listaImagenes2;
         private Fotografia currentFoto;
         private bool isLoading;
         #endregion
@@ -52,10 +53,24 @@ namespace Clicar.ViewModels
             get { return isLoading; }
             set { SetValue(ref isLoading, value); }
         }
+
+        private List<Fotografia> listaImagenesMain;
+
+        public List<Fotografia> ListaImagenesMain
+        {
+            get { return listaImagenesMain; }
+            set { SetValue(ref listaImagenesMain, value); }
+        }
+
         public List<Fotografia> ListaImagenes
         {
             get { return listaImagenes; }
             set { SetValue(ref listaImagenes, value); }
+        }
+        public List<Fotografia> ListaImagenes2
+        {
+            get { return listaImagenes2; }
+            set { SetValue(ref listaImagenes2, value); }
         }
         public Fotografia CurrentFoto
         {
@@ -83,6 +98,10 @@ namespace Clicar.ViewModels
 
         #endregion
 
+
+        public int CurrentImageSet { get; set; }
+
+
         public InspeccionViewModel()
         {
             MainInstance = MainViewModel.GetInstance();
@@ -90,7 +109,7 @@ namespace Clicar.ViewModels
             //IsLoading = true; 
             IsBusy = false;
 
-
+            CurrentImageSet = 0;
             MainInstance.DetalleItem = new DetalleItemViewModel();
 
             InicializarColores();
@@ -110,7 +129,7 @@ namespace Clicar.ViewModels
 
             var ListaItems = await MainInstance.DataService.GetItemsInspeccion();
 
-            ListaImagenes = await MainInstance.DataService.GetImagenes();
+            ListaImagenesMain = await MainInstance.DataService.GetImagenes();
 
             IOrderedEnumerable<AreasInspeccion> areasOrdenadas;
 
@@ -119,7 +138,6 @@ namespace Clicar.ViewModels
                 //Ordenar areas segun el valor en "Orden"
                 areasOrdenadas =
                     from areaInspeccion in AreasInspeccionDB
-                    where  areaInspeccion.AINSP_ACTIVO == 1
                     orderby areaInspeccion.AINSP_ORDEN_APP ascending
                     select areaInspeccion;
             
@@ -133,13 +151,16 @@ namespace Clicar.ViewModels
                     var listaItems =
                         from itemInspeccion in ListaItems
                         where itemInspeccion.ITINS_AINSP_ID == area.AINSP_ID && itemInspeccion.ITINS_ACTIVO == true
-                        orderby itemInspeccion.ITINS_ORDEN_APP ascending
                         select itemInspeccion;
 
                     //se ordenan segun "orden app"
+                    var itemsOrdenados =
+                           from itemInspeccion in listaItems
+                           orderby itemInspeccion.ITINS_ORDEN_APP ascending
+                           select itemInspeccion;
 
 
-                    foreach (ItemsAreasInspeccionACC items in listaItems)
+                    foreach (ItemsAreasInspeccionACC items in itemsOrdenados)
                     {
                         //se agrega al item correspondiente
                         items.CLCAR_AREA_INSPECCION = area;
@@ -168,7 +189,7 @@ namespace Clicar.ViewModels
                 }
             }
 
-            if(ListaImagenes.Count > 0)
+            if(ListaImagenesMain.Count > 0)
             {
                 var tiposImagen = await MainInstance.DataService.GetTipoImagenes();
                 var numeroGrupoImagen = ListAccordionItems.Count;
@@ -179,20 +200,48 @@ namespace Clicar.ViewModels
                     $"{tituloImagenBase} {tiposImagen[0].TIPOF_DESCRIPCION} y {tiposImagen[1].TIPOF_DESCRIPCION}" : 
                     $"{tituloImagenBase}s";
 
-                foreach(Fotografia foto in ListaImagenes)
+                foreach(Fotografia foto in ListaImagenesMain)
                 {
                     foto.CurrentImageSmall = ImageSource.FromFile("camara_select_foto");
                 }
 
+                var lista1 =
+                    from img1 in ListaImagenesMain
+                    where img1.FOTO_TIPOF_ID == 1
+                    select img1;
+
+                ListaImagenes = lista1.ToList();
+
                 var grupoImagenes = new AccordionItem
                 {
-                    AINSP_DESCRIPCION = tituloImagen,
+                    AINSP_DESCRIPCION = $"{numeroGrupoImagen}.\t\tFotografía {tiposImagen[0].TIPOF_DESCRIPCION}",
                     AINSP_ORDEN_APP = numeroGrupoImagen,
                     IsImageSet = true,
-                    ListaFotos = ListaImagenes
+                    ListaFotos = lista1.ToList()
                 };
 
                 ListAccordionItems.Insert(numeroGrupoImagen-1, grupoImagenes);
+
+                var lista2 =
+                    from img2 in ListaImagenesMain
+                    where img2.FOTO_TIPOF_ID == 2
+                    select img2;
+
+                ListaImagenes2 = lista2.ToList();
+
+                var grupoImagenes2 = new AccordionItem
+                {
+                    AINSP_DESCRIPCION = $"{numeroGrupoImagen+1}.\t\tFotografía {tiposImagen[1].TIPOF_DESCRIPCION}",
+                    AINSP_ORDEN_APP = numeroGrupoImagen,
+                    IsImageSet = true,
+                    ListaFotos = lista2.ToList()
+                };
+
+                ListAccordionItems.Insert(ListAccordionItems.Count - 1, grupoImagenes2);
+
+
+
+
             }
 
             AreasInspeccion = new ObservableCollection<AccordionItem>(ListAccordionItems);

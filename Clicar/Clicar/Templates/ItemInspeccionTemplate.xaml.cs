@@ -41,8 +41,12 @@ namespace Clicar.Templates
             var gridRow = 0;
             var gridCol = 0;
 
+
+            List<Fotografia> list = MainInstance.CurrentImageSet == 0 ? MainInstance.ListaImagenes : MainInstance.ListaImagenes2;
+            var listastr = MainInstance.CurrentImageSet == 0 ? "ListaImagenes" : "ListaImagenes2";
+
             int i = 0;
-            foreach (Fotografia foto in MainInstance.ListaImagenes)
+            foreach (Fotografia foto in list)
             {
 
 
@@ -56,7 +60,7 @@ namespace Clicar.Templates
                     Aspect = Aspect.AspectFill
                 };
 
-                imagen.SetBinding(Image.SourceProperty , $"ListaImagenes[{i}].CurrentImageSmall");
+                imagen.SetBinding(Image.SourceProperty , $"{listastr}[{i}].CurrentImageSmall");
 
                 Frame frame = new Frame
                 {
@@ -76,7 +80,7 @@ namespace Clicar.Templates
 
                 //Accion relacionada a tomar foto y su eventual parametro (objeto)
                 tapAction.SetBinding(TapGestureRecognizer.CommandProperty, "ICommandImageTap");
-                tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, $"ListaImagenes[{i}]");
+                tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, $"{listastr}[{i}]");
 
 
                 frame.GestureRecognizers.Add(tapAction);
@@ -105,6 +109,8 @@ namespace Clicar.Templates
 
                 i++;
             }
+
+            MainInstance.CurrentImageSet++;
         }
     }
 }
