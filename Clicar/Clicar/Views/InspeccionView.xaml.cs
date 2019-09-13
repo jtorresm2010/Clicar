@@ -20,50 +20,23 @@ namespace Clicar.Views
     public partial class InspeccionView : ContentPage
     {
 
-
+        MainViewModel MainInstance;
         public InspeccionView()
         {
+            MainInstance = MainViewModel.GetInstance();
             InitializeComponent();
 
             CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             instance = this;
-
-            //var mainInstance = MainViewModel.GetInstance();
-
-            //mainInstance.GetNewItemList();
-
-            //var areasInspeccion = new ListaAreasInspeccion().GetListaAreas();
-
-            ////Ordenar areas segun el valor en Orden
-            //var areasOrdenadas =
-            //    from areaInspeccion in areasInspeccion
-            //    orderby areaInspeccion.Orden ascending
-            //    select areaInspeccion;
-
-
-
-
-
-
-
-            ////Setea el nombre de las imagenes
-            //foreach(AreaInspeccion area in areasOrdenadas)
-            //{
-            //    area.Image = "MenuNum" + area.Orden;
-            //}
-
-            //Setea el dataset delacordion
-            //AccordionMenu.ItemsSource = areasOrdenadas.ToList<AreaInspeccion>();
-
-
-            //Abre  el primer panel
-            //var primerItem = (AccordionItemView)AccordionMenu.Children[0];
-            //primerItem.OpenPanel();
-            
-
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
+
+            MainInstance.Inspeccion.CrearListaCompuesta();
+        }
         private static InspeccionView instance;
 
         public static InspeccionView GetInstance()

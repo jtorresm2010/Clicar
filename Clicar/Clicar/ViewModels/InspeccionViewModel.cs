@@ -35,6 +35,7 @@ namespace Clicar.ViewModels
         private List<AreasInspeccion> areasInspeccionDB;
         private List<Fotografia> listaImagenes;
         private Fotografia currentFoto;
+        private bool isLoading;
         #endregion
 
 
@@ -42,7 +43,13 @@ namespace Clicar.ViewModels
 
 
 
+
         #region Propiedades
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set { SetValue(ref isLoading, value); }
+        }
         public List<Fotografia> ListaImagenes
         {
             get { return listaImagenes; }
@@ -78,20 +85,21 @@ namespace Clicar.ViewModels
         {
             MainInstance = MainViewModel.GetInstance();
             CurrentIteration = 0;
-
+            //IsLoading = true; 
             IsBusy = false;
 
-            InicializarColores();
-
-            CrearListaCompuesta();
 
             MainInstance.DetalleItem = new DetalleItemViewModel();
 
+            InicializarColores();
+            //CrearListaCompuesta();
 
         }
 
-        private async void CrearListaCompuesta()
+        public async void CrearListaCompuesta()
+
         {
+            this.IsLoading = true;
             ListAccordionItems = new List<AccordionItem>();
 
             AreasInspeccionDB = await MainInstance.DataService.GetAreasInspeccion();
@@ -139,12 +147,8 @@ namespace Clicar.ViewModels
 
                     bool isImageSet = false;
 
-                    var numeroAacc = area.AINSP_ORDEN_APP;
 
-                    if (numeroAacc == areasOrdenadas.Count<AreasInspeccion>())
-                    {
-                        numeroAacc = numeroAacc + 1;
-                    }
+                    int numeroAacc = area.AINSP_ORDEN_APP == areasOrdenadas.Count<AreasInspeccion>() ? area.AINSP_ORDEN_APP + 1 : area.AINSP_ORDEN_APP;
 
 
                     ListAccordionItems.AddRange(new[] {
@@ -155,43 +159,37 @@ namespace Clicar.ViewModels
                                 AINSP_ID = area.AINSP_ID,
                                 AINSP_ORDEN_APP = numeroAacc,
                                 AINSP_PAIS_ID = area.AINSP_PAIS_ID,
-                                //Image = "MenuNum" + area.AINSP_ORDEN_APP,
-
                                 Items = listaItems.ToList(),
-
                                 IsImageSet = isImageSet
                             }
                     });
                 }
             }
-            var tiposImagen = await MainInstance.DataService.GetTipoImagenes();
-            var numeroGrupoImagen = ListAccordionItems.Count;
-            var tituloImagenBase = $"{numeroGrupoImagen}.\t\tFotografía";
-            var tituloImagen = "";
 
-            if(tiposImagen.Count <= 2)
+            if(ListaImagenes.Count > 0)
             {
-                tituloImagen = $"{tituloImagenBase} {tiposImagen[0].TIPOF_DESCRIPCION} y {tiposImagen[1].TIPOF_DESCRIPCION}";
+                var tiposImagen = await MainInstance.DataService.GetTipoImagenes();
+                var numeroGrupoImagen = ListAccordionItems.Count;
+                var tituloImagenBase = $"{numeroGrupoImagen}.\t\tFotografía";
+                var tituloImagen = "";
+
+                tituloImagen = tiposImagen.Count <= 2 ? 
+                    $"{tituloImagenBase} {tiposImagen[0].TIPOF_DESCRIPCION} y {tiposImagen[1].TIPOF_DESCRIPCION}" : 
+                    $"{tituloImagenBase}s";
+
+                var grupoImagenes = new AccordionItem
+                {
+                    AINSP_DESCRIPCION = tituloImagen,
+                    AINSP_ORDEN_APP = numeroGrupoImagen,
+                    IsImageSet = true,
+                    ListaFotos = ListaImagenes
+                };
+
+                ListAccordionItems.Insert(numeroGrupoImagen-1, grupoImagenes);
             }
-            else
-            {
-                tituloImagen = $"{tituloImagenBase}s";
-            }
-
-
-            var grupoImagenes = new AccordionItem
-            {
-                AINSP_DESCRIPCION = tituloImagen,
-                AINSP_ORDEN_APP = numeroGrupoImagen,
-                IsImageSet = true,
-                ListaFotos = ListaImagenes
-            };
-
-            ListAccordionItems.Insert(numeroGrupoImagen-1, grupoImagenes);
-
 
             AreasInspeccion = new ObservableCollection<AccordionItem>(ListAccordionItems);
-
+            this.IsLoading = false;
         }
 
         public void InicializarColores()

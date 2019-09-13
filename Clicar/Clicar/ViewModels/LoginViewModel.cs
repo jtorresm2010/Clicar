@@ -392,7 +392,7 @@ namespace Clicar.ViewModels
                         }
                     }
 
-                    //Se obtienen detalles de lo items (daño)
+                    //Se obtienen detalles de los items (daño)
                     if (resp.Elemento.itemsdetalleinspeccion.Count > 0)
                     {
 

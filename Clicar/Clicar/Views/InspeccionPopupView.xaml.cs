@@ -34,15 +34,17 @@ namespace Clicar.Views
                 return;
             ButtonWorking = true;
 
-            MainInstance.Inspeccion = new InspeccionViewModel();
-
+            
             MainInstance.Inspeccion.CurrentInspeccion = MainInstance.DetalleInspeccion.CurrentInspeccion;
+            //MainInstance.Inspeccion.CrearListaCompuesta();
+            var popup = PopupNavigation.Instance;
+
 
             await Navigation.PushAsync(new InspeccionView());
-
             Navigation.RemovePage(Navigation.NavigationStack[1]);
-            var popup = PopupNavigation.Instance;
+
             await popup.PopAsync();
+
 
             ButtonWorking = false;
         }

@@ -34,7 +34,8 @@
         <ScrollView
             BindingContext="{Binding Inspeccion}"
             BackgroundColor="White">
-            <accordionview:AccordionRepeaterView
+            <StackLayout>
+                <accordionview:AccordionRepeaterView
                 ItemsSource="{Binding AreasInspeccion}"
                 x:Name="AccordionMenu"
                 KeepOnlyOneItemOpen="True" 
@@ -46,6 +47,7 @@
                     </DataTemplate>
                 </accordionview:AccordionRepeaterView.AccordionItemTemplate>
             </accordionview:AccordionRepeaterView>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

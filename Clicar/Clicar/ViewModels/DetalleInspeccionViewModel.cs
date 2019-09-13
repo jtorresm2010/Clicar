@@ -12,6 +12,7 @@ namespace Clicar.ViewModels
     public class DetalleInspeccionViewModel : BaseViewModel
     {
         #region Variables
+        MainViewModel MainInstance;
         private SolicitudesInspeccionPendiente currentInspeccion;
         #endregion
 
@@ -28,6 +29,9 @@ namespace Clicar.ViewModels
         public DetalleInspeccionViewModel()
         {
             ButtonWorking = false;
+
+            MainInstance = MainViewModel.GetInstance();
+
         }
 
 
@@ -64,6 +68,8 @@ namespace Clicar.ViewModels
             if (ButtonWorking)
                 return;
             ButtonWorking = true;
+
+            MainInstance.Inspeccion = new InspeccionViewModel();
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new InspeccionPopupView());
             ButtonWorking = false;
