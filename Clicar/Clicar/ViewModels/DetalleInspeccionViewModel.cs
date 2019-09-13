@@ -16,6 +16,32 @@ namespace Clicar.ViewModels
         private SolicitudesInspeccionPendiente currentInspeccion;
         #endregion
 
+        private bool automaticTransmission;
+
+        public bool AutomaticTransmission
+        {
+            get { return automaticTransmission; }
+            set { SetValue(ref automaticTransmission, value); }
+        }
+
+        private bool mechanicTransmission;
+
+        public bool MechanicTransmission
+        {
+            get { return mechanicTransmission; }
+            set { SetValue(ref mechanicTransmission, value); }
+        }
+
+
+        private string hiddenVin;
+
+        public string HiddenVin
+        {
+            get { return hiddenVin; }
+            set { SetValue(ref hiddenVin, value); }
+        }
+
+
         #region Propiedades
         public SolicitudesInspeccionPendiente CurrentInspeccion
         {
@@ -29,7 +55,6 @@ namespace Clicar.ViewModels
         public DetalleInspeccionViewModel()
         {
             ButtonWorking = false;
-
             MainInstance = MainViewModel.GetInstance();
 
         }

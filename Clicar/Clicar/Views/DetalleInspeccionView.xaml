@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i18n="clr-namespace:Clicar.Helpers"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
+             xmlns:local="clr-namespace:Clicar.Customs"
              BindingContext="{Binding Main, Source={StaticResource Locator}}" 
              mc:Ignorable="d"
              x:Class="Clicar.Views.DetalleInspeccionView">
@@ -375,7 +376,25 @@
                         TextColor="{StaticResource BaseGrey}"
                         FontFamily="{StaticResource RegularFontOpenSans}"/>
 
-                </Grid>
+                    <Label
+                        Margin="0,5"
+                        Grid.Row="10"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Text="VIN"
+                        FontSize="14"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource BoldFontOpenSans}"/>
+                    <Label
+                        Margin="0,5"
+                        Grid.Row="10"
+                        Grid.Column="1"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding HiddenVin}"
+                        TextColor="{StaticResource BaseGrey}"
+                        FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                        </Grid>
 
                     </StackLayout>
                     <StackLayout

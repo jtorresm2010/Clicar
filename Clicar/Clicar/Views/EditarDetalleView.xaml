@@ -98,7 +98,7 @@
                                 FontFamily="{StaticResource RegularFontOpenSans}"
                                 TextFontSize="12"
                                 Text="Malo" 
-                                
+                                IsChecked="{Binding StateMalo}"
                                 Color="{StaticResource BaseOrange}"/>
                 </input:RadioButtonGroupView>
                 </StackLayout>
@@ -114,30 +114,32 @@
                                 FontFamily="{StaticResource RegularFontOpenSans}"
                                 TextColor="{StaticResource BaseGrey}"/>
                             <input:RadioButtonGroupView 
-                        Orientation="Horizontal"
-                        Spacing="0">
+                                Orientation="Horizontal"
+                                Spacing="0">
                             <input:RadioButton 
-                        CircleColor="{StaticResource BaseGreyE}"
-                            WidthRequest="90"
-                            TextColor="{StaticResource BaseGrey}"
-                            FontFamily="{StaticResource RegularFontOpenSans}"
-                            TextFontSize="12"
-                            Text="Reparar" 
-                            Color="{StaticResource BaseOrange}"/>
+                                CircleColor="{StaticResource BaseGreyE}"
+                                WidthRequest="90"
+                                TextColor="{StaticResource BaseGrey}"
+                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                TextFontSize="12"
+                                Text="{Binding RepararTxt}" 
+                                Color="{StaticResource BaseOrange}"/>
                             <input:RadioButton
-                        CircleColor="{StaticResource BaseGreyE}"
-                        HorizontalOptions="StartAndExpand"
-                            TextColor="{StaticResource BaseGrey}"
-                            FontFamily="{StaticResource RegularFontOpenSans}"
-                            TextFontSize="12"
-                            Text="Sustituir" 
-                            Color="{StaticResource BaseOrange}"/>
+                                IsChecked="{Binding StateSustituir}"
+                                CircleColor="{StaticResource BaseGreyE}"
+                                HorizontalOptions="StartAndExpand"
+                                TextColor="{StaticResource BaseGrey}"
+                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                TextFontSize="12"
+                                Text="{Binding SustituirTxt}" 
+                                Color="{StaticResource BaseOrange}"/>
                 </input:RadioButtonGroupView>
                      
                 </StackLayout>
 
                 <!--Picker nivel de daño-->
                     <Frame
+                        
                         IsVisible="{Binding IsChecked, Source={x:Reference EstadoMalo}}"
                         Margin="0,20"
                         BackgroundColor="White"
@@ -163,6 +165,7 @@
                             <!--ItemsSource="{Binding ItemsDetalle}"
                                 ItemDisplayBinding="{Binding IDINSP_DESCRIPCION}"-->
                             <local:CustomPicker
+                                SelectedItem="{Binding NivelDanio}"
                                 x:Name="SucursalPicker"
                                 HeightRequest="40"
                                 Grid.Row="0"
@@ -201,6 +204,7 @@
                         BackgroundColor="{StaticResource BGGrey}"
                         Padding="0">
                         <local:CustomEditor
+                            Text="{Binding Comment}"
                             FontSize="12"
                             TextColor="{StaticResource BaseGrey}"
                             FontFamily="{StaticResource RegularFontOpenSans}"
@@ -231,6 +235,7 @@
                                 CornerRadius="0"
                                 BackgroundColor="{StaticResource BaseGrey63}">
                                 <Image
+                                    Aspect="AspectFill"
                                 Source="{Binding CurrentImage}"/>
 
                             </Frame>

@@ -1,12 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using Clicar.ViewModels;
+using Newtonsoft.Json;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Clicar.Models
 {
-    public partial class Fotografia
+    public partial class Fotografia : BaseViewModel
     {
         public int      FOTO_ID                 { get; set; }
         public int      FOTO_TIPOF_ID           { get; set; }
@@ -16,6 +18,26 @@ namespace Clicar.Models
         public bool     FOTO_ACTIVO             { get; set; }
         public bool     FOTO_OBLIGATORIA        { get; set; }
         public object   CLCAR_TIPO_FOTOGRAFIA   { get; set; }
+
+        private ImageSource currentImageBig;
+
+        public ImageSource CurrentImageBig
+        {
+            get { return currentImageBig; }
+            set { SetValue(ref currentImageBig, value); }
+        }
+
+        private ImageSource currentImageSmall;
+
+        public ImageSource CurrentImageSmall
+        {
+            get { return currentImageSmall; }
+            set { SetValue(ref currentImageSmall, value); }
+        }
+
+
+
+
     }
 
     [Table("FotografiaDB")]

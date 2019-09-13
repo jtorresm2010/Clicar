@@ -24,7 +24,9 @@ namespace Clicar.Views
     {
         readonly SensorSpeed speed = SensorSpeed.Default;
         private bool ImageIsFlipping = false;
-        public Fotografia iteminspeccion;
+
+        public Fotografia CurrentImageInFrame { get; set; }
+
         MainViewModel MainInstance;
 
 
@@ -126,7 +128,7 @@ namespace Clicar.Views
 
             bool hasCameraPermission = await GetCameraPermission();
 
-            //testLabel.Text = "Imagen: " + iteminspeccion.FOTO_DESCRIPCION;
+            testLabel.Text = "Imagen: " + CurrentImageInFrame.FOTO_DESCRIPCION;
 
             if (hasCameraPermission)
             {
@@ -145,7 +147,7 @@ namespace Clicar.Views
         {
             try
             {
-                CameraPreview.ObjectItem = iteminspeccion;
+                CameraPreview.ObjectItem = CurrentImageInFrame;
 
             }
             catch (Exception ea)
@@ -154,7 +156,7 @@ namespace Clicar.Views
             }
 
             var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
-            Debug.WriteLine($"~(>'.')> {DateTime.Today}");
+            
             CameraPreview.CameraClick.Execute(this);
 
         }
@@ -212,7 +214,7 @@ namespace Clicar.Views
 
             try
             {
-                CameraPreview.ObjectItem = iteminspeccion;
+                CameraPreview.ObjectItem = CurrentImageInFrame;
 
             }
             catch (Exception ea)
@@ -236,10 +238,18 @@ namespace Clicar.Views
 
             Debug.WriteLine("Ruta de la imagen: " + photo.Path);
 
-            //CurrentImage = ImageSource.FromFile(photo.Path);
+            CurrentImageInFrame.CurrentImageSmall = ImageSource.FromFile(photo.Path);
 
+            MainInstance.Inspeccion.AreasInspeccion[MainInstance.Inspeccion.AreasInspeccion.Count - 2].ListaFotos[MainInstance.Inspeccion.ListaImagenes.IndexOf(CurrentImageInFrame)] = CurrentImageInFrame;
 
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
+
+
+        //private ImageSource ReduceImage(ImageSource image)
+        //{
+        //    ImageSource imageSmall = ImageSource.FromResource;
+        //}
 
 
 

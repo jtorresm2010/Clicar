@@ -47,7 +47,7 @@
 
                     <StackLayout
                         BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"     
-                    Spacing="0">
+                        Spacing="0">
 
                     <Label
                         Text="{i18n:Translate PrelimReport}"
@@ -60,7 +60,7 @@
                         Spacing="0">
 
                             <Label
-                            Text="{Binding CurrentInspeccion.Patente}"
+                            Text="{Binding CurrentInspeccion.SOTAS_PATENTE}"
                             HorizontalOptions="Start"
                             FontSize="16"
                             TextColor="{StaticResource BGGrey}"
@@ -75,7 +75,7 @@
 
 
                             <Label
-                            Text="{Binding CurrentInspeccion.Model}"
+                            Text="{Binding CurrentInspeccion.MODELO}"
                             HorizontalOptions="Start"
                             FontSize="16"
                             TextColor="{StaticResource BGGrey}"
@@ -88,7 +88,7 @@
                         Spacing="0">
 
                             <Label
-                            Text="{Binding CurrentInspeccion.Brand}"
+                            Text="{Binding CurrentInspeccion.MARCA}"
                             HorizontalOptions="Start"
                             FontSize="14"
                             TextColor="{StaticResource BGGrey}"
@@ -103,7 +103,7 @@
 
 
                             <Label
-                            Text="{Binding CurrentInspeccion.Color}"
+                            Text="{Binding CurrentInspeccion.MACOL_DESCRIPCION}"
                             HorizontalOptions="Start"
                             FontSize="14"
                             TextColor="{StaticResource BGGrey}"
@@ -140,128 +140,128 @@
 
                                 <!--Hora Inicio-->
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{i18n:Translate StartTime}"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource BoldFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{i18n:Translate StartTime}"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"/>
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                HorizontalOptions="StartAndExpand"
-                                Text="00:25"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="00:25"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                                 <!--Hora Término-->
 
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{i18n:Translate EndTime}"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
+                                    Margin="0,5"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{i18n:Translate EndTime}"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
                                 FontFamily="{StaticResource BoldFontOpenSans}"/>
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                HorizontalOptions="StartAndExpand"
-                                Text="03:12"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="03:12"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                                 <!--Tiempo Inspección-->
 
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{i18n:Translate InspectionTime}"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource BoldFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{i18n:Translate InspectionTime}"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"/>
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="2"
-                                Grid.Column="1"
-                                HorizontalOptions="StartAndExpand"
-                                Text="02h56m"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="02h56m"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                                 <!--Tiempo Esperado-->
 
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="3"
-                                Grid.Column="0"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{i18n:Translate ExpectedTime}"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource BoldFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{i18n:Translate ExpectedTime}"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"/>
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="3"
-                                Grid.Column="1"
-                                HorizontalOptions="StartAndExpand"
-                                Text="00h20m"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="00h20m"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                                 <!--Record Actual-->
 
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="4"
-                                Grid.Column="0"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{i18n:Translate CurrentRecord}"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource BoldFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{i18n:Translate CurrentRecord}"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"/>
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="4"
-                                Grid.Column="1"
-                                HorizontalOptions="StartAndExpand"
-                                Text="00h19m"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="00h19m"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                                 <!--Tu media actual-->
 
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="5"
-                                Grid.Column="0"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{i18n:Translate CurrentMedian}"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource BoldFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{i18n:Translate CurrentMedian}"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource BoldFontOpenSans}"/>
                                 <Label
-                                Margin="0,5"
-                                Grid.Row="5"
-                                Grid.Column="1"
-                                HorizontalOptions="StartAndExpand"
-                                Text="00h13m"
-                                FontSize="14"
-                                TextColor="{StaticResource BaseGrey}"
-                                FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                    Margin="0,5"
+                                    Grid.Row="5"
+                                    Grid.Column="1"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="00h13m"
+                                    FontSize="14"
+                                    TextColor="{StaticResource BaseGrey}"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
 
 
 

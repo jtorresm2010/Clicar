@@ -22,6 +22,7 @@ namespace Clicar.ViewModels
     public class InspeccionViewModel : BaseViewModel
     {
         #region Variables
+
         private List<AccordionItem> ListAccordionItems;
         //private List<ItemsAreasInspeccionDB> ListaItems;
         //private List<ItemInspeccion> ItemList;
@@ -45,6 +46,7 @@ namespace Clicar.ViewModels
 
 
         #region Propiedades
+        public bool PageLoaded { get; set; }
         public bool IsLoading
         {
             get { return isLoading; }
@@ -97,9 +99,11 @@ namespace Clicar.ViewModels
         }
 
         public async void CrearListaCompuesta()
-
         {
-            this.IsLoading = true;
+            if (PageLoaded)
+                return;
+
+            IsLoading = true;
             ListAccordionItems = new List<AccordionItem>();
 
             AreasInspeccionDB = await MainInstance.DataService.GetAreasInspeccion();
@@ -115,6 +119,7 @@ namespace Clicar.ViewModels
                 //Ordenar areas segun el valor en "Orden"
                 areasOrdenadas =
                     from areaInspeccion in AreasInspeccionDB
+                    where  areaInspeccion.AINSP_ACTIVO == 1
                     orderby areaInspeccion.AINSP_ORDEN_APP ascending
                     select areaInspeccion;
             
@@ -128,16 +133,13 @@ namespace Clicar.ViewModels
                     var listaItems =
                         from itemInspeccion in ListaItems
                         where itemInspeccion.ITINS_AINSP_ID == area.AINSP_ID && itemInspeccion.ITINS_ACTIVO == true
+                        orderby itemInspeccion.ITINS_ORDEN_APP ascending
                         select itemInspeccion;
 
                     //se ordenan segun "orden app"
-                    var itemsOrdenados =
-                           from itemInspeccion in listaItems
-                           orderby itemInspeccion.ITINS_ORDEN_APP ascending
-                           select itemInspeccion;
 
 
-                    foreach (ItemsAreasInspeccionACC items in itemsOrdenados)
+                    foreach (ItemsAreasInspeccionACC items in listaItems)
                     {
                         //se agrega al item correspondiente
                         items.CLCAR_AREA_INSPECCION = area;
@@ -177,6 +179,11 @@ namespace Clicar.ViewModels
                     $"{tituloImagenBase} {tiposImagen[0].TIPOF_DESCRIPCION} y {tiposImagen[1].TIPOF_DESCRIPCION}" : 
                     $"{tituloImagenBase}s";
 
+                foreach(Fotografia foto in ListaImagenes)
+                {
+                    foto.CurrentImageSmall = ImageSource.FromFile("camara_select_foto");
+                }
+
                 var grupoImagenes = new AccordionItem
                 {
                     AINSP_DESCRIPCION = tituloImagen,
@@ -189,7 +196,8 @@ namespace Clicar.ViewModels
             }
 
             AreasInspeccion = new ObservableCollection<AccordionItem>(ListAccordionItems);
-            this.IsLoading = false;
+            IsLoading = false;
+            PageLoaded = true;
         }
 
         public void InicializarColores()
@@ -310,9 +318,9 @@ namespace Clicar.ViewModels
             {
                 var item = (Fotografia)parameter;
                 CameraView cameraView = new CameraView();
-                cameraView.iteminspeccion = item;
+                cameraView.CurrentImageInFrame = item;
 
-                CurrentFoto = item;
+                //CurrentFoto = item;
 
                 var resultsStor = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera);
 

@@ -31,6 +31,7 @@
             Margin="0,20">
 
             <Grid
+                ColumnSpacing="5"
                  BindingContext="{Binding Main.Inspeccion, Source={StaticResource Locator}}"
                  x:Name="ImageGrid"
                  Margin="25,0">

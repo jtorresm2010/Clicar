@@ -44,12 +44,24 @@
 
             <!--Campo de ingreso de VIn-->
             <Grid>
+                <StackLayout
+                    Grid.Column="0">
+                    <ActivityIndicator
+                        IsVisible="{Binding Main.Inspeccion.IsLoading, Source={StaticResource Locator}}"
+                        IsRunning="{Binding Main.Inspeccion.IsLoading, Source={StaticResource Locator}}"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        VerticalOptions="StartAndExpand"
+                        Margin="20"
+                        HorizontalOptions="CenterAndExpand"
+                        Color="{StaticResource BaseGreen}"/>
+                </StackLayout>
                 
                 <StackLayout
-                IsVisible="{Binding Main.Inspeccion.IsLoading, Source={StaticResource Locator}, Converter={StaticResource BoolInverter}}"
-                Grid.Column="0"
-                Spacing="0"
-                HorizontalOptions="Fill">
+                    IsVisible="{Binding Main.Inspeccion.IsLoading, Source={StaticResource Locator}, Converter={StaticResource BoolInverter}}"
+                    Grid.Column="0"
+                    Spacing="0"
+                    HorizontalOptions="Fill">
                 <Grid
                 ColumnSpacing="0">
                 <Grid.ColumnDefinitions>
@@ -64,6 +76,7 @@
                     HeightRequest="20"
                     Source="exclamation_solid.png"/>
                 <local:CustomEntry 
+                    x:Name="VinEntry"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
@@ -104,27 +117,19 @@
                         FontFamily="{StaticResource RegularFontOpenSans}"
                         TextFontSize="14"
                         Text="{i18n:Translate Automatic}" 
+                        IsChecked="{Binding Main.DetalleInspeccion.AutomaticTransmission, Source={StaticResource Locator},Mode=TwoWay}"
                         Color="{StaticResource BaseOrange}"/>
+                    
                 <input:RadioButton
+                        IsChecked="{Binding Main.DetalleInspeccion.MechanicTransmission, Source={StaticResource Locator},Mode=TwoWay}"
                         TextColor="{StaticResource BaseGreyLight}"
                         FontFamily="{StaticResource RegularFontOpenSans}"
                         TextFontSize="14"
                         Text="{i18n:Translate Mechanic}" 
                         Color="{StaticResource BaseOrange}"/>
             </input:RadioButtonGroupView>
-            </StackLayout>
-                <StackLayout
-                    Grid.Column="0">
-                    <ActivityIndicator
-                        IsVisible="{Binding Main.Inspeccion.IsLoading, Source={StaticResource Locator}}"
-                        IsRunning="{Binding Main.Inspeccion.IsLoading, Source={StaticResource Locator}}"
-                        WidthRequest="50"
-                        HeightRequest="50"
-                        VerticalOptions="StartAndExpand"
-                        Margin="20"
-                        HorizontalOptions="CenterAndExpand"
-                        Color="{StaticResource BaseGreen}"/>
                 </StackLayout>
+                
 
             </Grid>
 

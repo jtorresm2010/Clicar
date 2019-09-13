@@ -48,11 +48,27 @@ namespace Clicar.Templates
 
                 StackLayout layout = new StackLayout();
 
+
+
                 Image imagen = new Image
                 {
-                    HeightRequest = 100,
-                    Source = "camara_menu"
+                    HeightRequest = 50,
+                    Aspect = Aspect.AspectFill
                 };
+
+                imagen.SetBinding(Image.SourceProperty , $"ListaImagenes[{i}].CurrentImageSmall");
+
+                Frame frame = new Frame
+                {
+                    HeightRequest = 100,
+                    WidthRequest = 100,
+                    Padding = 0,
+                    HasShadow = false,
+                    CornerRadius = 5,
+                    BackgroundColor = (Color)Application.Current.Resources["BaseGrey63"],
+                    BorderColor = (Color)Application.Current.Resources["BaseGrey"],
+                };
+                frame.Content = imagen;
 
                 var tapAction = new TapGestureRecognizer();
 
@@ -63,9 +79,9 @@ namespace Clicar.Templates
                 tapAction.SetBinding(TapGestureRecognizer.CommandParameterProperty, $"ListaImagenes[{i}]");
 
 
-                imagen.GestureRecognizers.Add(tapAction);
+                frame.GestureRecognizers.Add(tapAction);
 
-                layout.Children.Add(imagen);
+                layout.Children.Add(frame);
 
                 layout.Children.Add(new Label
                 {

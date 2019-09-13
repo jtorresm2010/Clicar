@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Clicar.Models
 {
@@ -32,7 +33,6 @@ namespace Clicar.Models
         public bool ITINS_REQUIERE_FOTO { get; set; }
         public int ITINS_ORDEN_APP { get; set; }
         public bool ITINS_ACTIVO { get; set; }
-        //public bool ITINS_STATE_ACTIVO { get; set; }
         public AreasInspeccion CLCAR_AREA_INSPECCION { get; set; }
         public List<ValorSustituir> CLCAR_VALOR_SUSTITUIR { get; set; }
         public List<ValorRepararItem> CLCAR_VALOR_REPARAR_ITEM { get; set; }
@@ -51,6 +51,11 @@ namespace Clicar.Models
             get { return isLocked; }
             set { SetValue(ref isLocked, value); }
         }
+        public string Solucion { get; set; }
+        public string Condicion { get; set; }
+        public string Comentario { get; set; }
+        public bool IsChanged { get; set; }
+        public ImageSource Imagen { get; set; }
 
     }
 
@@ -69,9 +74,8 @@ namespace Clicar.Models
         public bool ITINS_ACTIVO { get; set; }
     }
 
-    public partial class ValorRepararItem : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
+    public partial class ValorRepararItem
+    { 
         public int VAREP_ITINS_ID { get; set; }
         public int VAREP_SUBTI_ID { get; set; }
         public int VAREP_TIREP_ID { get; set; }

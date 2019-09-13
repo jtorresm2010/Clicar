@@ -27,7 +27,62 @@ namespace Clicar.ViewModels
         private ImageSource image;
 
 
+        private string comment;
 
+        public string Comment
+        {
+            get { return comment; }
+            set { SetValue(ref comment, value); }
+        }
+
+
+
+        private string nivelDanio;
+
+        public string NivelDanio
+        {
+            get { return nivelDanio; }
+            set { SetValue(ref nivelDanio, value); }
+        }
+
+
+
+
+        private bool stateSustituir;
+
+        public bool StateSustituir
+        {
+            get { return stateSustituir; }
+            set { SetValue(ref stateSustituir, value); }
+        }
+
+
+        private string sustituirTxt;
+
+        public string SustituirTxt
+        {
+            get { return sustituirTxt; }
+            set { SetValue(ref sustituirTxt, value); }
+        }
+
+        private string repararTxt;
+
+        public string RepararTxt
+        {
+            get { return repararTxt; }
+            set { SetValue(ref repararTxt, value); }
+        }
+
+
+
+
+        private bool stateMalo;
+
+        public bool StateMalo
+        {
+            get { return stateMalo; }
+            set { SetValue(ref stateMalo, value); }
+        }
 
 
 
@@ -84,17 +139,12 @@ namespace Clicar.ViewModels
         public DetalleItemViewModel()
         {
             MainInstance = MainViewModel.GetInstance();
-
+            SustituirTxt = "Sustituir";
+            RepararTxt = "Reparar";
             CurrentImage = ImageSource.FromFile("camara_select_foto");
 
-
-            //GetPickerItems();
         }
 
-        //private async void GetPickerItems()
-        //{
-        //    ItemsDetalle = new ObservableCollection<ItemsdetalleinspeccionDB>(await MainInstance.DataService.GetAllItemsDetalle());
-        //}
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -156,24 +206,34 @@ namespace Clicar.ViewModels
         {
             //var a = MainInstance.Inspeccion.AreasInspeccion[CurrentItem.ITINS_ORDEN_APP - 1].Items.IndexOf(CurrentItem)
 
-            var lista = new List<ValorRepararItem>();
-            lista.Add(new ValorRepararItem { VAREP_VALOR_REPARACION = 2 });
+            //var lista = new List<ValorRepararItem>();
+            //lista.Add(new ValorRepararItem { VAREP_VALOR_REPARACION = 2 });
 
+            var currentAreaIndex = CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP - 1;
+            var currentItemIndex = MainInstance.Inspeccion.AreasInspeccion[CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP - 1].Items.IndexOf(CurrentItem);
 
-            try
-            {
-                MainInstance.Inspeccion.AreasInspeccion[CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP - 1]
-                    .Items[MainInstance.Inspeccion.AreasInspeccion[CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP - 1].Items.IndexOf(CurrentItem)]
-                    .ITINS_STATE_ACTIVO = true;
+            MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].ITINS_STATE_ACTIVO = true;
 
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"~(>'o')> {e.Message}");
-            }
+            if(StateMalo)
+                MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Solucion = StateSustituir ? SustituirTxt: RepararTxt;
 
+            MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Condicion = NivelDanio;
+            MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Comentario = comment;
+            MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].IsChanged = true;
 
-            Debug.WriteLine($"~(>'.')> {CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP}");
+            if (!CurrentImage.Equals(ImageSource.FromFile("camara_select_foto")))
+                MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Imagen = CurrentImage;
+            
+
+            Debug.WriteLine($"~(>'.')> {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].ITINS_STATE_ACTIVO}" +
+                $" {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Condicion}" +
+                $" {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Comentario}" +
+                $" {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].IsChanged}" +
+                $" {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Imagen.Id}");
+
+            Comment = string.Empty;
+
+            Application.Current.MainPage.Navigation.PopAsync();
         }
 
         private async void OpenGalleryCommand()

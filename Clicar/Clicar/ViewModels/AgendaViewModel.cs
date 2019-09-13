@@ -260,8 +260,21 @@ namespace Clicar.ViewModels
                 return;
             IsBusy = true;
 
+            string Vin = inspeccion.SOINS_VIN.ToString();
+            string hiddenVin = "";
+
+            for (int i = 0; i < Vin.Length; i++)
+            {
+                hiddenVin = hiddenVin + " *";
+            }
+
+            //for(int u=0: u< )
+
+
             MainInstance.DetalleInspeccion = new DetalleInspeccionViewModel();
             MainInstance.DetalleInspeccion.CurrentInspeccion = inspeccion;
+            MainInstance.DetalleInspeccion.HiddenVin = hiddenVin;
+
             await Application.Current.MainPage.Navigation.PushAsync(new DetalleInspeccionView());
 
             IsBusy = false;
