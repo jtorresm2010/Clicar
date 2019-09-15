@@ -34,9 +34,20 @@ namespace Clicar.Views
         {
             base.OnAppearing();
 
+            LoadItemsList();
+        }
+
+        private async void LoadItemsList()
+        {
+            await Task.Delay(500);
+
 
             MainInstance.Inspeccion.CrearListaCompuesta();
         }
+
+
+
+
         private static InspeccionView instance;
 
         public static InspeccionView GetInstance()

@@ -54,6 +54,8 @@ namespace Clicar.ViewModels
 
         public DetalleInspeccionViewModel()
         {
+            AutomaticTransmission = true;
+            mechanicTransmission = false;
             ButtonWorking = false;
             MainInstance = MainViewModel.GetInstance();
 

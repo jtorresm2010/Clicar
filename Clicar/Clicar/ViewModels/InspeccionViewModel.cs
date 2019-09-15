@@ -106,7 +106,7 @@ namespace Clicar.ViewModels
         {
             MainInstance = MainViewModel.GetInstance();
             CurrentIteration = 0;
-            //IsLoading = true; 
+            IsLoading = true; 
             IsBusy = false;
 
             CurrentImageSet = 0;

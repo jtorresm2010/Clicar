@@ -38,47 +38,48 @@ namespace Clicar.Views
             var mech = MainInstance.DetalleInspeccion.MechanicTransmission;
             var auto = MainInstance.DetalleInspeccion.AutomaticTransmission;
 
-            if((!MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_VIN.ToString().Equals(VinEntry.Text)))
+
+            if(!mech && !auto)
             {
-                Debug.WriteLine($"~(>'.')> error de vin");
+                Debug.WriteLine("debe seleccionar transmision");
                 ButtonWorking = false;
                 return;
             }
-            else
+
+            var vinText = VinEntry.Text ?? "";
+
+            if (vinText.Length == 0)
             {
-
-                if (MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION.Equals(auto))
-                {
-
-                    MainInstance.Inspeccion.CurrentInspeccion = MainInstance.DetalleInspeccion.CurrentInspeccion;
-                    //MainInstance.Inspeccion.CrearListaCompuesta();
-                    var popup = PopupNavigation.Instance;
-
-
-                    Navigation.PushAsync(new InspeccionView());
-                    Navigation.RemovePage(Navigation.NavigationStack[1]);
-
-                    await popup.PopAsync();
-
-
-                }
-                else
-                {
-                    Debug.WriteLine($"~(>'.')> error de transmission");
-                    ButtonWorking = false;
-                    return;
-                }
-
-
-
-
-
-
+                Debug.WriteLine("Ingrese un valor de VIN");
+                ButtonWorking = false;
+                return;
             }
 
+            if (!MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_VIN.ToString().Equals(vinText))
+            {
+                Debug.WriteLine("Vin Incorrecto");
+                ButtonWorking = false;
+                return;
+            }
+
+            if (!MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION.Equals(auto))
+            {
+                Debug.WriteLine("Transmision incorrecta");
+                ButtonWorking = false;
+                return;
+            }
+
+            
+            
+            MainInstance.Inspeccion.CurrentInspeccion = MainInstance.DetalleInspeccion.CurrentInspeccion;
+            //MainInstance.Inspeccion.CrearListaCompuesta();
+            var popup = PopupNavigation.Instance;
 
 
+            await Navigation.PushAsync(new InspeccionView());
+            Navigation.RemovePage(Navigation.NavigationStack[1]);
 
+            await popup.PopAsync();
 
             ButtonWorking = false;
         }
