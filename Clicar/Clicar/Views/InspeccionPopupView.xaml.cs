@@ -38,32 +38,25 @@ namespace Clicar.Views
             var mech = MainInstance.DetalleInspeccion.MechanicTransmission;
             var auto = MainInstance.DetalleInspeccion.AutomaticTransmission;
 
-
-            if(!mech && !auto)
-            {
-                Debug.WriteLine("debe seleccionar transmision");
-                ButtonWorking = false;
-                return;
-            }
-
             var vinText = VinEntry.Text ?? "";
 
             if (vinText.Length == 0)
             {
-                Debug.WriteLine("Ingrese un valor de VIN");
+                await DisplayAlert("Error de autenticación", "Ingrese un valor de VIN", "Continuar");
                 ButtonWorking = false;
                 return;
             }
 
             if (!MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_VIN.ToString().Equals(vinText))
             {
-                Debug.WriteLine("Vin Incorrecto");
+                await DisplayAlert("Error de autenticación", "VIN Incorrecto", "Continuar");
                 ButtonWorking = false;
                 return;
             }
 
             if (!MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION.Equals(auto))
             {
+                await DisplayAlert("Error de autenticación", "Transmision incorrecta", "Continuar");
                 Debug.WriteLine("Transmision incorrecta");
                 ButtonWorking = false;
                 return;

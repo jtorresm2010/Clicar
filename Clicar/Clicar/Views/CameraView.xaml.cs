@@ -240,7 +240,19 @@ namespace Clicar.Views
 
             CurrentImageInFrame.CurrentImageSmall = photo.Path;
 
-            MainInstance.Inspeccion.AreasInspeccion[MainInstance.Inspeccion.AreasInspeccion.Count - 2].ListaFotos[MainInstance.Inspeccion.ListaImagenes.IndexOf(CurrentImageInFrame)] = CurrentImageInFrame;
+            var currentIndex = MainInstance.Inspeccion.AreasInspeccion.Count;
+
+            if (CurrentImageInFrame.FOTO_TIPOF_ID == 1)
+            {
+                MainInstance.Inspeccion.AreasInspeccion[currentIndex - 3].ListaFotos[MainInstance.Inspeccion.ListaImagenes.IndexOf(CurrentImageInFrame)] = CurrentImageInFrame;
+
+            }
+            else
+            {
+                MainInstance.Inspeccion.AreasInspeccion[currentIndex - 2].ListaFotos[MainInstance.Inspeccion.ListaImagenes2.IndexOf(CurrentImageInFrame)] = CurrentImageInFrame;
+            }
+
+
 
             await Application.Current.MainPage.Navigation.PopAsync();
         }

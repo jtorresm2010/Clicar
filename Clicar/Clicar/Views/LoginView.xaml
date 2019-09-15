@@ -73,6 +73,8 @@
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="CenterAndExpand"
+                                    Aspect="AspectFill"
+                                    HeightRequest="18"
                                     WidthRequest="15"
                                     Source="user_times_green.png" 
                                     VerticalOptions="Center" />

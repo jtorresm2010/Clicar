@@ -56,7 +56,8 @@ namespace Clicar.Templates
                 CachedImage imagen = new CachedImage
                 {
                     HeightRequest = 50,
-                    Aspect = Aspect.AspectFill
+                    Aspect = Aspect.AspectFill,
+                    DownsampleToViewSize = true
                 };
 
                 //Image imagen = new Image

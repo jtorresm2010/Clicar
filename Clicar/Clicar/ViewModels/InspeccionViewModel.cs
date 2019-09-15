@@ -217,7 +217,7 @@ namespace Clicar.ViewModels
                     AINSP_DESCRIPCION = $"{numeroGrupoImagen}.\t\tFotografía {tiposImagen[0].TIPOF_DESCRIPCION}",
                     AINSP_ORDEN_APP = numeroGrupoImagen,
                     IsImageSet = true,
-                    ListaFotos = lista1.ToList()
+                    ListaFotos = ListaImagenes
                 };
 
                 ListAccordionItems.Insert(numeroGrupoImagen-1, grupoImagenes);
@@ -234,7 +234,7 @@ namespace Clicar.ViewModels
                     AINSP_DESCRIPCION = $"{numeroGrupoImagen+1}.\t\tFotografía {tiposImagen[1].TIPOF_DESCRIPCION}",
                     AINSP_ORDEN_APP = numeroGrupoImagen,
                     IsImageSet = true,
-                    ListaFotos = lista2.ToList()
+                    ListaFotos = ListaImagenes2
                 };
 
                 ListAccordionItems.Insert(ListAccordionItems.Count - 1, grupoImagenes2);
