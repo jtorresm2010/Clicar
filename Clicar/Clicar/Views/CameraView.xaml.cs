@@ -238,7 +238,7 @@ namespace Clicar.Views
 
             Debug.WriteLine("Ruta de la imagen: " + photo.Path);
 
-            CurrentImageInFrame.CurrentImageSmall = ImageSource.FromFile(photo.Path);
+            CurrentImageInFrame.CurrentImageSmall = photo.Path;
 
             MainInstance.Inspeccion.AreasInspeccion[MainInstance.Inspeccion.AreasInspeccion.Count - 2].ListaFotos[MainInstance.Inspeccion.ListaImagenes.IndexOf(CurrentImageInFrame)] = CurrentImageInFrame;
 

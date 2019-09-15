@@ -171,7 +171,7 @@ namespace Clicar.ViewModels
                     bool isImageSet = false;
 
 
-                    int numeroAacc = area.AINSP_ORDEN_APP == areasOrdenadas.Count<AreasInspeccion>() ? area.AINSP_ORDEN_APP + 1 : area.AINSP_ORDEN_APP;
+                    int numeroAacc = area.AINSP_ORDEN_APP == areasOrdenadas.Count<AreasInspeccion>() ? area.AINSP_ORDEN_APP + 2 : area.AINSP_ORDEN_APP;
 
 
                     ListAccordionItems.AddRange(new[] {
@@ -200,9 +200,9 @@ namespace Clicar.ViewModels
                     $"{tituloImagenBase} {tiposImagen[0].TIPOF_DESCRIPCION} y {tiposImagen[1].TIPOF_DESCRIPCION}" : 
                     $"{tituloImagenBase}s";
 
-                foreach(Fotografia foto in ListaImagenesMain)
+                foreach (Fotografia foto in ListaImagenesMain)
                 {
-                    foto.CurrentImageSmall = ImageSource.FromFile("camara_select_foto");
+                    foto.CurrentImageSmall = "camara_select_foto.png";
                 }
 
                 var lista1 =

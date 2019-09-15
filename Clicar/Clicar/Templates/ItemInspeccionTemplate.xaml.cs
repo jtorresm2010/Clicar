@@ -1,6 +1,7 @@
 ﻿using Clicar.Models;
 using Clicar.ViewModels;
 using Clicar.Views;
+using FFImageLoading.Forms;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
@@ -52,15 +53,19 @@ namespace Clicar.Templates
 
                 StackLayout layout = new StackLayout();
 
-
-
-                Image imagen = new Image
+                CachedImage imagen = new CachedImage
                 {
                     HeightRequest = 50,
                     Aspect = Aspect.AspectFill
                 };
 
-                imagen.SetBinding(Image.SourceProperty , $"{listastr}[{i}].CurrentImageSmall");
+                //Image imagen = new Image
+                //{
+                //    HeightRequest = 50,
+                //    Aspect = Aspect.AspectFill
+                //};
+
+                imagen.SetBinding(CachedImage.SourceProperty , $"{listastr}[{i}].CurrentImageSmall");
 
                 Frame frame = new Frame
                 {
@@ -95,7 +100,7 @@ namespace Clicar.Templates
                     FontFamily = "{StaticResource RegularFontOpenSans}",
                     TextColor = (Color)Application.Current.Resources["BaseGrey"],
                     Text = foto.FOTO_DESCRIPCION
-                }); ;
+                });
 
                 ImageGrid.Children.Add(layout, gridCol, gridRow);
 

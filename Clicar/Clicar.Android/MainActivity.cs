@@ -10,6 +10,7 @@ using Plugin.Permissions;
 using Plugin.CurrentActivity;
 using Plugin.DeviceOrientation;
 using Plugin.Fingerprint;
+using FFImageLoading.Forms.Platform;
 
 namespace Clicar.Droid
 {
@@ -29,8 +30,8 @@ namespace Clicar.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CrossFingerprint.SetCurrentActivityResolver(() => CrossCurrentActivity.Current.Activity);
             RequestedOrientation = ScreenOrientation.Portrait;
-
-
+            CachedImageRenderer.Init(true);
+            CachedImageRenderer.InitImageViewHandler();
             //System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(delegate { return true; });
             System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
 

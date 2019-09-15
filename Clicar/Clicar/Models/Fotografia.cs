@@ -19,17 +19,17 @@ namespace Clicar.Models
         public bool     FOTO_OBLIGATORIA        { get; set; }
         public object   CLCAR_TIPO_FOTOGRAFIA   { get; set; }
 
-        private ImageSource currentImageBig;
+        private string currentImageBig;
 
-        public ImageSource CurrentImageBig
+        public string CurrentImageBig
         {
             get { return currentImageBig; }
             set { SetValue(ref currentImageBig, value); }
         }
 
-        private ImageSource currentImageSmall;
+        private string currentImageSmall;
 
-        public ImageSource CurrentImageSmall
+        public string CurrentImageSmall
         {
             get { return currentImageSmall; }
             set { SetValue(ref currentImageSmall, value); }

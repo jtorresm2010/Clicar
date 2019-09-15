@@ -9,7 +9,7 @@
             mc:Ignorable="d"
             x:Class="Clicar.Templates.ItemInspeccionTemplate"
             xmlns:accordionview="clr-namespace:Xamarin.CustomControls;assembly=Xamarin.CustomControls.AccordionView"
-    
+            xmlns:forms="clr-namespace:FFImageLoading;assembly=FFImageLoading"
             Text="{Binding AINSP_DESCRIPCION}"
                             
             TextPosition="Left"

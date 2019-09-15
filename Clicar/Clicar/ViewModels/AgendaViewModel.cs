@@ -179,7 +179,44 @@ namespace Clicar.ViewModels
 
                 if (AgendaResponse.Resultado)
                 {
-                    CargarListas(AgendaResponse.Elemento.solicitudes_inspeccion_pendiente, AgendaResponse.Elemento.solicitudes_inspeccion_terminada);
+
+                    if(AgendaResponse.Elemento.solicitudes_inspeccion_pendiente.Count > 0)
+                    {
+                        CargarListas(AgendaResponse.Elemento.solicitudes_inspeccion_pendiente, AgendaResponse.Elemento.solicitudes_inspeccion_terminada);
+
+                    }
+                    else
+                    {
+                        var testList = new List<SolicitudesInspeccionPendiente>();
+
+                        testList.AddRange(new[] {
+                        new SolicitudesInspeccionPendiente
+                        {
+                            VERSION_DESCRIPCION = "asdf",
+                            SOTAS_PATENTE = "PJPK66",
+                            SUBTI_DESCRIPCION = "No se de tipos :P",
+                            SOTAS_APELLIDO = "Perez",
+                            SOINS_VIN = 0000,
+                            SOINS_TRANSMISION = true,
+                            SOINS_RUT_CLIENTE = "12345675",
+                            SOINS_FECHA_CITA = DateTime.Now,
+                            SOINS_FECHA_ACTUALIZACION = DateTime.Now,
+                            SOINS_ESINS_ID = 123,
+                            SOINS_CODIGO_CASO = "AB123",
+                            MODELO = "Corolla",
+                            MARCA = "Toyota",
+                            MACOL_DESCRIPCION = "Gamboge",
+                            SOTAS_NOMBRE = "Peter",
+                            MAE_ANIO = 1997,
+                        }
+                        });
+
+                        CargarListas(testList, AgendaResponse.Elemento.solicitudes_inspeccion_terminada);
+                    }
+
+
+
+
 
                 }
             }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Clicar.Interface;
 using Clicar.iOS.Customs;
+using FFImageLoading.Forms.Platform;
 using Foundation;
 using Plugin.DeviceOrientation;
 using UIKit;
@@ -31,6 +32,8 @@ namespace Clicar.iOS
             LoadApplication(new App());
 
             Xamarin.Forms.DependencyService.Register<IPhotoOverlay, PhotoOverlayIOS>();
+
+            CachedImageRenderer.Init();
 
             Plugin.InputKit.Platforms.iOS.Config.Init();
             return base.FinishedLaunching(app, options);
