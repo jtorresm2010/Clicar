@@ -43,9 +43,13 @@
         </StackLayout>
 
         <Image
+            HorizontalOptions="EndAndExpand"
             Opacity="{Binding LockState, Source={x:Reference LockedState}, Converter={StaticResource BoolToOpacity}}"
             IsEnabled="{Binding LockState, Source={x:Reference LockedState}, Converter={StaticResource BoolInverter}}"
-            Source="Forward">
+            Source="Forward"
+            HeightRequest="40"
+            WidthRequest="40"
+            Aspect="AspectFit">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Main.Inspeccion.EditarDetalleICommand, Source={StaticResource Locator}}" CommandParameter="{Binding .}"/>
             </Image.GestureRecognizers>

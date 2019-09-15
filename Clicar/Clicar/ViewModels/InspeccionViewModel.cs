@@ -129,6 +129,11 @@ namespace Clicar.ViewModels
 
             var ListaItems = await MainInstance.DataService.GetItemsInspeccion();
 
+            foreach(ItemsAreasInspeccionACC item in ListaItems)
+            {
+                item.Imagen = ImageSource.FromFile("camara_select_foto.png");
+            }
+
             ListaImagenesMain = await MainInstance.DataService.GetImagenes();
 
             IOrderedEnumerable<AreasInspeccion> areasOrdenadas;
@@ -345,7 +350,41 @@ namespace Clicar.ViewModels
         }
         private async void CommandImageTap(object parameter)
         {
+            if (IsBusy)
+                return;
 
+            IsBusy = true;
+
+
+
+            var source = await Application.Current.MainPage.DisplayActionSheet(
+                "Seleccione el origen de la imagen",
+                "Cancelar",
+                null,
+                "Galeria",
+                "Camara"
+                );
+
+            switch (source)
+            {
+                case "Galeria":
+
+                    SelectFromGallery(parameter);
+                    break;
+
+                case "Camara":
+                    TakePicture(parameter);
+                    break;
+                default:
+                    break;
+            }
+
+            IsBusy = false;
+
+        }
+
+        private async void TakePicture(object parameter)
+        {
             if (Device.RuntimePlatform == Device.iOS)
             {
                 Func<object> func = () =>
@@ -362,6 +401,26 @@ namespace Clicar.ViewModels
                     OverlayViewProvider = func,
                     DefaultCamera = CameraDevice.Rear,
                 });
+
+                if (photo == null)
+                    return;
+
+
+                Debug.WriteLine("Ruta de la imagen: " + photo.Path);
+
+                ((Fotografia)parameter).CurrentImageSmall = photo.Path;
+
+                var currentIndex = AreasInspeccion.Count;
+
+                if (((Fotografia)parameter).FOTO_TIPOF_ID == 1)
+                {
+                    AreasInspeccion[currentIndex - 3].ListaFotos[ListaImagenes.IndexOf((Fotografia)parameter)] = (Fotografia)parameter;
+
+                }
+                else
+                {
+                    AreasInspeccion[currentIndex - 2].ListaFotos[ListaImagenes2.IndexOf((Fotografia)parameter)] = (Fotografia)parameter;
+                }
             }
             else if (Device.RuntimePlatform == Device.Android)
             {
@@ -375,8 +434,42 @@ namespace Clicar.ViewModels
 
                 await Application.Current.MainPage.Navigation.PushAsync(cameraView);
             }
-
         }
+
+        private async void SelectFromGallery(object CurrentImage)
+        {
+
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                Debug.WriteLine("Galeria no Disponible Q(-.-Q)~");
+                return;
+            }
+
+            var photo = await CrossMedia.Current.PickPhotoAsync();
+
+            if (photo == null)
+                return;
+
+
+            Debug.WriteLine("Ruta de la imagen: " + photo.Path);
+
+            ((Fotografia)CurrentImage).CurrentImageSmall = photo.Path;
+
+            var currentIndex = AreasInspeccion.Count;
+
+            if (((Fotografia)CurrentImage).FOTO_TIPOF_ID == 1)
+            {
+                AreasInspeccion[currentIndex - 3].ListaFotos[ListaImagenes.IndexOf((Fotografia)CurrentImage)] = (Fotografia)CurrentImage;
+
+            }
+            else
+            {
+                AreasInspeccion[currentIndex - 2].ListaFotos[ListaImagenes2.IndexOf((Fotografia)CurrentImage)] = (Fotografia)CurrentImage;
+            }
+        }
+
         private async void EditarDetalleCommand(object parameter)
         {
             if (IsBusy)
@@ -384,7 +477,7 @@ namespace Clicar.ViewModels
 
             IsBusy = true;
 
-            Console.WriteLine("(>'.')>-----------" + ((ItemsAreasInspeccionACC)parameter).ITINS_DESCRIPCION);
+            //Console.WriteLine("(>'.')>-----------" + ((ItemsAreasInspeccionACC)parameter).ITINS_DESCRIPCION);
 
 
             var currentItem = (ItemsAreasInspeccionACC)parameter;

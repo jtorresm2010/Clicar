@@ -93,7 +93,7 @@
                 Padding="0">
 
                 <Button
-                    
+                    IsVisible="False"
                     Clicked="OnGalleryClicked"
                     VerticalOptions="CenterAndExpand"
                     x:Name="GalleryButton"

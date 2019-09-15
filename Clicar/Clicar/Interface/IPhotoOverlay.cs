@@ -2,6 +2,7 @@
 {
     public interface IPhotoOverlay
     {
-       object GetImageOverlay(string image);
+        //object GetImageOverlay(string image);
+        object GetImageOverlay(string image);
     }
 }

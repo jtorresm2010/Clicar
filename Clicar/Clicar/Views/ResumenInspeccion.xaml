@@ -174,8 +174,50 @@
                         </Frame>
                     </StackLayout>
 
+                    <StackLayout>
+                        
+                        <ListView
+                        HasUnevenRows="True"
+                        VerticalScrollBarVisibility="Never"
+                        SelectionMode="None"
+                        SeparatorVisibility="None"
+                        ItemsSource="{Binding ResumenFinal}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout
+                                        VerticalOptions="FillAndExpand"
+                                        Spacing="10">
+                                            <Label
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding Area}"
+                                                FontSize="14"
+                                                FontFamily="{StaticResource BoldFontOpenSans}"
+                                                TextColor="{StaticResource BaseGrey}"/>
+                                            <Frame
+                                                Margin="8,0"
+                                                HasShadow="False"
+                                                CornerRadius="5"
+                                                BorderColor="{StaticResource BaseGreyE}"
+                                                BackgroundColor="{StaticResource BGGrey}"
+                                                Padding="0">
+                                            <local:CustomEditor
+                                                IsReadOnly="True"
+                                                Text="{Binding Texto}"
+                                                FontSize="12"
+                                                TextColor="{StaticResource BaseGrey}"
+                                                FontFamily="{StaticResource RegularFontOpenSans}"
+                                                Visual="Default"/>        
 
-                    <StackLayout
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    </StackLayout>
+
+                    <!--<StackLayout
                     Spacing="10">
                         <Label
                             HorizontalOptions="StartAndExpand"
@@ -191,7 +233,7 @@
                             BorderColor="{StaticResource BaseGreyE}"
                             BackgroundColor="{StaticResource BGGrey}"
                             Padding="0">
-                            <local:CustomEditor
+                        <local:CustomEditor
                             FontSize="12"
                             TextColor="{StaticResource BaseGrey}"
                             FontFamily="{StaticResource RegularFontOpenSans}"
@@ -199,8 +241,13 @@
                             HeightRequest="60"/>
 
                         </Frame>
-                    </StackLayout>
+                    </StackLayout>-->
 
+                    
+                    
+                    
+                    
+                    
                     <Frame
                         HasShadow="False"
                         CornerRadius="10"

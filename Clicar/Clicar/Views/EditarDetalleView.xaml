@@ -98,7 +98,7 @@
                                 FontFamily="{StaticResource RegularFontOpenSans}"
                                 TextFontSize="12"
                                 Text="Malo" 
-                                IsChecked="{Binding StateMalo}"
+                                IsChecked="{Binding CurrentItem.ITINS_STATE_ACTIVO, Mode=TwoWay}"
                                 Color="{StaticResource BaseOrange}"/>
                 </input:RadioButtonGroupView>
                 </StackLayout>
@@ -117,6 +117,7 @@
                                 Orientation="Horizontal"
                                 Spacing="0">
                             <input:RadioButton 
+                                IsChecked="{Binding CurrentItem.Reparar, Mode=TwoWay}"
                                 CircleColor="{StaticResource BaseGreyE}"
                                 WidthRequest="90"
                                 TextColor="{StaticResource BaseGrey}"
@@ -125,12 +126,12 @@
                                 Text="{Binding RepararTxt}" 
                                 Color="{StaticResource BaseOrange}"/>
                             <input:RadioButton
-                                IsChecked="{Binding StateSustituir}"
                                 CircleColor="{StaticResource BaseGreyE}"
                                 HorizontalOptions="StartAndExpand"
                                 TextColor="{StaticResource BaseGrey}"
                                 FontFamily="{StaticResource RegularFontOpenSans}"
                                 TextFontSize="12"
+                                IsChecked="{Binding CurrentItem.Solucion, Mode=TwoWay}"
                                 Text="{Binding SustituirTxt}" 
                                 Color="{StaticResource BaseOrange}"/>
                 </input:RadioButtonGroupView>
@@ -165,7 +166,7 @@
                             <!--ItemsSource="{Binding ItemsDetalle}"
                                 ItemDisplayBinding="{Binding IDINSP_DESCRIPCION}"-->
                             <local:CustomPicker
-                                SelectedItem="{Binding NivelDanio}"
+                                SelectedItem="{Binding CurrentItem.Condicion}"
                                 x:Name="SucursalPicker"
                                 HeightRequest="40"
                                 Grid.Row="0"
@@ -204,7 +205,7 @@
                         BackgroundColor="{StaticResource BGGrey}"
                         Padding="0">
                         <local:CustomEditor
-                            Text="{Binding Comment}"
+                            Text="{Binding CurrentItem.Comentario}"
                             FontSize="12"
                             TextColor="{StaticResource BaseGrey}"
                             FontFamily="{StaticResource RegularFontOpenSans}"
@@ -230,13 +231,15 @@
                         <StackLayout
                         Spacing="0">
                             <Frame
-                                Padding="8"
+                                Padding="0"
                                 HasShadow="False"
                                 CornerRadius="0"
                                 BackgroundColor="{StaticResource BaseGrey63}">
                                 <Image
+                                    
+                                    HeightRequest="200"
                                     Aspect="AspectFill"
-                                Source="{Binding CurrentImage}"/>
+                                    Source="{Binding CurrentItem.Imagen}"/>
 
                             </Frame>
 
@@ -261,6 +264,8 @@
                                         Orientation="Horizontal"
                                         HorizontalOptions="CenterAndExpand">
                                         <Image
+                                            Aspect="AspectFit"
+                                            WidthRequest="20"
                                             HeightRequest="20"
                                             Source="camera_solid"/>
                                         <Label
@@ -287,6 +292,8 @@
                                         Orientation="Horizontal"
                                         HorizontalOptions="CenterAndExpand">
                                         <Image
+                                            Aspect="AspectFit"
+                                            WidthRequest="20"
                                             HeightRequest="20"
                                             Source="image_regular"/>
                                         <Label

@@ -21,9 +21,9 @@ namespace Clicar.Views
             InitializeComponent();
         }
 
+        private void EstadoMalo_Checked(object sender, EventArgs e)
+        {
 
-
-
-
+        }
     }
 }

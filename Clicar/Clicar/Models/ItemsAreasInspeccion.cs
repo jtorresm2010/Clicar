@@ -51,11 +51,53 @@ namespace Clicar.Models
             get { return isLocked; }
             set { SetValue(ref isLocked, value); }
         }
-        public string Solucion { get; set; }
-        public string Condicion { get; set; }
-        public string Comentario { get; set; }
-        public bool IsChanged { get; set; }
-        public ImageSource Imagen { get; set; }
+
+        private bool solucion;
+        public bool Solucion
+        {
+            get { return solucion; }
+            set { SetValue(ref solucion, value); }
+        }
+
+        private bool reparar;
+        public bool Reparar
+        {
+            get { return reparar; }
+            set { SetValue(ref reparar, value); }
+        }
+
+
+        private string condicion;
+        public string Condicion
+        {
+            get { return condicion; }
+            set { SetValue(ref condicion, value); }
+        }
+
+
+        private string comentario;
+        public string Comentario
+        {
+            get { return comentario; }
+            set { SetValue(ref comentario, value); }
+        }
+
+
+        private bool isChanged;
+        public bool IsChanged
+        {
+            get { return isChanged; }
+            set { SetValue(ref isChanged, value); }
+        }
+
+        private ImageSource imagen;
+        public ImageSource Imagen
+        {
+            get { return imagen; }
+            set { SetValue(ref imagen, value); }
+        }
+
+
 
     }
 

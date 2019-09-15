@@ -25,77 +25,53 @@ namespace Clicar.ViewModels
         private bool needImage;
         private bool damageInfo;
         private ImageSource image;
-
-
         private string comment;
-
-        public string Comment
-        {
-            get { return comment; }
-            set { SetValue(ref comment, value); }
-        }
-
-
-
+        private bool stateSustituir;
         private string nivelDanio;
+        private string sustituirTxt;
+        private string repararTxt;
+        private bool stateMalo;
 
+
+
+
+        public List<AreasInspeccion> ListaAreas { get; set; }
         public string NivelDanio
         {
             get { return nivelDanio; }
             set { SetValue(ref nivelDanio, value); }
         }
-
-
-
-
-        private bool stateSustituir;
-
+        public string Comment
+        {
+            get { return comment; }
+            set { SetValue(ref comment, value); }
+        }
         public bool StateSustituir
         {
             get { return stateSustituir; }
             set { SetValue(ref stateSustituir, value); }
         }
-
-
-        private string sustituirTxt;
-
         public string SustituirTxt
         {
             get { return sustituirTxt; }
             set { SetValue(ref sustituirTxt, value); }
         }
-
-        private string repararTxt;
-
         public string RepararTxt
         {
             get { return repararTxt; }
             set { SetValue(ref repararTxt, value); }
         }
-
-
-
-
-        private bool stateMalo;
-
         public bool StateMalo
         {
             get { return stateMalo; }
             set { SetValue(ref stateMalo, value); }
         }
-
-
-
-
-
-
-
         public ImageSource CurrentImage
         {
             get { return image; }
             set { SetValue(ref image, value); }
         }
-     public bool NeedImage
+        public bool NeedImage
         {
             get { return needImage; }
             set { SetValue(ref needImage, value); }
@@ -120,7 +96,6 @@ namespace Clicar.ViewModels
             get { return currentArea; }
             set { SetValue(ref currentArea, value); }
         }
-        public List<AreasInspeccion> ListaAreas { get; set; }
         public ItemsAreasInspeccionACC CurrentItem
         {
             get { return currentItem; }
@@ -142,7 +117,7 @@ namespace Clicar.ViewModels
             SustituirTxt = "Sustituir";
             RepararTxt = "Reparar";
             CurrentImage = ImageSource.FromFile("camara_select_foto");
-
+           // CurrentItem.Imagen = ImageSource.FromFile("camara_select_foto");
         }
 
 
@@ -204,34 +179,7 @@ namespace Clicar.ViewModels
 
         private void ConfirmarCommand()
         {
-            //var a = MainInstance.Inspeccion.AreasInspeccion[CurrentItem.ITINS_ORDEN_APP - 1].Items.IndexOf(CurrentItem)
-
-            //var lista = new List<ValorRepararItem>();
-            //lista.Add(new ValorRepararItem { VAREP_VALOR_REPARACION = 2 });
-
-            var currentAreaIndex = CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP - 1;
-            var currentItemIndex = MainInstance.Inspeccion.AreasInspeccion[CurrentItem.CLCAR_AREA_INSPECCION.AINSP_ORDEN_APP - 1].Items.IndexOf(CurrentItem);
-
-            MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].ITINS_STATE_ACTIVO = true;
-
-            if(StateMalo)
-                MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Solucion = StateSustituir ? SustituirTxt: RepararTxt;
-
-            MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Condicion = NivelDanio;
-            MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Comentario = comment;
-            MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].IsChanged = true;
-
-            if (!CurrentImage.Equals(ImageSource.FromFile("camara_select_foto")))
-                MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Imagen = CurrentImage;
-            
-
-            Debug.WriteLine($"~(>'.')> {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].ITINS_STATE_ACTIVO}" +
-                $" {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Condicion}" +
-                $" {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Comentario}" +
-                $" {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].IsChanged}" +
-                $" {MainInstance.Inspeccion.AreasInspeccion[currentAreaIndex].Items[currentItemIndex].Imagen.Id}");
-
-            Comment = string.Empty;
+            CurrentItem.IsChanged = true;
 
             Application.Current.MainPage.Navigation.PopAsync();
         }
@@ -252,9 +200,7 @@ namespace Clicar.ViewModels
                 return;
 
 
-            Debug.WriteLine("Ruta de la imagen: " + photo.Path);
-
-            CurrentImage = ImageSource.FromFile(photo.Path);
+            CurrentItem.Imagen = ImageSource.FromFile(photo.Path);
         }
 
         private async void TakePictureCommand()
@@ -276,8 +222,7 @@ namespace Clicar.ViewModels
             if (file == null)
                 return;
 
-            Debug.WriteLine($"~(>'.')> {file.Path}");
-            CurrentImage = ImageSource.FromFile(file.Path);
+            CurrentItem.Imagen = ImageSource.FromFile(file.Path);
         }
     }
 }
