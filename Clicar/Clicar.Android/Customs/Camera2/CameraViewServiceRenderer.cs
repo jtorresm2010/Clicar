@@ -92,7 +92,9 @@ namespace Clicar.Droid.Customs.Camera2
 
             if (this.Element.ObjectItem != null)
             {
-                await MainInstance.DataService.Insert<FotografiaLocal>(new FotografiaLocal { LOCAL_IMAGERUTA = fullpath , ITEM_CORRESP = ((Fotografia)this.Element.ObjectItem).FOTO_ID });
+                ((Fotografia)Element.ObjectItem).CurrentImageSmall = fullpath;
+
+                //await MainInstance.DataService.Insert<FotografiaLocal>(new FotografiaLocal { LOCAL_IMAGERUTA = fullpath , ITEM_CORRESP = ((Fotografia)this.Element.ObjectItem).FOTO_ID });
 
             }
 
