@@ -16,12 +16,14 @@ namespace Clicar.iOS.Customs
 
             var element = (CustomPicker)this.Element;
 
-            if (this.Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
+            if (this.Control != null && this.Element != null)
             {
 
+                Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
+
                 Control.BackgroundColor = UIKit.UIColor.FromRGBA(0,0,0,0);
-                Control.Frame = new CGRect(x: 0, y: 0, width: Frame.Width, height: 60);
+                //Control.Frame = new CGRect(x: 0, y: 0, width: Frame.Width, height: 60);
 
 
             }

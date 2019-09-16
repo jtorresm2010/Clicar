@@ -76,7 +76,7 @@ namespace Clicar.Templates
                     HasShadow = false,
                     CornerRadius = 5,
                     BackgroundColor = (Color)Application.Current.Resources["BaseGrey63"],
-                    BorderColor = (Color)Application.Current.Resources["BaseGrey"],
+                    //BorderColor = (Color)Application.Current.Resources["BaseGrey"],
                 };
                 frame.Content = imagen;
 
