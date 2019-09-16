@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using Plugin.Fingerprint;
 
 namespace Clicar.ViewModels
 {
@@ -39,6 +40,13 @@ namespace Clicar.ViewModels
         }
 
 
+        private bool figerprintAvailable;
+
+        public bool FigerprintAvailable
+        {
+            get { return figerprintAvailable; }
+            set { SetValue(ref figerprintAvailable, value); }
+        }
 
         public bool IsIdle
         {
@@ -68,9 +76,18 @@ namespace Clicar.ViewModels
             usuario = "palarcon";
             clave = "123456";
 
+            FeatureAvailable();
 
             MainInstance = MainViewModel.GetInstance();
             restService = new RestService();
+        }
+
+        private async void FeatureAvailable()
+        {
+            var result = await CrossFingerprint.Current.IsAvailableAsync();
+
+
+            FigerprintAvailable = result;
         }
 
         public ICommand LoginICommand

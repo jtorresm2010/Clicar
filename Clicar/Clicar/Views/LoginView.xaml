@@ -228,6 +228,7 @@
 
 
                             <Button
+                                IsEnabled="{Binding Main.Login.FigerprintAvailable, Source={StaticResource Locator}}"
                                 Clicked="FingerprintCommand"
                                 BackgroundColor="{StaticResource BaseOrange}"
                                 Text="{i18n:Translate TouchIDButton}"
