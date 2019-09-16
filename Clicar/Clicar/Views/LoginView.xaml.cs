@@ -60,14 +60,5 @@ namespace Clicar.Views
         }
 
 
-
-        private async void FingerprintCommand(object sender, EventArgs e)
-        {
-            if (!MainInstance.Login.IsIdle)
-                return;
-
-            var popup = PopupNavigation.Instance;
-            await popup.PushAsync(new FingerPrintPopupView());
-        }
     }
 }

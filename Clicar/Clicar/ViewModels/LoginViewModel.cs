@@ -13,6 +13,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Plugin.Fingerprint;
+using Rg.Plugins.Popup.Services;
 
 namespace Clicar.ViewModels
 {
@@ -84,10 +85,7 @@ namespace Clicar.ViewModels
 
         private async void FeatureAvailable()
         {
-            var result = await CrossFingerprint.Current.IsAvailableAsync();
-
-
-            FigerprintAvailable = result;
+            FigerprintAvailable = await CrossFingerprint.Current.IsAvailableAsync();
         }
 
         public ICommand LoginICommand
@@ -98,7 +96,8 @@ namespace Clicar.ViewModels
             }
         }
 
-        private async void LoginCommand()
+
+        private async void LoginCommand(string correo, string clave)
         {
             if (!IsIdle)
                 return;
@@ -116,8 +115,8 @@ namespace Clicar.ViewModels
 
             var usuario = new Usuario
             {
-                USU_USERNAME = Usuario,
-                USU_CLAVE = Clave,
+                USU_USERNAME = correo,
+                USU_CLAVE = clave,
                 ORIGEN = "mobile"
             };
 
@@ -147,8 +146,14 @@ namespace Clicar.ViewModels
                 IsLoading = false;
             }
 
-            //IsLoading = false;
-            //IsBusy = true;
+            IsLoading = false;
+            IsIdle = true;
+        }
+
+        //string usuario = Preferences.Get("Correo", "")
+        private void LoginCommand()
+        {
+            LoginCommand(Usuario, Clave);
         }
 
         private async void InicializarDatos()
@@ -521,6 +526,42 @@ namespace Clicar.ViewModels
             IsLoading = false;
         }
 
+        public ICommand FingerprintICommand
+        {
+            get
+            {
+                return new RelayCommand(FingerprintCommand);
+            }
+        }
+        private async void FingerprintCommand()
+        {
+            var popup = PopupNavigation.Instance;
+            await popup.PushAsync(new FingerPrintPopupView());
+
+            var result = await CrossFingerprint.Current.AuthenticateAsync("Valide su huella para continuar");
+            if (result.Authenticated)
+            {
+                await popup.PopAsync();
+
+
+                if(Preferences.Get("Correo", "") != ""  && Preferences.Get("Clave", "")  != "")
+                    LoginCommand(Preferences.Get("Correo", ""), Preferences.Get("Clave", ""));
+                else
+                    await Application.Current.MainPage.DisplayAlert("Error de autenticación", "No hay datos de sesión disponibles", "Continuar");
+
+
+            }
+            else
+            {
+                // not allowed to do secret stuff :(
+            }
+
+
+
+
+
+
+        }
 
     }
 }
