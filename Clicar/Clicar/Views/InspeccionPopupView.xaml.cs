@@ -65,7 +65,9 @@ namespace Clicar.Views
             
             
             MainInstance.Inspeccion.CurrentInspeccion = MainInstance.DetalleInspeccion.CurrentInspeccion;
-            //MainInstance.Inspeccion.CrearListaCompuesta();
+
+            MainInstance.Inspeccion.HoraInicio = DateTime.Now;
+
             var popup = PopupNavigation.Instance;
 
 

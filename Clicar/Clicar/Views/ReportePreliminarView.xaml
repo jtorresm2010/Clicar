@@ -153,7 +153,7 @@
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     HorizontalOptions="StartAndExpand"
-                                    Text="00:25"
+                                    Text="{Binding Main.Inspeccion.HoraInicio, Source={StaticResource Locator}, StringFormat='{0:HH:mm:ss}'    }"
                                     FontSize="14"
                                     TextColor="{StaticResource BaseGrey}"
                                     FontFamily="{StaticResource RegularFontOpenSans}"/>
@@ -174,13 +174,13 @@
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     HorizontalOptions="StartAndExpand"
-                                    Text="03:12"
+                                    Text="{Binding Main.Inspeccion.HoraTermino, Source={StaticResource Locator}, StringFormat='{0:HH:mm:ss}'}"
                                     FontSize="14"
                                     TextColor="{StaticResource BaseGrey}"
                                     FontFamily="{StaticResource RegularFontOpenSans}"/>
 
                                 <!--Tiempo Inspección-->
-
+                                
                                 <Label
                                     Margin="0,5"
                                     Grid.Row="2"
@@ -195,7 +195,7 @@
                                     Grid.Row="2"
                                     Grid.Column="1"
                                     HorizontalOptions="StartAndExpand"
-                                    Text="02h56m"
+                                    Text="{Binding Main.Inspeccion.TiempoInspeccion, Source={StaticResource Locator}, StringFormat='{0:HH:mm:ss}'}"
                                     FontSize="14"
                                     TextColor="{StaticResource BaseGrey}"
                                     FontFamily="{StaticResource RegularFontOpenSans}"/>

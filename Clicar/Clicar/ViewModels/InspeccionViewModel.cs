@@ -41,8 +41,26 @@ namespace Clicar.ViewModels
         #endregion
 
 
+        private DateTime horaTermino;
+        public DateTime HoraTermino
+        {
+            get { return horaTermino; }
+            set { SetValue(ref horaTermino, value); }
+        }
 
+        private DateTime tiempoInspeccion;
+        public DateTime TiempoInspeccion
+        {
+            get { return tiempoInspeccion; }
+            set { SetValue(ref tiempoInspeccion, value); }
+        }
 
+        private DateTime horaInicio;
+        public DateTime HoraInicio
+        {
+            get { return horaInicio; }
+            set { SetValue(ref horaInicio, value); }
+        }
 
 
 
@@ -237,7 +255,7 @@ namespace Clicar.ViewModels
                 var grupoImagenes2 = new AccordionItem
                 {
                     AINSP_DESCRIPCION = $"{numeroGrupoImagen+1}.\t\tFotografía {tiposImagen[1].TIPOF_DESCRIPCION}",
-                    AINSP_ORDEN_APP = numeroGrupoImagen,
+                    AINSP_ORDEN_APP = numeroGrupoImagen+1,
                     IsImageSet = true,
                     ListaFotos = ListaImagenes2
                 };
@@ -318,6 +336,14 @@ namespace Clicar.ViewModels
             }
             catch
             {
+
+                HoraTermino = DateTime.Now;
+
+                TimeSpan timeDiff = HoraTermino - HoraInicio;
+
+
+                TiempoInspeccion = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, timeDiff.Hours, timeDiff.Minutes, timeDiff.Seconds);//timeDiff;
+
                 MainInstance.Reporte = new ReporteViewModel();
                 Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
             }

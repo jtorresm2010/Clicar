@@ -66,18 +66,20 @@ namespace Clicar.ViewModels
         {
             get
             {
-                return new RelayCommand<Inspeccion>(inspeccion => RechazarCommand(inspeccion));
+                return new RelayCommand<object>(inspeccion => RechazarCommand(inspeccion));
             }
 
         }
 
-        private async void RechazarCommand(Inspeccion inspeccion)
+        private async void RechazarCommand(object inspeccion)
         {
             if (ButtonWorking)
                 return;
+
             ButtonWorking = true;
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new RechazarPopupView());
+
             ButtonWorking = false;
         }
 

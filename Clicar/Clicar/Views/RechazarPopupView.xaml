@@ -54,7 +54,7 @@
                     BackgroundColor="{StaticResource LightOrange}">
                     
                     <Label
-                        Text="{Binding CurrentInspeccion.Patente}"
+                        Text="{Binding CurrentInspeccion.SOTAS_PATENTE}"
                         FontSize="24"
                         TextColor="{StaticResource BaseOrange}"
                         FontFamily="{StaticResource BoldFontOpenSans}"/>
