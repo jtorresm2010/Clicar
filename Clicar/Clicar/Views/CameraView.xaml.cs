@@ -209,6 +209,7 @@ namespace Clicar.Views
 
         }
 
+
         private async void OnGalleryClicked(object sender, EventArgs e)
         {
 

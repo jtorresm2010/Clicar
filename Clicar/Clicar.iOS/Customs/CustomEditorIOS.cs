@@ -7,18 +7,19 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(CustomEditor), typeof(CustomEditorIOS))]
 namespace Clicar.iOS.Customs
 {
-    class CustomEditorIOS : EntryRenderer
+    class CustomEditorIOS : EditorRenderer
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
             base.OnElementChanged(e);
 
             if (Control != null)
             {
 
-                Control.BorderStyle = UITextBorderStyle.None;
+                //Control.BorderStyle = UITextBorderStyle.None;
+                Control.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0);
                 Control.Layer.CornerRadius = 10;
-                Control.TextColor = UIColor.White;
+                //Control.TextColor = UIColor.White;
 
             }
         }

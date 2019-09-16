@@ -317,8 +317,10 @@ namespace Clicar.ViewModels
         }
         #endregion
 
-        public void CommandNext(int parameter)
+        public async void CommandNext(int parameter)
         {
+            //await Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
+
             var inspeccionView = InspeccionView.GetInstance();
 
             var accordionMenu = (AccordionRepeaterView)inspeccionView.FindByName("AccordionMenu");
@@ -328,15 +330,14 @@ namespace Clicar.ViewModels
             itemActual.ButtonBackgroundColor = baseGreen;
             itemActual.BorderColor = baseGreen;
 
-            try
+            if (parameter < AreasInspeccion[AreasInspeccion.Count - 1].AINSP_ORDEN_APP)
             {
                 var itemSiguiente = (AccordionItemView)accordionMenu.Children[parameter];
                 itemSiguiente.OpenPanel();
 
             }
-            catch
+            else
             {
-
                 HoraTermino = DateTime.Now;
 
                 TimeSpan timeDiff = HoraTermino - HoraInicio;
@@ -345,8 +346,10 @@ namespace Clicar.ViewModels
                 TiempoInspeccion = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, timeDiff.Hours, timeDiff.Minutes, timeDiff.Seconds);//timeDiff;
 
                 MainInstance.Reporte = new ReporteViewModel();
-                Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
+                await Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
+
             }
+
 
             itemActual.ClosePanel();
 
@@ -503,25 +506,35 @@ namespace Clicar.ViewModels
 
             IsBusy = true;
 
+            try
+            {
+                var currentItem = (ItemsAreasInspeccionACC)parameter;
+                AreasInspeccion currArea = null;
+
+                foreach (AreasInspeccion area in AreasInspeccionDB)
+                {
+                    if (area.AINSP_ID == currentItem.ITINS_AINSP_ID)
+                    {
+                        currArea = area;
+                        break;
+                    }
+                }
+
+                MainInstance.DetalleItem.CurrentItem = currentItem;
+                MainInstance.DetalleItem.CurrentArea = currArea;
+
+                await Application.Current.MainPage.Navigation.PushAsync(new EditarDetalleView());
+
+            }
+            catch (Exception ee)
+            {
+                Debug.WriteLine($"~(>'.')> {ee.Message}");
+            }
+
+
             //Console.WriteLine("(>'.')>-----------" + ((ItemsAreasInspeccionACC)parameter).ITINS_DESCRIPCION);
 
 
-            var currentItem = (ItemsAreasInspeccionACC)parameter;
-            AreasInspeccion currArea = null;
-
-            foreach(AreasInspeccion  area in AreasInspeccionDB)
-            {
-                if (area.AINSP_ID == currentItem.ITINS_AINSP_ID)
-                {
-                    currArea = area;
-                    break;
-                }
-            }
-
-            MainInstance.DetalleItem.CurrentItem = currentItem;
-            MainInstance.DetalleItem.CurrentArea = currArea;
-
-            await Application.Current.MainPage.Navigation.PushAsync(new EditarDetalleView());
 
             //var instance = InspeccionView.GetInstance();
             //await instance.Navigation.PushAsync(new EditarDetalleView());

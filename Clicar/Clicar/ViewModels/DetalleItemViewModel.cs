@@ -125,6 +125,8 @@ namespace Clicar.ViewModels
         {
             base.OnPropertyChanged(propertyName);
 
+            try
+            {
             if (propertyName.Equals("CurrentItem"))
             {
                 switch (CurrentItem.ITINS_CONDICION)
@@ -143,6 +145,14 @@ namespace Clicar.ViewModels
                 }
 
             }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
 
 
         }

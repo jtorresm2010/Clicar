@@ -17,13 +17,8 @@ namespace Clicar.Views
     {
         public EditarDetalleView()
         {
-            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
-        }
-
-        private void EstadoMalo_Checked(object sender, EventArgs e)
-        {
-
+            CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
         }
     }
 }
