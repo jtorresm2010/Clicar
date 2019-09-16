@@ -117,6 +117,7 @@
                                 Orientation="Horizontal"
                                 Spacing="0">
                             <input:RadioButton 
+                                x:Name="EstadoReparar"
                                 IsChecked="{Binding CurrentItem.Reparar, Mode=TwoWay}"
                                 CircleColor="{StaticResource BaseGreyE}"
                                 WidthRequest="90"
@@ -140,8 +141,7 @@
 
                 <!--Picker nivel de daño-->
                     <Frame
-                        
-                        IsVisible="{Binding IsChecked, Source={x:Reference EstadoMalo}}"
+                        IsVisible="{Binding IsChecked, Source={x:Reference EstadoReparar}}"
                         Margin="0,20"
                         BackgroundColor="White"
                         CornerRadius="10"
@@ -240,7 +240,9 @@
                                     HeightRequest="200"
                                     Aspect="AspectFill"
                                     Source="{Binding CurrentItem.Imagen}"/>
-
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TakePictureICommand}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
                             </Frame>
 
                             <Grid

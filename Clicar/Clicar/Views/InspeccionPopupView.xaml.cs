@@ -54,7 +54,7 @@ namespace Clicar.Views
                 return;
             }
 
-            if (!MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION.Equals(auto))
+            if (MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION.Equals(auto))
             {
                 await DisplayAlert("Error de autenticación", "Transmision incorrecta", "Continuar");
                 Debug.WriteLine("Transmision incorrecta");

@@ -28,15 +28,15 @@ namespace Clicar.Customs
         {
             var list = (List<ItemInspeccion>)newValue;
 
-            foreach(ItemInspeccion item in list)
-            {
-                Debug.WriteLine($"~(>'.')> {item.Nombre}");
-            }
+            //foreach(ItemInspeccion item in list)
+            //{
+            //    Debug.WriteLine($"~(>'.')> {item.Nombre}");
+            //}
 
 
             ListaItems = (List<ItemInspeccion>)newValue;
 
-            Debug.WriteLine($"~(>'.')> ---------------------Grid{newValue.ToString()}");
+            //Debug.WriteLine($"~(>'.')> ---------------------Grid{newValue.ToString()}");
         }
 
         private static List<ItemInspeccion> ListaItems;

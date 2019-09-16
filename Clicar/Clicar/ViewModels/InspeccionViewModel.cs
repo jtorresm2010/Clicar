@@ -161,6 +161,7 @@ namespace Clicar.ViewModels
                 //Ordenar areas segun el valor en "Orden"
                 areasOrdenadas =
                     from areaInspeccion in AreasInspeccionDB
+                    where areaInspeccion.AINSP_ACTIVO == 1
                     orderby areaInspeccion.AINSP_ORDEN_APP ascending
                     select areaInspeccion;
             

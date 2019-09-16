@@ -76,6 +76,7 @@ namespace Clicar.ViewModels
                 SelectedSucursal : 
                 ClosestSucursal;
 
+            MainInstance.Agenda.LoadMainList();
             Application.Current.MainPage = new NavigationPage(new AgendaView());
         }
     }

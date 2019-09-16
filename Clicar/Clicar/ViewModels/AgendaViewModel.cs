@@ -126,7 +126,7 @@ namespace Clicar.ViewModels
         public AgendaViewModel()
         {
             MainInstance = MainViewModel.GetInstance();
-            LoadMainList();
+            //LoadMainList();
             CurrentDate = GetFormattedDate();
 
 
@@ -165,13 +165,13 @@ namespace Clicar.ViewModels
                 return;
             }
 
-            var parameter = $"?suc_id=1";
-            //var parameter = $"suc_id={CurrentSucursal.MAESU_ID}";
+            //var parameter = $"?suc_id=1";
+            var parameter = $"?suc_id={CurrentSucursal.MAESU_ID}";
 
 
             var response = await MainInstance.RestService.PostAsync<AgendaResponse>(MainInstance.Url, MainInstance.Prefix, $"{MainInstance.AgendaInspeccion}{parameter}");
 
-            Debug.WriteLine($"~(>'.')> {response.Message}");
+            //Debug.WriteLine($"~(>'.')> {response.Message}");
 
             try
             {

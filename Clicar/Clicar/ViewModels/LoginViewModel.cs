@@ -132,7 +132,7 @@ namespace Clicar.ViewModels
                 }
                 else
                 {
-                    Debug.WriteLine($"~(>'.')> Datos de login incorrectos");
+                    //Debug.WriteLine($"~(>'.')> Datos de login incorrectos");
                     IsIdle = true;
                     IsLoading = false;
                 }
@@ -488,8 +488,6 @@ namespace Clicar.ViewModels
 
                         foreach (FotografiaDB fotoN in list)
                         {
-
-                            Debug.WriteLine($"~(>'.')> uwu");
 
 
                             //var newfotoDB = new FotografiaDB

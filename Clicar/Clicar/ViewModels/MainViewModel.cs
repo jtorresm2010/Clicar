@@ -69,7 +69,7 @@ namespace Clicar.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("~(>'.')>  x " + ex.Message);
+                Debug.WriteLine($"~(>'.')>  Inicializar valores en MVM{ex.Message}");
             }
         }
 

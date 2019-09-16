@@ -138,9 +138,11 @@ namespace Clicar.Views
 
         }
 
-        private void OnPictureFinished()
+        private async void OnPictureFinished()
         {
-            DisplayAlert("Confirmar", "Foto guardada", "", "Ok");
+            await DisplayAlert("Confirmar", "Foto guardada", "", "Ok");
+
+            await Navigation.PopAsync();
         }
 
         private async void OnCameraClicked(object sender, EventArgs e)

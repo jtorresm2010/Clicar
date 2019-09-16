@@ -172,7 +172,8 @@ namespace Clicar.ViewModels
                 return;
             IsBusy = true;
 
-            await Application.Current.MainPage.Navigation.PopToRootAsync();
+            await Application.Current.MainPage.Navigation.PopAsync();
+            //await Application.Current.MainPage.Navigation.PopToRootAsync();
 
             IsBusy = false;
         }
