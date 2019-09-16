@@ -106,10 +106,10 @@ namespace Clicar.ViewModels
             get { return currentItemDetails; }
             set { SetValue(ref currentItemDetails, value); }
         }
+        public bool EstadoBase { get; set; }
 
 
 
-        
 
         public DetalleItemViewModel()
         {

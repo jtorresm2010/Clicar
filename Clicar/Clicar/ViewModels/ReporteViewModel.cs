@@ -126,11 +126,50 @@ namespace Clicar.ViewModels
 
                 if (area.Items != null && area.Items.Count > 0)
                 {
+
+
                     foreach (ItemsAreasInspeccionACC item in area.Items)
                     {
-                        Debug.WriteLine($"{item.ITINS_DESCRIPCION}");
+                        //if(item.ITINS_DESCRIPCION.(MainInstance.Inspeccion.AreasInspeccionBase.Find(x => x.AINSP_ID == item.ITINS_ID)))
+                        // {
+                        //     Debug.WriteLine($"~(>'.')> Item no cambiado {item.ITINS_DESCRIPCION}");
+                        // }
+                        // else
+                        // {
+                        //     Debug.WriteLine($"~(>'.')> Item cambiado {item.ITINS_DESCRIPCION}");
+                        // }
+
+
+
+                       //Debug.WriteLine($"{item.ITINS_DESCRIPCION}");
+                        //if(item.ITINS_STATE_ACTIVO.Equals(MainInstance.Inspeccion.AreasInspeccionBase[indice].Items[])
                         var comentario = item.Comentario ?? "Sin Observaciones";
-                        texto = $"{texto}{item.ITINS_DESCRIPCION}: {comentario}\n";
+
+                        var Estado = "";
+
+                        if(!item.ITINS_CONDICION.Equals("Esta presente"))
+                            Estado = item.ITINS_STATE_ACTIVO ? "Estado: Malo\n\t" : "Estado: Bueno\n\t";
+
+                        var Activo = "";
+                        if(item.ITINS_CONDICION.Equals("Esta presente"))
+                            Activo = item.SwitchActive ? "Estado: Activado\n\t" : "Estado: Desactivado\n\t";
+
+                        var Locked = "";
+                        Locked = item.ITINS_IS_LOCKED ? "Bloqueado\n\t" : "Estado: Desbloqueado\n\t";
+
+                        var Solucion = "";
+                        if (item.Reparar || item.Solucion)
+                            Solucion = item.Reparar ? "Solucion: Reparar\n\t" : "Solucion: Sustituir\n\t";
+
+                        var Condicion = "";
+                        if (item.Reparar)
+                            Condicion = $"Condicion: {item.Condicion}\n\t";
+
+                        var Imagen = "";
+                        if (item.ITINS_REQUIERE_FOTO)
+                            Imagen = item.Imagen.Equals("File: camara_select_foto.png") ? "Imagen: No," : "Imagen: Si";
+
+                        texto = $"{texto}{item.ITINS_DESCRIPCION}: \n\t{comentario}\n\t{Estado}{Activo}{Solucion}{Condicion}\n";
                     }
 
                     ResumenFinal.Add(new ResumenFinal { Area = area.AINSP_DESCRIPCION, Texto = texto });

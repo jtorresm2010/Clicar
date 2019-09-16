@@ -64,7 +64,7 @@
                 IsEnabled="{Binding LockState, Source={x:Reference LockedState}, Converter={StaticResource BoolInverter}}"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="EndAndExpand"
-                IsToggled="True"/>
+                IsToggled="{Binding SwitchActive}"/>
         </StackLayout>
 
     </StackLayout>

@@ -66,7 +66,6 @@ namespace Clicar.Models
             set { SetValue(ref reparar, value); }
         }
 
-
         private string condicion;
         public string Condicion
         {
@@ -74,14 +73,12 @@ namespace Clicar.Models
             set { SetValue(ref condicion, value); }
         }
 
-
         private string comentario;
         public string Comentario
         {
             get { return comentario; }
             set { SetValue(ref comentario, value); }
         }
-
 
         private bool isChanged;
         public bool IsChanged
@@ -97,6 +94,13 @@ namespace Clicar.Models
             set { SetValue(ref imagen, value); }
         }
 
+        private bool switchActive;
+
+        public bool SwitchActive
+        {
+            get { return switchActive; }
+            set { SetValue(ref switchActive, value); }
+        }
 
 
     }

@@ -116,6 +116,13 @@ namespace Clicar.ViewModels
 
         #endregion
 
+        private List<AccordionItem> areasInspeccionBase;
+
+        public List<AccordionItem> AreasInspeccionBase
+        {
+            get { return areasInspeccionBase; }
+            set { SetValue(ref areasInspeccionBase, value); }
+        }
 
         public int CurrentImageSet { get; set; }
 
@@ -150,6 +157,7 @@ namespace Clicar.ViewModels
             foreach(ItemsAreasInspeccionACC item in ListaItems)
             {
                 item.Imagen = ImageSource.FromFile("camara_select_foto.png");
+                item.SwitchActive = true;
             }
 
             ListaImagenesMain = await MainInstance.DataService.GetImagenes();
@@ -269,6 +277,9 @@ namespace Clicar.ViewModels
             }
 
             AreasInspeccion = new ObservableCollection<AccordionItem>(ListAccordionItems);
+            AreasInspeccionBase = ListAccordionItems; //lista estatica que se usara para comparar
+
+
             IsLoading = false;
             PageLoaded = true;
         }

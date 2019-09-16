@@ -177,6 +177,7 @@
                     <StackLayout>
                         
                         <ListView
+                            HeightRequest="400"
                         HasUnevenRows="True"
                         VerticalScrollBarVisibility="Never"
                         SelectionMode="None"
