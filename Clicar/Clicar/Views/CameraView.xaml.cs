@@ -1,5 +1,6 @@
 ﻿using Clicar.Interface;
 using Clicar.Models;
+using Clicar.Templates;
 using Clicar.ViewModels;
 using Plugin.DeviceOrientation;
 using Plugin.DeviceOrientation.Abstractions;
@@ -7,6 +8,7 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -128,7 +130,7 @@ namespace Clicar.Views
 
             bool hasCameraPermission = await GetCameraPermission();
 
-            testLabel.Text = "Imagen: " + CurrentImageInFrame.FOTO_DESCRIPCION;
+            //testLabel.Text = "Imagen: " + CurrentImageInFrame.FOTO_DESCRIPCION;
 
             if (hasCameraPermission)
             {
@@ -140,7 +142,8 @@ namespace Clicar.Views
 
         private async void OnPictureFinished()
         {
-            await DisplayAlert("Confirmar", "Foto guardada", "", "Ok");
+            var popup = PopupNavigation.Instance;
+            await popup.PushAsync(new AlertPopup("Confirmar", "Foto guardada", "Ok"));
 
             await Navigation.PopAsync();
         }

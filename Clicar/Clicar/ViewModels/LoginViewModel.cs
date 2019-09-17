@@ -15,6 +15,7 @@ using Xamarin.Essentials;
 using Plugin.Fingerprint;
 using Rg.Plugins.Popup.Services;
 using Clicar.Utils;
+using Clicar.Templates;
 
 namespace Clicar.ViewModels
 {
@@ -130,7 +131,8 @@ namespace Clicar.ViewModels
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+                var popup = PopupNavigation.Instance;
+                await popup.PushAsync(new AlertPopup("", connection.Message, Languages.Accept));
                 return;
             }
 
@@ -212,7 +214,8 @@ namespace Clicar.ViewModels
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+                var popup = PopupNavigation.Instance;
+                await popup.PushAsync(new AlertPopup("", connection.Message, Languages.Accept));
                 return;
             }
 
@@ -269,7 +272,8 @@ namespace Clicar.ViewModels
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+                var popup = PopupNavigation.Instance;
+                await popup.PushAsync(new AlertPopup("", connection.Message, Languages.Accept));
                 return;
             }
 
@@ -563,7 +567,7 @@ namespace Clicar.ViewModels
                 if(Preferences.Get("Correo", "") != ""  && Preferences.Get("Clave", "")  != "")
                     LoginCommand(Preferences.Get("Correo", ""), Preferences.Get("Clave", ""));
                 else
-                    await Application.Current.MainPage.DisplayAlert("Error de autenticación", "No hay datos de sesión disponibles", "Continuar");
+                    await popup.PushAsync(new AlertPopup("Error de autenticación", "No hay datos de sesión disponibles", "Continuar"));
 
 
             }
@@ -580,17 +584,20 @@ namespace Clicar.ViewModels
             if (!IsIdle)
                 return;
             IsIdle = false;
+            var popup = PopupNavigation.Instance;
 
             if (RecoveryEmail == null)
             {
-                await Application.Current.MainPage.DisplayAlert("Error de autenticación", "Ingrese un correo", "Continuar");
+                await popup.PushAsync(new AlertPopup("Error de autenticación", "Ingrese un correo", "Continuar"));
+                //await Application.Current.MainPage.DisplayAlert("Error de autenticación", "Ingrese un correo", "Continuar");
                 IsIdle = true;
                 return;
             }
 
-            if (!Funciones.IsValidEmail(RecoveryEmail))
+            if (!Funciones.EmailIsValid(RecoveryEmail))
             {
-                await Application.Current.MainPage.DisplayAlert("Error de autenticación", "Ingrese un correo válido", "Continuar");
+                await popup.PushAsync(new AlertPopup("Error de autenticación", "Ingrese un correo válido", "Continuar"));
+                //await Application.Current.MainPage.DisplayAlert("Error de autenticación", "Ingrese un correo ", "Continuar");
                 IsIdle = true;
                 return;
             }
@@ -605,7 +612,6 @@ namespace Clicar.ViewModels
             //await Application.Current.MainPage.DisplayAlert("Error de autenticación", "Ingrese un correo válido", "Continuar");
             Debug.WriteLine($"~(>'.')> Passrec command send");
 
-            var popup = PopupNavigation.Instance;
             await popup.PopAsync();
 
             IsIdle = true;

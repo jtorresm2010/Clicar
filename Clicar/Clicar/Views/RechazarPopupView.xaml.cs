@@ -42,7 +42,17 @@ namespace Clicar.Views
             await PopupInstance.PopAsync();
             ButtonWorking = false;
         }
+        private async void CancelarCommand(object sender, EventArgs e)
+        {
+            if (ButtonWorking)
+                return;
+            ButtonWorking = true;
 
+            var popup = PopupNavigation.Instance;
+            await popup.PopAsync();
+
+            ButtonWorking = false;
+        }
 
     }
 }

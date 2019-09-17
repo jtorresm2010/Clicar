@@ -271,6 +271,7 @@
 
                         <!--Entry comentarios-->
                         <StackLayout
+                            IsVisible="False"
                         Margin="32,0">
                             <Frame
                             HasShadow="False"

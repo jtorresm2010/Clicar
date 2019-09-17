@@ -1,4 +1,5 @@
-﻿using Clicar.ViewModels;
+﻿using Clicar.Templates;
+using Clicar.ViewModels;
 using Plugin.DeviceOrientation;
 using Plugin.DeviceOrientation.Abstractions;
 using Rg.Plugins.Popup.Pages;
@@ -35,6 +36,9 @@ namespace Clicar.Views
                 return;
             ButtonWorking = true;
 
+            var popup = PopupNavigation.Instance;
+
+
             var mech = MainInstance.DetalleInspeccion.MechanicTransmission;
             var auto = MainInstance.DetalleInspeccion.AutomaticTransmission;
 
@@ -42,21 +46,21 @@ namespace Clicar.Views
 
             if (vinText.Length == 0)
             {
-                await DisplayAlert("Error de autenticación", "Ingrese un valor de VIN", "Continuar");
+                await popup.PushAsync(new AlertPopup("Error de autenticación", "Ingrese un valor de VIN", "Continuar"));
                 ButtonWorking = false;
                 return;
             }
 
             if (!MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_VIN.Equals(vinText))
             {
-                await DisplayAlert("Error de autenticación", "VIN Incorrecto", "Continuar");
+                await popup.PushAsync(new AlertPopup("Error de autenticación", "VIN Incorrecto", "Continuar"));
                 ButtonWorking = false;
                 return;
             }
 
             if (MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION.Equals(auto))
             {
-                await DisplayAlert("Error de autenticación", "Transmision incorrecta", "Continuar");
+                await popup.PushAsync(new AlertPopup("Error de autenticación", "Transmision incorrecta", "Continuar"));
                 Debug.WriteLine("Transmision incorrecta");
                 ButtonWorking = false;
                 return;
@@ -68,7 +72,7 @@ namespace Clicar.Views
 
             MainInstance.Inspeccion.HoraInicio = DateTime.Now;
 
-            var popup = PopupNavigation.Instance;
+            //var popup = PopupNavigation.Instance;
 
 
             await Navigation.PushAsync(new InspeccionView());

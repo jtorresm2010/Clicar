@@ -1,5 +1,6 @@
 ﻿using Clicar.Helpers;
 using Clicar.Models;
+using Clicar.Templates;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
 using Plugin.Fingerprint;
@@ -134,10 +135,20 @@ namespace Clicar.ViewModels
             if (IsBusy)
                 return;
             IsBusy = true;
+            var popup = PopupNavigation.Instance;
 
+            var currentclave = Preferences.Get("Clave", "");
+
+
+            if (Clave == null ||  !Clave.Equals(currentclave))
+            {
+                await popup.PushAsync(new AlertPopup("Error de autenticación", "Contraseña incorrecta", "Continuar"));
+                IsBusy = false;
+                return;
+            }
+            Clave = "";
             Debug.WriteLine($"~(>'.')> Enviando encabezado... confirmando pass {Clave}");
 
-            var popup = PopupNavigation.Instance;
             await popup.PopAsync();
 
             IsBusy = false;
@@ -166,7 +177,7 @@ namespace Clicar.ViewModels
 
 
 
-            EnviarEncabezado();
+            //EnviarEncabezado();
 
 
             await Application.Current.MainPage.Navigation.PushAsync(new ReportePreliminarView());
@@ -302,7 +313,8 @@ namespace Clicar.ViewModels
             var connection = MainInstance.RestService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+                var popup = PopupNavigation.Instance;
+                await popup.PushAsync(new AlertPopup("", connection.Message, Languages.Accept));
                 return;
             }
 
@@ -393,7 +405,8 @@ namespace Clicar.ViewModels
             var connection = MainInstance.RestService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+                var popup = PopupNavigation.Instance;
+                await popup.PushAsync(new AlertPopup("", connection.Message, Languages.Accept));
                 return;
             }
 

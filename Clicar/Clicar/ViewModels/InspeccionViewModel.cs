@@ -391,8 +391,8 @@ namespace Clicar.ViewModels
                 "Seleccione el origen de la imagen",
                 "Cancelar",
                 null,
-                "Galeria",
-                "Camara"
+                "Camara",
+                "Galeria"
                 );
 
             switch (source)

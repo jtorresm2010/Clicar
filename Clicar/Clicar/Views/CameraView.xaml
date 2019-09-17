@@ -59,7 +59,7 @@
                     VerticalOptions="FillAndExpand" />
 
 
-                <Label
+                <!--<Label
                     Margin="10,10,0,0"
                     x:Name="testLabel"
                     FontSize="20"
@@ -68,7 +68,7 @@
                     Opacity="0.6"
                     Grid.ColumnSpan="2"
                     HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="FillAndExpand"/>
+                    VerticalOptions="FillAndExpand"/>-->
                 
 
                     

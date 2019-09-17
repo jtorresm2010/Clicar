@@ -15,6 +15,7 @@ using Java.IO;
 using Plugin.Media;
 using Clicar.ViewModels;
 using Clicar.Models;
+using PCLStorage;
 using Xamarin.Essentials;
 
 [assembly: ExportRenderer(typeof(CameraPreview), typeof(CameraViewServiceRenderer))]
@@ -61,7 +62,6 @@ namespace Clicar.Droid.Customs.Camera2
         private async void OnPhoto(object sender, byte[] imgSource)
         {
             var path = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures);
-
 
             Bitmap bmp = BitmapFactory.DecodeByteArray(imgSource, 0, imgSource.Length);
 

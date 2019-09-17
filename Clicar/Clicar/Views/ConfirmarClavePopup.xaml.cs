@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using Clicar.Templates;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace Clicar.Views
         private async void Cancel(object obj, EventArgs e)
         {
             var popup = PopupNavigation.Instance;
+            //await popup.PushAsync(new AlertPopup("Error de autenticación", "Contraseña incorrecta", "Continuar"));
             await popup.PopAsync();
         }
 

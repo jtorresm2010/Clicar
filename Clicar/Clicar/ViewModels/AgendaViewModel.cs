@@ -1,9 +1,11 @@
 ﻿using Clicar.Helpers;
 using Clicar.Models;
 using Clicar.Services;
+using Clicar.Templates;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -161,7 +163,8 @@ namespace Clicar.ViewModels
             var connection = MainInstance.RestService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+                var popup = PopupNavigation.Instance;
+                await popup.PushAsync(new AlertPopup("", connection.Message, Languages.Accept));
                 return;
             }
 

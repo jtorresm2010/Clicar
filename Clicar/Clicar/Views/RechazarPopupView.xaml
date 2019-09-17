@@ -116,6 +116,7 @@
 
 
                     <Button
+                        Clicked="CancelarCommand"
                         HorizontalOptions="End"
                         BackgroundColor="White"
                         Text="{i18n:Translate Cancel}"

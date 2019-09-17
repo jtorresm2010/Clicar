@@ -153,10 +153,10 @@
                         FontFamily="{StaticResource BoldFontOpenSans}"
                         Text="{i18n:Translate Pending}" 
                         FontSize="20"/>
-                    <Frame.Behaviors>
-                        <behavior:CloseOpenBehavior
+                    <!--<Frame.Behaviors>-->
+                        <!--<behavior:CloseOpenBehavior
                         AttachedListView="{x:Reference Name=PendientesListView}"/>
-                    </Frame.Behaviors>
+                    </Frame.Behaviors>-->
 
                 </Frame>
                     <ListView
@@ -190,10 +190,10 @@
                         FontFamily="{StaticResource BoldFontOpenSans}"
                         Text="{i18n:Translate Completed}" 
                         FontSize="20"/>
-                    <Frame.Behaviors>
+                    <!--<Frame.Behaviors>
                         <behavior:CloseOpenBehavior
                         AttachedListView="{x:Reference Name=CompletadosListView}"/>
-                    </Frame.Behaviors>
+                    </Frame.Behaviors>-->
 
                 </Frame>
                 <ListView
