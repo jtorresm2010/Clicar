@@ -148,7 +148,8 @@
             <x:String x:Key="AgendaInspeccionRechazo">/Inspecciones/MobileRechazoInspeccion</x:String>
             <x:String x:Key="AgendaInspeccionCuerpo">/Inspecciones/MobileEnvioInspeccionCuerpo</x:String>
             <x:String x:Key="AgendaInspeccionEnvioFoto">/Inspecciones/MobileEnvioFotoInspeccion</x:String>
-            
+            <x:String x:Key="EnvioInspeccionEncabezado">/Inspecciones/MobileEnvioInspeccionEncabezado</x:String>
+            <x:String x:Key="EnvioInspeccionCuerpo">/Inspecciones/MobileEnvioInspeccionCuerpo</x:String>
 
         </ResourceDictionary>
 

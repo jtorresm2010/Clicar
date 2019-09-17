@@ -533,6 +533,14 @@ namespace Clicar.ViewModels
         }
         private async void FingerprintCommand()
         {
+            if (!IsIdle)
+                return;
+
+
+            IsIdle = false;
+
+
+
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new FingerPrintPopupView());
 
@@ -555,10 +563,7 @@ namespace Clicar.ViewModels
             }
 
 
-
-
-
-
+            IsIdle = true;
         }
 
     }

@@ -114,7 +114,7 @@
                             FontFamily="{StaticResource BoldFontOpenSans}"/>
 
                         <Label
-                            Text="{Binding CurrentInspeccion.StartTime}"
+                            Text="{Binding CurrentInspeccion.SOINS_HORA_INICIO, StringFormat='{0:HH:mm:ss}'}"
                             HorizontalOptions="Start"
                             FontSize="12"
                             TextColor="{StaticResource BGGrey}"

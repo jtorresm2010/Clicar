@@ -152,6 +152,7 @@
 
                                 <!--Clicked="LoginCommand"-->
                             <Button
+                                IsEnabled="{Binding IsReady}"
                                 Command="{Binding ConfigICommand}"
                                 BackgroundColor="{StaticResource BaseGreen}"
                                 Text="{i18n:Translate InspectionAccessButton}"

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+        xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clicar.Customs"
+        BindingContext="{Binding Main, Source={StaticResource Locator}}"
+        xmlns:i18n="clr-namespace:Clicar.Helpers"
+        mc:Ignorable="d"
+        x:Class="Clicar.Views.ConfirmarClavePopup">
+
+    <Frame
+        BindingContext="{Binding Reporte}"
+        HeightRequest="240"
+        Padding="0"
+        CornerRadius="20"
+        VerticalOptions="CenterAndExpand"
+        BackgroundColor="White"
+        Margin="16">
+
+        <StackLayout
+                VerticalOptions="CenterAndExpand"
+                Spacing="20">
+
+            <!--Titulo-->
+            <StackLayout>
+                <Label
+                        Text="Confirmar Contraseña"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="20"
+                        TextColor="{StaticResource BaseGreen}"
+                        FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+            </StackLayout>
+
+
+
+
+            <StackLayout>
+
+                <!--Ingreso de correo-->
+
+                <Grid
+                    Margin="24,35"
+                    ColumnSpacing="0"
+                    HorizontalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image  
+                        Opacity="0.6"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="15"
+                        Source="lock_solid.png" 
+                        VerticalOptions="Center" />
+                    <local:CustomEntry 
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        x:Name="Password"
+                        Text="{Binding Clave}"
+                        VerticalOptions="Center"
+                        IsPassword="True"
+                        HeightRequest="40"
+                        BackgroundColor="Transparent" 
+                        Placeholder="{i18n:Translate PasswordPlaceholder}" 
+                        TextColor="{StaticResource BaseGrey}" 
+                        FontSize="14" 
+                        FontFamily="{StaticResource RegularFontOpenSans}"  />
+
+                    <StackLayout
+                        Padding="0"
+                        WidthRequest="25"
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand"
+                        Grid.Row="0"
+                        Grid.Column="2" >
+
+                        <Image 
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            x:Name="eye_icon" 
+                            Source="eye_faded.png" >
+                        </Image>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ShowPass"/>
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+
+                    <Frame
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        HasShadow="False"
+                        Padding="0"
+                        VerticalOptions="EndAndExpand"
+                        HeightRequest="1"
+                        BackgroundColor="{StaticResource BaseGreen}"/>
+
+
+                </Grid>
+
+            </StackLayout>
+
+
+
+            <!--Botones-->
+            <StackLayout
+                Margin="16,0"
+                HorizontalOptions="EndAndExpand"
+                Spacing="10"
+                Orientation="Horizontal">
+
+
+                <Button
+                        Clicked="Cancel"
+                        HorizontalOptions="End"
+                        BackgroundColor="White"
+                        Text="{i18n:Translate Cancel}"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="{StaticResource BaseGreyLight}"
+                        HeightRequest="30"
+                        CornerRadius="15"
+                        WidthRequest="100"/>
+
+                <Button
+                        Command="{Binding EnviarReporteICommand}"
+                        HorizontalOptions="End"
+                        BackgroundColor="{StaticResource BaseOrange}"
+                        Text="{i18n:Translate Send}"
+                        FontSize="14"
+                        FontFamily="{StaticResource BoldFontOpenSans}"
+                        TextColor="White"
+                        HeightRequest="30"
+                        CornerRadius="15"
+                        WidthRequest="100"/>
+
+            </StackLayout>
+        </StackLayout>
+
+    </Frame>
+</pages:PopupPage>

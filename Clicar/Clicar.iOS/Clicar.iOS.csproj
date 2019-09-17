@@ -73,6 +73,7 @@
     <BundleResource Include="Resources\star_black.png" />
     <BundleResource Include="Resources\star_border.png" />
     <BundleResource Include="Resources\star_half.png" />
+    <BundleResource Include="Resources\user_times_green.png" />
     <None Include="Entitlements.plist" />
     <Content Include="Info.plist">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -104,7 +105,6 @@
     <BundleResource Include="Resources\sync_alt_orange.png" />
     <BundleResource Include="Resources\sync_alt_solid.png" />
     <BundleResource Include="Resources\sync_alt.png" />
-    <BundleResource Include="Resources\user_times_green.png" />
     <Compile Include="Customs\CustomEntryIOS.cs" />
     <BundleResource Include="Resources\clicar_bajada.png" />
     <BundleResource Include="Resources\clicar_bajada%402x.png" />

@@ -8,7 +8,7 @@ namespace Clicar.Models
     [Table("Maestro")]
     public class Maestro
     {
-        public string USU_ID { get; set; }
+        public int USU_ID { get; set; }
         public string USU_PERFIL_ID { get; set; }
         public string USU_USERNAME { get; set; }
         public string USU_ACTIVO { get; set; }

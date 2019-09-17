@@ -38,7 +38,7 @@ namespace Clicar.Models
         public object SOINS_RUT_CLIENTE { get; set; }
         public int SOINS_MACOL_ID { get; set; }
         public object SOINS_KILOMETRAJE { get; set; }
-        public object SOINS_VIN { get; set; }
+        public string SOINS_VIN { get; set; }
         public int SOINS_SUBTI_ID { get; set; }
         public object SOINS_CONT_TASACIONES { get; set; }
         public DateTime SOINS_FECHA_ACTUALIZACION { get; set; }

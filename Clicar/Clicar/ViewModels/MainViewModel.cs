@@ -20,6 +20,8 @@ namespace Clicar.ViewModels
         public string AgendaInspeccionRechazo { get; set; }
         public string AgendaInspeccionCuerpo { get; set; }
         public string AgendaInspeccionEnvioFoto { get; set; }
+        public string EnvioInspeccionEncabezado { get; set; }
+        public string EnvioInspeccionCuerpo { get; set; }
 
 
         #region Instancias VM
@@ -59,11 +61,10 @@ namespace Clicar.ViewModels
                 AgendaInspeccionRechazo = Application.Current.Resources["AgendaInspeccionRechazo"].ToString();
                 AgendaInspeccionCuerpo = Application.Current.Resources["AgendaInspeccionCuerpo"].ToString();
                 AgendaInspeccionEnvioFoto = Application.Current.Resources["AgendaInspeccionEnvioFoto"].ToString();
-
+                EnvioInspeccionEncabezado = Application.Current.Resources["EnvioInspeccionEncabezado"].ToString();
+                EnvioInspeccionCuerpo = Application.Current.Resources["EnvioInspeccionCuerpo"].ToString();
 
                 await DataService.OpenOrCreateDB();
-
-
 
                 Application.Current.PageAppearing -= CurrentPageAppearing;
             }

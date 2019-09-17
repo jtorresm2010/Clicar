@@ -1,6 +1,9 @@
-﻿using Clicar.Models;
+﻿using Clicar.Helpers;
+using Clicar.Models;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
+using Plugin.Fingerprint;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,8 +19,6 @@ namespace Clicar.ViewModels
     {
         public string Area { get; set; }
         public string Texto { get; set; }
-
-
     }
 
 
@@ -30,18 +31,25 @@ namespace Clicar.ViewModels
         private string evalGeneral;
         private string correoUsuario;
         private List<ResumenFinal> resumenFinal;
+        private string clave;
 
         #endregion
 
+
+
+
         #region Propiedades
+        public string Clave
+        {
+            get { return clave; }
+            set { SetValue(ref clave, value); }
+        }
 
         public List<ResumenFinal> ResumenFinal
         {
             get { return resumenFinal; }
             set { SetValue(ref resumenFinal, value); }
         }
-
-
         public float CurrentStarRating
         {
             get { return currentStarRating; }
@@ -57,7 +65,7 @@ namespace Clicar.ViewModels
             get { return correoUsuario; }
             set { SetValue(ref correoUsuario, value); }
         }
-
+        public int IdRespuesta { get; set; }
         #endregion
 
 
@@ -68,6 +76,21 @@ namespace Clicar.ViewModels
             CorreoUsuario = Preferences.Get("Correo","");
         }
 
+        #region ICommands
+        public ICommand CancelarICommand
+        {
+            get
+            {
+                return new RelayCommand(CancelarCommand);
+            }
+        }
+        public ICommand VerResumenICommand
+        {
+            get
+            {
+                return new RelayCommand(VerResumenCommand);
+            }
+        }
         public ICommand FinalizarICommand
         {
             get
@@ -75,23 +98,80 @@ namespace Clicar.ViewModels
                 return new RelayCommand(FinalizarCommand);
             }
         }
+        public ICommand FinishICommand
+        {
+            get
+            {
+                return new RelayCommand(FinishCommand);
+            }
+        }
+        public ICommand PassSignICommand
+        {
+            get
+            {
+                return new RelayCommand(PassSignCommand);
+            }
+        }
+        public ICommand FingerprintICommand
+        {
+            get
+            {
+                return new RelayCommand(FingerprintCommand);
+            }
+        }
+
+        #endregion
+
+        public ICommand EnviarReporteICommand
+        {
+            get
+            {
+                return new RelayCommand(EnviarReporteCommand);
+            }
+        }
+        private async void EnviarReporteCommand()
+        {
+            if (IsBusy)
+                return;
+            IsBusy = true;
+
+            Debug.WriteLine($"~(>'.')> Enviando encabezado... confirmando pass {Clave}");
+
+            var popup = PopupNavigation.Instance;
+            await popup.PopAsync();
+
+            IsBusy = false;
+        }
+
+
+
+        private async void PassSignCommand()
+        {
+            if (IsBusy)
+                return;
+            IsBusy = true;
+
+            var popup = PopupNavigation.Instance;
+            await popup.PushAsync(new ConfirmarClavePopup());
+
+            IsBusy = false;
+        }
+
 
         private async void FinalizarCommand()
         {
             if (IsBusy)
                 return;
             IsBusy = true;
+
+
+
+            EnviarEncabezado();
+
+
             await Application.Current.MainPage.Navigation.PushAsync(new ReportePreliminarView());
+
             IsBusy = false;
-        }
-
-
-        public ICommand CancelarICommand
-        {
-            get
-            {
-                return new RelayCommand(CancelarCommand);
-            }
         }
 
         private async void CancelarCommand()
@@ -101,14 +181,6 @@ namespace Clicar.ViewModels
             IsBusy = true;
             await Application.Current.MainPage.Navigation.PopAsync();
             IsBusy = false;
-        }
-
-        public ICommand VerResumenICommand
-        {
-            get
-            {
-                return new RelayCommand(VerResumenCommand);
-            }
         }
 
         private async void VerResumenCommand()
@@ -197,14 +269,6 @@ namespace Clicar.ViewModels
             IsBusy = false;
         }
 
-
-        public ICommand FinishICommand
-        {
-            get
-            {
-                return new RelayCommand(FinishCommand);
-            }
-        }
         private async void FinishCommand()
         {
             if (IsBusy)
@@ -212,14 +276,169 @@ namespace Clicar.ViewModels
             IsBusy = true;
 
             await Application.Current.MainPage.Navigation.PopAsync();
-            //await Application.Current.MainPage.Navigation.PopToRootAsync();
 
             IsBusy = false;
         }
 
+        private Encabezado CrearEncabezado()
+        {
+            Encabezado encabezado = new Encabezado
+            {
+                INSP_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
+                INSP_SOINS_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
+                INPS_FECHA_INICIO = MainInstance.Inspeccion.HoraInicio,
+                INSP_USU_ID = MainInstance.Agenda.Maestro.USU_ID,
+                INSP_FECHA_FIN = MainInstance.Inspeccion.HoraTermino,
+                INSP_COMENTARIOS = EvalGeneral,
+                INSP_NRO_ESTRELLAS = (int)CurrentStarRating,
+                INSP_ESTDO_ID = 0,
+            };
+
+            return encabezado;
+        }
+
+        private async void EnviarEncabezado()
+        {
+            var connection = MainInstance.RestService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+                return;
+            }
+
+            var enc = CrearEncabezado();
+
+            Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.EnvioInspeccionEncabezado}");
+            //Objeto creado, falta establecer respuesta
+            var response = await MainInstance.RestService.PostAsync<SucursalesResponse>(
+                MainInstance.Url,
+                MainInstance.Prefix,
+                MainInstance.EnvioInspeccionEncabezado,
+                enc);
+
+            try
+            {
+                SucursalesResponse resp = (SucursalesResponse)response.Result;
+
+                if (resp.Resultado)
+                {
+                    Debug.WriteLine($"~(>^.^)> Encabezado OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("~(>-_-)> Error encabezado " + ex.Message);
+            }
+        }
+
+        private EnvioInspeccion CrearCuerpoMensaje()
+        {
+            EnvioInspeccion cuerpo = new EnvioInspeccion();
+
+            var listaItems = new List<ItemsInspeccionado>();
+
+            foreach(AccordionItem area in MainInstance.Inspeccion.AreasInspeccion)
+            {
+                if(area.Items.Count > 0)
+                {
+                    foreach(ItemsAreasInspeccionACC item in area.Items)
+                    {
+                        var itemInspeccionados = new ItemsInspeccionado
+                        {
+                            INSPE_DESHABILITADO = item.ITINS_IS_LOCKED ? 1 : 0,
+                            INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
+                            INSPE_ITINS_ID = item.ITINS_ID,
+                            INSPE_INSP_ID = item.ITINS_ID, ////este es el que vuelve desde la consulta
+                            INSPE_OBSERVACION = item.Comentario ?? "",
+                            CLCAR_ITEM_INSPECCION = new ClcarItemInspeccion
+                            {
+                                ITINS_ACTIVO = item.ITINS_ACTIVO,
+                                ITINS_ID = item.ITINS_ID,
+                                ITINS_AINSP_ID = item.ITINS_AINSP_ID,
+                                ITINS_CONDICION = item.ITINS_CONDICION,
+                                ITINS_DESCRIPCION = item.ITINS_DESCRIPCION,
+                                ITINS_DESHABILITAR = item.ITINS_DESHABILITAR,
+                                ITINS_ORDEN_APP = item.ITINS_ORDEN_APP,
+                                ITINS_REQUIERE_FOTO = item.ITINS_REQUIERE_FOTO
+                            },
+                           CLCAR_INSPECCION_REPARAR = new ClcarInspeccionReparar
+                           {
+                               INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID
+                           },
+                           CLCAR_INSPECCION_SUSTITUIR = new ClcarInspeccionSustituir
+                           {
+                               INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID
+                           },
+                           CLCAR_FOTOS_ITEM_INSPECCION = new ClcarFotosItemInspeccion
+                           {
+                               INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
+                               FIINS_FECHA_CREACION = MainInstance.Inspeccion.HoraInicio,
+                               FIINS_NOMBRE_ARCHIVO = item.Imagen.ToString()
+                           }
+                        };
 
 
+                        listaItems.Add(itemInspeccionados);
+                    }
+                }
+            }
 
+            cuerpo.itemsInspeccionados = listaItems;
+
+            return cuerpo;
+        }
+
+        private async void EnviarCuerpo()
+        {
+            var connection = MainInstance.RestService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert("", connection.Message, Languages.Accept);
+                return;
+            }
+
+            var enc = CrearCuerpoMensaje();
+
+            Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.EnvioInspeccionEncabezado}");
+            //Objeto creado, falta establecer respuesta
+            var response = await MainInstance.RestService.PostAsync<SucursalesResponse>(
+                MainInstance.Url,
+                MainInstance.Prefix,
+                MainInstance.EnvioInspeccionCuerpo,
+                enc);
+
+            try
+            {
+                SucursalesResponse resp = (SucursalesResponse)response.Result;
+
+                if (resp.Resultado)
+                {
+                    Debug.WriteLine($"~(>^.^)> Encabezado OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("~(>-_-)> Error encabezado " + ex.Message);
+            }
+        }
+
+        private async void FingerprintCommand()
+        {
+            var popup = PopupNavigation.Instance;
+            await popup.PushAsync(new FingerPrintPopupView());
+
+            var result = await CrossFingerprint.Current.AuthenticateAsync("Valide su huella para continuar");
+            if (result.Authenticated)
+            {
+                await popup.PopAsync();
+
+                Debug.WriteLine($"~(>'.')> Autenticando a usuario {Preferences.Get("Correo", "---")}");
+            }
+            else
+            {
+                // not allowed to do secret stuff :(
+            }
+        }
 
     }
 }

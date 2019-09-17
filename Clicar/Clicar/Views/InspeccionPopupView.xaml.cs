@@ -47,7 +47,7 @@ namespace Clicar.Views
                 return;
             }
 
-            if (!MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_VIN.ToString().Equals(vinText))
+            if (!MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_VIN.Equals(vinText))
             {
                 await DisplayAlert("Error de autenticación", "VIN Incorrecto", "Continuar");
                 ButtonWorking = false;

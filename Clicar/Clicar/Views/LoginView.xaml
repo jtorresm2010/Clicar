@@ -70,6 +70,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Image  
+                                    Opacity="0.6"
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="CenterAndExpand"

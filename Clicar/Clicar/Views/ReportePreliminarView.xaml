@@ -309,25 +309,44 @@
 
                         <!--Firmas-->
                         <StackLayout
-                        Spacing="16"
+                        Spacing="5"
                         Margin="48,0,48,50">
                             <!--firmar con Contraseña-->
-                            <Label
-                            HorizontalOptions="StartAndExpand"
-                            Text="{i18n:Translate PasswordSign}"
-                            TextColor="{StaticResource BaseOrange}"
-                            TextDecorations="Underline"
-                            FontSize="14"
-                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+
+                            <StackLayout
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand">
+                                <Label
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{i18n:Translate PasswordSign}"
+                                    TextColor="{StaticResource BaseOrange}"
+                                    TextDecorations="Underline"
+                                    FontSize="14"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PassSignICommand}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
 
                             <!--firmar con Touch ID-->
-                            <Label
-                            HorizontalOptions="StartAndExpand"
-                            Text="{i18n:Translate TouchIDSign}"
-                            TextColor="{StaticResource BaseOrange}"
-                            TextDecorations="Underline"
-                            FontSize="14"
-                            FontFamily="{StaticResource RegularFontOpenSans}"/>
+                            <StackLayout
+                                HeightRequest="40"
+                                HorizontalOptions="FillAndExpand">
+                                <Label
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{i18n:Translate TouchIDSign}"
+                                    TextColor="{StaticResource BaseOrange}"
+                                    TextDecorations="Underline"
+                                    FontSize="14"
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding FingerprintICommand}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
                 </Frame>

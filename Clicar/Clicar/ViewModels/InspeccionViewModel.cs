@@ -22,10 +22,7 @@ namespace Clicar.ViewModels
     public class InspeccionViewModel : BaseViewModel
     {
         #region Variables
-
         private List<AccordionItem> ListAccordionItems;
-        //private List<ItemsAreasInspeccionDB> ListaItems;
-        //private List<ItemInspeccion> ItemList;
         private Color baseGreyLight;
         private Color baseOrange;
         private Color baseGreen;
@@ -38,33 +35,28 @@ namespace Clicar.ViewModels
         private List<Fotografia> listaImagenes2;
         private Fotografia currentFoto;
         private bool isLoading;
+        private DateTime horaTermino;
+        private DateTime tiempoInspeccion;
+        private DateTime horaInicio;
+        private List<AccordionItem> areasInspeccionBase;
         #endregion
 
-
-        private DateTime horaTermino;
+        #region Propiedades
         public DateTime HoraTermino
         {
             get { return horaTermino; }
             set { SetValue(ref horaTermino, value); }
         }
-
-        private DateTime tiempoInspeccion;
         public DateTime TiempoInspeccion
         {
             get { return tiempoInspeccion; }
             set { SetValue(ref tiempoInspeccion, value); }
         }
-
-        private DateTime horaInicio;
         public DateTime HoraInicio
         {
             get { return horaInicio; }
             set { SetValue(ref horaInicio, value); }
         }
-
-
-
-        #region Propiedades
         public bool PageLoaded { get; set; }
         public bool IsLoading
         {
@@ -113,18 +105,15 @@ namespace Clicar.ViewModels
             get { return areasInspeccion; }
             set { SetValue(ref areasInspeccion, value); }
         }
-
-        #endregion
-
-        private List<AccordionItem> areasInspeccionBase;
-
         public List<AccordionItem> AreasInspeccionBase
         {
             get { return areasInspeccionBase; }
             set { SetValue(ref areasInspeccionBase, value); }
         }
-
         public int CurrentImageSet { get; set; }
+
+        #endregion
+
 
 
         public InspeccionViewModel()
@@ -423,7 +412,6 @@ namespace Clicar.ViewModels
             IsBusy = false;
 
         }
-
         private async void TakePicture(object parameter)
         {
             if (Device.RuntimePlatform == Device.iOS)
@@ -476,7 +464,6 @@ namespace Clicar.ViewModels
                 await Application.Current.MainPage.Navigation.PushAsync(cameraView);
             }
         }
-
         private async void SelectFromGallery(object CurrentImage)
         {
 
@@ -510,7 +497,6 @@ namespace Clicar.ViewModels
                 AreasInspeccion[currentIndex - 2].ListaFotos[ListaImagenes2.IndexOf((Fotografia)CurrentImage)] = (Fotografia)CurrentImage;
             }
         }
-
         private async void EditarDetalleCommand(object parameter)
         {
             if (IsBusy)
