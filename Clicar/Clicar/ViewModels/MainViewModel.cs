@@ -22,6 +22,7 @@ namespace Clicar.ViewModels
         public string AgendaInspeccionEnvioFoto { get; set; }
         public string EnvioInspeccionEncabezado { get; set; }
         public string EnvioInspeccionCuerpo { get; set; }
+        public string RecuperaPass { get; set; }
 
 
         #region Instancias VM
@@ -63,6 +64,7 @@ namespace Clicar.ViewModels
                 AgendaInspeccionEnvioFoto = Application.Current.Resources["AgendaInspeccionEnvioFoto"].ToString();
                 EnvioInspeccionEncabezado = Application.Current.Resources["EnvioInspeccionEncabezado"].ToString();
                 EnvioInspeccionCuerpo = Application.Current.Resources["EnvioInspeccionCuerpo"].ToString();
+                RecuperaPass = Application.Current.Resources["RecuperaPass"].ToString();
 
                 await DataService.OpenOrCreateDB();
 
@@ -70,7 +72,7 @@ namespace Clicar.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"~(>'.')>  Inicializar valores en MVM{ex.Message}");
+                Debug.WriteLine($"~(>'.')> Error Inicializar valores en MVM{ex.Message}");
             }
         }
 

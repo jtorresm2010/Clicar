@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -15,6 +16,12 @@ namespace Clicar.Utils
             var margin = (screenwidth / 2) - (anchoImagen / 2) - anchoIconoDerecha;
             Thickness thickness = new Thickness(0, 0, margin, 0);
             return thickness;
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            var expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            return Regex.IsMatch(email, expresion) && Regex.Replace(email, expresion, String.Empty).Length == 0;
         }
     }
 }

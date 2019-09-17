@@ -14,18 +14,27 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using Plugin.Fingerprint;
 using Rg.Plugins.Popup.Services;
+using Clicar.Utils;
 
 namespace Clicar.ViewModels
 {
+    public class PassRecovery
+    {
+        public string USU_USERNAME { get; set; }
+    }
     public class LoginViewModel : BaseViewModel
     {
 
         #region Variables
+        private RestService restService;
+        MainViewModel MainInstance;
         private bool isLoading;
         private string usuario;
         private string clave;
         LoginResponse loginResponse;
         private bool isBusy;
+        private string recoveryEmail;
+        private bool figerprintAvailable;
         #endregion
 
         #region Propiedades
@@ -39,35 +48,29 @@ namespace Clicar.ViewModels
             get { return clave; }
             set { SetValue(ref clave, value); }
         }
-
-
-        private bool figerprintAvailable;
-
+        public string RecoveryEmail
+        {
+            get { return recoveryEmail; }
+            set { SetValue(ref recoveryEmail, value); }
+        }
         public bool FigerprintAvailable
         {
             get { return figerprintAvailable; }
             set { SetValue(ref figerprintAvailable, value); }
         }
-
         public bool IsIdle
         {
             get { return isBusy; }
             set { SetValue(ref isBusy, value); }
         }
-
-
-
-
         public bool IsLoading
         {
             get { return isLoading; }
             set { SetValue(ref isLoading, value); }
         }
-
         #endregion
 
-        private RestService restService;
-        MainViewModel MainInstance;
+
 
         public LoginViewModel()
         {
@@ -76,6 +79,7 @@ namespace Clicar.ViewModels
 
             usuario = "palarcon";
             clave = "123456";
+
 
             FeatureAvailable();
 
@@ -88,6 +92,8 @@ namespace Clicar.ViewModels
             FigerprintAvailable = await CrossFingerprint.Current.IsAvailableAsync();
         }
 
+
+        #region ICommands
         public ICommand LoginICommand
         {
             get
@@ -95,6 +101,21 @@ namespace Clicar.ViewModels
                 return new RelayCommand(LoginCommand);
             }
         }
+        public ICommand FingerprintICommand
+        {
+            get
+            {
+                return new RelayCommand(FingerprintCommand);
+            }
+        }
+        public ICommand RecuperarClaveIcommand
+        {
+            get
+            {
+                return new RelayCommand(RecuperarClavecommand);
+            }
+        }
+        #endregion
 
 
         private async void LoginCommand(string correo, string clave)
@@ -150,7 +171,6 @@ namespace Clicar.ViewModels
             IsIdle = true;
         }
 
-        //string usuario = Preferences.Get("Correo", "")
         private void LoginCommand()
         {
             LoginCommand(Usuario, Clave);
@@ -524,22 +544,12 @@ namespace Clicar.ViewModels
             IsLoading = false;
         }
 
-        public ICommand FingerprintICommand
-        {
-            get
-            {
-                return new RelayCommand(FingerprintCommand);
-            }
-        }
         private async void FingerprintCommand()
         {
             if (!IsIdle)
                 return;
 
-
             IsIdle = false;
-
-
 
             var popup = PopupNavigation.Instance;
             await popup.PushAsync(new FingerPrintPopupView());
@@ -562,9 +572,46 @@ namespace Clicar.ViewModels
                 // not allowed to do secret stuff :(
             }
 
+            IsIdle = true;
+        }
+
+        private async void RecuperarClavecommand()
+        {
+            if (!IsIdle)
+                return;
+            IsIdle = false;
+
+            if (RecoveryEmail == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error de autenticación", "Ingrese un correo", "Continuar");
+                IsIdle = true;
+                return;
+            }
+
+            if (!Funciones.IsValidEmail(RecoveryEmail))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error de autenticación", "Ingrese un correo válido", "Continuar");
+                IsIdle = true;
+                return;
+            }
+
+            var passrec = new PassRecovery
+            {
+                USU_USERNAME = RecoveryEmail
+            };
+
+            var reponse = await MainInstance.RestService.PostAsync<object>(MainInstance.Url, MainInstance.Prefix, MainInstance.RecuperaPass, passrec);
+
+            //await Application.Current.MainPage.DisplayAlert("Error de autenticación", "Ingrese un correo válido", "Continuar");
+            Debug.WriteLine($"~(>'.')> Passrec command send");
+
+            var popup = PopupNavigation.Instance;
+            await popup.PopAsync();
 
             IsIdle = true;
         }
+
+
 
     }
 }
