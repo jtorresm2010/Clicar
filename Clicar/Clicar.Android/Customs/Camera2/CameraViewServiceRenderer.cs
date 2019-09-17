@@ -63,6 +63,20 @@ namespace Clicar.Droid.Customs.Camera2
         {
             var path = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures);
 
+
+
+            String folderName ="Clicar" ;
+            IFolder folder = PCLStorage.FileSystem.Current.LocalStorage;
+            folder = await folder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
+
+            // get hold of the file system  
+            //IFolder folder = folderName ?? PCLStorage.FileSystem.Current.LocalStorage;
+
+            // create a file, overwriting any existing file  
+
+
+
+
             Bitmap bmp = BitmapFactory.DecodeByteArray(imgSource, 0, imgSource.Length);
 
             if(this.Element.Orientation == Orientation.Portrait)
@@ -81,22 +95,41 @@ namespace Clicar.Droid.Customs.Camera2
 
             var numeroImagen = int.Parse(Preferences.Get("ImageNumber", "0000"));
 
-            var fullpath = $"{path}/Clicar/CLCR{numeroImagen + 1}_{this.Element.Orientation.ToString()}.Jpeg";
+            //var fullpath = $"{path}/Clicar/CLCR{numeroImagen + 1}_{this.Element.Orientation.ToString()}.Jpeg";
 
-            System.IO.File.WriteAllBytes(fullpath, bitmapData);
+            //System.IO.File.WriteAllBytes(fullpath, bitmapData);
 
-            var numeriINc = numeroImagen + 1;
-            Preferences.Set("ImageNumber", numeriINc.ToString());
+            //var numeriINc = numeroImagen + 1;
+            //Preferences.Set("ImageNumber", numeriINc.ToString());
 
-            System.Console.WriteLine(fullpath);
+            //System.Console.WriteLine(fullpath);
+            System.Console.WriteLine($"~(>'.')> {folder.Path}");
+
+
+
+            IFile file = await folder.CreateFileAsync($"CLCR{numeroImagen + 1}_{this.Element.Orientation.ToString()}.Jpeg", CreationCollisionOption.GenerateUniqueName);
+
+            // populate the file with image data  
+            using (System.IO.Stream stream = await file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite))
+            {
+                stream.Write(bitmapData, 0, bitmapData.Length);
+            }
+
 
             if (this.Element.ObjectItem != null)
             {
-                ((Fotografia)Element.ObjectItem).CurrentImageSmall = fullpath;
+                ((Fotografia)Element.ObjectItem).CurrentImageSmall = file.Path;//fullpath;
 
                 //await MainInstance.DataService.Insert<FotografiaLocal>(new FotografiaLocal { LOCAL_IMAGERUTA = fullpath , ITEM_CORRESP = ((Fotografia)this.Element.ObjectItem).FOTO_ID });
 
             }
+
+
+
+
+
+
+
 
             Device.BeginInvokeOnMainThread(() =>
             {

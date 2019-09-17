@@ -199,7 +199,7 @@ namespace Clicar.ViewModels
                             SOTAS_PATENTE = "PJPK66",
                             SUBTI_DESCRIPCION = "No se de tipos :P",
                             SOTAS_APELLIDO = "Perez",
-                            SOINS_VIN = "0000",
+                            SOINS_VIN = "123456",
                             SOINS_TRANSMISION = true,
                             SOINS_RUT_CLIENTE = "12345675",
                             SOINS_FECHA_CITA = DateTime.Now,

@@ -6,6 +6,7 @@
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              xmlns:local="clr-namespace:Clicar.Customs"
              xmlns:behavior="clr-namespace:Clicar.Behaviors"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              BindingContext="{Binding Main, Source={StaticResource Locator}}" 
              mc:Ignorable="d"
              x:Class="Clicar.Views.EditarDetalleView">
@@ -235,8 +236,8 @@
                                 HasShadow="False"
                                 CornerRadius="0"
                                 BackgroundColor="{StaticResource BaseGrey63}">
-                                <Image
-                                    
+                                <forms:CachedImage
+                                    DownsampleToViewSize="True"
                                     HeightRequest="200"
                                     Aspect="AspectFill"
                                     Source="{Binding CurrentItem.Imagen}"/>

@@ -26,6 +26,8 @@ namespace Clicar.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::PCLStorage.Resource.String.ApplicationName = global::Clicar.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::Clicar.Droid.Resource.String.Hello;
 			global::Plugin.Fingerprint.Resource.Drawable.fingerprint_white = global::Clicar.Droid.Resource.Drawable.fingerprint_white;
 			global::Plugin.Fingerprint.Resource.Id.fingerprint_btnCancel = global::Clicar.Droid.Resource.Id.fingerprint_btnCancel;
 			global::Plugin.Fingerprint.Resource.Id.fingerprint_btnFallback = global::Clicar.Droid.Resource.Id.fingerprint_btnFallback;
@@ -10036,6 +10038,12 @@ namespace Clicar.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f0b004f
+			public const int ApplicationName = 2131427407;
+			
+			// aapt resource value: 0x7f0b004e
+			public const int Hello = 2131427406;
 			
 			// aapt resource value: 0x7f0b0018
 			public const int abc_action_bar_home_description = 2131427352;
