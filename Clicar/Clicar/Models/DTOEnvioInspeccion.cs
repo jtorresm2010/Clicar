@@ -25,20 +25,20 @@ namespace Clicar.Models
 
     public class ItemsInspeccionado
     {
-        public int INSPE_ID { get; set; }
+        public object INSPE_ID { get; set; }
         public int INSPE_INSP_ID { get; set; }
         public int INSPE_ITINS_ID { get; set; }
         public string INSPE_OBSERVACION { get; set; }
         public int INSPE_DESHABILITADO { get; set; }
-        public ClcarFotosItemInspeccion CLCAR_FOTOS_ITEM_INSPECCION { get; set; }
-        public ClcarItemInspeccion CLCAR_ITEM_INSPECCION { get; set; }
+        //public ClcarFotosItemInspeccion CLCAR_FOTOS_ITEM_INSPECCION { get; set; }
+        //public ClcarItemInspeccion CLCAR_ITEM_INSPECCION { get; set; }
         public ClcarInspeccionSustituir CLCAR_INSPECCION_SUSTITUIR { get; set; }
         public ClcarInspeccionReparar CLCAR_INSPECCION_REPARAR { get; set; }
     }
 
     public partial class ClcarInspeccionReparar
     {
-        public int INSPE_ID { get; set; }
+        public object INSPE_ID { get; set; }
         public string IREPA_TIREP_DESCRIPCION { get; set; }
         public int IREPA_VALOR_REPARAR { get; set; }
         public string IREPA_COMENTARIO { get; set; }
@@ -46,7 +46,7 @@ namespace Clicar.Models
 
     public partial class ClcarInspeccionSustituir
     {
-        public int INSPE_ID { get; set; }
+        public object INSPE_ID { get; set; }
         public int ISUST_VALOR_SUSTITUIR { get; set; }
         public string ISUST_COMENTARIO { get; set; }
     }

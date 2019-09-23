@@ -174,7 +174,7 @@ namespace Clicar.ViewModels
 
 
 
-            Debug.WriteLine($"~(>'.')> Enviando encabezado... confirmando pass {Clave}");
+            //Debug.WriteLine($"~(>'.')> Enviando encabezado... confirmando pass {Clave}");
 
             await popup.PopAsync();
 
@@ -348,10 +348,6 @@ namespace Clicar.ViewModels
 
             var enc = CrearEncabezado();
 
-            
-
-            Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.EnvioInspeccionEncabezado}");
-            //Objeto creado, falta establecer respuesta
             var response = await MainInstance.RestService.PostAsync<EncabezadoResponse>(
                 MainInstance.Url,
                 MainInstance.Prefix,
@@ -370,7 +366,7 @@ namespace Clicar.ViewModels
                     EnviarCuerpo(resp.Elemento.INSP_ID);
 
 
-                    Debug.WriteLine($"~(>^.^)> Encabezado OK");
+                   // Debug.WriteLine($"~(>^.^)> Encabezado OK");
                 }
             }
             catch (Exception ex)
@@ -392,46 +388,50 @@ namespace Clicar.ViewModels
                     if (area.Items.Count > 0)
                     {
                         foreach(ItemsAreasInspeccionACC item in area.Items)
-                    {
-                        var itemInspeccionados = new ItemsInspeccionado
                         {
-                            //insp_id
-                            //MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
-                            INSPE_ID = insp_id,
-                            INSPE_INSP_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
-                            INSPE_ITINS_ID = item.ITINS_ID,
-                            INSPE_OBSERVACION = item.Comentario ?? "",
-                            INSPE_DESHABILITADO = item.ITINS_IS_LOCKED ? 1 : 0,
-                            CLCAR_ITEM_INSPECCION = new ClcarItemInspeccion
+
+                            var INSPECCION_REPARAR = new ClcarInspeccionReparar();
+                            var INSPECCION_SUSTITUIR = new ClcarInspeccionSustituir();
+
+                            if (item.ITINS_STATE_ACTIVO)
                             {
-                                ITINS_ACTIVO = item.ITINS_ACTIVO,
-                                ITINS_ID = item.ITINS_ID,
-                                ITINS_AINSP_ID = item.ITINS_AINSP_ID,
-                                ITINS_CONDICION = item.ITINS_CONDICION,
-                                ITINS_DESCRIPCION = item.ITINS_DESCRIPCION ?? "",
-                                ITINS_DESHABILITAR = item.ITINS_DESHABILITAR,
-                                ITINS_ORDEN_APP = item.ITINS_ORDEN_APP,
-                                ITINS_REQUIERE_FOTO = item.ITINS_REQUIERE_FOTO
-                            },
-                            CLCAR_INSPECCION_REPARAR = new ClcarInspeccionReparar
-                            {
-                                INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID
-                            },
-                            CLCAR_INSPECCION_SUSTITUIR = new ClcarInspeccionSustituir
-                            {
-                                INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID
-                            },
-                            CLCAR_FOTOS_ITEM_INSPECCION = new ClcarFotosItemInspeccion
-                            {
-                                INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
-                                FIINS_FECHA_CREACION = MainInstance.Inspeccion.HoraInicio,
-                                FIINS_NOMBRE_ARCHIVO = item.Imagen.ToString()
+
+                                if (item.Reparar)
+                                {
+                                    INSPECCION_REPARAR.INSPE_ID = null;
+                                    INSPECCION_REPARAR.IREPA_COMENTARIO = item.Condicion;
+
+                                    INSPECCION_SUSTITUIR = null;
+                                }
+                                else
+                                {
+                                    INSPECCION_SUSTITUIR.INSPE_ID = null;
+                                    INSPECCION_SUSTITUIR.ISUST_COMENTARIO = "";
+
+                                    INSPECCION_REPARAR = null;
+                                }
                             }
-                        };
+                            else
+                            {
+                                INSPECCION_REPARAR = null;
+                                INSPECCION_SUSTITUIR = null;
+                            }
 
 
-                        listaItems.Add(itemInspeccionados);
-                    }
+                            var itemInspeccionados = new ItemsInspeccionado
+                            {
+                                INSPE_ID = null,
+                                INSPE_INSP_ID = insp_id,
+                                INSPE_ITINS_ID = item.ITINS_ID,
+                                INSPE_OBSERVACION = item.Comentario ?? "",
+                                INSPE_DESHABILITADO = item.ITINS_IS_LOCKED ? 1 : 0,
+                                CLCAR_INSPECCION_REPARAR = INSPECCION_REPARAR,
+                                CLCAR_INSPECCION_SUSTITUIR = INSPECCION_SUSTITUIR
+                            };
+
+
+                            listaItems.Add(itemInspeccionados);
+                        }
                     }
                 }
             }
@@ -458,7 +458,6 @@ namespace Clicar.ViewModels
 
             var enc = CrearCuerpoMensaje(Ins_ID);
 
-            Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.EnvioInspeccionCuerpo}");
 
             var response = await MainInstance.RestService.PostAsync<DTOGenerico>(
                 MainInstance.Url,
@@ -474,14 +473,13 @@ namespace Clicar.ViewModels
             {
                 object resp = (object)response.Result;
 
-                Debug.WriteLine($"~(>^.^)> Cuerpo OK ");
                 //if (resp)
                 //{
                 //}
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("~(>-_-)> Error encabezado " + ex.Message);
+                Debug.WriteLine("~(>-_-)> Error envio de cuerpo " + ex.Message);
             }
         }
 

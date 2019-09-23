@@ -80,12 +80,12 @@ namespace Clicar.Services
                     };
                 }
 
-                var loginResponse = JsonConvert.DeserializeObject<T>(answer);
+                var Response = JsonConvert.DeserializeObject<T>(answer);
 
                 return new Response
                 {
                     IsSuccess = true,
-                    Result = loginResponse,
+                    Result = Response,
                     Message = answer
                 };
             }

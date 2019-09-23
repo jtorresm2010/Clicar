@@ -12,6 +12,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -125,8 +126,17 @@ namespace Clicar.Views
             {
 
             //NavigationPage.SetHasNavigationBar(this, false);
-            
-            
+
+
+            if(CurrentImageInFrame.FOTO_BASE64 != null)
+            {
+
+                byte[] data = Convert.FromBase64String($"{CurrentImageInFrame.FOTO_BASE64}");
+
+                OverlayImage.Source = ImageSource.FromStream(() => new MemoryStream(data));
+            }
+
+
 
             bool hasCameraPermission = await GetCameraPermission();
 
