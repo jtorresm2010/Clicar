@@ -44,6 +44,21 @@ namespace Clicar.Utils
             return new Regex(validEmailPattern, RegexOptions.IgnoreCase);
         }
 
+        public static bool IsValidPassword(string SomeString)
+        {
+            if (SomeString == "") return false;
+
+            string allowedCharacters = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789";
+            foreach (char c in SomeString)
+            {
+                if (!allowedCharacters.Contains(c.ToString()))
+                    return false;
+            }
+
+            return true;
+        }
+
+
 
     }
 }

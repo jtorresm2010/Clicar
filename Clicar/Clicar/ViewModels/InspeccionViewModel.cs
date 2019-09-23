@@ -192,7 +192,7 @@ namespace Clicar.ViewModels
                     bool isImageSet = false;
 
 
-                    int numeroAacc = area.AINSP_ORDEN_APP == areasOrdenadas.Count<AreasInspeccion>() ? area.AINSP_ORDEN_APP + 2 : area.AINSP_ORDEN_APP;
+                    int numeroAacc = area.AINSP_ORDEN_APP >= areasOrdenadas.Count() ? areasOrdenadas.Count() + 2 : area.AINSP_ORDEN_APP;
 
 
                     ListAccordionItems.AddRange(new[] {
@@ -331,13 +331,13 @@ namespace Clicar.ViewModels
             itemActual.ButtonBackgroundColor = baseGreen;
             itemActual.BorderColor = baseGreen;
 
-            if (parameter < AreasInspeccion[AreasInspeccion.Count - 1].AINSP_ORDEN_APP)
+
+            try
             {
                 var itemSiguiente = (AccordionItemView)accordionMenu.Children[parameter];
                 itemSiguiente.OpenPanel();
-
             }
-            else
+            catch (Exception)
             {
                 HoraTermino = DateTime.Now;
 
@@ -348,8 +348,30 @@ namespace Clicar.ViewModels
 
                 MainInstance.Reporte = new ReporteViewModel();
                 await Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
-
             }
+
+
+
+
+            //if (parameter < AreasInspeccion[AreasInspeccion.Count - 1].AINSP_ORDEN_APP)
+            //{
+            //    var itemSiguiente = (AccordionItemView)accordionMenu.Children[parameter];
+            //    itemSiguiente.OpenPanel();
+
+            //}
+            //else
+            //{
+            //    HoraTermino = DateTime.Now;
+
+            //    TimeSpan timeDiff = HoraTermino - HoraInicio;
+
+
+            //    TiempoInspeccion = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, timeDiff.Hours, timeDiff.Minutes, timeDiff.Seconds);//timeDiff;
+
+            //    MainInstance.Reporte = new ReporteViewModel();
+            //    await Application.Current.MainPage.Navigation.PushAsync(new EvaluacionFinalView());
+
+            //}
 
 
             itemActual.ClosePanel();

@@ -14,7 +14,7 @@ namespace Clicar.Models
         public int      FOTO_TIPOF_ID           { get; set; }
         public string   FOTO_DESCRIPCION        { get; set; }
         public bool     FOTO_REQUIERE_MARCO     { get; set; }
-        public object   FOTO_MARCO              { get; set; }
+        public string   FOTO_MARCO              { get; set; }
         public bool     FOTO_ACTIVO             { get; set; }
         public bool     FOTO_OBLIGATORIA        { get; set; }
         public object   CLCAR_TIPO_FOTOGRAFIA   { get; set; }
@@ -51,6 +51,7 @@ namespace Clicar.Models
         public bool FOTO_REQUIERE_MARCO { get; set; }
         public bool FOTO_ACTIVO { get; set; }
         public bool FOTO_OBLIGATORIA { get; set; }
+        public string FOTO_MARCO { get; set; }
         //public int CLCAR_TIPO_FOTOGRAFIA_ID { get; set; }
     }
 

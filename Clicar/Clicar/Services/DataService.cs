@@ -147,7 +147,7 @@ namespace Clicar.Services
                 FOTO_TIPOF_ID = p.FOTO_TIPOF_ID,
                 FOTO_DESCRIPCION = p.FOTO_DESCRIPCION,
                 FOTO_REQUIERE_MARCO = p.FOTO_REQUIERE_MARCO,
-                //FOTO_MARCO = 
+                FOTO_MARCO = p.FOTO_MARCO,
                 FOTO_ACTIVO = p.FOTO_ACTIVO,
                 FOTO_OBLIGATORIA = p.FOTO_OBLIGATORIA,
                 CLCAR_TIPO_FOTOGRAFIA = imgType.Where(a => a.TIPOF_ID == p.FOTO_TIPOF_ID).FirstOrDefault()

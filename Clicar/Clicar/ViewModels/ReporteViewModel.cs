@@ -3,11 +3,13 @@ using Clicar.Models;
 using Clicar.Templates;
 using Clicar.Views;
 using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using Plugin.Fingerprint;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -120,9 +122,6 @@ namespace Clicar.ViewModels
                 return new RelayCommand(FingerprintCommand);
             }
         }
-
-        #endregion
-
         public ICommand EnviarReporteICommand
         {
             get
@@ -130,11 +129,16 @@ namespace Clicar.ViewModels
                 return new RelayCommand(EnviarReporteCommand);
             }
         }
+
+        #endregion
+
+
         private async void EnviarReporteCommand()
         {
             if (IsBusy)
                 return;
             IsBusy = true;
+
             var popup = PopupNavigation.Instance;
 
             var currentclave = Preferences.Get("Clave", "");
@@ -146,7 +150,28 @@ namespace Clicar.ViewModels
                 IsBusy = false;
                 return;
             }
+
+
             Clave = "";
+
+
+            //EnviarEncabezado();
+
+            try
+            {
+            var cuerpo = CrearCuerpoMensaje();
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"~(>'.')> {ex.Message}");
+            }
+
+
+
+
+
+
             Debug.WriteLine($"~(>'.')> Enviando encabezado... confirmando pass {Clave}");
 
             await popup.PopAsync();
@@ -176,8 +201,6 @@ namespace Clicar.ViewModels
             IsBusy = true;
 
 
-
-            //EnviarEncabezado();
 
 
             await Application.Current.MainPage.Navigation.PushAsync(new ReportePreliminarView());
@@ -320,6 +343,8 @@ namespace Clicar.ViewModels
 
             var enc = CrearEncabezado();
 
+            
+
             Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.EnvioInspeccionEncabezado}");
             //Objeto creado, falta establecer respuesta
             var response = await MainInstance.RestService.PostAsync<SucursalesResponse>(
@@ -385,7 +410,7 @@ namespace Clicar.ViewModels
                            {
                                INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
                                FIINS_FECHA_CREACION = MainInstance.Inspeccion.HoraInicio,
-                               FIINS_NOMBRE_ARCHIVO = item.Imagen.ToString()
+                               FIINS_NOMBRE_ARCHIVO = Path.GetFileName(item.Imagen.ToString())
                            }
                         };
 
@@ -396,6 +421,19 @@ namespace Clicar.ViewModels
             }
 
             cuerpo.itemsInspeccionados = listaItems;
+
+            try
+            {
+                var cuerpoJson = JsonConvert.SerializeObject(cuerpo);
+                Debug.WriteLine($"~(>'.')> {cuerpoJson}");
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
 
             return cuerpo;
         }

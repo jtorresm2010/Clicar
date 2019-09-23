@@ -83,7 +83,7 @@
                                 <local:CustomEntry 
                                     
                                     
-                                    
+                                    Keyboard="Email"
                                     x:Name="UsuarioEntry"
                                     Text="{Binding Usuario}"
                                     Grid.Row="0"
@@ -96,10 +96,10 @@
                                     TextColor="{StaticResource BaseGrey}" 
                                     FontSize="14" 
                                     FontFamily="{StaticResource RegularFontOpenSans}"  >
-                                    <local:CustomEntry.Behaviors>
+                                    <!--<local:CustomEntry.Behaviors>
                                         <behavior:LoginBehavior
                                             ControlView="{x:Reference Name=LoginButton}"/>
-                                    </local:CustomEntry.Behaviors>
+                                    </local:CustomEntry.Behaviors>-->
                                 </local:CustomEntry>
                                 <Frame
                                     Grid.Row="0"

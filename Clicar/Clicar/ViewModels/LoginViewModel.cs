@@ -78,7 +78,7 @@ namespace Clicar.ViewModels
             IsIdle = true;
             IsLoading = false;
 
-            usuario = "palarcon";
+            Usuario = "palarcon@a.cl";
             clave = "123456";
 
 
@@ -128,11 +128,31 @@ namespace Clicar.ViewModels
             IsIdle = false;
             IsLoading = true;
 
+            var popup = PopupNavigation.Instance;
+
+
+            if (Usuario == null || !Funciones.IsValidEmail(Usuario))
+            {
+                await popup.PushAsync(new AlertPopup("Error", "Ingrese un correo válido", Languages.Accept));
+                IsIdle = true;
+                IsLoading = false;
+                return;
+            }
+
+            if (Clave == null || !Funciones.IsValidPassword(Clave))
+            {
+                await popup.PushAsync(new AlertPopup("Error", "Ingrese una contraseña válida", Languages.Accept));
+                IsIdle = true;
+                IsLoading = false;
+                return;
+            }
+
             var connection = restService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                var popup = PopupNavigation.Instance;
-                await popup.PushAsync(new AlertPopup("", connection.Message, Languages.Accept));
+                await popup.PushAsync(new AlertPopup("Error", connection.Message, Languages.Accept));
+                IsIdle = true;
+                IsLoading = false;
                 return;
             }
 
@@ -153,24 +173,24 @@ namespace Clicar.ViewModels
                 {
                     InicializarDatos();
                 }
-                else
-                {
-                    //Debug.WriteLine($"~(>'.')> Datos de login incorrectos");
-                    IsIdle = true;
-                    IsLoading = false;
-                }
+                //else
+                //{
+                //    await popup.PushAsync(new AlertPopup("", "Credenciales de inicio de sesión no válidas", Languages.Accept));
+                //    IsIdle = true;
+                //    IsLoading = false;
+                //    return;
+                //}
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("~(>-_-)> Error: " + ex.Message);
-
-
+                await popup.PushAsync(new AlertPopup("Error", "Credenciales de inicio de sesión no válidas", Languages.Accept));
                 IsIdle = true;
                 IsLoading = false;
+                return;
             }
 
-            IsLoading = false;
-            IsIdle = true;
+            //IsLoading = false;
+            //IsIdle = true;
         }
 
         private void LoginCommand()
@@ -253,7 +273,7 @@ namespace Clicar.ViewModels
                     var sucursalesFromDB = await MainInstance.DataService.GetAllSucursales();
                     
                     MainInstance.Config.Sucursales = new ObservableCollection<SucursalDB>(sucursalesFromDB);
-                    MainInstance.Config.IsReady = true;
+                    
                 }
             }
             catch (Exception ex)
@@ -313,6 +333,7 @@ namespace Clicar.ViewModels
                         select sucursal;
 
                     MainInstance.Config.ClosestSucursal = closestSucursal.FirstOrDefault();
+                    MainInstance.Config.IsReady = true;
                 }
             }
             catch (Exception ex)
@@ -494,7 +515,7 @@ namespace Clicar.ViewModels
                             FOTO_TIPOF_ID = p.FOTO_TIPOF_ID,
                             FOTO_DESCRIPCION = p.FOTO_DESCRIPCION,
                             FOTO_REQUIERE_MARCO = p.FOTO_REQUIERE_MARCO,
-                            //FOTO_MARCO = 
+                            FOTO_MARCO = p.FOTO_MARCO,
                             FOTO_ACTIVO = p.FOTO_ACTIVO,
                             FOTO_OBLIGATORIA = p.FOTO_OBLIGATORIA
                             //CLCAR_TIPO_FOTOGRAFIA = imgType.Where(a => a.TIPOF_ID == p.CLCAR_TIPO_FOTOGRAFIA_ID).FirstOrDefault()
