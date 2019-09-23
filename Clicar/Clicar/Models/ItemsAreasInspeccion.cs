@@ -19,8 +19,10 @@ namespace Clicar.Models
         public int      ITINS_ORDEN_APP         { get; set; }
         public bool     ITINS_ACTIVO            { get; set; }
         public AreasInspeccion   CLCAR_AREA_INSPECCION   { get; set; }
-        public List<ValorSustituir> CLCAR_VALOR_SUSTITUIR { get; set; }
-        public List<ValorRepararItem> CLCAR_VALOR_REPARAR_ITEM { get; set; }
+        public object CLCAR_DETALLES_INSPECCION { get; set; }
+        public List<object> CLCAR_VALOR_SUSTITUIR { get; set; }
+        public List<object> CLCAR_ITEMS_INSPECCIONADOS { get; set; }
+        public List<object> CLCAR_VALOR_REPARAR_ITEM { get; set; }
     }
 
     public partial class ItemsAreasInspeccionACC : BaseViewModel

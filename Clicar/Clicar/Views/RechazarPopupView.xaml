@@ -66,6 +66,7 @@
             <!--Picker-->
             <Frame
                 BackgroundColor="White"
+                BorderColor="White"
                 CornerRadius="10"
                 HasShadow="True"
                 Margin="0,0,0,10"

@@ -155,17 +155,19 @@ namespace Clicar.ViewModels
             Clave = "";
 
 
-            //EnviarEncabezado();
+            EnviarEncabezado();
 
-            try
-            {
-            var cuerpo = CrearCuerpoMensaje();
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"~(>'.')> {ex.Message}");
-            }
+            //try
+            //{
+            //    var cuerpo = CrearCuerpoMensaje();
+            //    Debug.WriteLine($"~(>'.')> test");
+            //    var cuerpoJson = JsonConvert.SerializeObject(cuerpo);
+            //    Debug.WriteLine($"~(>'.')> {cuerpoJson}");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.WriteLine($"~(>'n')> {ex.Message}");
+            //}
 
 
 
@@ -318,15 +320,18 @@ namespace Clicar.ViewModels
         {
             Encabezado encabezado = new Encabezado
             {
-                INSP_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
+                INSP_ID = null,
                 INSP_SOINS_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
                 INPS_FECHA_INICIO = MainInstance.Inspeccion.HoraInicio,
                 INSP_USU_ID = MainInstance.Agenda.Maestro.USU_ID,
                 INSP_FECHA_FIN = MainInstance.Inspeccion.HoraTermino,
                 INSP_COMENTARIOS = EvalGeneral,
                 INSP_NRO_ESTRELLAS = (int)CurrentStarRating,
-                INSP_ESTDO_ID = 0,
+                INSP_ESTDO_ID = 1,
             };
+
+            var cuerpoJson = JsonConvert.SerializeObject(encabezado);
+            Debug.WriteLine($"~(>'.')> 1: {cuerpoJson}");
 
             return encabezado;
         }
@@ -347,18 +352,24 @@ namespace Clicar.ViewModels
 
             Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.EnvioInspeccionEncabezado}");
             //Objeto creado, falta establecer respuesta
-            var response = await MainInstance.RestService.PostAsync<SucursalesResponse>(
+            var response = await MainInstance.RestService.PostAsync<EncabezadoResponse>(
                 MainInstance.Url,
                 MainInstance.Prefix,
                 MainInstance.EnvioInspeccionEncabezado,
                 enc);
 
+            var testobj = JsonConvert.SerializeObject(response.Result);
+            Debug.WriteLine($"~(>'v')> 2: {testobj}");
+
             try
             {
-                SucursalesResponse resp = (SucursalesResponse)response.Result;
+                EncabezadoResponse resp = (EncabezadoResponse)response.Result;
 
                 if (resp.Resultado)
                 {
+                    EnviarCuerpo(resp.Elemento.INSP_ID);
+
+
                     Debug.WriteLine($"~(>^.^)> Encabezado OK");
                 }
             }
@@ -368,7 +379,7 @@ namespace Clicar.ViewModels
             }
         }
 
-        private EnvioInspeccion CrearCuerpoMensaje()
+        private EnvioInspeccion CrearCuerpoMensaje(int insp_id)
         {
             EnvioInspeccion cuerpo = new EnvioInspeccion();
 
@@ -376,69 +387,66 @@ namespace Clicar.ViewModels
 
             foreach(AccordionItem area in MainInstance.Inspeccion.AreasInspeccion)
             {
-                if(area.Items.Count > 0)
+                if(area.Items != null)
                 {
-                    foreach(ItemsAreasInspeccionACC item in area.Items)
+                    if (area.Items.Count > 0)
+                    {
+                        foreach(ItemsAreasInspeccionACC item in area.Items)
                     {
                         var itemInspeccionados = new ItemsInspeccionado
                         {
-                            INSPE_DESHABILITADO = item.ITINS_IS_LOCKED ? 1 : 0,
-                            INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
+                            //insp_id
+                            //MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
+                            INSPE_ID = insp_id,
+                            INSPE_INSP_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
                             INSPE_ITINS_ID = item.ITINS_ID,
-                            INSPE_INSP_ID = item.ITINS_ID, ////este es el que vuelve desde la consulta
                             INSPE_OBSERVACION = item.Comentario ?? "",
+                            INSPE_DESHABILITADO = item.ITINS_IS_LOCKED ? 1 : 0,
                             CLCAR_ITEM_INSPECCION = new ClcarItemInspeccion
                             {
                                 ITINS_ACTIVO = item.ITINS_ACTIVO,
                                 ITINS_ID = item.ITINS_ID,
                                 ITINS_AINSP_ID = item.ITINS_AINSP_ID,
                                 ITINS_CONDICION = item.ITINS_CONDICION,
-                                ITINS_DESCRIPCION = item.ITINS_DESCRIPCION,
+                                ITINS_DESCRIPCION = item.ITINS_DESCRIPCION ?? "",
                                 ITINS_DESHABILITAR = item.ITINS_DESHABILITAR,
                                 ITINS_ORDEN_APP = item.ITINS_ORDEN_APP,
                                 ITINS_REQUIERE_FOTO = item.ITINS_REQUIERE_FOTO
                             },
-                           CLCAR_INSPECCION_REPARAR = new ClcarInspeccionReparar
-                           {
-                               INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID
-                           },
-                           CLCAR_INSPECCION_SUSTITUIR = new ClcarInspeccionSustituir
-                           {
-                               INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID
-                           },
-                           CLCAR_FOTOS_ITEM_INSPECCION = new ClcarFotosItemInspeccion
-                           {
-                               INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
-                               FIINS_FECHA_CREACION = MainInstance.Inspeccion.HoraInicio,
-                               FIINS_NOMBRE_ARCHIVO = Path.GetFileName(item.Imagen.ToString())
-                           }
+                            CLCAR_INSPECCION_REPARAR = new ClcarInspeccionReparar
+                            {
+                                INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID
+                            },
+                            CLCAR_INSPECCION_SUSTITUIR = new ClcarInspeccionSustituir
+                            {
+                                INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID
+                            },
+                            CLCAR_FOTOS_ITEM_INSPECCION = new ClcarFotosItemInspeccion
+                            {
+                                INSPE_ID = MainInstance.Inspeccion.CurrentInspeccion.SOINS_ID,
+                                FIINS_FECHA_CREACION = MainInstance.Inspeccion.HoraInicio,
+                                FIINS_NOMBRE_ARCHIVO = item.Imagen.ToString()
+                            }
                         };
 
 
                         listaItems.Add(itemInspeccionados);
+                    }
                     }
                 }
             }
 
             cuerpo.itemsInspeccionados = listaItems;
 
-            try
-            {
-                var cuerpoJson = JsonConvert.SerializeObject(cuerpo);
-                Debug.WriteLine($"~(>'.')> {cuerpoJson}");
 
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            var cuerpoJson = JsonConvert.SerializeObject(cuerpo);
+            Debug.WriteLine($"~(>^.^)> 3: {cuerpoJson}");
 
 
             return cuerpo;
         }
 
-        private async void EnviarCuerpo()
+        private async void EnviarCuerpo(int Ins_ID)
         {
             var connection = MainInstance.RestService.CheckConnection();
             if (!connection.IsSuccess)
@@ -448,24 +456,28 @@ namespace Clicar.ViewModels
                 return;
             }
 
-            var enc = CrearCuerpoMensaje();
+            var enc = CrearCuerpoMensaje(Ins_ID);
 
-            Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.EnvioInspeccionEncabezado}");
-            //Objeto creado, falta establecer respuesta
-            var response = await MainInstance.RestService.PostAsync<SucursalesResponse>(
+            Debug.WriteLine($"~(>'.')> {MainInstance.Url}{MainInstance.Prefix}{MainInstance.EnvioInspeccionCuerpo}");
+
+            var response = await MainInstance.RestService.PostAsync<DTOGenerico>(
                 MainInstance.Url,
                 MainInstance.Prefix,
                 MainInstance.EnvioInspeccionCuerpo,
                 enc);
 
+            var testobj2 = JsonConvert.SerializeObject(response.Result);
+            Debug.WriteLine($"~(>'o')> 4: {testobj2}");
+
+
             try
             {
-                SucursalesResponse resp = (SucursalesResponse)response.Result;
+                object resp = (object)response.Result;
 
-                if (resp.Resultado)
-                {
-                    Debug.WriteLine($"~(>^.^)> Encabezado OK");
-                }
+                Debug.WriteLine($"~(>^.^)> Cuerpo OK ");
+                //if (resp)
+                //{
+                //}
             }
             catch (Exception ex)
             {

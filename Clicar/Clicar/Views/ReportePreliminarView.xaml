@@ -122,6 +122,7 @@
                 <Frame
                 Padding="0"
                 BackgroundColor="White"
+                BorderColor="White"
                 HasShadow="True">
                     <StackLayout
                     Spacing="15">

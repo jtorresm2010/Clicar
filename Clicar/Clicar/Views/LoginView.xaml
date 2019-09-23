@@ -40,6 +40,7 @@
                     CornerRadius="20"
                     HasShadow="True"
                     HeightRequest="330"
+                    BorderColor="White"
                     BackgroundColor="White">
                     <StackLayout
                         Spacing="0">

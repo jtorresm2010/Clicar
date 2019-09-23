@@ -19,6 +19,15 @@ namespace Clicar.Models
         public bool     FOTO_OBLIGATORIA        { get; set; }
         public object   CLCAR_TIPO_FOTOGRAFIA   { get; set; }
 
+        private string fOTO_BASE64;
+
+        public string FOTO_BASE64
+        {
+            get { return  fOTO_BASE64; }
+            set { SetValue(ref  fOTO_BASE64, value); }
+        }
+
+
         private string currentImageBig;
 
         public string CurrentImageBig
@@ -52,6 +61,7 @@ namespace Clicar.Models
         public bool FOTO_ACTIVO { get; set; }
         public bool FOTO_OBLIGATORIA { get; set; }
         public string FOTO_MARCO { get; set; }
+        public string FOTO_BASE64 { get; set; }
         //public int CLCAR_TIPO_FOTOGRAFIA_ID { get; set; }
     }
 

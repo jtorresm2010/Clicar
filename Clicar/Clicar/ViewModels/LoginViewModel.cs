@@ -517,7 +517,8 @@ namespace Clicar.ViewModels
                             FOTO_REQUIERE_MARCO = p.FOTO_REQUIERE_MARCO,
                             FOTO_MARCO = p.FOTO_MARCO,
                             FOTO_ACTIVO = p.FOTO_ACTIVO,
-                            FOTO_OBLIGATORIA = p.FOTO_OBLIGATORIA
+                            FOTO_OBLIGATORIA = p.FOTO_OBLIGATORIA,
+                            FOTO_BASE64 = p.FOTO_BASE64
                             //CLCAR_TIPO_FOTOGRAFIA = imgType.Where(a => a.TIPOF_ID == p.CLCAR_TIPO_FOTOGRAFIA_ID).FirstOrDefault()
 
                         }).ToList();

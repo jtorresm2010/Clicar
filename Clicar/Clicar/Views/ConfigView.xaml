@@ -38,6 +38,7 @@
                     Margin="16"
                     CornerRadius="20"
                     HasShadow="True"
+                    BorderColor="White"
                     HeightRequest="330"
                     BackgroundColor="White">
                     <StackLayout
@@ -104,6 +105,7 @@
                                 
                                 Margin="0,20"
                                 BackgroundColor="White"
+                                BorderColor="White"
                                 CornerRadius="10"
                                 HasShadow="True"
                                 Padding="15,0">

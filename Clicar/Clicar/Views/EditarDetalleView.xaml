@@ -145,6 +145,7 @@
                         IsVisible="{Binding IsChecked, Source={x:Reference EstadoReparar}}"
                         Margin="0,20"
                         BackgroundColor="White"
+                        BorderColor="White"
                         CornerRadius="10"
                         HasShadow="True"
                         Padding="15,0">

@@ -7,7 +7,7 @@ namespace Clicar.Models
 
     public class Encabezado
     {
-        public int INSP_ID { get; set; }
+        public object INSP_ID { get; set; }
         public int INSP_SOINS_ID { get; set; }
         public int INSP_USU_ID { get; set; }
         public DateTime INPS_FECHA_INICIO { get; set; }
