@@ -1,22 +1,14 @@
 ﻿using Android.Content;
 using Clicar.Customs;
 using Clicar.Droid.Customs.Camera2;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
 using System.IO;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using System;
-using Android.Runtime;
-using Android.Views;
 using Android.Graphics;
-using Java.IO;
-using Plugin.Media;
 using Clicar.ViewModels;
 using Clicar.Models;
 using PCLStorage;
-using Xamarin.Essentials;
 
 [assembly: ExportRenderer(typeof(CameraPreview), typeof(CameraViewServiceRenderer))]
 namespace Clicar.Droid.Customs.Camera2
@@ -24,15 +16,12 @@ namespace Clicar.Droid.Customs.Camera2
     public class CameraViewServiceRenderer : ViewRenderer<CameraPreview, CameraDroid>
     {
 
-        MainViewModel MainInstance;
         private CameraDroid _camera;
         private CameraPreview _currentElement;
-        private readonly Context _context;
-        private bool hasCameraPermission;
 
         public CameraViewServiceRenderer(Context context) : base(context)
         {
-            _context = context;
+
         }
 
 
@@ -40,7 +29,6 @@ namespace Clicar.Droid.Customs.Camera2
         protected override void OnElementChanged(ElementChangedEventArgs<CameraPreview> e)
         {
             base.OnElementChanged(e);
-            MainInstance = MainViewModel.GetInstance();
             _camera = new CameraDroid(Context);
 
             SetNativeControl(_camera);
@@ -63,19 +51,9 @@ namespace Clicar.Droid.Customs.Camera2
         {
             var path = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures);
 
-
-
             String folderName ="Clicar" ;
-            IFolder folder = PCLStorage.FileSystem.Current.LocalStorage;
+            IFolder folder = FileSystem.Current.LocalStorage;
             folder = await folder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
-
-            // get hold of the file system  
-            //IFolder folder = folderName ?? PCLStorage.FileSystem.Current.LocalStorage;
-
-            // create a file, overwriting any existing file  
-
-
-
 
             Bitmap bmp = BitmapFactory.DecodeByteArray(imgSource, 0, imgSource.Length);
 
@@ -91,26 +69,9 @@ namespace Clicar.Droid.Customs.Camera2
                 bitmapData = stream.ToArray();
             }
 
-            //Preferences.Set("ImageNumber", "0000");
+            IFile file = await folder.CreateFileAsync($"CLCR_{DateTime.Now.Day}_{DateTime.Now.Month}_{DateTime.Now.Year}.Jpeg", CreationCollisionOption.GenerateUniqueName);
 
-            var numeroImagen = int.Parse(Preferences.Get("ImageNumber", "0000"));
-
-            //var fullpath = $"{path}/Clicar/CLCR{numeroImagen + 1}_{this.Element.Orientation.ToString()}.Jpeg";
-
-            //System.IO.File.WriteAllBytes(fullpath, bitmapData);
-
-            //var numeriINc = numeroImagen + 1;
-            //Preferences.Set("ImageNumber", numeriINc.ToString());
-
-            //System.Console.WriteLine(fullpath);
-            System.Console.WriteLine($"~(>'.')> {folder.Path}");
-
-
-
-            IFile file = await folder.CreateFileAsync($"CLCR{numeroImagen + 1}_{this.Element.Orientation.ToString()}.Jpeg", CreationCollisionOption.GenerateUniqueName);
-
-            // populate the file with image data  
-            using (System.IO.Stream stream = await file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite))
+            using (Stream stream = await file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite))
             {
                 stream.Write(bitmapData, 0, bitmapData.Length);
             }
@@ -118,17 +79,8 @@ namespace Clicar.Droid.Customs.Camera2
 
             if (this.Element.ObjectItem != null)
             {
-                ((Fotografia)Element.ObjectItem).CurrentImageSmall = file.Path;//fullpath;
-
-                //await MainInstance.DataService.Insert<FotografiaLocal>(new FotografiaLocal { LOCAL_IMAGERUTA = fullpath , ITEM_CORRESP = ((Fotografia)this.Element.ObjectItem).FOTO_ID });
-
+                ((Fotografia)Element.ObjectItem).CurrentImageSmall = file.Path;
             }
-
-
-
-
-
-
 
 
             Device.BeginInvokeOnMainThread(() =>
