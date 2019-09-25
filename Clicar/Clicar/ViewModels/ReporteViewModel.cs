@@ -39,6 +39,14 @@ namespace Clicar.ViewModels
         #endregion
 
 
+        private bool subiendoDatos;
+
+        public bool SubiendoDatos
+        {
+            get { return subiendoDatos; }
+            set { SetValue(ref subiendoDatos, value); }
+        }
+
 
 
         #region Propiedades
@@ -132,7 +140,6 @@ namespace Clicar.ViewModels
 
         #endregion
 
-
         private async void EnviarReporteCommand()
         {
             if (IsBusy)
@@ -155,14 +162,14 @@ namespace Clicar.ViewModels
             Clave = "";
 
 
+            await popup.PopAsync();
+
+
             EnviarEncabezado();
 
-            await popup.PopAsync();
 
             IsBusy = false;
         }
-
-
 
         private async void PassSignCommand()
         {
@@ -176,7 +183,6 @@ namespace Clicar.ViewModels
             IsBusy = false;
         }
 
-
         private async void ContinuarReporteCommand()
         {
             if (IsBusy)
@@ -187,8 +193,6 @@ namespace Clicar.ViewModels
 
             IsBusy = false;
         }
-
-
 
         private async void CancelarCommand()
         {
@@ -291,10 +295,17 @@ namespace Clicar.ViewModels
 
         private async void EnviarEncabezado()
         {
+            //SubiendoDatos = true;
+            var popup = PopupNavigation.Instance;
+            //await popup.PushAsync(new CargandoPopup());
+
+
+
+
             var connection = MainInstance.RestService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                var popup = PopupNavigation.Instance;
+                //var popup = PopupNavigation.Instance;
                 await popup.PushAsync(new AlertPopup("", connection.Message, Languages.Accept));
                 return;
             }
@@ -438,6 +449,8 @@ namespace Clicar.ViewModels
             var result = await CrossFingerprint.Current.AuthenticateAsync("Valide su huella para continuar");
             if (result.Authenticated)
             {
+                EnviarEncabezado();
+
                 await popup.PopAsync();
 
                 //Debug.WriteLine($"~(>'.')> Autenticando a usuario {Preferences.Get("Correo", "---")}");
@@ -495,21 +508,19 @@ namespace Clicar.ViewModels
 
                             byte[] bytes = File.ReadAllBytes(item.Imagen);
 
-                            fotosItemInspeccion.Add(new FotositemsInspeccion
+                            var fotoitem = new FotositemsInspeccion
                             {
                                 FIINS_FECHA_CREACION = $"{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day} {Math.Floor(DateTime.Now.TimeOfDay.TotalHours)}:{DateTime.Now.TimeOfDay.Minutes}",
                                 FIINS_NOMBRE_ARCHIVO = Path.GetFileName(item.Imagen),
                                 INSPE_ID = (int)result.INSPE_ID,
                                 FIINS_ARCHIVO_BASE64 = Convert.ToBase64String(bytes)
-                            });
+                            };
+
+                            envioFotos.fotositemsInspeccion.Add(fotoitem);
                         }
                     }
-
-
                 }
             }
-
-
 
             if (envioFotos.fotosInspeccion.Count == 0)
                 envioFotos.fotosInspeccion = null;
@@ -517,12 +528,10 @@ namespace Clicar.ViewModels
             if (envioFotos.fotositemsInspeccion.Count == 0)
                 envioFotos.fotositemsInspeccion = null;
 
-
             var imagenesJson = JsonConvert.SerializeObject(envioFotos);
-            //Debug.WriteLine($"~(>'V')> 5: {imagenesJson}");
 
-            /////// API portion
-            ///
+
+            /////// API portion///////
             var connection = MainInstance.RestService.CheckConnection();
             if (!connection.IsSuccess)
             {
@@ -541,8 +550,17 @@ namespace Clicar.ViewModels
 
             try
             {
-                object resp = (object)response.Result;
+                //SubiendoDatos = false;
+
+                //var popup = PopupNavigation.Instance;
+                //await popup.PopAllAsync();
                 Debug.WriteLine($"~(>'.')> Carga terminada");
+
+
+                MainInstance.Agenda.LoadMainList();
+                await Application.Current.MainPage.Navigation.PopToRootAsync();
+
+
                 //if (resp)
                 //{
                 //}

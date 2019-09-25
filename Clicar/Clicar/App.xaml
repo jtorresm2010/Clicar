@@ -132,7 +132,7 @@
             
             <!--URL princilap-->
                 <!--Externa-->
-                <x:String x:Key="UrlAPI">http://www.genesys.cl:396</x:String>
+            <x:String x:Key="UrlAPI">http://www.genesys.cl:396</x:String>
                 <!--Interna-->
                 <!--<x:String x:Key="UrlAPI">http://10.40.190.85:395</x:String>-->
             <!-- Carpeta-->
@@ -150,8 +150,8 @@
             <x:String x:Key="AgendaInspeccionEnvioFoto">/Inspecciones/MobileEnvioFotoInspeccion</x:String>
             <x:String x:Key="EnvioInspeccionEncabezado">/Inspecciones/MobileEnvioInspeccionEncabezado</x:String>
             <x:String x:Key="EnvioInspeccionCuerpo">/Inspecciones/MobileEnvioInspeccionCuerpo</x:String>
-            <x:String x:Key="RecuperaPass">/login/MobileRecuperaPass</x:String>
-            <x:String x:Key="EnvioFotoInspeccion">/api/Inspecciones/MobileEnvioFotoInspeccion</x:String>
+            <x:String x:Key="RecuperaPass">/MobileRecuperaPass</x:String>
+            <x:String x:Key="EnvioFotoInspeccion">/Inspecciones/MobileEnvioFotoInspeccion</x:String>
         </ResourceDictionary>
 
 

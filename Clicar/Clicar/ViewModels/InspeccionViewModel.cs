@@ -472,7 +472,7 @@ namespace Clicar.ViewModels
                 {
                     Directory = "Clicar",
                     Name = $"CLCR_{DateTime.Now.Day}_{DateTime.Now.Month}_{DateTime.Now.Year}.Jpeg",
-                    PhotoSize = PhotoSize.Medium,
+                    PhotoSize = PhotoSize.Small,
                     OverlayViewProvider = func,
                     DefaultCamera = CameraDevice.Rear,
                 });
@@ -518,7 +518,10 @@ namespace Clicar.ViewModels
                 return;
             }
 
-            var photo = await CrossMedia.Current.PickPhotoAsync();
+            var photo = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+            {
+                PhotoSize = PhotoSize.Small,
+            });
 
             if (photo == null)
                 return;

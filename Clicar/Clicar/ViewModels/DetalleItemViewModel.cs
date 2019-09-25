@@ -1,6 +1,7 @@
 ﻿using Clicar.Models;
 using GalaSoft.MvvmLight.Command;
 using Plugin.Media;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -204,7 +205,10 @@ namespace Clicar.ViewModels
                 return;
             }
 
-            var photo = await CrossMedia.Current.PickPhotoAsync();
+            var photo = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+            {
+                PhotoSize = PhotoSize.Small,
+            });
 
             if (photo == null)
                 return;
@@ -225,8 +229,9 @@ namespace Clicar.ViewModels
 
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
+                PhotoSize = PhotoSize.Small,
                 Directory = "Clicar",
-                Name = $"{currentItem.ITINS_ID}test.jpg"
+                Name = $"{currentItem.ITINS_ID}CLCR.jpg"
             });
 
             if (file == null)

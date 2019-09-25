@@ -196,8 +196,8 @@ namespace Clicar.ViewModels
                         new SolicitudesInspeccionPendiente
                         {
                             VERSION_DESCRIPCION = "asdf",
-                            SOTAS_PATENTE = "PJPK66",
-                            SUBTI_DESCRIPCION = "No se de tipos :P",
+                            SOTAS_PATENTE = "TESTCAR",
+                            SUBTI_DESCRIPCION = "Test",
                             SOTAS_APELLIDO = "Perez",
                             SOINS_VIN = "123456",
                             SOINS_TRANSMISION = true,
@@ -206,9 +206,9 @@ namespace Clicar.ViewModels
                             SOINS_FECHA_ACTUALIZACION = DateTime.Now,
                             SOINS_ESINS_ID = 123,
                             SOINS_CODIGO_CASO = "AB123",
-                            MODELO = "Corolla",
-                            MARCA = "Toyota",
-                            MACOL_DESCRIPCION = "Gamboge",
+                            MODELO = "Modelo test",
+                            MARCA = "MARCA test",
+                            MACOL_DESCRIPCION = "Color1",
                             SOTAS_NOMBRE = "Peter",
                             MAE_ANIO = 1997,
                         }

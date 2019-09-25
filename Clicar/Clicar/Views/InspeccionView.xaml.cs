@@ -19,7 +19,7 @@ namespace Clicar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InspeccionView : ContentPage
     {
-
+        private bool _canClose = true;
         MainViewModel MainInstance;
         public InspeccionView()
         {
@@ -41,15 +41,36 @@ namespace Clicar.Views
         {
             await Task.Delay(500);
 
-
             MainInstance.Inspeccion.CrearListaCompuesta();
         }
 
 
+        protected override bool OnBackButtonPressed()
+        {
+            //return base.OnBackButtonPressed();
+
+            if (_canClose)
+            {
+                ShowExitDialog();
+            }
+            return _canClose;
+        }
+
+
+
+        private async void ShowExitDialog()
+        {
+            var answer = await DisplayAlert("Confirmar", "¿Hay una inspección en curso, desea volver atras?", "Si", "No");
+            if (answer)
+            {
+                _canClose = false;
+                OnBackButtonPressed();
+            }
+        }
+
 
 
         private static InspeccionView instance;
-
         public static InspeccionView GetInstance()
         {
             if (instance == null)
@@ -58,8 +79,5 @@ namespace Clicar.Views
             }
             return instance;
         }
-
-
-
     }
 }
