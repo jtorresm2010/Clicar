@@ -161,12 +161,9 @@ namespace Clicar.ViewModels
 
             Clave = "";
 
-
-            await popup.PopAsync();
-
-
             EnviarEncabezado();
 
+            await popup.PopAsync();
 
             IsBusy = false;
         }
@@ -433,7 +430,7 @@ namespace Clicar.ViewModels
             {
                 var resp = (RespuestaEnvioInspeccion)response.Result;
 
-                UploadImages(Ins_ID, resp.Elemento);
+                SubidaDeImagenes(Ins_ID, resp.Elemento);
             }
             catch (Exception ex)
             {
@@ -461,7 +458,8 @@ namespace Clicar.ViewModels
             }
         }
 
-        private async void UploadImages(int inspeccionID, List<ItemsInspeccionado> respuesta)
+
+        private EnvioFotos CrearListaImagenes(int inspeccionID, List<ItemsInspeccionado> respuesta)
         {
             var envioFotos = new EnvioFotos();
 
@@ -477,7 +475,7 @@ namespace Clicar.ViewModels
             {
                 if (area.ListaFotos != null && area.ListaFotos.Count > 0)
                 {
-                    foreach(Fotografia foto in area.ListaFotos)
+                    foreach (Fotografia foto in area.ListaFotos)
                     {
                         if (!foto.CurrentImageSmall.Equals("camara_select_foto.png"))
                         {
@@ -498,7 +496,7 @@ namespace Clicar.ViewModels
 
                 }
 
-                if(area.Items != null && area.Items.Count > 0)
+                if (area.Items != null && area.Items.Count > 0)
                 {
                     foreach (ItemsAreasInspeccionACC item in area.Items)
                     {
@@ -528,10 +526,11 @@ namespace Clicar.ViewModels
             if (envioFotos.fotositemsInspeccion.Count == 0)
                 envioFotos.fotositemsInspeccion = null;
 
-            var imagenesJson = JsonConvert.SerializeObject(envioFotos);
+            return envioFotos;
+        }
 
-
-            /////// API portion///////
+        private async void SubirFotos(EnvioFotos envioFotos)
+        {
             var connection = MainInstance.RestService.CheckConnection();
             if (!connection.IsSuccess)
             {
@@ -550,25 +549,72 @@ namespace Clicar.ViewModels
 
             try
             {
-                //SubiendoDatos = false;
+                if (response.IsSuccess)
+                {
+                    //SubiendoDatos = false;
 
-                //var popup = PopupNavigation.Instance;
-                //await popup.PopAllAsync();
-                Debug.WriteLine($"~(>'.')> Carga terminada");
-
-
-                MainInstance.Agenda.LoadMainList();
-                await Application.Current.MainPage.Navigation.PopToRootAsync();
+                    //var popup = PopupNavigation.Instance;
+                    //await popup.PopAllAsync();
+                    Debug.WriteLine($"~(>'.')> Carga terminada");
 
 
-                //if (resp)
-                //{
-                //}
+                    MainInstance.Agenda.LoadMainList();
+                    await Application.Current.MainPage.Navigation.PopToRootAsync();
+
+
+                    //if (resp)
+                    //{
+                    //}
+                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("~(>-_-)> Error envio de cuerpo " + ex.Message);
             }
+        }
+
+        private void SubidaDeImagenes(int inspeccionID, List<ItemsInspeccionado> respuesta)
+        {
+
+            /*Crear lista de imagenes*/
+            var envioFotos = CrearListaImagenes(inspeccionID, respuesta);
+
+            if(envioFotos.fotosInspeccion != null && envioFotos.fotosInspeccion.Count > 0)
+            {
+                foreach (var foto in envioFotos.fotosInspeccion)
+                {
+                    var envioFotoIndividual = new EnvioFotos
+                    {
+                        fotosInspeccion = new List<FotosInspeccion>(),
+                        fotositemsInspeccion = null
+                    };
+
+                    envioFotoIndividual.fotosInspeccion.Add(foto);
+
+                    /*subir usando api*/
+                    SubirFotos(envioFotoIndividual);
+                }
+            }
+
+            if (envioFotos.fotositemsInspeccion != null && envioFotos.fotositemsInspeccion.Count > 0)
+            {
+                foreach (var foto in envioFotos.fotositemsInspeccion)
+                {
+                    var envioFotoIndividual = new EnvioFotos
+                    {
+                        fotosInspeccion = null,
+                        fotositemsInspeccion = new List<FotositemsInspeccion>()
+                    };
+
+                    envioFotoIndividual.fotositemsInspeccion.Add(foto);
+
+                    /*subir usando api*/
+                    SubirFotos(envioFotoIndividual);
+                }
+            }
+
+            ///*subir usando api*/
+            //SubirFotos(envioFotos);
 
         }
 

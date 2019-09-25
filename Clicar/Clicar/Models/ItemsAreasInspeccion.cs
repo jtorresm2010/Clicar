@@ -3,6 +3,8 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
 
@@ -104,7 +106,17 @@ namespace Clicar.Models
             set { SetValue(ref switchActive, value); }
         }
 
+        //protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        //{
+        //    base.OnPropertyChanged(propertyName);
 
+        //    //if (propertyName.Equals("AreasInspeccion"))
+        //    Debug.WriteLine($"~(>'.')> Item cambiado {propertyName}");
+
+
+
+
+        //}
     }
 
 

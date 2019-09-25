@@ -1,4 +1,5 @@
 ﻿using Clicar.Services;
+using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using Xamarin.Forms;
@@ -87,6 +88,14 @@ namespace Clicar.ViewModels
             }
             return instance;
         }
+
+
+        public void SaveProgress()
+        {
+            var currentData = JsonConvert.SerializeObject(Inspeccion.AreasInspeccion);
+            var currentIns = Inspeccion.CurrentInspeccion.SOINS_ID;
+        }
+
 
     }
 }

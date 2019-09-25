@@ -18,6 +18,7 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using PCLStorage;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace Clicar.ViewModels
 {
@@ -132,6 +133,8 @@ namespace Clicar.ViewModels
             //CrearListaCompuesta();
 
         }
+
+
 
         public async void CrearListaCompuesta()
         {

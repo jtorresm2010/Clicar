@@ -77,8 +77,6 @@ namespace Clicar.Views
                 }
             }
 
-
-
             MainInstance.Inspeccion.CurrentInspeccion = MainInstance.DetalleInspeccion.CurrentInspeccion;
 
             MainInstance.Inspeccion.HoraInicio = DateTime.Now;
