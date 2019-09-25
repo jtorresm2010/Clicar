@@ -193,25 +193,44 @@ namespace Clicar.ViewModels
                         var testList = new List<SolicitudesInspeccionPendiente>();
 
                         testList.AddRange(new[] {
-                        new SolicitudesInspeccionPendiente
-                        {
-                            VERSION_DESCRIPCION = "asdf",
-                            SOTAS_PATENTE = "TESTCAR",
-                            SUBTI_DESCRIPCION = "Test",
-                            SOTAS_APELLIDO = "Perez",
-                            SOINS_VIN = "123456",
-                            SOINS_TRANSMISION = true,
-                            SOINS_RUT_CLIENTE = "12345675",
-                            SOINS_FECHA_CITA = DateTime.Now,
-                            SOINS_FECHA_ACTUALIZACION = DateTime.Now,
-                            SOINS_ESINS_ID = 123,
-                            SOINS_CODIGO_CASO = "AB123",
-                            MODELO = "Modelo test",
-                            MARCA = "MARCA test",
-                            MACOL_DESCRIPCION = "Color1",
-                            SOTAS_NOMBRE = "Peter",
-                            MAE_ANIO = 1997,
-                        }
+                            new SolicitudesInspeccionPendiente
+                            {
+                                VERSION_DESCRIPCION = "asdf",
+                                SOTAS_PATENTE = "TESTCAR",
+                                SUBTI_DESCRIPCION = "Test",
+                                SOTAS_APELLIDO = "Perez",
+                                SOINS_VIN = "123456",
+                                SOINS_TRANSMISION = true,
+                                SOINS_RUT_CLIENTE = "12345675",
+                                SOINS_FECHA_CITA = DateTime.Now,
+                                SOINS_FECHA_ACTUALIZACION = DateTime.Now,
+                                SOINS_ESINS_ID = 123,
+                                SOINS_CODIGO_CASO = "AB123",
+                                MODELO = "Modelo test",
+                                MARCA = "MARCA test",
+                                MACOL_DESCRIPCION = "Color1",
+                                SOTAS_NOMBRE = "Peter",
+                                MAE_ANIO = 1997,
+                            },
+                            new SolicitudesInspeccionPendiente
+                            {
+                                VERSION_DESCRIPCION = "asdf",
+                                SOTAS_PATENTE = "TESTCAR2",
+                                SUBTI_DESCRIPCION = "Test2",
+                                SOTAS_APELLIDO = "Perez2",
+                                SOINS_VIN = "123456",
+                                SOINS_TRANSMISION = false,
+                                SOINS_RUT_CLIENTE = "12345675",
+                                SOINS_FECHA_CITA = DateTime.Now,
+                                SOINS_FECHA_ACTUALIZACION = DateTime.Now,
+                                SOINS_ESINS_ID = 123,
+                                SOINS_CODIGO_CASO = "CD456",
+                                MODELO = "Modelo test2",
+                                MARCA = "MARCA test2",
+                                MACOL_DESCRIPCION = "Color2",
+                                SOTAS_NOMBRE = "Peter2",
+                                MAE_ANIO = 1997,
+                            }
                         });
 
                         CargarListas(testList, AgendaResponse.Elemento.solicitudes_inspeccion_terminada);

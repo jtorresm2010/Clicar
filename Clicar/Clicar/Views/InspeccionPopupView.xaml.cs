@@ -60,24 +60,21 @@ namespace Clicar.Views
 
             if (MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION  != null)
             {
-                if (MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION.Equals(auto))
+                if ((bool)MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION && (bool)auto)
                 {
                     await popup.PushAsync(new AlertPopup("Error de autenticación", "Transmision incorrecta", "Continuar"));
                     Debug.WriteLine("Transmision incorrecta");
                     ButtonWorking = false;
                     return;
                 }
-                
 
-                //if (mech)
-                //{
-                //    await popup.PushAsync(new AlertPopup("Error de autenticación", "Transmision incorrecta", "Continuar"));
-                //    Debug.WriteLine("Transmision incorrecta");
-                //    ButtonWorking = false;
-                //    return;
-                //}
-                
-
+                if (!(bool)MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION && mech)
+                {
+                    await popup.PushAsync(new AlertPopup("Error de autenticación", "Transmision incorrecta", "Continuar"));
+                    Debug.WriteLine("Transmision incorrecta");
+                    ButtonWorking = false;
+                    return;
+                }
             }
 
 
