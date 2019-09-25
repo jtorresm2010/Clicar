@@ -131,7 +131,7 @@
                             WidthRequest="90"
                             BorderRadius="20"/>
                         <Button
-                            Command="{Binding FinalizarICommand}"
+                            Command="{Binding ContinuarReporteICommand}"
                             HorizontalOptions="EndAndExpand"
                             BackgroundColor="{StaticResource BaseGreen}"
                             Text="{i18n:Translate Conclude}"

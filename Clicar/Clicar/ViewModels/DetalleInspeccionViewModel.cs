@@ -16,9 +16,9 @@ namespace Clicar.ViewModels
         private SolicitudesInspeccionPendiente currentInspeccion;
         #endregion
 
-        private bool automaticTransmission;
+        private bool? automaticTransmission;
 
-        public bool AutomaticTransmission
+        public bool? AutomaticTransmission
         {
             get { return automaticTransmission; }
             set { SetValue(ref automaticTransmission, value); }

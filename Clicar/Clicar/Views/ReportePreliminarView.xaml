@@ -201,7 +201,7 @@
                                     TextColor="{StaticResource BaseGrey}"
                                     FontFamily="{StaticResource RegularFontOpenSans}"/>
 
-                                <!--Tiempo Esperado-->
+                                <!--Tiempo Esperado--><!--
 
                                 <Label
                                     Margin="0,5"
@@ -222,7 +222,7 @@
                                     TextColor="{StaticResource BaseGrey}"
                                     FontFamily="{StaticResource RegularFontOpenSans}"/>
 
-                                <!--Record Actual-->
+                                --><!--Record Actual--><!--
 
                                 <Label
                                     Margin="0,5"
@@ -243,7 +243,7 @@
                                     TextColor="{StaticResource BaseGrey}"
                                     FontFamily="{StaticResource RegularFontOpenSans}"/>
 
-                                <!--Tu media actual-->
+                                --><!--Tu media actual--><!--
 
                                 <Label
                                     Margin="0,5"
@@ -262,7 +262,7 @@
                                     Text="00h13m"
                                     FontSize="14"
                                     TextColor="{StaticResource BaseGrey}"
-                                    FontFamily="{StaticResource RegularFontOpenSans}"/>
+                                    FontFamily="{StaticResource RegularFontOpenSans}"/>-->
 
 
 

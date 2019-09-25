@@ -94,11 +94,11 @@ namespace Clicar.ViewModels
                 return new RelayCommand(VerResumenCommand);
             }
         }
-        public ICommand FinalizarICommand
+        public ICommand ContinuarReporteICommand
         {
             get
             {
-                return new RelayCommand(FinalizarCommand);
+                return new RelayCommand(ContinuarReporteCommand);
             }
         }
         public ICommand FinishICommand
@@ -157,25 +157,6 @@ namespace Clicar.ViewModels
 
             EnviarEncabezado();
 
-            //try
-            //{
-            //    var cuerpo = CrearCuerpoMensaje();
-            //    Debug.WriteLine($"~(>'.')> test");
-            //    var cuerpoJson = JsonConvert.SerializeObject(cuerpo);
-            //    Debug.WriteLine($"~(>'.')> {cuerpoJson}");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Debug.WriteLine($"~(>'n')> {ex.Message}");
-            //}
-
-
-
-
-
-
-            //Debug.WriteLine($"~(>'.')> Enviando encabezado... confirmando pass {Clave}");
-
             await popup.PopAsync();
 
             IsBusy = false;
@@ -196,19 +177,18 @@ namespace Clicar.ViewModels
         }
 
 
-        private async void FinalizarCommand()
+        private async void ContinuarReporteCommand()
         {
             if (IsBusy)
                 return;
             IsBusy = true;
 
-
-
-
             await Application.Current.MainPage.Navigation.PushAsync(new ReportePreliminarView());
 
             IsBusy = false;
         }
+
+
 
         private async void CancelarCommand()
         {
@@ -238,19 +218,6 @@ namespace Clicar.ViewModels
 
                     foreach (ItemsAreasInspeccionACC item in area.Items)
                     {
-                        //if(item.ITINS_DESCRIPCION.(MainInstance.Inspeccion.AreasInspeccionBase.Find(x => x.AINSP_ID == item.ITINS_ID)))
-                        // {
-                        //     Debug.WriteLine($"~(>'.')> Item no cambiado {item.ITINS_DESCRIPCION}");
-                        // }
-                        // else
-                        // {
-                        //     Debug.WriteLine($"~(>'.')> Item cambiado {item.ITINS_DESCRIPCION}");
-                        // }
-
-
-
-                       //Debug.WriteLine($"{item.ITINS_DESCRIPCION}");
-                        //if(item.ITINS_STATE_ACTIVO.Equals(MainInstance.Inspeccion.AreasInspeccionBase[indice].Items[])
                         var comentario = item.Comentario ?? "Sin Observaciones";
 
                         var Estado = "";
@@ -286,20 +253,6 @@ namespace Clicar.ViewModels
 
 
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             await Application.Current.MainPage.Navigation.PushAsync(new ResumenInspeccion());
             IsBusy = false;
@@ -364,9 +317,6 @@ namespace Clicar.ViewModels
                 if (resp.Resultado)
                 {
                     EnviarCuerpo(resp.Elemento.INSP_ID);
-
-
-                   // Debug.WriteLine($"~(>^.^)> Encabezado OK");
                 }
             }
             catch (Exception ex)
@@ -459,7 +409,7 @@ namespace Clicar.ViewModels
             var enc = CrearCuerpoMensaje(Ins_ID);
 
 
-            var response = await MainInstance.RestService.PostAsync<DTOGenerico>(
+            var response = await MainInstance.RestService.PostAsync<RespuestaEnvioInspeccion>(
                 MainInstance.Url,
                 MainInstance.Prefix,
                 MainInstance.EnvioInspeccionCuerpo,
@@ -468,14 +418,11 @@ namespace Clicar.ViewModels
             var testobj2 = JsonConvert.SerializeObject(response.Result);
             Debug.WriteLine($"~(>'o')> 4: {testobj2}");
 
-
             try
             {
-                object resp = (object)response.Result;
+                var resp = (RespuestaEnvioInspeccion)response.Result;
 
-                //if (resp)
-                //{
-                //}
+                UploadImages(Ins_ID, resp.Elemento);
             }
             catch (Exception ex)
             {
@@ -493,13 +440,121 @@ namespace Clicar.ViewModels
             {
                 await popup.PopAsync();
 
-                Debug.WriteLine($"~(>'.')> Autenticando a usuario {Preferences.Get("Correo", "---")}");
+                //Debug.WriteLine($"~(>'.')> Autenticando a usuario {Preferences.Get("Correo", "---")}");
             }
             else
             {
                 // not allowed to do secret stuff :(
             }
         }
+
+        private async void UploadImages(int inspeccionID, List<ItemsInspeccionado> respuesta)
+        {
+            var envioFotos = new EnvioFotos();
+
+            var fotosInspeccion = new List<FotosInspeccion>();
+            var fotosItemInspeccion = new List<FotositemsInspeccion>();
+
+            envioFotos.fotosInspeccion = fotosInspeccion;
+
+            envioFotos.fotositemsInspeccion = fotosItemInspeccion;
+
+
+            foreach (AccordionItem area in MainInstance.Inspeccion.AreasInspeccion)
+            {
+                if (area.ListaFotos != null && area.ListaFotos.Count > 0)
+                {
+                    foreach(Fotografia foto in area.ListaFotos)
+                    {
+                        if (!foto.CurrentImageSmall.Equals("camara_select_foto.png"))
+                        {
+                            byte[] bytes = File.ReadAllBytes(foto.CurrentImageSmall);
+
+                            var fotoItem = new FotosInspeccion
+                            {
+                                FINSP_FECHA_CREACION = $"{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day} {Math.Floor(DateTime.Now.TimeOfDay.TotalHours)}:{DateTime.Now.TimeOfDay.Minutes}",
+                                FINSP_FOTO_ID = foto.FOTO_ID,
+                                FINSP_NOMBRE_ARCHIVO = Path.GetFileName(foto.CurrentImageSmall),
+                                FINSP_INSP_ID = inspeccionID,
+                                FINSP_ARCHIVO_BASE64 = Convert.ToBase64String(bytes)
+                            };
+
+                            envioFotos.fotosInspeccion.Add(fotoItem);
+                        }
+                    }
+
+                }
+
+                if(area.Items != null && area.Items.Count > 0)
+                {
+                    foreach (ItemsAreasInspeccionACC item in area.Items)
+                    {
+                        if (item.ITINS_REQUIERE_FOTO && !item.Imagen.Equals("camara_select_foto.png"))
+                        {
+                            ItemsInspeccionado result = respuesta.Find(x => x.INSPE_ITINS_ID == item.ITINS_ID);
+
+                            byte[] bytes = File.ReadAllBytes(item.Imagen);
+
+                            fotosItemInspeccion.Add(new FotositemsInspeccion
+                            {
+                                FIINS_FECHA_CREACION = $"{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day} {Math.Floor(DateTime.Now.TimeOfDay.TotalHours)}:{DateTime.Now.TimeOfDay.Minutes}",
+                                FIINS_NOMBRE_ARCHIVO = Path.GetFileName(item.Imagen),
+                                INSPE_ID = (int)result.INSPE_ID,
+                                FIINS_ARCHIVO_BASE64 = Convert.ToBase64String(bytes)
+                            });
+                        }
+                    }
+
+
+                }
+            }
+
+
+
+            if (envioFotos.fotosInspeccion.Count == 0)
+                envioFotos.fotosInspeccion = null;
+
+            if (envioFotos.fotositemsInspeccion.Count == 0)
+                envioFotos.fotositemsInspeccion = null;
+
+
+            var imagenesJson = JsonConvert.SerializeObject(envioFotos);
+            //Debug.WriteLine($"~(>'V')> 5: {imagenesJson}");
+
+            /////// API portion
+            ///
+            var connection = MainInstance.RestService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                var popup = PopupNavigation.Instance;
+                await popup.PushAsync(new AlertPopup("", connection.Message, Languages.Accept));
+                return;
+            }
+
+            Debug.WriteLine($"~(>'.')> Carga iniciada");
+
+            var response = await MainInstance.RestService.PostAsync<DTOGenerico>(
+                MainInstance.Url,
+                MainInstance.Prefix,
+                MainInstance.EnvioFotoInspeccion,
+                envioFotos);
+
+            try
+            {
+                object resp = (object)response.Result;
+                Debug.WriteLine($"~(>'.')> Carga terminada");
+                //if (resp)
+                //{
+                //}
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("~(>-_-)> Error envio de cuerpo " + ex.Message);
+            }
+
+        }
+
+
 
     }
 }

@@ -22,10 +22,16 @@ namespace Clicar.Models
         public List<ItemsInspeccionado> itemsInspeccionados { get; set; }
     }
 
+    public partial class RespuestaEnvioInspeccion
+    {
+        public bool Resultado { get; set; }
+        public string Mensaje { get; set; }
+        public List<ItemsInspeccionado> Elemento { get; set; }
+    }
 
     public class ItemsInspeccionado
     {
-        public object INSPE_ID { get; set; }
+        public int? INSPE_ID { get; set; }
         public int INSPE_INSP_ID { get; set; }
         public int INSPE_ITINS_ID { get; set; }
         public string INSPE_OBSERVACION { get; set; }

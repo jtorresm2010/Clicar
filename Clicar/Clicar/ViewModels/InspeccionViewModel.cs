@@ -16,6 +16,8 @@ using System.Diagnostics;
 using Clicar.Interface;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using PCLStorage;
+using System.IO;
 
 namespace Clicar.ViewModels
 {
@@ -145,7 +147,7 @@ namespace Clicar.ViewModels
 
             foreach(ItemsAreasInspeccionACC item in ListaItems)
             {
-                item.Imagen = ImageSource.FromFile("camara_select_foto.png");
+                item.Imagen = "camara_select_foto.png";
                 item.SwitchActive = true;
             }
 
@@ -228,7 +230,7 @@ namespace Clicar.ViewModels
 
                 var lista1 =
                     from img1 in ListaImagenesMain
-                    where img1.FOTO_TIPOF_ID == 1
+                    where img1.FOTO_TIPOF_ID == 1 && img1.FOTO_ACTIVO
                     select img1;
 
                 ListaImagenes = lista1.ToList();
@@ -245,7 +247,7 @@ namespace Clicar.ViewModels
 
                 var lista2 =
                     from img2 in ListaImagenesMain
-                    where img2.FOTO_TIPOF_ID == 2
+                    where img2.FOTO_TIPOF_ID == 2 && img2.FOTO_ACTIVO
                     select img2;
 
                 ListaImagenes2 = lista2.ToList();
@@ -438,16 +440,38 @@ namespace Clicar.ViewModels
         {
             if (Device.RuntimePlatform == Device.iOS)
             {
+
+                var imageFile = "front_example.png";
+
+                if(((Fotografia)parameter).FOTO_BASE64 != null)
+                {
+                    byte[] data = Convert.FromBase64String($"{((Fotografia)parameter).FOTO_BASE64}");
+
+                    String folderName = "Clicar/Overlays";
+                    IFolder folder = FileSystem.Current.LocalStorage;
+                    folder = await folder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
+
+                    IFile file = await folder.CreateFileAsync($"CLCR_{((Fotografia)parameter).FOTO_DESCRIPCION}_Overlay.png", CreationCollisionOption.ReplaceExisting);
+
+                    using (Stream stream = await file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite))
+                    {
+                        stream.Write(data, 0, data.Length);
+                    }
+
+                    imageFile = file.Path;
+                }
+
+
                 Func<object> func = () =>
                 {
-                    var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay("front_example.png");
+                    var obj = DependencyService.Get<IPhotoOverlay>().GetImageOverlay(imageFile);
                     return obj;
                 };
 
                 var photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions()
                 {
                     Directory = "Clicar",
-                    Name = "front_example.jpg",
+                    Name = $"CLCR_{DateTime.Now.Day}_{DateTime.Now.Month}_{DateTime.Now.Year}.Jpeg",
                     PhotoSize = PhotoSize.Medium,
                     OverlayViewProvider = func,
                     DefaultCamera = CameraDevice.Rear,
@@ -455,9 +479,6 @@ namespace Clicar.ViewModels
 
                 if (photo == null)
                     return;
-
-
-                Debug.WriteLine("Ruta de la imagen: " + photo.Path);
 
                 ((Fotografia)parameter).CurrentImageSmall = photo.Path;
 

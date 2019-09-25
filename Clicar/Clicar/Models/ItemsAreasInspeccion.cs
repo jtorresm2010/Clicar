@@ -89,8 +89,8 @@ namespace Clicar.Models
             set { SetValue(ref isChanged, value); }
         }
 
-        private ImageSource imagen;
-        public ImageSource Imagen
+        private string imagen;
+        public string Imagen
         {
             get { return imagen; }
             set { SetValue(ref imagen, value); }

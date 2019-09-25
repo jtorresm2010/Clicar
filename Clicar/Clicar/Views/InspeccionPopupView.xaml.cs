@@ -58,16 +58,30 @@ namespace Clicar.Views
                 return;
             }
 
-            if (MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION.Equals(auto))
+            if (MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION  != null)
             {
-                await popup.PushAsync(new AlertPopup("Error de autenticación", "Transmision incorrecta", "Continuar"));
-                Debug.WriteLine("Transmision incorrecta");
-                ButtonWorking = false;
-                return;
+                if (MainInstance.DetalleInspeccion.CurrentInspeccion.SOINS_TRANSMISION.Equals(auto))
+                {
+                    await popup.PushAsync(new AlertPopup("Error de autenticación", "Transmision incorrecta", "Continuar"));
+                    Debug.WriteLine("Transmision incorrecta");
+                    ButtonWorking = false;
+                    return;
+                }
+                
+
+                //if (mech)
+                //{
+                //    await popup.PushAsync(new AlertPopup("Error de autenticación", "Transmision incorrecta", "Continuar"));
+                //    Debug.WriteLine("Transmision incorrecta");
+                //    ButtonWorking = false;
+                //    return;
+                //}
+                
+
             }
 
-            
-            
+
+
             MainInstance.Inspeccion.CurrentInspeccion = MainInstance.DetalleInspeccion.CurrentInspeccion;
 
             MainInstance.Inspeccion.HoraInicio = DateTime.Now;

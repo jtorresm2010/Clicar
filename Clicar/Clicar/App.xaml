@@ -151,6 +151,7 @@
             <x:String x:Key="EnvioInspeccionEncabezado">/Inspecciones/MobileEnvioInspeccionEncabezado</x:String>
             <x:String x:Key="EnvioInspeccionCuerpo">/Inspecciones/MobileEnvioInspeccionCuerpo</x:String>
             <x:String x:Key="RecuperaPass">/login/MobileRecuperaPass</x:String>
+            <x:String x:Key="EnvioFotoInspeccion">/api/Inspecciones/MobileEnvioFotoInspeccion</x:String>
         </ResourceDictionary>
 
 

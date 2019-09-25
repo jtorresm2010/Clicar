@@ -177,7 +177,7 @@
                     <!--ItemTemplate="{StaticResource agendaTemplateSelector}"--> 
 
                 <!--Lista de completados-->
-                <Frame 
+                <!--<Frame 
                     IsEnabled="{Binding ListReady}"
                     HasShadow="False"
                     CornerRadius="0"
@@ -190,10 +190,10 @@
                         FontFamily="{StaticResource BoldFontOpenSans}"
                         Text="{i18n:Translate Completed}" 
                         FontSize="20"/>
-                    <!--<Frame.Behaviors>
+                    --><!--<Frame.Behaviors>
                         <behavior:CloseOpenBehavior
                         AttachedListView="{x:Reference Name=CompletadosListView}"/>
-                    </Frame.Behaviors>-->
+                    </Frame.Behaviors>--><!--
 
                 </Frame>
                 <ListView
@@ -210,7 +210,7 @@
                                 <views:AgendaViewCellCompletado/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>
+                    </ListView>-->
 
             </StackLayout>
 

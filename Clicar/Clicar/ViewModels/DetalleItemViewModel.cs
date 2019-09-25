@@ -210,7 +210,7 @@ namespace Clicar.ViewModels
                 return;
 
 
-            CurrentItem.Imagen = ImageSource.FromFile(photo.Path);
+            CurrentItem.Imagen = photo.Path;
         }
 
         private async void TakePictureCommand()
@@ -232,7 +232,7 @@ namespace Clicar.ViewModels
             if (file == null)
                 return;
 
-            CurrentItem.Imagen = ImageSource.FromFile(file.Path);
+            CurrentItem.Imagen = file.Path;
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Clicar.ViewModels
         public string EnvioInspeccionEncabezado { get; set; }
         public string EnvioInspeccionCuerpo { get; set; }
         public string RecuperaPass { get; set; }
+        public string EnvioFotoInspeccion { get; set; }
 
 
         #region Instancias VM
@@ -65,6 +66,7 @@ namespace Clicar.ViewModels
                 EnvioInspeccionEncabezado = Application.Current.Resources["EnvioInspeccionEncabezado"].ToString();
                 EnvioInspeccionCuerpo = Application.Current.Resources["EnvioInspeccionCuerpo"].ToString();
                 RecuperaPass = Application.Current.Resources["RecuperaPass"].ToString();
+                EnvioFotoInspeccion = Application.Current.Resources["EnvioFotoInspeccion"].ToString();
 
                 await DataService.OpenOrCreateDB();
 

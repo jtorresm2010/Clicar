@@ -49,8 +49,6 @@ namespace Clicar.Droid.Customs.Camera2
 
         private async void OnPhoto(object sender, byte[] imgSource)
         {
-            var path = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures);
-
             String folderName ="Clicar" ;
             IFolder folder = FileSystem.Current.LocalStorage;
             folder = await folder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
@@ -69,7 +67,7 @@ namespace Clicar.Droid.Customs.Camera2
                 bitmapData = stream.ToArray();
             }
 
-            IFile file = await folder.CreateFileAsync($"CLCR_{DateTime.Now.Day}_{DateTime.Now.Month}_{DateTime.Now.Year}.Jpeg", CreationCollisionOption.GenerateUniqueName);
+            IFile file = await folder.CreateFileAsync($"CLCR_{DateTime.Now.Day}_{DateTime.Now.Month}_{DateTime.Now.Year}.jpg", CreationCollisionOption.GenerateUniqueName);
 
             using (Stream stream = await file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite))
             {
