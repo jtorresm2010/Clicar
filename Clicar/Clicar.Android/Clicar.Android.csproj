@@ -80,6 +80,7 @@
     <Compile Include="Customs\CustomEntryAndroid.cs" />
     <Compile Include="Customs\CustomPickerAndroid.cs" />
     <Compile Include="Implementations\Localize.cs" />
+    <Compile Include="Implementations\MessageAndroid.cs" />
     <Compile Include="Implementations\PathService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

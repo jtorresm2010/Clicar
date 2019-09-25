@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Customs\CustomEditorIOS.cs" />
     <Compile Include="Implementations\Localize.cs" />
+    <Compile Include="Implementations\MessageIOS.cs" />
     <Compile Include="Implementations\PathService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

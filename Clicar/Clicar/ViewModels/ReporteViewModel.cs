@@ -1,4 +1,5 @@
-﻿using Clicar.Helpers;
+﻿using Clicar.Customs;
+using Clicar.Helpers;
 using Clicar.Models;
 using Clicar.Templates;
 using Clicar.Views;
@@ -555,11 +556,7 @@ namespace Clicar.ViewModels
 
                     //var popup = PopupNavigation.Instance;
                     //await popup.PopAllAsync();
-                    Debug.WriteLine($"~(>'.')> Carga terminada");
-
-
-                    MainInstance.Agenda.LoadMainList();
-                    await Application.Current.MainPage.Navigation.PopToRootAsync();
+                    Debug.WriteLine($"~(>'.')> imagen subida");
 
 
                     //if (resp)
@@ -573,11 +570,28 @@ namespace Clicar.ViewModels
             }
         }
 
-        private void SubidaDeImagenes(int inspeccionID, List<ItemsInspeccionado> respuesta)
+        private async void SubidaDeImagenes(int inspeccionID, List<ItemsInspeccionado> respuesta)
         {
+            Debug.WriteLine($"~(>'.')> Iniciando Carga");
+
+
+            MainInstance.Agenda.LoadMainList();
+            await Application.Current.MainPage.Navigation.PopToRootAsync();
+
+
+
 
             /*Crear lista de imagenes*/
             var envioFotos = CrearListaImagenes(inspeccionID, respuesta);
+
+            var conteoFotos = envioFotos.fotosInspeccion == null ? 0 : envioFotos.fotosInspeccion.Count;
+            var conteofotosItems = envioFotos.fotositemsInspeccion == null ? 0 : envioFotos.fotositemsInspeccion.Count;
+
+
+
+
+            var totalItems = conteoFotos + conteofotosItems;
+            int currentItem = 0;
 
             if(envioFotos.fotosInspeccion != null && envioFotos.fotosInspeccion.Count > 0)
             {
@@ -593,6 +607,11 @@ namespace Clicar.ViewModels
 
                     /*subir usando api*/
                     SubirFotos(envioFotoIndividual);
+                    currentItem++;
+
+
+                    if (currentItem == totalItems)
+                        DependencyService.Get<IMessage>().LongAlert("Carga de imagenes Finalizada");
                 }
             }
 
@@ -610,6 +629,11 @@ namespace Clicar.ViewModels
 
                     /*subir usando api*/
                     SubirFotos(envioFotoIndividual);
+
+                    currentItem++;
+
+                    if(currentItem == totalItems)
+                        DependencyService.Get<IMessage>().LongAlert("Carga de imagenes Finalizada");
                 }
             }
 
