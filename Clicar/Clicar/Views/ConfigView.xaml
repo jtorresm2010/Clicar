@@ -94,7 +94,6 @@
                                 CornerRadius="10"
                                 BackgroundColor="{StaticResource BaseGreen20}">
                                 <Label
-                                    HorizontalOptions="Center"
                                     Text="{Binding ClosestSucursal.MAESU_NOMBRE_SUCURSAL}"
                                     FontSize="12"
                                     TextColor="{StaticResource DarkGreen}"

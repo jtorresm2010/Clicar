@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
-    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:Clicar.Customs"
-    mc:Ignorable="d"
-             x:Class="Clicar.Views.FingerPrintPopupView">
+        xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+        mc:Ignorable="d"
+        x:Class="Clicar.Views.FingerPrintPopupView">
     <Frame
             HeightRequest="240"
             Padding="20,0"
@@ -32,16 +32,37 @@
 
             <!--Icono-->
             <StackLayout>
+            <!--<controls:CircleImage 
+                BackgroundColor="{StaticResource BaseOrange}"
+                Source="fingerprint_solid.png" 
+                Aspect="AspectFill">
+                <controls:CircleImage.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">30</On>
+                        <On Platform="WinPhone">30</On>
+                    </OnPlatform>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">30</On>
+                        <On Platform="WinPhone">30</On>
+                    </OnPlatform>
+                </controls:CircleImage.HeightRequest>
+            </controls:CircleImage>-->
+
                 
                 <Frame
+                    Padding="0"
                     Margin="0,13,0,8"
                     HorizontalOptions="CenterAndExpand"
-                    WidthRequest="30"
-                    HeightRequest="30"
-                    CornerRadius="45"
+                    WidthRequest="70"
+                    HeightRequest="70"
+                    CornerRadius="35"
                     BackgroundColor="{StaticResource BaseOrange}">
 
                     <Image    
+                            WidthRequest="50"
+                            HeightRequest="50"
                             Source="fingerprint_solid.png" 
                             VerticalOptions="Center"/>
 
@@ -52,7 +73,7 @@
             <Label
                         Margin="0,5,0,10"
                         HorizontalOptions="CenterAndExpand"
-                        Text="Pon tu huella en el lector:"
+                        Text="Pon tu huella en el lector"
                         FontSize="14"
                         FontFamily="{StaticResource RegularFontOpenSans}"
                         TextColor="{StaticResource BaseGreyLight}"/>

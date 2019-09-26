@@ -206,15 +206,12 @@ namespace Clicar.ViewModels
 
                 if (loginResponse.Resultado)
                 {
+                    Preferences.Set("Token", loginResponse.Mensaje);
+                    Preferences.Set("Correo", correo);
+                    Preferences.Set("Clave", clave);
+
                     InicializarDatos();
                 }
-                //else
-                //{
-                //    await popup.PushAsync(new AlertPopup("", "Credenciales de inicio de sesión no válidas", Languages.Accept));
-                //    IsIdle = true;
-                //    IsLoading = false;
-                //    return;
-                //}
             }
             catch (Exception ex)
             {
@@ -234,9 +231,6 @@ namespace Clicar.ViewModels
 
             MainInstance.Agenda = new AgendaViewModel();
 
-            Preferences.Set("Token", loginResponse.Mensaje);
-            Preferences.Set("Correo", Usuario);
-            Preferences.Set("Clave", Clave);
 
             await MainInstance.DataService.Insert<Maestro>(loginResponse.Elemento);
             var maestroFromBD = await MainInstance.DataService.GetMaestro();
@@ -246,9 +240,9 @@ namespace Clicar.ViewModels
 
             MainInstance.Config = new ConfigViewModel();
 
-            GetListSucursales();
+            await GetListSucursales();
 
-            GetClosestSucursal();
+            await GetClosestSucursal();
 
             ObtenerAreasInspeccion();
 
@@ -257,7 +251,7 @@ namespace Clicar.ViewModels
             Application.Current.MainPage = new ConfigView();
         }
 
-        private async void GetListSucursales()
+        private async Task GetListSucursales()
         {
             IsLoading = true;
 
@@ -315,7 +309,7 @@ namespace Clicar.ViewModels
             //IsBusy = true;
         }
 
-        private async void GetClosestSucursal()
+        private async Task GetClosestSucursal()
         {
             IsLoading = true;
 
@@ -610,8 +604,20 @@ namespace Clicar.ViewModels
                 await popup.PopAsync();
                 IsIdle = true;
 
-                if (Preferences.Get("Correo", "") != ""  && Preferences.Get("Clave", "")  != "")
-                    LoginCommand(Preferences.Get("Correo", ""), Preferences.Get("Clave", ""));
+                
+
+                var usuarioGuardado = Preferences.Get("Correo", "");
+                var claveGuardada = Preferences.Get("Clave", "");
+
+
+                if (!usuarioGuardado.Equals("") && !claveGuardada.Equals(""))
+                {
+                    LoginCommand(usuarioGuardado, claveGuardada);
+
+                    Preferences.Set("Correo", usuarioGuardado);
+                    Preferences.Set("Clave", claveGuardada);
+
+                }
                 else
                     await popup.PushAsync(new AlertPopup("Error de autenticación", "No hay datos de sesión disponibles", "Continuar"));
 

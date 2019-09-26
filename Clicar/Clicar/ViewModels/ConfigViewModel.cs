@@ -59,13 +59,19 @@ namespace Clicar.ViewModels
         {
             isReady = false;
             MainInstance = MainViewModel.GetInstance();
+
+            ClosestSucursal = new SucursalDB
+            {
+                MAESU_NOMBRE_SUCURSAL = ". . ."
+            };
+
         }
 
         public ICommand ConfigICommand
         {
             get
             {
-                return new RelayCommand(ConfigCommand);
+                return new RelayCommand(ConfigCommand, () => IsReady);
             }
         }
 
