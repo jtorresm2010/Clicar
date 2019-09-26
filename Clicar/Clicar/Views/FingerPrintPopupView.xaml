@@ -5,52 +5,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:d="http://xamarin.com/schemas/2014/forms/design"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
         mc:Ignorable="d"
         x:Class="Clicar.Views.FingerPrintPopupView">
     <Frame
-            HeightRequest="240"
-            Padding="20,0"
-            CornerRadius="20"
-            VerticalOptions="CenterAndExpand"
-            BackgroundColor="White"
-            Margin="16">
+        HeightRequest="240"
+        Padding="20,0"
+        CornerRadius="20"
+        VerticalOptions="CenterAndExpand"
+        BackgroundColor="White"
+        Margin="16">
 
         <StackLayout
-                VerticalOptions="CenterAndExpand"
-                Spacing="0">
+            VerticalOptions="CenterAndExpand"
+            Spacing="0">
 
             <!--Titulo-->
             <StackLayout>
                 <Label
-                        Text="Autenticar con huella"
-                        HorizontalOptions="CenterAndExpand"
-                        FontSize="24"
-                        TextColor="{StaticResource BaseGreen}"
-                        FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
+                    Text="Autenticar con huella"
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="24"
+                    TextColor="{StaticResource BaseGreen}"
+                    FontFamily="{StaticResource SemiBoldFontOpenSans}"/>
             </StackLayout>
 
             <!--Icono-->
             <StackLayout>
-            <!--<controls:CircleImage 
-                BackgroundColor="{StaticResource BaseOrange}"
-                Source="fingerprint_solid.png" 
-                Aspect="AspectFill">
-                <controls:CircleImage.WidthRequest>
-                    <OnPlatform x:TypeArguments="x:Double">
-                        <On Platform="Android, iOS">30</On>
-                        <On Platform="WinPhone">30</On>
-                    </OnPlatform>
-                </controls:CircleImage.WidthRequest>
-                <controls:CircleImage.HeightRequest>
-                    <OnPlatform x:TypeArguments="x:Double">
-                        <On Platform="Android, iOS">30</On>
-                        <On Platform="WinPhone">30</On>
-                    </OnPlatform>
-                </controls:CircleImage.HeightRequest>
-            </controls:CircleImage>-->
-
-                
                 <Frame
                     Padding="0"
                     Margin="0,13,0,8"
@@ -59,37 +39,36 @@
                     HeightRequest="70"
                     CornerRadius="35"
                     BackgroundColor="{StaticResource BaseOrange}">
-
                     <Image    
-                            WidthRequest="50"
-                            HeightRequest="50"
-                            Source="fingerprint_solid.png" 
-                            VerticalOptions="Center"/>
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        Source="fingerprint_solid.png" 
+                        VerticalOptions="Center"/>
 
                 </Frame>
             </StackLayout>
 
             <!--Texto guía-->
             <Label
-                        Margin="0,5,0,10"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Pon tu huella en el lector"
-                        FontSize="14"
-                        FontFamily="{StaticResource RegularFontOpenSans}"
-                        TextColor="{StaticResource BaseGreyLight}"/>
+                Margin="0,5,0,10"
+                HorizontalOptions="CenterAndExpand"
+                Text="Pon tu huella en el lector"
+                FontSize="14"
+                FontFamily="{StaticResource RegularFontOpenSans}"
+                TextColor="{StaticResource BaseGreyLight}"/>
 
             <!--Botón-->
             <Button
-                        Clicked="FingerprintCancel"
-                        HorizontalOptions="EndAndExpand"
-                        BackgroundColor="White"
-                        Text="Cancelar"
-                        FontSize="14"
-                        FontFamily="{StaticResource BoldFontOpenSans}"
-                        TextColor="{StaticResource BaseGreyLight}"
-                        HeightRequest="30"
-                        CornerRadius="45"
-                        WidthRequest="100"/>
+                Clicked="FingerprintCancel"
+                HorizontalOptions="EndAndExpand"
+                BackgroundColor="White"
+                Text="Cancelar"
+                FontSize="14"
+                FontFamily="{StaticResource BoldFontOpenSans}"
+                TextColor="{StaticResource BaseGreyLight}"
+                HeightRequest="30"
+                CornerRadius="45"
+                WidthRequest="100"/>
 
         </StackLayout>
 
