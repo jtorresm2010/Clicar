@@ -285,8 +285,8 @@ namespace Clicar.ViewModels
                 INSP_ESTDO_ID = 1,
             };
 
-            var cuerpoJson = JsonConvert.SerializeObject(encabezado);
-            Debug.WriteLine($"~(>'.')> 1: {cuerpoJson}");
+            //var cuerpoJson = JsonConvert.SerializeObject(encabezado);
+            //Debug.WriteLine($"~(>'.')> 1: {cuerpoJson}");
 
             return encabezado;
         }
@@ -316,8 +316,8 @@ namespace Clicar.ViewModels
                 MainInstance.EnvioInspeccionEncabezado,
                 enc);
 
-            var testobj = JsonConvert.SerializeObject(response.Result);
-            Debug.WriteLine($"~(>'v')> 2: {testobj}");
+            //var testobj = JsonConvert.SerializeObject(response.Result);
+            //Debug.WriteLine($"~(>'v')> 2: {testobj}");
 
             try
             {
@@ -398,8 +398,8 @@ namespace Clicar.ViewModels
             cuerpo.itemsInspeccionados = listaItems;
 
 
-            var cuerpoJson = JsonConvert.SerializeObject(cuerpo);
-            Debug.WriteLine($"~(>^.^)> 3: {cuerpoJson}");
+            //var cuerpoJson = JsonConvert.SerializeObject(cuerpo);
+            //Debug.WriteLine($"~(>^.^)> 3: {cuerpoJson}");
 
 
             return cuerpo;
@@ -424,8 +424,8 @@ namespace Clicar.ViewModels
                 MainInstance.EnvioInspeccionCuerpo,
                 enc);
 
-            var testobj2 = JsonConvert.SerializeObject(response.Result);
-            Debug.WriteLine($"~(>'o')> 4: {testobj2}");
+            //var testobj2 = JsonConvert.SerializeObject(response.Result);
+            //Debug.WriteLine($"~(>'o')> 4: {testobj2}");
 
             try
             {
@@ -540,7 +540,7 @@ namespace Clicar.ViewModels
                 return;
             }
 
-            Debug.WriteLine($"~(>'.')> Carga iniciada");
+            //Debug.WriteLine($"~(>'.')> Carga iniciada");
 
             var response = await MainInstance.RestService.PostAsync<DTOGenerico>(
                 MainInstance.Url,
@@ -556,7 +556,7 @@ namespace Clicar.ViewModels
 
                     //var popup = PopupNavigation.Instance;
                     //await popup.PopAllAsync();
-                    Debug.WriteLine($"~(>'.')> imagen subida");
+                    //Debug.WriteLine($"~(>'.')> imagen subida");
 
 
                     //if (resp)
@@ -572,7 +572,7 @@ namespace Clicar.ViewModels
 
         private async void SubidaDeImagenes(int inspeccionID, List<ItemsInspeccionado> respuesta)
         {
-            Debug.WriteLine($"~(>'.')> Iniciando Carga");
+            //Debug.WriteLine($"~(>'.')> Iniciando Carga");
 
 
             MainInstance.Agenda.LoadMainList();

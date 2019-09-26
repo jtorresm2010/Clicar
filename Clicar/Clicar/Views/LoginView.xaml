@@ -230,7 +230,8 @@
 
 
                             <Button
-                                IsEnabled="{Binding Main.Login.FigerprintAvailable, Source={StaticResource Locator}}"
+                               
+                                IsEnabled="{Binding FigerprintAvailable}"
                                 Command="{Binding FingerprintICommand}"
                                 BackgroundColor="{StaticResource BaseOrange}"
                                 Text="{i18n:Translate TouchIDButton}"
@@ -245,7 +246,13 @@
                     </StackLayout>
                 </Frame>
 
-
+                <Label
+                    TextColor="{StaticResource BaseGrey44}"
+                    FontSize="10"
+                    FontFamily="{StaticResource RegularFontOpenSans}"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="EndAndExpand"
+                    Text="CLICAR-F0021 v(1.1.1) "/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -14,7 +14,7 @@
     <Frame
             BindingContext="{Binding DetalleInspeccion}"
             HeightRequest="260"
-            Padding="24,18"
+            Padding="24,18,24,8"
             CornerRadius="20"
             VerticalOptions="CenterAndExpand"
             BackgroundColor="White"
@@ -141,7 +141,13 @@
                         WidthRequest="100"/>
 
                 </StackLayout>
-            
+            <Label
+                    TextColor="{StaticResource BaseGrey44}"
+                    FontSize="10"
+                    FontFamily="{StaticResource RegularFontOpenSans}"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="EndAndExpand"
+                    Text="CLICAR-F0032 v(1.1.1) "/>
         </StackLayout>
 
     </Frame>

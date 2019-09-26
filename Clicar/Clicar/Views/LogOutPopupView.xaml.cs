@@ -1,4 +1,5 @@
-﻿using Plugin.DeviceOrientation;
+﻿using Clicar.ViewModels;
+using Plugin.DeviceOrientation;
 using Plugin.DeviceOrientation.Abstractions;
 using Rg.Plugins.Popup.Contracts;
 using Rg.Plugins.Popup.Pages;
@@ -17,9 +18,11 @@ namespace Clicar.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogOutPopupView : PopupPage
     {
+        MainViewModel MainInstance;
         IPopupNavigation PopupInstance;
         public LogOutPopupView()
         {
+            MainInstance = MainViewModel.GetInstance();
             CrossDeviceOrientation.Current.LockOrientation(DeviceOrientations.Portrait);
             InitializeComponent();
             PopupInstance = PopupNavigation.Instance;
@@ -42,6 +45,7 @@ namespace Clicar.Views
             await popup.PopAsync();
 
             ButtonWorking = true;
+            MainInstance.Login = new LoginViewModel();
             Application.Current.MainPage = new LoginView();
 
 

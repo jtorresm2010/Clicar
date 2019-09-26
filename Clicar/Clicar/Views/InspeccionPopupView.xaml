@@ -13,7 +13,7 @@
     
     <Frame
         HeightRequest="260"
-            Padding="24,18"
+            Padding="24,18,24,8"
             CornerRadius="20"
             VerticalOptions="CenterAndExpand"
             BackgroundColor="White"
@@ -123,7 +123,7 @@
 
             <!--Botones-->
             <StackLayout
-                Margin="16,10,0,0"
+                Margin="16,0,0,0"
                 HorizontalOptions="EndAndExpand"
                 Spacing="10"
                 Orientation="Horizontal">
@@ -154,7 +154,13 @@
                     WidthRequest="100"/>
 
             </StackLayout>
-
+            <Label
+                    TextColor="{StaticResource BaseGrey44}"
+                    FontSize="10"
+                    FontFamily="{StaticResource RegularFontOpenSans}"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="EndAndExpand"
+                    Text="CLICAR-F0031 v(1.1.1) "/>
         </StackLayout>
 
     </Frame>

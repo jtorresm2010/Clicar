@@ -174,9 +174,16 @@
                     
                     
                 </Frame>
-
+                <Label
+                    TextColor="{StaticResource BaseGrey44}"
+                    FontSize="10"
+                    FontFamily="{StaticResource RegularFontOpenSans}"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="EndAndExpand"
+                    Text="CLICAR-F0029 v(1.1.1) "/>
 
             </StackLayout>
+            
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

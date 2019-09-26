@@ -71,15 +71,13 @@ namespace Clicar.ViewModels
         }
         #endregion
 
-
-
         public LoginViewModel()
         {
             IsIdle = true;
             IsLoading = false;
 
-            Usuario = "palarcon@a.cl";
-            clave = "123456";
+            //Usuario = "palarcon@a.cl";
+            //clave = "123456";
 
 
             FeatureAvailable();
@@ -93,7 +91,6 @@ namespace Clicar.ViewModels
             FigerprintAvailable = await CrossFingerprint.Current.IsAvailableAsync();
         }
 
-
         #region ICommands
         public ICommand LoginICommand
         {
@@ -102,11 +99,12 @@ namespace Clicar.ViewModels
                 return new RelayCommand(LoginCommand);
             }
         }
+
         public ICommand FingerprintICommand
         {
             get
             {
-                return new RelayCommand(FingerprintCommand);
+                return new RelayCommand(FingerprintCommand, () => FigerprintAvailable);
             }
         }
         public ICommand RecuperarClaveIcommand
@@ -118,6 +116,10 @@ namespace Clicar.ViewModels
         }
         #endregion
 
+        private void LoginCommand()
+        {
+            LoginCommand(Usuario, Clave);
+        }
 
         private async void LoginCommand(string correo, string clave)
         {
@@ -130,8 +132,41 @@ namespace Clicar.ViewModels
 
             var popup = PopupNavigation.Instance;
 
+            if (correo == null)
+            {
+                await popup.PushAsync(new AlertPopup("Error", "Ingrese un correo", Languages.Accept));
+                Usuario = "";
+                IsIdle = true;
+                IsLoading = false;
+                return;
+            }
 
-            if (Usuario == null || !Funciones.IsValidEmail(Usuario))
+            if (clave == null)
+            {
+                await popup.PushAsync(new AlertPopup("Error", "Ingrese una contraseña", Languages.Accept));
+                Clave = "";
+                IsIdle = true;
+                IsLoading = false;
+                return;
+            }
+
+            if (correo.Length > 100)
+            {
+                await popup.PushAsync(new AlertPopup("Error", "Correo ingresado excede el máximo de caractéres", Languages.Accept));
+                IsIdle = true;
+                IsLoading = false;
+                return;
+            }
+
+            if (clave.Length > 10 || clave.Length < 6)
+            {
+                await popup.PushAsync(new AlertPopup("Error", "Contraseña debe ser de 6 a 10 caractéres", Languages.Accept));
+                IsIdle = true;
+                IsLoading = false;
+                return;
+            }
+
+            if (!Funciones.IsValidEmail(correo))
             {
                 await popup.PushAsync(new AlertPopup("Error", "Ingrese un correo válido", Languages.Accept));
                 IsIdle = true;
@@ -139,7 +174,7 @@ namespace Clicar.ViewModels
                 return;
             }
 
-            if (Clave == null || !Funciones.IsValidPassword(Clave))
+            if (!Funciones.IsValidPassword(clave))
             {
                 await popup.PushAsync(new AlertPopup("Error", "Ingrese una contraseña válida", Languages.Accept));
                 IsIdle = true;
@@ -191,11 +226,6 @@ namespace Clicar.ViewModels
 
             //IsLoading = false;
             //IsIdle = true;
-        }
-
-        private void LoginCommand()
-        {
-            LoginCommand(Usuario, Clave);
         }
 
         private async void InicializarDatos()
@@ -304,8 +334,8 @@ namespace Clicar.ViewModels
 
             if (loc == null)
             {
-                posicion.LATITUD = 0;
-                posicion.LONGITUD = 0;
+                posicion.LATITUD = -33.364778;
+                posicion.LONGITUD = -70.679101;
             }
             else
             {
@@ -352,16 +382,10 @@ namespace Clicar.ViewModels
             try
             {
                 location = await Geolocation.GetLastKnownLocationAsync();
-
-                //if (location != null)
-                //{
-                //    Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-
-                //}
             }
             catch (FeatureNotSupportedException fnsEx)
             {
-                // Handle not supported on device exception
+                
             }
             catch (FeatureNotEnabledException fneEx)
             {
@@ -584,9 +608,9 @@ namespace Clicar.ViewModels
             if (result.Authenticated)
             {
                 await popup.PopAsync();
+                IsIdle = true;
 
-
-                if(Preferences.Get("Correo", "") != ""  && Preferences.Get("Clave", "")  != "")
+                if (Preferences.Get("Correo", "") != ""  && Preferences.Get("Clave", "")  != "")
                     LoginCommand(Preferences.Get("Correo", ""), Preferences.Get("Clave", ""));
                 else
                     await popup.PushAsync(new AlertPopup("Error de autenticación", "No hay datos de sesión disponibles", "Continuar"));
@@ -632,14 +656,11 @@ namespace Clicar.ViewModels
             var reponse = await MainInstance.RestService.PostAsync<object>(MainInstance.Url, MainInstance.Prefix, MainInstance.RecuperaPass, passrec);
 
             //await Application.Current.MainPage.DisplayAlert("Error de autenticación", "Ingrese un correo válido", "Continuar");
-            Debug.WriteLine($"~(>'.')> Passrec command send");
+            //Debug.WriteLine($"~(>'.')> Passrec command send");
 
             await popup.PopAsync();
 
             IsIdle = true;
         }
-
-
-
     }
 }
